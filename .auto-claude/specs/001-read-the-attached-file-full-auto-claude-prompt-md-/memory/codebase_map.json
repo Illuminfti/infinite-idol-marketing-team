@@ -9,7 +9,12 @@
       "description": "Content Strategist agent with content pillars (40% Ika Voice, 25% Lore Drops, 20% Founder Hype, 15% Community), tweet rules (240 chars, 5-10 tweet threads), timing (JST: 9AM, 12PM, 6PM, 9PM), weekly rhythm, and review workflows",
       "category": "agent-persona",
       "discovered_at": "2026-01-08T23:12:58.735993+00:00"
+    },
+    "knowledge-base/lore/core-world.md": {
+      "description": "Core world lore document covering Eternal Stage, Devotion, The Chase, Fading, Tournament structure, and Senpai mystery. All canon rules from CLAUDE.md are integrated and cross-referenced.",
+      "category": "lore",
+      "discovered_at": "2026-01-08T23:26:20.312663+00:00"
     }
   },
-  "last_updated": "2026-01-08T23:12:58.736004+00:00"
+  "last_updated": "2026-01-08T23:26:20.312673+00:00"
 }
