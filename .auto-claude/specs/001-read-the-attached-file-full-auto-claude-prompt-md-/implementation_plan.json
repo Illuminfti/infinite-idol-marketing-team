@@ -445,7 +445,9 @@
             "command": "grep -q 'Foundation' knowledge-base/lore/characters/erina.md && echo 'OK'",
             "expected": "OK"
           },
-          "status": "pending"
+          "status": "completed",
+          "notes": "Created erina.md character profile with full antagonist details, Foundation leadership role, backstory, relationships with Ika/Suiren/Sora, voice guidelines, and canon rules. Verification passed.",
+          "updated_at": "2026-01-08T23:38:25.757703+00:00"
         },
         {
           "id": "subtask-4-7",
@@ -463,7 +465,9 @@
             "command": "grep -q 'network' knowledge-base/lore/characters/runa.md && echo 'OK'",
             "expected": "OK"
           },
-          "status": "pending"
+          "status": "in_progress",
+          "notes": "Creating runa.md - Network architect profile based on timeline.md, lore-architect voice guide, and asset-coordinator visual specs",
+          "updated_at": "2026-01-08T23:39:35.488175+00:00"
         },
         {
           "id": "subtask-4-8",
@@ -1229,5 +1233,5 @@
   "status": "in_progress",
   "planStatus": "in_progress",
   "updated_at": "2026-01-08T22:56:21.596Z",
-  "last_updated": "2026-01-08T23:35:49.497616+00:00"
+  "last_updated": "2026-01-08T23:39:35.488185+00:00"
 }
