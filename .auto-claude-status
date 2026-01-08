@@ -3,23 +3,23 @@
   "spec": "001-read-the-attached-file-full-auto-claude-prompt-md-",
   "state": "building",
   "subtasks": {
-    "completed": 20,
+    "completed": 23,
     "total": 52,
     "in_progress": 1,
     "failed": 0
   },
   "phase": {
-    "current": "Lore - World & Characters",
+    "current": "Lore - Factions & Mechanics",
     "id": null,
-    "total": 9
+    "total": 7
   },
   "workers": {
     "active": 0,
     "max": 1
   },
   "session": {
-    "number": 21,
+    "number": 24,
     "started_at": "2026-01-08T22:56:57.335664"
   },
-  "last_update": "2026-01-08T23:41:44.800957"
+  "last_update": "2026-01-08T23:52:01.210269"
 }

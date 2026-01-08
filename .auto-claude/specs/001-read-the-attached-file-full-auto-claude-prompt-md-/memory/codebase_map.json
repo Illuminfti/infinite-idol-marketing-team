@@ -19,7 +19,12 @@
       "description": "Timeline document covering 5 eras of Infinite Idol history: Age of Discovery (First Awakening/Fading), Age of Himeko (invention of The Chase), Age of Foundation (Erina's system), Rise of Legends (Sora/Suiren/Runa), Present Day (Network collapse, Ika's awakening, tournament). Maintains chronological consistency with SOURCE_MATERIALS_APPENDIX.md and cross-references other lore files.",
       "category": "lore",
       "discovered_at": "2026-01-08T23:28:52.768902+00:00"
+    },
+    "knowledge-base/lore/characters/supporting-cast.md": {
+      "description": "Supporting cast profiles follow the same detailed format as main characters: overview, basic info table, physical appearance (hair with color codes, eyes, build, fashion), personality (core traits table, philosophy, what they hide, what they're NOT, emotional range), background, relationships with main cast, voice guidelines (DO/DON'T), and cross-references. Each character serves a specific narrative function that contrasts or complements main characters.",
+      "category": "pattern",
+      "discovered_at": "2026-01-08T23:49:14.379230+00:00"
     }
   },
-  "last_updated": "2026-01-08T23:28:52.768922+00:00"
+  "last_updated": "2026-01-08T23:49:14.379237+00:00"
 }
