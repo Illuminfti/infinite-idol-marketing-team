@@ -4,7 +4,12 @@
       "description": "Agent persona files follow a standard structure: Identity (who the agent is), Responsibilities (primary/secondary), Decision Framework (priority matrix, decision trees, authority levels), Weekly Routine, Escalation Triggers (P0/P1/P2), File Permissions, Primary Files, Communication Templates, Success Metrics, Getting Started Checklist. Each agent has a unique role and voice.",
       "category": "agent-patterns",
       "discovered_at": "2026-01-08T23:07:06.464963+00:00"
+    },
+    "agents/02-content-strategist.md": {
+      "description": "Content Strategist agent with content pillars (40% Ika Voice, 25% Lore Drops, 20% Founder Hype, 15% Community), tweet rules (240 chars, 5-10 tweet threads), timing (JST: 9AM, 12PM, 6PM, 9PM), weekly rhythm, and review workflows",
+      "category": "agent-persona",
+      "discovered_at": "2026-01-08T23:12:58.735993+00:00"
     }
   },
-  "last_updated": "2026-01-08T23:07:06.464975+00:00"
+  "last_updated": "2026-01-08T23:12:58.736004+00:00"
 }
