@@ -385,7 +385,9 @@
             "command": "grep -q 'pink gradient' knowledge-base/lore/characters/ika-minami.md && grep -q '47' knowledge-base/lore/characters/ika-minami.md && echo 'OK'",
             "expected": "OK"
           },
-          "status": "pending"
+          "status": "completed",
+          "notes": "Created comprehensive Ika Minami character profile with pink gradient hair, 47 fans, shameless personality, background details, abilities, relationships, voice guidelines, and canon rules. Verification passed.",
+          "updated_at": "2026-01-08T23:31:04.977184+00:00"
         },
         {
           "id": "subtask-4-4",
@@ -403,7 +405,9 @@
             "command": "grep -q 'purple-teal' knowledge-base/lore/characters/sora.md && echo 'OK'",
             "expected": "OK"
           },
-          "status": "pending"
+          "status": "completed",
+          "notes": "Created sora.md with full character profile including purple-teal hair, fastest idol status, crash-prone personality, and hidden vulnerability. Verification passed. Committed as 9a742ed.",
+          "updated_at": "2026-01-08T23:33:19.667932+00:00"
         },
         {
           "id": "subtask-4-5",
@@ -1223,5 +1227,5 @@
   "status": "in_progress",
   "planStatus": "in_progress",
   "updated_at": "2026-01-08T22:56:21.596Z",
-  "last_updated": "2026-01-08T23:28:47.017811+00:00"
+  "last_updated": "2026-01-08T23:33:19.667942+00:00"
 }
