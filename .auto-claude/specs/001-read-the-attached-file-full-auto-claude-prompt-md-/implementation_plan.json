@@ -1,0 +1,1201 @@
+{
+  "feature": "Infinite Idol Marketing Team Infrastructure",
+  "workflow_type": "feature",
+  "workflow_rationale": "Greenfield infrastructure setup creating 55+ files across 25+ directories. All content extracted from source materials with clear dependencies.",
+  "phases": [
+    {
+      "id": "phase-1-structure",
+      "name": "Directory Structure",
+      "type": "setup",
+      "description": "Create the complete folder hierarchy for the marketing HQ repository",
+      "depends_on": [],
+      "parallel_safe": true,
+      "subtasks": [
+        {
+          "id": "subtask-1-1",
+          "description": "Create knowledge-base directory structure (lore, game-mechanics, brand, crypto, light-novels)",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/",
+            "knowledge-base/lore/",
+            "knowledge-base/lore/characters/",
+            "knowledge-base/lore/factions/",
+            "knowledge-base/lore/mechanics/",
+            "knowledge-base/light-novels/",
+            "knowledge-base/game-mechanics/",
+            "knowledge-base/brand/",
+            "knowledge-base/crypto/"
+          ],
+          "patterns_from": [
+            "FULL_AUTO_CLAUDE_PROMPT.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "ls -la knowledge-base/ && ls -la knowledge-base/lore/",
+            "expected": "directories exist"
+          },
+          "status": "in_progress",
+          "notes": "Creating knowledge-base directory structure",
+          "updated_at": "2026-01-08T22:57:20.304387+00:00"
+        },
+        {
+          "id": "subtask-1-2",
+          "description": "Create agents directory",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "agents/"
+          ],
+          "patterns_from": [
+            "FULL_AUTO_CLAUDE_PROMPT.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "ls -la agents/",
+            "expected": "directory exists"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-1-3",
+          "description": "Create outputs directory structure (calendar, content, discord, seasons, music, art)",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "outputs/",
+            "outputs/calendar/",
+            "outputs/content/",
+            "outputs/content/tweets/",
+            "outputs/content/threads/",
+            "outputs/content/articles/",
+            "outputs/discord/",
+            "outputs/discord/events/",
+            "outputs/discord/seven-gates/",
+            "outputs/seasons/",
+            "outputs/music/",
+            "outputs/music/suno-prompts/",
+            "outputs/art/",
+            "outputs/art/midjourney-prompts/"
+          ],
+          "patterns_from": [
+            "FULL_AUTO_CLAUDE_PROMPT.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "find outputs -type d | wc -l",
+            "expected": "14 directories"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-1-4",
+          "description": "Create logs and reviews directories",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "logs/",
+            "reviews/"
+          ],
+          "patterns_from": [
+            "FULL_AUTO_CLAUDE_PROMPT.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "ls -la logs/ && ls -la reviews/",
+            "expected": "directories exist"
+          },
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "phase-2-core",
+      "name": "Core Files",
+      "type": "implementation",
+      "description": "Create CLAUDE.md master instructions and README.md project overview",
+      "depends_on": [
+        "phase-1-structure"
+      ],
+      "parallel_safe": false,
+      "subtasks": [
+        {
+          "id": "subtask-2-1",
+          "description": "Create CLAUDE.md master instructions file with project overview, agent system, file permissions, workflows, content guidelines, and canon rules",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "CLAUDE.md"
+          ],
+          "patterns_from": [
+            "FULL_AUTO_CLAUDE_PROMPT.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "wc -c CLAUDE.md | awk '{print ($1 > 5000) ? \"OK\" : \"FAIL\"}'",
+            "expected": "OK"
+          },
+          "status": "pending",
+          "notes": "Must include: Project Overview, Agent System, File Permissions table, Workflow Types, Content Guidelines, Canon Rules (10 inviolable facts), Getting Started"
+        },
+        {
+          "id": "subtask-2-2",
+          "description": "Create README.md human-readable project overview with quick start guide",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "README.md"
+          ],
+          "patterns_from": [
+            "FULL_AUTO_CLAUDE_PROMPT.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'Quick Start' README.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "phase-3-agents",
+      "name": "Agent Personas",
+      "type": "implementation",
+      "description": "Create all 7 AI agent persona definition files",
+      "depends_on": [
+        "phase-2-core"
+      ],
+      "parallel_safe": true,
+      "subtasks": [
+        {
+          "id": "subtask-3-1",
+          "description": "Create 00-coordinator.md - Marketing Director agent with identity, responsibilities, decision framework, weekly routine, escalation triggers",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "agents/00-coordinator.md"
+          ],
+          "patterns_from": [
+            "FULL_AUTO_CLAUDE_PROMPT.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'Identity' agents/00-coordinator.md && grep -q 'Decision Framework' agents/00-coordinator.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-3-2",
+          "description": "Create 01-lore-architect.md - Worldbuilding specialist with creative principles, canon hierarchy, character voice guides",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "agents/01-lore-architect.md"
+          ],
+          "patterns_from": [
+            "FULL_AUTO_CLAUDE_PROMPT.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'Canon Hierarchy' agents/01-lore-architect.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-3-3",
+          "description": "Create 02-content-strategist.md - Social media agent with content pillars (Ika Voice 40%, Lore Drops 25%, Founder Hype 20%, Community 15%), tweet rules, timing",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "agents/02-content-strategist.md"
+          ],
+          "patterns_from": [
+            "FULL_AUTO_CLAUDE_PROMPT.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'Content Pillars' agents/02-content-strategist.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-3-4",
+          "description": "Create 03-community-manager.md - Discord/engagement agent with Seven Gates system, event types, community health metrics",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "agents/03-community-manager.md"
+          ],
+          "patterns_from": [
+            "FULL_AUTO_CLAUDE_PROMPT.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'Seven Gates' agents/03-community-manager.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-3-5",
+          "description": "Create 04-gacha-designer.md - Seasonal content agent with banner themes, whale psychology levers, cosmetic design principles",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "agents/04-gacha-designer.md"
+          ],
+          "patterns_from": [
+            "FULL_AUTO_CLAUDE_PROMPT.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'Whale Psychology' agents/04-gacha-designer.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-3-6",
+          "description": "Create 05-analytics-observer.md - Performance tracking agent with metrics to track, competitor analysis, weekly report format",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "agents/05-analytics-observer.md"
+          ],
+          "patterns_from": [
+            "FULL_AUTO_CLAUDE_PROMPT.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'Metrics to Track' agents/05-analytics-observer.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-3-7",
+          "description": "Create 06-asset-coordinator.md - Creative asset agent with Suno prompt framework, Midjourney prompt framework, character appearance references",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "agents/06-asset-coordinator.md"
+          ],
+          "patterns_from": [
+            "FULL_AUTO_CLAUDE_PROMPT.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'Suno' agents/06-asset-coordinator.md && grep -q 'Midjourney' agents/06-asset-coordinator.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "phase-4-lore-world",
+      "name": "Lore - World & Characters",
+      "type": "implementation",
+      "description": "Create core world lore and all character profile files",
+      "depends_on": [
+        "phase-2-core"
+      ],
+      "parallel_safe": true,
+      "subtasks": [
+        {
+          "id": "subtask-4-1",
+          "description": "Create core-world.md with Eternal Stage, Devotion mechanics, The Chase format, Fading, Tournament structure",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/lore/core-world.md"
+          ],
+          "patterns_from": [
+            "SOURCE_MATERIALS_APPENDIX.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'Devotion' knowledge-base/lore/core-world.md && grep -q 'Fading' knowledge-base/lore/core-world.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending",
+          "notes": "Extract from SOURCE 1: INFINITE IDOL LORE BIBLE section"
+        },
+        {
+          "id": "subtask-4-2",
+          "description": "Create timeline.md with chronological events from lore",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/lore/timeline.md"
+          ],
+          "patterns_from": [
+            "SOURCE_MATERIALS_APPENDIX.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "test -f knowledge-base/lore/timeline.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-4-3",
+          "description": "Create ika-minami.md - Protagonist profile with pink gradient hair, 47 fans, shameless personality",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/lore/characters/ika-minami.md"
+          ],
+          "patterns_from": [
+            "SOURCE_MATERIALS_APPENDIX.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'pink gradient' knowledge-base/lore/characters/ika-minami.md && grep -q '47' knowledge-base/lore/characters/ika-minami.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-4-4",
+          "description": "Create sora.md - Speedster profile with purple-teal hair, fastest idol, crash-prone, hides vulnerability",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/lore/characters/sora.md"
+          ],
+          "patterns_from": [
+            "SOURCE_MATERIALS_APPENDIX.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'purple-teal' knowledge-base/lore/characters/sora.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-4-5",
+          "description": "Create suiren.md - Prodigy profile with blue-teal hair, perfect technique, lonely",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/lore/characters/suiren.md"
+          ],
+          "patterns_from": [
+            "SOURCE_MATERIALS_APPENDIX.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'blue-teal' knowledge-base/lore/characters/suiren.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-4-6",
+          "description": "Create erina.md - Antagonist profile, runs The Foundation, built idol infrastructure",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/lore/characters/erina.md"
+          ],
+          "patterns_from": [
+            "SOURCE_MATERIALS_APPENDIX.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'Foundation' knowledge-base/lore/characters/erina.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-4-7",
+          "description": "Create runa.md - Network architect profile, system collapsed, 12 idols Faded",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/lore/characters/runa.md"
+          ],
+          "patterns_from": [
+            "SOURCE_MATERIALS_APPENDIX.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'network' knowledge-base/lore/characters/runa.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-4-8",
+          "description": "Create foundation-members.md - Arya, Opti, Bea, Zuri profiles",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/lore/characters/foundation-members.md"
+          ],
+          "patterns_from": [
+            "SOURCE_MATERIALS_APPENDIX.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'Arya' knowledge-base/lore/characters/foundation-members.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-4-9",
+          "description": "Create supporting-cast.md - Niina, Akira, Ayaka, Momo profiles",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/lore/characters/supporting-cast.md"
+          ],
+          "patterns_from": [
+            "SOURCE_MATERIALS_APPENDIX.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'Niina' knowledge-base/lore/characters/supporting-cast.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "phase-5-lore-factions",
+      "name": "Lore - Factions & Mechanics",
+      "type": "implementation",
+      "description": "Create faction files and lore mechanics documentation",
+      "depends_on": [
+        "phase-4-lore-world"
+      ],
+      "parallel_safe": true,
+      "subtasks": [
+        {
+          "id": "subtask-5-1",
+          "description": "Create the-foundation.md - Antagonist organization details, Erina's system",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/lore/factions/the-foundation.md"
+          ],
+          "patterns_from": [
+            "SOURCE_MATERIALS_APPENDIX.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'Erina' knowledge-base/lore/factions/the-foundation.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-5-2",
+          "description": "Create independents.md - Ika's faction, outsiders, disruption vs system",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/lore/factions/independents.md"
+          ],
+          "patterns_from": [
+            "SOURCE_MATERIALS_APPENDIX.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'Ika' knowledge-base/lore/factions/independents.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-5-3",
+          "description": "Create devotion-system.md - How fan energy powers idols, conversion mechanics",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/lore/mechanics/devotion-system.md"
+          ],
+          "patterns_from": [
+            "SOURCE_MATERIALS_APPENDIX.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'emotional energy' knowledge-base/lore/mechanics/devotion-system.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-5-4",
+          "description": "Create the-chase.md - Core competition format, obstacle courses, Senpai pursuit",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/lore/mechanics/the-chase.md"
+          ],
+          "patterns_from": [
+            "SOURCE_MATERIALS_APPENDIX.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'Senpai' knowledge-base/lore/mechanics/the-chase.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-5-5",
+          "description": "Create fading.md - What happens when idols lose fans, existential horror mechanic",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/lore/mechanics/fading.md"
+          ],
+          "patterns_from": [
+            "SOURCE_MATERIALS_APPENDIX.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'cease to exist' knowledge-base/lore/mechanics/fading.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-5-6",
+          "description": "Create senpai-mystery.md - The enigma of Senpai/Onii-chan, always obscured, never caught",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/lore/mechanics/senpai-mystery.md"
+          ],
+          "patterns_from": [
+            "SOURCE_MATERIALS_APPENDIX.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "test -f knowledge-base/lore/mechanics/senpai-mystery.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-5-7",
+          "description": "Create light novel placeholder files (volume-1-awakening.md, volume-2-the-fall.md) with instructions to add full text",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/light-novels/volume-1-awakening.md",
+            "knowledge-base/light-novels/volume-2-the-fall.md"
+          ],
+          "patterns_from": [
+            "FULL_AUTO_CLAUDE_PROMPT.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "test -f knowledge-base/light-novels/volume-1-awakening.md && test -f knowledge-base/light-novels/volume-2-the-fall.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending",
+          "notes": "These are placeholders - full novel text not provided in source materials"
+        }
+      ]
+    },
+    {
+      "id": "phase-6-game-mechanics",
+      "name": "Game Mechanics",
+      "type": "implementation",
+      "description": "Create all game mechanics documentation from pre-registration spec",
+      "depends_on": [
+        "phase-2-core"
+      ],
+      "parallel_safe": true,
+      "subtasks": [
+        {
+          "id": "subtask-6-1",
+          "description": "Create pre-registration-spec.md - Complete pre-reg system overview",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/game-mechanics/pre-registration-spec.md"
+          ],
+          "patterns_from": [
+            "SOURCE_MATERIALS_APPENDIX.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'GEM SYSTEM' knowledge-base/game-mechanics/pre-registration-spec.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending",
+          "notes": "Copy complete pre-registration specification from SOURCE 2"
+        },
+        {
+          "id": "subtask-6-2",
+          "description": "Create gem-system.md - All 6 SUI to Gem conversion rates, account-bound rules",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/game-mechanics/gem-system.md"
+          ],
+          "patterns_from": [
+            "SOURCE_MATERIALS_APPENDIX.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q '1 SUI = 100 Gems' knowledge-base/game-mechanics/gem-system.md && grep -q '100,000 SUI' knowledge-base/game-mechanics/gem-system.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending",
+          "notes": "Must include all 6 package tiers with exact bonus percentages"
+        },
+        {
+          "id": "subtask-6-3",
+          "description": "Create gacha-system.md - Lootbox types, rarity odds (Common 60%, Rare 25%, Ultra Rare 12%, Legendary 3%), time-locked releases",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/game-mechanics/gacha-system.md"
+          ],
+          "patterns_from": [
+            "SOURCE_MATERIALS_APPENDIX.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q '60%' knowledge-base/game-mechanics/gacha-system.md && grep -q 'Golden Lootbox' knowledge-base/game-mechanics/gacha-system.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending",
+          "notes": "Include lootbox cycling A to B to C to D to E, time-lock schedule, pet system"
+        },
+        {
+          "id": "subtask-6-4",
+          "description": "Create battle-pass.md - NFT progression, all 6 visual tiers (Bronze to Cosmic), level tracking",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/game-mechanics/battle-pass.md"
+          ],
+          "patterns_from": [
+            "SOURCE_MATERIALS_APPENDIX.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'Bronze' knowledge-base/game-mechanics/battle-pass.md && grep -q 'Cosmic' knowledge-base/game-mechanics/battle-pass.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending",
+          "notes": "Include all tier thresholds: Bronze (1-99), Silver (100-999), Gold (1000-9999), Platinum (10000-99999), Diamond (100000-420068), Cosmic (420069+)"
+        },
+        {
+          "id": "subtask-6-5",
+          "description": "Create cosmetics.md - 30 outfit sets, 9 item slots, rarity tiers, burn system",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/game-mechanics/cosmetics.md"
+          ],
+          "patterns_from": [
+            "SOURCE_MATERIALS_APPENDIX.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q '30 complete outfit sets' knowledge-base/game-mechanics/cosmetics.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending",
+          "notes": "Include all item slots: Head, Chest, Arms, Legs, Neck, L Wrist, R Wrist, Feet, Back"
+        }
+      ]
+    },
+    {
+      "id": "phase-7-brand-crypto",
+      "name": "Brand & Crypto Documentation",
+      "type": "implementation",
+      "description": "Create brand guidelines and crypto documentation",
+      "depends_on": [
+        "phase-2-core"
+      ],
+      "parallel_safe": true,
+      "subtasks": [
+        {
+          "id": "subtask-7-1",
+          "description": "Create voice-and-tone.md - Shameless but genuine, self-aware, dark luxury, existentially dramatic",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/brand/voice-and-tone.md"
+          ],
+          "patterns_from": [
+            "FULL_AUTO_CLAUDE_PROMPT.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'shameless but genuine' knowledge-base/brand/voice-and-tone.md && grep -q 'dark luxury' knowledge-base/brand/voice-and-tone.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-7-2",
+          "description": "Create visual-identity.md - Colors (black, gold), dark luxury aesthetic, premium not cutesy",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/brand/visual-identity.md"
+          ],
+          "patterns_from": [
+            "FULL_AUTO_CLAUDE_PROMPT.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'dark luxury' knowledge-base/brand/visual-identity.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-7-3",
+          "description": "Create target-audience.md - Male otaku 18-35, crypto-active, gacha players, whale psychology",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/brand/target-audience.md"
+          ],
+          "patterns_from": [
+            "FULL_AUTO_CLAUDE_PROMPT.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'Male Otaku' knowledge-base/brand/target-audience.md && grep -q 'Whale Psychology' knowledge-base/brand/target-audience.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-7-4",
+          "description": "Create competitors.md - Genshin Impact, Blue Archive, NIKKE analysis, failed Web3 lessons",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/brand/competitors.md"
+          ],
+          "patterns_from": [
+            "FULL_AUTO_CLAUDE_PROMPT.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'Genshin' knowledge-base/brand/competitors.md && grep -q 'Blue Archive' knowledge-base/brand/competitors.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-7-5",
+          "description": "Create sui-integration.md - SUI blockchain specifics, wallet connection, NFT minting",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/crypto/sui-integration.md"
+          ],
+          "patterns_from": [
+            "SOURCE_MATERIALS_APPENDIX.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'SUI' knowledge-base/crypto/sui-integration.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-7-6",
+          "description": "Create tokenomics.md - Gem packages pricing, bonus tiers, currency flow",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/crypto/tokenomics.md"
+          ],
+          "patterns_from": [
+            "SOURCE_MATERIALS_APPENDIX.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'Gem' knowledge-base/crypto/tokenomics.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-7-7",
+          "description": "Create web3-positioning.md - How we differ from failed Web3 games, gameplay over tokenomics",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "knowledge-base/crypto/web3-positioning.md"
+          ],
+          "patterns_from": [
+            "FULL_AUTO_CLAUDE_PROMPT.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'gameplay' knowledge-base/crypto/web3-positioning.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "phase-8-outputs",
+      "name": "Output Infrastructure",
+      "type": "implementation",
+      "description": "Create calendar, logs, reviews, and .gitkeep placeholder files",
+      "depends_on": [
+        "phase-1-structure"
+      ],
+      "parallel_safe": true,
+      "subtasks": [
+        {
+          "id": "subtask-8-1",
+          "description": "Create master-calendar.md with current phase, immediate priorities, content calendar template, milestones",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "outputs/calendar/master-calendar.md"
+          ],
+          "patterns_from": [
+            "FULL_AUTO_CLAUDE_PROMPT.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'Pre-Registration' outputs/calendar/master-calendar.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-8-2",
+          "description": "Create agent-activity.md log with template for agent activity tracking",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "logs/agent-activity.md"
+          ],
+          "patterns_from": [
+            "FULL_AUTO_CLAUDE_PROMPT.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "test -f logs/agent-activity.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-8-3",
+          "description": "Create decisions.md log with template for decision tracking",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "logs/decisions.md"
+          ],
+          "patterns_from": [
+            "FULL_AUTO_CLAUDE_PROMPT.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "test -f logs/decisions.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-8-4",
+          "description": "Create pending-human-review.md with review process and item template",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "reviews/pending-human-review.md"
+          ],
+          "patterns_from": [
+            "FULL_AUTO_CLAUDE_PROMPT.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "grep -q 'Review Process' reviews/pending-human-review.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-8-5",
+          "description": "Create approved.md and feedback.md review templates",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "reviews/approved.md",
+            "reviews/feedback.md"
+          ],
+          "patterns_from": [
+            "FULL_AUTO_CLAUDE_PROMPT.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "test -f reviews/approved.md && test -f reviews/feedback.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-8-6",
+          "description": "Create all .gitkeep files in empty output directories (tweets, threads, articles, events, seven-gates, seasons, suno-prompts, midjourney-prompts)",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [
+            "outputs/content/tweets/.gitkeep",
+            "outputs/content/threads/.gitkeep",
+            "outputs/content/articles/.gitkeep",
+            "outputs/discord/events/.gitkeep",
+            "outputs/discord/seven-gates/.gitkeep",
+            "outputs/seasons/.gitkeep",
+            "outputs/music/suno-prompts/.gitkeep",
+            "outputs/art/midjourney-prompts/.gitkeep"
+          ],
+          "patterns_from": [
+            "FULL_AUTO_CLAUDE_PROMPT.md"
+          ],
+          "verification": {
+            "type": "command",
+            "command": "find outputs -name '.gitkeep' | wc -l | awk '{print ($1 >= 8) ? \"OK\" : \"FAIL\"}'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": "phase-9-verification",
+      "name": "Verification & Cross-Reference Check",
+      "type": "integration",
+      "description": "Verify all files exist, cross-references are valid, and canon consistency is maintained",
+      "depends_on": [
+        "phase-3-agents",
+        "phase-5-lore-factions",
+        "phase-6-game-mechanics",
+        "phase-7-brand-crypto",
+        "phase-8-outputs"
+      ],
+      "parallel_safe": false,
+      "subtasks": [
+        {
+          "id": "subtask-9-1",
+          "description": "Verify all 45+ markdown files exist and directory count is 25+",
+          "all_services": true,
+          "files_to_modify": [],
+          "files_to_create": [],
+          "patterns_from": [],
+          "verification": {
+            "type": "command",
+            "command": "echo \"Markdown files: $(find . -name '*.md' -not -path './.auto-claude/*' | wc -l), Directories: $(find . -type d -not -path './.auto-claude*' -not -path './.git*' | wc -l)\"",
+            "expected": "Markdown files: 45+, Directories: 25+"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-9-2",
+          "description": "Verify CLAUDE.md contains all 10 canon rules and file permission table",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [],
+          "patterns_from": [],
+          "verification": {
+            "type": "command",
+            "command": "grep -c 'pink gradient' CLAUDE.md",
+            "expected": "At least 1 match"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-9-3",
+          "description": "Verify all agent files referenced in CLAUDE.md exist",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [],
+          "patterns_from": [],
+          "verification": {
+            "type": "command",
+            "command": "ls agents/*.md | wc -l | awk '{print ($1 == 7) ? \"OK\" : \"FAIL\"}'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-9-4",
+          "description": "Verify gem system contains all 6 conversion rates",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [],
+          "patterns_from": [],
+          "verification": {
+            "type": "command",
+            "command": "grep -c 'SUI =' knowledge-base/game-mechanics/gem-system.md | awk '{print ($1 == 6) ? \"OK\" : \"FAIL\"}'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "subtask-9-5",
+          "description": "Final canon consistency check - verify Ika pink gradient hair mentioned consistently",
+          "service": "marketing_hq",
+          "files_to_modify": [],
+          "files_to_create": [],
+          "patterns_from": [],
+          "verification": {
+            "type": "command",
+            "command": "grep -l 'pink gradient' knowledge-base/lore/characters/ika-minami.md agents/06-asset-coordinator.md && echo 'OK'",
+            "expected": "OK"
+          },
+          "status": "pending"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_phases": 9,
+    "total_subtasks": 42,
+    "services_involved": [
+      "marketing_hq"
+    ],
+    "parallelism": {
+      "max_parallel_phases": 4,
+      "parallel_groups": [
+        {
+          "phases": [
+            "phase-3-agents",
+            "phase-4-lore-world",
+            "phase-6-game-mechanics",
+            "phase-7-brand-crypto",
+            "phase-8-outputs"
+          ],
+          "reason": "All depend on phase-2-core (except phase-8 which depends on phase-1), different file sets with no overlap"
+        }
+      ],
+      "recommended_workers": 2,
+      "speedup_estimate": "~2x faster than sequential"
+    },
+    "startup_command": "source auto-claude/.venv/bin/activate && python auto-claude/run.py --spec 001 --parallel 2"
+  },
+  "verification_strategy": {
+    "risk_level": "low",
+    "skip_validation": false,
+    "test_creation_phase": "post_implementation",
+    "test_types_required": [],
+    "security_scanning_required": false,
+    "staging_deployment_required": false,
+    "acceptance_criteria": [
+      "All 45+ markdown files exist",
+      "All 25+ directories created",
+      "All 8+ .gitkeep files in place",
+      "CLAUDE.md contains all required sections",
+      "All 7 agent files contain required sections",
+      "All knowledge base files populated with source content",
+      "No broken cross-references",
+      "Canon consistency verified across all files",
+      "All numerical values from pre-registration spec accurate"
+    ],
+    "verification_steps": [
+      {
+        "name": "Directory Count",
+        "command": "find . -type d -not -path './.auto-claude*' -not -path './.git*' | wc -l",
+        "expected_outcome": "25+ directories",
+        "type": "structure",
+        "required": true,
+        "blocking": true
+      },
+      {
+        "name": "Markdown File Count",
+        "command": "find . -name '*.md' -not -path './.auto-claude/*' | wc -l",
+        "expected_outcome": "45+ files",
+        "type": "structure",
+        "required": true,
+        "blocking": true
+      },
+      {
+        "name": "Gitkeep Count",
+        "command": "find . -name '.gitkeep' | wc -l",
+        "expected_outcome": "8+ files",
+        "type": "structure",
+        "required": true,
+        "blocking": true
+      },
+      {
+        "name": "CLAUDE.md Size",
+        "command": "wc -c CLAUDE.md | awk '{print $1}'",
+        "expected_outcome": ">5000 characters",
+        "type": "content",
+        "required": true,
+        "blocking": true
+      }
+    ],
+    "reasoning": "Low risk content creation task - no executable code, no APIs, no security-sensitive operations. Validation confirms file existence and content accuracy."
+  },
+  "qa_acceptance": {
+    "unit_tests": {
+      "required": false,
+      "commands": [],
+      "minimum_coverage": null
+    },
+    "integration_tests": {
+      "required": false,
+      "commands": [],
+      "services_to_test": []
+    },
+    "e2e_tests": {
+      "required": false,
+      "commands": [],
+      "flows": []
+    },
+    "browser_verification": {
+      "required": false,
+      "pages": []
+    },
+    "database_verification": {
+      "required": false,
+      "checks": []
+    },
+    "structure_verification": {
+      "required": true,
+      "checks": [
+        "find . -type d | wc -l >= 25",
+        "find . -name '*.md' | wc -l >= 45",
+        "find . -name '.gitkeep' | wc -l >= 8"
+      ]
+    },
+    "content_verification": {
+      "required": true,
+      "checks": [
+        "CLAUDE.md > 5000 characters",
+        "All agent files have Identity section",
+        "Gem system has all 6 conversion rates",
+        "Battle pass has all 6 visual tiers",
+        "10 canon rules present in CLAUDE.md"
+      ]
+    }
+  },
+  "qa_signoff": null,
+  "status": "in_progress",
+  "planStatus": "in_progress",
+  "updated_at": "2026-01-08T22:56:21.596Z",
+  "last_updated": "2026-01-08T22:57:20.304397+00:00"
+}

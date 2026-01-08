@@ -1,0 +1,26 @@
+{
+  "project_root": "/Users/sheranhussain/Documents/projects/infinite-idol-marketing-team",
+  "project_type": "single",
+  "services": {
+    "marketing_hq": {
+      "path": ".",
+      "tech_stack": ["markdown"],
+      "port": null,
+      "dev_command": null,
+      "test_command": "find . -name '*.md' | wc -l"
+    }
+  },
+  "infrastructure": {
+    "docker": false,
+    "database": null,
+    "ci_cd": false
+  },
+  "conventions": {
+    "linter": null,
+    "formatter": null,
+    "testing": "manual file count verification"
+  },
+  "entry_point": "CLAUDE.md",
+  "readme": "README.md",
+  "notes": "This is a documentation repository for AI agent personas and knowledge base. No runtime services - agents read markdown files to activate."
+}

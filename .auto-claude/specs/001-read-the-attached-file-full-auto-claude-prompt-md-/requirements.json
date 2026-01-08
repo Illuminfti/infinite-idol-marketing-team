@@ -1,0 +1,4 @@
+{
+  "task_description": "Read the attached file FULL_AUTO_CLAUDE_PROMPT.md  which is found in the repo and execute all instructions to set up the complete Infinite Idol marketing team infrastructure in this repository. Create all folders, files, and populate the knowledge base from the source materials provided.",
+  "workflow_type": "feature"
+}

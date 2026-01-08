@@ -1,0 +1,105 @@
+{
+  "task_description": "Create complete Infinite Idol marketing team infrastructure - knowledge base, agent personas, workflows, and output systems from source materials",
+  "scoped_services": ["marketing_hq"],
+  "files_to_modify": {},
+  "files_to_create": {
+    "root": ["CLAUDE.md", "README.md"],
+    "agents": [
+      "agents/00-coordinator.md",
+      "agents/01-lore-architect.md",
+      "agents/02-content-strategist.md",
+      "agents/03-community-manager.md",
+      "agents/04-gacha-designer.md",
+      "agents/05-analytics-observer.md",
+      "agents/06-asset-coordinator.md"
+    ],
+    "knowledge_base_lore": [
+      "knowledge-base/lore/core-world.md",
+      "knowledge-base/lore/timeline.md",
+      "knowledge-base/lore/characters/ika-minami.md",
+      "knowledge-base/lore/characters/sora.md",
+      "knowledge-base/lore/characters/suiren.md",
+      "knowledge-base/lore/characters/erina.md",
+      "knowledge-base/lore/characters/runa.md",
+      "knowledge-base/lore/characters/foundation-members.md",
+      "knowledge-base/lore/characters/supporting-cast.md",
+      "knowledge-base/lore/factions/the-foundation.md",
+      "knowledge-base/lore/factions/independents.md",
+      "knowledge-base/lore/mechanics/devotion-system.md",
+      "knowledge-base/lore/mechanics/the-chase.md",
+      "knowledge-base/lore/mechanics/fading.md",
+      "knowledge-base/lore/mechanics/senpai-mystery.md"
+    ],
+    "knowledge_base_light_novels": [
+      "knowledge-base/light-novels/volume-1-awakening.md",
+      "knowledge-base/light-novels/volume-2-the-fall.md"
+    ],
+    "knowledge_base_game_mechanics": [
+      "knowledge-base/game-mechanics/pre-registration-spec.md",
+      "knowledge-base/game-mechanics/gem-system.md",
+      "knowledge-base/game-mechanics/gacha-system.md",
+      "knowledge-base/game-mechanics/battle-pass.md",
+      "knowledge-base/game-mechanics/cosmetics.md"
+    ],
+    "knowledge_base_brand": [
+      "knowledge-base/brand/voice-and-tone.md",
+      "knowledge-base/brand/visual-identity.md",
+      "knowledge-base/brand/target-audience.md",
+      "knowledge-base/brand/competitors.md"
+    ],
+    "knowledge_base_crypto": [
+      "knowledge-base/crypto/sui-integration.md",
+      "knowledge-base/crypto/tokenomics.md",
+      "knowledge-base/crypto/web3-positioning.md"
+    ],
+    "outputs": [
+      "outputs/calendar/master-calendar.md"
+    ],
+    "logs": [
+      "logs/agent-activity.md",
+      "logs/decisions.md"
+    ],
+    "reviews": [
+      "reviews/pending-human-review.md",
+      "reviews/approved.md",
+      "reviews/feedback.md"
+    ],
+    "gitkeep": [
+      "outputs/content/tweets/.gitkeep",
+      "outputs/content/threads/.gitkeep",
+      "outputs/content/articles/.gitkeep",
+      "outputs/discord/events/.gitkeep",
+      "outputs/discord/seven-gates/.gitkeep",
+      "outputs/seasons/.gitkeep",
+      "outputs/music/suno-prompts/.gitkeep",
+      "outputs/art/midjourney-prompts/.gitkeep"
+    ]
+  },
+  "files_to_reference": [
+    "FULL_AUTO_CLAUDE_PROMPT.md",
+    "SOURCE_MATERIALS_APPENDIX.md"
+  ],
+  "patterns": {
+    "agent_persona_structure": "# Agent: [Role Name]\\n\\n## Identity\\n[Description]\\n\\n## Responsibilities\\n[List]\\n\\n## [Role-specific sections]",
+    "lore_file_structure": "# [Topic]\\n\\n## Overview\\n[Summary]\\n\\n## Details\\n[Content]\\n\\n## Canon Implications\\n[What this affects]",
+    "game_mechanics_structure": "# [System Name]\\n\\n## How It Works\\n[Explanation]\\n\\n## Rules\\n[Specifics]\\n\\n## Related Systems\\n[Links]",
+    "voice_guidelines": "Dark luxury aesthetic, self-aware, shameless but genuine, Ika speaks in first person"
+  },
+  "existing_implementations": {
+    "description": "Greenfield project - no existing implementations",
+    "relevant_files": []
+  },
+  "canon_rules": [
+    "Ika has pink gradient hair (rose roots to magenta tips)",
+    "Devotion is literal emotional energy from fans that powers idols",
+    "Fading = ceasing to exist when fans stop caring",
+    "Senpai's face is never clearly shown",
+    "The Foundation is the antagonist organization (Erina leads it)",
+    "Ika had exactly 47 fans before her viral qualifying run",
+    "The Chase is the main competition format",
+    "Game runs on SUI blockchain",
+    "Pre-registration uses gems (purchased with SUI)",
+    "Battle Pass is an NFT that tracks progression"
+  ],
+  "created_at": "2026-01-08T23:00:00Z"
+}
