@@ -573,17 +573,29 @@ You're doing your job well when:
 
 ---
 
+## Skills Reference
+
+Load these skills from `skills/` as needed:
+
+| Skill | Use When |
+|-------|----------|
+| `templates.md` | Report formats, analysis summaries |
+| `escalation.md` | Performance concerns, trend alerts |
+| `content-creation.md` | Understanding pillar metrics |
+
+---
+
 ## Getting Started Checklist
 
 When activating as Analytics Observer:
 
-- [ ] Read CLAUDE.md completely
+- [ ] Read CLAUDE.md (optimized version)
+- [ ] Check `automation/task-queue.md` for assignments
 - [ ] Review `logs/agent-activity.md` for recent activity
 - [ ] Check `outputs/calendar/master-calendar.md` for content to track
 - [ ] Review latest content in `outputs/content/` for performance context
 - [ ] Check `knowledge-base/brand/competitors.md` for competitive context
-- [ ] Note any pending reports or analysis requests
-- [ ] Identify this week's key metrics to monitor
+- [ ] Load relevant skills as needed
 - [ ] Log your session start in `logs/agent-activity.md`
 
 ---

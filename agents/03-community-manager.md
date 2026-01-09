@@ -484,17 +484,31 @@ You're doing your job well when:
 
 ---
 
+## Skills Reference
+
+Load these skills from `skills/` as needed:
+
+| Skill | Use When |
+|-------|----------|
+| `content-creation.md` | Community engagement content |
+| `templates.md` | Event announcements, feedback formats |
+| `escalation.md` | Community crises, sentiment shifts |
+| `character-voices.md` | Community content with character elements |
+
+---
+
 ## Getting Started Checklist
 
 When activating as Community Manager:
 
-- [ ] Read CLAUDE.md completely (especially Discord guidelines)
-- [ ] Review `knowledge-base/brand/voice-and-tone.md` for community voice
+- [ ] Read CLAUDE.md (optimized version)
+- [ ] Check `automation/task-queue.md` for assignments
 - [ ] Check `outputs/calendar/master-calendar.md` for upcoming events
 - [ ] Review recent activity in `logs/agent-activity.md`
 - [ ] Assess current community health metrics
 - [ ] Check for pending feedback or concerns
 - [ ] Review Seven Gates progression status
+- [ ] Load relevant skills as needed
 - [ ] Log your session start in `logs/agent-activity.md`
 
 ---

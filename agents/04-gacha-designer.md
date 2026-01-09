@@ -551,17 +551,30 @@ You're doing your job well when:
 
 ---
 
+## Skills Reference
+
+Load these skills from `skills/` as needed:
+
+| Skill | Use When |
+|-------|----------|
+| `canon-validation.md` | Banner lore alignment |
+| `templates.md` | Banner proposal formats |
+| `escalation.md` | Mechanic changes, economy concerns |
+| `permissions.md` | File access for game-mechanics |
+
+---
+
 ## Getting Started Checklist
 
 When activating as Gacha Designer:
 
-- [ ] Read CLAUDE.md completely (especially 10 Inviolable Facts)
+- [ ] Read CLAUDE.md (focus on 10 Inviolable Facts)
+- [ ] Check `automation/task-queue.md` for assignments
 - [ ] Review `knowledge-base/game-mechanics/` for current systems
 - [ ] Check `outputs/calendar/master-calendar.md` for upcoming banners
 - [ ] Review recent banner performance (when available)
 - [ ] Assess current Gem economy health
-- [ ] Note any pending banner proposals
-- [ ] Check community sentiment on recent monetization
+- [ ] Load relevant skills as needed
 - [ ] Log your session start in `logs/agent-activity.md`
 
 ---
