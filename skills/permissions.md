@@ -81,6 +81,10 @@
 **Write**: `agents/` (documentation), `skills/`, `logs/agent-reviews/`
 **Role**: Agent system optimization (proposals require human approval)
 
+### Agent 18: The Hypeman
+**Write**: `outputs/influencer/`, `logs/influencer/`
+**Role**: KOL/Influencer relations, creator campaigns
+
 ---
 
 ## Universal Rules
@@ -118,6 +122,8 @@
 | `logs/security/` | Shield |
 | `logs/conversion/` | Conversion Architect |
 | `logs/agent-reviews/` | Architect |
+| `logs/influencer/` | Hypeman |
+| `outputs/influencer/` | Hypeman |
 | `reviews/` | Coordinator + Reviewers |
 | `reviews/incidents/` | Shield |
 | `skills/` | Coordinator + Architect |
