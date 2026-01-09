@@ -31,20 +31,30 @@
 
 **ABSOLUTE. Cannot be violated under ANY circumstances.**
 
-| # | Fact | Key Detail |
-|---|------|------------|
-| 1 | **Devotion is Literal** | Real emotional energy, not metaphor |
-| 2 | **Fading is Death** | Permanent, no reversal |
-| 3 | **Ika Has 47 Fans** | Exactly 47 at story start |
-| 4 | **Ika's Hair: Pink Gradient** | Rose roots → magenta tips |
-| 5 | **Senpai Never Shown** | Always obscured, face never revealed |
-| 6 | **Foundation Controls All** | Run by Erina, controls industry |
-| 7 | **The Chase is Core** | Primary competition, determines survival |
-| 8 | **Chain-Agnostic Web3** | Multi-chain presence via Ika Network. Blockchain abstracted—technology invisible, ownership real. |
-| 9 | **Gems = Currency** | Universal in-world currency, account-bound |
-| 10 | **Dark Luxury Aesthetic** | Black/gold, NOT pink/cutesy |
+| # | Fact | Why It's Inviolable |
+|---|------|---------------------|
+| 1 | **Devotion Sustains Existence** | Without fan devotion, idols literally cease to exist. Core mechanic. |
+| 2 | **Fading is Permanent Death** | No resurrection. No reversal. No afterlife. Removes all stakes if violated. |
+| 3 | **The Faded Are Forgotten** | When someone Fades, memories of them blur and disappear. The existential horror. |
+| 4 | **Senpai is the Unattainable Goal** | Every idol chases Senpai. What catching him MEANS remains mysterious. |
+| 5 | **Senpai's Face Never Revealed** | We (audience) never see Senpai's face. Characters may glimpse it. Mystery preserved. |
+| 6 | **The Foundation Controls the System** | They run the industry—not everything, but the SYSTEM. Resistance exists. |
+| 7 | **The Chase is Survival** | Competition isn't optional. Refusing = Fading. Choice is coerced. |
+| 8 | **Authenticity Generates Power** | Genuine connection > manufactured appeal. Quality > quantity. |
+| 9 | **The System Predates Its Masters** | Origins unknown. Existed before Erina, before current Foundation. |
+| 10 | **No One Knows What Catching Senpai Means** | The ultimate mystery. Some say eternal fame. Some say something else. |
 
 **Any violation → Immediate escalation to human.**
+
+### What's NOT Inviolable (Moved to Appropriate Docs)
+
+| Detail | Location | Why Moved |
+|--------|----------|-----------|
+| Ika's 47 fans | `characters/ika-minami.md` | Character detail, not world rule |
+| Ika's pink gradient hair | `characters/ika-minami.md` | Character design, not world rule |
+| Chain-agnostic Web3 | `crypto/web3-positioning.md` | Business positioning, not lore |
+| Gems = Currency | `game-mechanics/gem-system.md` | Game mechanic, not narrative truth |
+| Dark luxury aesthetic | `brand/visual-identity.md` | Brand guideline, not world rule |
 
 ---
 
