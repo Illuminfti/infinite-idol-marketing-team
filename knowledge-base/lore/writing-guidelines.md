@@ -228,6 +228,34 @@ When depicting the Chase:
 - Characters may outwardly accept "voluntary" participation while internally knowing the truth
 - See `mechanics/the-chase.md` for full details on this deliberate thematic tension
 
+#### Blockchain and Web3 Elements
+
+**Core Principle**: The technology is invisible. The story is visible.
+
+Web3/blockchain should be abstracted away in narrative content:
+
+| DO | DON'T |
+|----|-------|
+| Reference "permanent records" or "immutable proof" | Name specific blockchains (SUI, Ethereum, etc.) |
+| Show consequences of true ownership | Explain technical implementations |
+| Use Runa investigating "records that can't be erased" | Include promotional language for any chain |
+| Tell stories through characters affected by permanence | Break immersion with crypto terminology |
+
+**How to Tell Blockchain Stories**:
+- Through **characters**: Runa uses permanent records to prove the erased existed
+- Through **consequences**: The Foundation cannot destroy certain evidence
+- Through **drama**: Web3 history has real conflict—tell it through idol drama
+- Through **implication**: Let readers feel ownership without explaining wallets
+
+**When Chains Can Be Referenced (Lore Only)**:
+- **Ika Network** - Primary promotional reference (infrastructure that connects)
+- **Solana** - Can appear positively in lore/narrative contexts
+- **Others** - Only if story-driven, never promotional
+
+**The Rule**: If you have to explain the technology, you've broken the story. Let the narrative carry the weight.
+
+See `mechanics/blockchain-existence.md` for full guidelines.
+
 ### Pacing Guidelines
 
 #### Chapter Structure
@@ -327,8 +355,8 @@ Use a single line with three asterisks:
 5. **Senpai Never Shown** - Always obscured, face never revealed
 6. **Foundation Controls All** - Run by Erina, controls industry
 7. **The Chase is Core** - Primary competition, determines survival
-8. **Built on SUI** - Sui-native blockchain (NFTs, contracts, game logic)
-9. **Gems = Currency** - 1 SUI = 100 Gems, account-bound
+8. **Chain-Agnostic Web3** - Multi-chain via Ika Network, blockchain abstracted
+9. **Gems = Currency** - Universal in-world currency, account-bound
 10. **Dark Luxury Aesthetic** - Black/gold, NOT pink/cutesy
 
 Always reference `CLAUDE.md` as the master source for canon rules.

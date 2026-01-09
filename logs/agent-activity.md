@@ -422,6 +422,46 @@ Activities are logged below in reverse chronological order (newest first).
 
 ---
 
+### [2026-01-10 01:30] Agent: 01 - Lore Architect
+
+**Activity Type**: Web3 Positioning Update | Canon Revision | Brand Alignment
+
+**Summary**:
+Updated all Web3/blockchain positioning based on human feedback. Removed SUI-specific promotion, implemented chain-agnostic approach via Ika Network, added positive Solana references in lore contexts, and established "blockchain abstracted" as core principle.
+
+**Key Changes**:
+
+| Document | Update |
+|----------|--------|
+| `CLAUDE.md` | Inviolable Fact #8 changed from "Built on SUI" to "Chain-Agnostic Web3" |
+| `CLAUDE.md` | Project Overview updated for Ika Network multi-chain presence |
+| `blockchain-existence.md` | Complete rewrite - removed all SUI mentions, story-first approach |
+| `web3-positioning.md` | Removed "SUI vs Alternatives", added Ika Network/Solana focus |
+| `writing-guidelines.md` | Added "Blockchain and Web3 Elements" section with abstraction rules |
+
+**Canon Updates**:
+- **Fact #8**: "Built on SUI" → "Chain-Agnostic Web3" (Multi-chain via Ika Network)
+- **Fact #9**: Removed SUI reference from Gems currency description
+- **Brand Pillar**: "Built on SUI" → "Chain-agnostic, gameplay-first"
+
+**New Positioning Rules**:
+1. Blockchain technology should be invisible to users
+2. Stories told through characters/consequences, not tech explanations
+3. No naming specific blockchains in narrative content
+4. Promotional references: Ika Network (primary), Solana (secondary in lore)
+5. "If you have to explain the technology, you've broken the story"
+
+**Files Touched**:
+- `CLAUDE.md` - modified (Inviolable Facts, Brand Pillars, Overview)
+- `knowledge-base/lore/mechanics/blockchain-existence.md` - complete rewrite
+- `knowledge-base/crypto/web3-positioning.md` - modified
+- `knowledge-base/lore/writing-guidelines.md` - modified (added Web3 section, updated Facts)
+- `logs/agent-activity.md` - updated
+
+**Status**: Complete - Web3 Positioning Aligned with Human Feedback
+
+---
+
 ### [2026-01-10 00:45] Agent: 01 - Lore Architect
 
 **Activity Type**: Lore Implementation | Canon Update | Worldbuilding
