@@ -383,7 +383,7 @@ At the start of each session, agents should:
 5. **Log your actions** - Write to `logs/agent-activity.md`
 6. **Submit for review** - If your output requires human approval
 
-### For Humans (Sheran)
+### For Human Operators
 
 1. **Review `reviews/pending-human-review.md`** - Items needing your approval
 2. **Check `logs/decisions.md`** - See what agents decided and why

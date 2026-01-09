@@ -7,7 +7,7 @@
 
 ## About This Archive
 
-This file contains all items that have been submitted for human review and approved by Sheran. It serves as:
+This file contains all items that have been submitted for human review and approved. It serves as:
 
 1. **Decision Record**: A historical log of approved changes and decisions
 2. **Reference Material**: Agents can learn from past approvals to understand boundaries
@@ -36,7 +36,7 @@ This file contains all items that have been submitted for human review and appro
 
 **Original Item**: [ITEM-XXXX]
 **Approved**: YYYY-MM-DD
-**Approved By**: Sheran
+**Approved By**: [Human Operator]
 **Category**: [Category from table above]
 
 #### Original Request
