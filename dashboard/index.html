@@ -6,62 +6,122 @@
     <title>Infinite Idol - Agent Command Center</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="app">
+        <!-- Ambient Background -->
+        <div class="ambient-bg">
+            <div class="ambient-orb orb-1"></div>
+            <div class="ambient-orb orb-2"></div>
+            <div class="ambient-orb orb-3"></div>
+        </div>
+
         <!-- Sidebar -->
         <aside class="sidebar">
-            <div class="logo">
-                <div class="logo-icon">II</div>
-                <div class="logo-text">
-                    <span class="logo-title">Infinite Idol</span>
-                    <span class="logo-subtitle">Command Center</span>
+            <div class="sidebar-content">
+                <div class="logo">
+                    <div class="logo-mark">
+                        <svg viewBox="0 0 32 32" fill="none">
+                            <rect x="4" y="4" width="10" height="10" rx="2" fill="currentColor" opacity="0.9"/>
+                            <rect x="18" y="4" width="10" height="10" rx="2" fill="currentColor" opacity="0.6"/>
+                            <rect x="4" y="18" width="10" height="10" rx="2" fill="currentColor" opacity="0.6"/>
+                            <rect x="18" y="18" width="10" height="10" rx="2" fill="currentColor" opacity="0.3"/>
+                        </svg>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-title">Infinite Idol</span>
+                        <span class="logo-subtitle">Command Center</span>
+                    </div>
                 </div>
-            </div>
 
-            <nav class="nav">
-                <a href="#" class="nav-item active" data-view="dashboard">
-                    <span class="nav-icon">◉</span>
-                    <span>Dashboard</span>
-                </a>
-                <a href="#" class="nav-item" data-view="agents">
-                    <span class="nav-icon">◈</span>
-                    <span>Agents</span>
-                </a>
-                <a href="#" class="nav-item" data-view="content">
-                    <span class="nav-icon">◇</span>
-                    <span>Content Pipeline</span>
-                </a>
-                <a href="#" class="nav-item" data-view="reviews">
-                    <span class="nav-icon">◆</span>
-                    <span>Reviews</span>
-                    <span class="nav-badge" id="review-count">0</span>
-                </a>
-                <a href="#" class="nav-item" data-view="lore">
-                    <span class="nav-icon">◊</span>
-                    <span>Canon & Lore</span>
-                </a>
-                <a href="#" class="nav-item" data-view="logs">
-                    <span class="nav-icon">▤</span>
-                    <span>Activity Logs</span>
-                </a>
-                <a href="#" class="nav-item" data-view="settings">
-                    <span class="nav-icon">⚙</span>
-                    <span>Settings</span>
-                </a>
-            </nav>
+                <nav class="nav">
+                    <div class="nav-section">
+                        <span class="nav-label">Overview</span>
+                        <a href="#" class="nav-item active" data-view="dashboard">
+                            <span class="nav-icon">
+                                <svg viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                                </svg>
+                            </span>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                        <a href="#" class="nav-item" data-view="agents">
+                            <span class="nav-icon">
+                                <svg viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
+                                </svg>
+                            </span>
+                            <span class="nav-text">Agents</span>
+                            <span class="nav-indicator">10</span>
+                        </a>
+                    </div>
 
-            <div class="canon-health">
-                <div class="canon-health-header">
-                    <span>Canon Health</span>
-                    <span class="canon-status healthy" id="canon-status">●</span>
+                    <div class="nav-section">
+                        <span class="nav-label">Workflow</span>
+                        <a href="#" class="nav-item" data-view="content">
+                            <span class="nav-icon">
+                                <svg viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                                </svg>
+                            </span>
+                            <span class="nav-text">Content Pipeline</span>
+                        </a>
+                        <a href="#" class="nav-item" data-view="reviews">
+                            <span class="nav-icon">
+                                <svg viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+                                    <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                            </span>
+                            <span class="nav-text">Reviews</span>
+                            <span class="nav-badge" id="review-count">0</span>
+                        </a>
+                    </div>
+
+                    <div class="nav-section">
+                        <span class="nav-label">Reference</span>
+                        <a href="#" class="nav-item" data-view="lore">
+                            <span class="nav-icon">
+                                <svg viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
+                                </svg>
+                            </span>
+                            <span class="nav-text">Canon & Lore</span>
+                        </a>
+                        <a href="#" class="nav-item" data-view="logs">
+                            <span class="nav-icon">
+                                <svg viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd"/>
+                                </svg>
+                            </span>
+                            <span class="nav-text">Activity Logs</span>
+                        </a>
+                    </div>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <div class="system-status">
+                        <div class="status-header">
+                            <span class="status-label">System Status</span>
+                            <span class="status-dot healthy"></span>
+                        </div>
+                        <div class="status-bar">
+                            <div class="status-fill" id="canon-health-fill" style="width: 100%"></div>
+                        </div>
+                        <span class="status-text">All systems operational</span>
+                    </div>
+
+                    <a href="#" class="nav-item settings-link" data-view="settings">
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                            </svg>
+                        </span>
+                        <span class="nav-text">Settings</span>
+                    </a>
                 </div>
-                <div class="canon-health-bar">
-                    <div class="canon-health-fill" id="canon-health-fill" style="width: 100%"></div>
-                </div>
-                <div class="canon-health-label">All systems nominal</div>
             </div>
         </aside>
 
@@ -69,329 +129,482 @@
         <main class="main">
             <!-- Top Bar -->
             <header class="topbar">
-                <div class="command-bar">
-                    <span class="command-icon">⌘</span>
-                    <input type="text" class="command-input" id="command-input" placeholder="Command an agent... (e.g., 'Agent 02, draft a tweet about the Chase')">
+                <div class="topbar-left">
+                    <h1 class="page-title" id="page-title">Dashboard</h1>
                 </div>
-                <div class="topbar-actions">
-                    <button class="btn-icon" id="refresh-btn" title="Refresh Data">↻</button>
-                    <button class="btn-icon" id="notifications-btn" title="Notifications">
-                        <span>🔔</span>
-                        <span class="notification-dot" id="notification-dot"></span>
+                <div class="topbar-center">
+                    <div class="search-bar">
+                        <svg class="search-icon" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
+                        </svg>
+                        <input type="text" class="search-input" id="command-input" placeholder="Search or command... (&#8984;K)">
+                        <kbd class="search-shortcut">&#8984;K</kbd>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <button class="topbar-btn" id="refresh-btn" title="Refresh">
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                    <button class="topbar-btn" id="notifications-btn" title="Notifications">
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/>
+                        </svg>
+                        <span class="notification-badge" id="notification-dot"></span>
                     </button>
                 </div>
             </header>
 
-            <!-- Action Required Banner -->
-            <div class="action-required" id="action-required" style="display: none;">
-                <div class="action-required-icon">⚠</div>
-                <div class="action-required-text">
-                    <strong id="action-count">0</strong> items require your review
-                </div>
-                <button class="btn btn-primary btn-sm" onclick="showView('reviews')">Review Now</button>
-            </div>
-
-            <!-- Dashboard View -->
-            <div class="view active" id="view-dashboard">
-                <div class="view-header">
-                    <h1>Dashboard</h1>
-                    <span class="view-subtitle">Real-time overview of your AI marketing team</span>
-                </div>
-
-                <!-- Stats Grid -->
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon">📝</div>
-                        <div class="stat-content">
-                            <div class="stat-value" id="stat-content-today">0</div>
-                            <div class="stat-label">Content Today</div>
-                        </div>
-                        <div class="stat-trend up">+12%</div>
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Alert Banner -->
+                <div class="alert-banner" id="action-required" style="display: none;">
+                    <div class="alert-icon">
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                        </svg>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">🤖</div>
-                        <div class="stat-content">
-                            <div class="stat-value" id="stat-agents-active">9</div>
-                            <div class="stat-label">Agents Active</div>
-                        </div>
-                        <div class="stat-trend neutral">—</div>
+                    <div class="alert-content">
+                        <strong id="action-count">0</strong> items require your review
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">📋</div>
-                        <div class="stat-content">
-                            <div class="stat-value" id="stat-pending-review">0</div>
-                            <div class="stat-label">Pending Review</div>
-                        </div>
-                        <div class="stat-trend" id="review-trend">—</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">✓</div>
-                        <div class="stat-content">
-                            <div class="stat-value" id="stat-canon-compliance">100%</div>
-                            <div class="stat-label">Canon Compliance</div>
-                        </div>
-                        <div class="stat-trend up">✓</div>
-                    </div>
+                    <button class="btn btn-sm btn-primary" onclick="showView('reviews')">Review Now</button>
+                    <button class="alert-close" onclick="this.parentElement.style.display='none'">
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
                 </div>
 
-                <!-- Dashboard Grid -->
-                <div class="dashboard-grid">
-                    <!-- Agent Status Panel -->
-                    <div class="panel agent-status-panel">
-                        <div class="panel-header">
-                            <h2>Agent Status</h2>
-                            <button class="btn-text">View All →</button>
-                        </div>
-                        <div class="agent-grid" id="agent-grid">
-                            <!-- Populated by JS -->
-                        </div>
-                    </div>
-
-                    <!-- Activity Feed -->
-                    <div class="panel activity-panel">
-                        <div class="panel-header">
-                            <h2>Live Activity</h2>
-                            <div class="live-indicator">
-                                <span class="live-dot"></span>
-                                <span>Live</span>
+                <!-- Dashboard View -->
+                <div class="view active" id="view-dashboard">
+                    <!-- Stats Row -->
+                    <div class="stats-row">
+                        <div class="stat-card">
+                            <div class="stat-icon-wrap gradient-purple">
+                                <svg viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/>
+                                </svg>
                             </div>
+                            <div class="stat-details">
+                                <span class="stat-value" id="stat-content-today">0</span>
+                                <span class="stat-label">Content Today</span>
+                            </div>
+                            <span class="stat-trend up">+12%</span>
                         </div>
-                        <div class="activity-feed" id="activity-feed">
-                            <!-- Populated by JS -->
+
+                        <div class="stat-card">
+                            <div class="stat-icon-wrap gradient-blue">
+                                <svg viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <span class="stat-value" id="stat-agents-active">10</span>
+                                <span class="stat-label">Agents Online</span>
+                            </div>
+                            <span class="stat-trend neutral">All Active</span>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon-wrap gradient-amber">
+                                <svg viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+                                    <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <span class="stat-value" id="stat-pending-review">0</span>
+                                <span class="stat-label">Pending Review</span>
+                            </div>
+                            <span class="stat-trend" id="review-trend">Clear</span>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon-wrap gradient-green">
+                                <svg viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <div class="stat-details">
+                                <span class="stat-value" id="stat-canon-compliance">100%</span>
+                                <span class="stat-label">Canon Compliance</span>
+                            </div>
+                            <span class="stat-trend up">Verified</span>
                         </div>
                     </div>
 
-                    <!-- Quick Actions -->
-                    <div class="panel quick-actions-panel">
-                        <div class="panel-header">
-                            <h2>Quick Actions</h2>
-                        </div>
-                        <div class="quick-actions">
-                            <button class="quick-action" onclick="quickAction('tweet')">
-                                <span class="qa-icon">🐦</span>
-                                <span>Draft Tweet</span>
-                            </button>
-                            <button class="quick-action" onclick="quickAction('thread')">
-                                <span class="qa-icon">🧵</span>
-                                <span>Create Thread</span>
-                            </button>
-                            <button class="quick-action" onclick="quickAction('lore')">
-                                <span class="qa-icon">📖</span>
-                                <span>Lore Check</span>
-                            </button>
-                            <button class="quick-action" onclick="quickAction('calendar')">
-                                <span class="qa-icon">📅</span>
-                                <span>View Calendar</span>
-                            </button>
-                            <button class="quick-action" onclick="quickAction('banner')">
-                                <span class="qa-icon">🎨</span>
-                                <span>Banner Design</span>
-                            </button>
-                            <button class="quick-action" onclick="quickAction('report')">
-                                <span class="qa-icon">📊</span>
-                                <span>Weekly Report</span>
-                            </button>
-                        </div>
-                    </div>
+                    <!-- Main Grid -->
+                    <div class="dashboard-grid">
+                        <!-- Agent Overview -->
+                        <section class="card card-lg">
+                            <div class="card-header">
+                                <h2 class="card-title">Agent Overview</h2>
+                                <button class="btn btn-ghost btn-sm" onclick="showView('agents')">View All</button>
+                            </div>
+                            <div class="agent-grid" id="agent-grid">
+                                <!-- Populated by JS -->
+                            </div>
+                        </section>
 
-                    <!-- Content Pipeline Preview -->
-                    <div class="panel pipeline-preview-panel">
-                        <div class="panel-header">
-                            <h2>Content Pipeline</h2>
-                            <button class="btn-text" onclick="showView('content')">Full View →</button>
-                        </div>
-                        <div class="pipeline-mini">
-                            <div class="pipeline-stage">
-                                <div class="pipeline-stage-header">
-                                    <span>Draft</span>
+                        <!-- Live Activity -->
+                        <section class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">Live Activity</h2>
+                                <div class="live-badge">
+                                    <span class="live-dot"></span>
+                                    <span>Live</span>
+                                </div>
+                            </div>
+                            <div class="activity-feed" id="activity-feed">
+                                <!-- Populated by JS -->
+                            </div>
+                        </section>
+
+                        <!-- Quick Actions -->
+                        <section class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">Quick Actions</h2>
+                            </div>
+                            <div class="quick-actions-grid">
+                                <button class="quick-action" onclick="quickAction('tweet')">
+                                    <div class="qa-icon gradient-blue">
+                                        <svg viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <span class="qa-label">Draft Tweet</span>
+                                </button>
+                                <button class="quick-action" onclick="quickAction('thread')">
+                                    <div class="qa-icon gradient-purple">
+                                        <svg viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z"/>
+                                            <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="qa-label">Create Thread</span>
+                                </button>
+                                <button class="quick-action" onclick="quickAction('lore')">
+                                    <div class="qa-icon gradient-pink">
+                                        <svg viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="qa-label">Lore Check</span>
+                                </button>
+                                <button class="quick-action" onclick="quickAction('calendar')">
+                                    <div class="qa-icon gradient-teal">
+                                        <svg viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <span class="qa-label">Calendar</span>
+                                </button>
+                                <button class="quick-action" onclick="quickAction('banner')">
+                                    <div class="qa-icon gradient-amber">
+                                        <svg viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <span class="qa-label">Banner Design</span>
+                                </button>
+                                <button class="quick-action" onclick="quickAction('report')">
+                                    <div class="qa-icon gradient-green">
+                                        <svg viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="qa-label">Analytics</span>
+                                </button>
+                            </div>
+                        </section>
+
+                        <!-- Content Pipeline -->
+                        <section class="card card-wide">
+                            <div class="card-header">
+                                <h2 class="card-title">Content Pipeline</h2>
+                                <button class="btn btn-ghost btn-sm" onclick="showView('content')">Full View</button>
+                            </div>
+                            <div class="pipeline-overview">
+                                <div class="pipeline-stage">
+                                    <div class="pipeline-stage-icon">
+                                        <svg viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
+                                        </svg>
+                                    </div>
                                     <span class="pipeline-count" id="pipeline-draft">0</span>
+                                    <span class="pipeline-label">Draft</span>
                                 </div>
-                            </div>
-                            <div class="pipeline-arrow">→</div>
-                            <div class="pipeline-stage">
-                                <div class="pipeline-stage-header">
-                                    <span>Review</span>
+                                <div class="pipeline-connector"></div>
+                                <div class="pipeline-stage">
+                                    <div class="pipeline-stage-icon">
+                                        <svg viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
                                     <span class="pipeline-count" id="pipeline-review">0</span>
+                                    <span class="pipeline-label">Review</span>
                                 </div>
-                            </div>
-                            <div class="pipeline-arrow">→</div>
-                            <div class="pipeline-stage">
-                                <div class="pipeline-stage-header">
-                                    <span>Scheduled</span>
+                                <div class="pipeline-connector"></div>
+                                <div class="pipeline-stage">
+                                    <div class="pipeline-stage-icon">
+                                        <svg viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
                                     <span class="pipeline-count" id="pipeline-scheduled">0</span>
+                                    <span class="pipeline-label">Scheduled</span>
                                 </div>
-                            </div>
-                            <div class="pipeline-arrow">→</div>
-                            <div class="pipeline-stage">
-                                <div class="pipeline-stage-header">
-                                    <span>Published</span>
+                                <div class="pipeline-connector"></div>
+                                <div class="pipeline-stage">
+                                    <div class="pipeline-stage-icon active">
+                                        <svg viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
                                     <span class="pipeline-count" id="pipeline-published">0</span>
+                                    <span class="pipeline-label">Published</span>
                                 </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <!-- Agents View -->
+                <div class="view" id="view-agents">
+                    <div class="view-header">
+                        <div>
+                            <h2 class="view-title">Agent Control Center</h2>
+                            <p class="view-subtitle">Monitor and direct your AI marketing team</p>
+                        </div>
+                    </div>
+                    <div class="agents-detail-grid" id="agents-container">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Content Pipeline View -->
+                <div class="view" id="view-content">
+                    <div class="view-header">
+                        <div>
+                            <h2 class="view-title">Content Pipeline</h2>
+                            <p class="view-subtitle">Track content from creation to publication</p>
+                        </div>
+                        <button class="btn btn-primary">
+                            <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/>
+                            </svg>
+                            New Content
+                        </button>
+                    </div>
+                    <div class="kanban-board" id="kanban-board">
+                        <div class="kanban-column" data-stage="draft">
+                            <div class="kanban-header">
+                                <h3>Draft</h3>
+                                <span class="kanban-count">0</span>
+                            </div>
+                            <div class="kanban-cards" id="kanban-draft"></div>
+                        </div>
+                        <div class="kanban-column" data-stage="review">
+                            <div class="kanban-header">
+                                <h3>Review</h3>
+                                <span class="kanban-count">0</span>
+                            </div>
+                            <div class="kanban-cards" id="kanban-review"></div>
+                        </div>
+                        <div class="kanban-column" data-stage="scheduled">
+                            <div class="kanban-header">
+                                <h3>Scheduled</h3>
+                                <span class="kanban-count">0</span>
+                            </div>
+                            <div class="kanban-cards" id="kanban-scheduled"></div>
+                        </div>
+                        <div class="kanban-column" data-stage="published">
+                            <div class="kanban-header">
+                                <h3>Published</h3>
+                                <span class="kanban-count">0</span>
+                            </div>
+                            <div class="kanban-cards" id="kanban-published"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reviews View -->
+                <div class="view" id="view-reviews">
+                    <div class="view-header">
+                        <div>
+                            <h2 class="view-title">Pending Reviews</h2>
+                            <p class="view-subtitle">Items requiring your approval</p>
+                        </div>
+                    </div>
+                    <div class="reviews-container" id="reviews-container">
+                        <div class="empty-state" id="no-reviews">
+                            <div class="empty-icon">
+                                <svg viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <h3>All caught up!</h3>
+                            <p>No items require your review at this time.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lore View -->
+                <div class="view" id="view-lore">
+                    <div class="view-header">
+                        <div>
+                            <h2 class="view-title">Canon & Lore</h2>
+                            <p class="view-subtitle">The 10 Inviolable Facts and world reference</p>
+                        </div>
+                    </div>
+                    <div class="lore-layout">
+                        <div class="lore-main">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h2 class="card-title">The 10 Inviolable Facts</h2>
+                                </div>
+                                <div class="lore-warning">
+                                    <svg viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>These facts are ABSOLUTE. They cannot be contradicted under ANY circumstances.</span>
+                                </div>
+                                <div class="facts-list" id="facts-grid">
+                                    <!-- Populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lore-sidebar">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Characters</h3>
+                                </div>
+                                <div class="lore-links" id="character-links"></div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">World</h3>
+                                </div>
+                                <div class="lore-links" id="world-links"></div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Mechanics</h3>
+                                </div>
+                                <div class="lore-links" id="mechanics-links"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Agents View -->
-            <div class="view" id="view-agents">
-                <div class="view-header">
-                    <h1>Agent Control</h1>
-                    <span class="view-subtitle">Monitor and direct your AI marketing team</span>
-                </div>
-                <div class="agents-container" id="agents-container">
-                    <!-- Populated by JS -->
-                </div>
-            </div>
-
-            <!-- Content Pipeline View -->
-            <div class="view" id="view-content">
-                <div class="view-header">
-                    <h1>Content Pipeline</h1>
-                    <span class="view-subtitle">Track content from creation to publication</span>
-                </div>
-                <div class="kanban-board" id="kanban-board">
-                    <div class="kanban-column" data-stage="draft">
-                        <div class="kanban-header">
-                            <h3>Draft</h3>
-                            <span class="kanban-count">0</span>
+                <!-- Logs View -->
+                <div class="view" id="view-logs">
+                    <div class="view-header">
+                        <div>
+                            <h2 class="view-title">Activity Logs</h2>
+                            <p class="view-subtitle">Complete history of agent actions and decisions</p>
                         </div>
-                        <div class="kanban-cards" id="kanban-draft"></div>
-                    </div>
-                    <div class="kanban-column" data-stage="review">
-                        <div class="kanban-header">
-                            <h3>Review</h3>
-                            <span class="kanban-count">0</span>
+                        <div class="view-actions">
+                            <select class="select" id="log-agent-filter">
+                                <option value="all">All Agents</option>
+                                <option value="00">00 - Coordinator</option>
+                                <option value="01">01 - Lore Architect</option>
+                                <option value="02">02 - Content Strategist</option>
+                                <option value="03">03 - Community Manager</option>
+                                <option value="04">04 - Gacha Designer</option>
+                                <option value="05">05 - Analytics Observer</option>
+                                <option value="06">06 - Asset Coordinator</option>
+                                <option value="07">07 - Light Novel Writer</option>
+                                <option value="08">08 - Lore Guardian</option>
+                                <option value="09">09 - Resident Degen</option>
+                            </select>
+                            <button class="btn btn-secondary" onclick="exportLogs()">
+                                <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                                    <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                </svg>
+                                Export
+                            </button>
                         </div>
-                        <div class="kanban-cards" id="kanban-review"></div>
                     </div>
-                    <div class="kanban-column" data-stage="scheduled">
-                        <div class="kanban-header">
-                            <h3>Scheduled</h3>
-                            <span class="kanban-count">0</span>
-                        </div>
-                        <div class="kanban-cards" id="kanban-scheduled"></div>
-                    </div>
-                    <div class="kanban-column" data-stage="published">
-                        <div class="kanban-header">
-                            <h3>Published</h3>
-                            <span class="kanban-count">0</span>
-                        </div>
-                        <div class="kanban-cards" id="kanban-published"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Reviews View -->
-            <div class="view" id="view-reviews">
-                <div class="view-header">
-                    <h1>Pending Reviews</h1>
-                    <span class="view-subtitle">Items requiring your approval</span>
-                </div>
-                <div class="reviews-container" id="reviews-container">
-                    <div class="empty-state" id="no-reviews">
-                        <div class="empty-icon">✓</div>
-                        <h3>All caught up!</h3>
-                        <p>No items require your review at this time.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Lore View -->
-            <div class="view" id="view-lore">
-                <div class="view-header">
-                    <h1>Canon & Lore</h1>
-                    <span class="view-subtitle">The 10 Inviolable Facts and world reference</span>
-                </div>
-                <div class="lore-container">
-                    <div class="inviolable-facts">
-                        <h2>The 10 Inviolable Facts</h2>
-                        <p class="lore-warning">These facts are ABSOLUTE. They cannot be contradicted under ANY circumstances.</p>
-                        <div class="facts-grid" id="facts-grid">
+                    <div class="card">
+                        <div class="logs-container" id="logs-container">
                             <!-- Populated by JS -->
                         </div>
                     </div>
-                    <div class="lore-sections">
-                        <div class="lore-section">
-                            <h3>Characters</h3>
-                            <div class="lore-links" id="character-links"></div>
-                        </div>
-                        <div class="lore-section">
-                            <h3>World</h3>
-                            <div class="lore-links" id="world-links"></div>
-                        </div>
-                        <div class="lore-section">
-                            <h3>Mechanics</h3>
-                            <div class="lore-links" id="mechanics-links"></div>
-                        </div>
-                    </div>
                 </div>
-            </div>
 
-            <!-- Logs View -->
-            <div class="view" id="view-logs">
-                <div class="view-header">
-                    <h1>Activity Logs</h1>
-                    <span class="view-subtitle">Complete history of agent actions and decisions</span>
-                </div>
-                <div class="logs-controls">
-                    <select class="log-filter" id="log-agent-filter">
-                        <option value="all">All Agents</option>
-                        <option value="00">00 - Coordinator</option>
-                        <option value="01">01 - Lore Architect</option>
-                        <option value="02">02 - Content Strategist</option>
-                        <option value="03">03 - Community Manager</option>
-                        <option value="04">04 - Gacha Designer</option>
-                        <option value="05">05 - Analytics Observer</option>
-                        <option value="06">06 - Asset Coordinator</option>
-                        <option value="07">07 - Light Novel Writer</option>
-                        <option value="08">08 - Lore Guardian</option>
-                    </select>
-                    <select class="log-filter" id="log-type-filter">
-                        <option value="all">All Types</option>
-                        <option value="action">Actions</option>
-                        <option value="decision">Decisions</option>
-                        <option value="escalation">Escalations</option>
-                    </select>
-                </div>
-                <div class="logs-container" id="logs-container">
-                    <!-- Populated by JS -->
-                </div>
-            </div>
-
-            <!-- Settings View -->
-            <div class="view" id="view-settings">
-                <div class="view-header">
-                    <h1>Settings</h1>
-                    <span class="view-subtitle">Configure your command center</span>
-                </div>
-                <div class="settings-container">
-                    <div class="settings-section">
-                        <h3>Notifications</h3>
-                        <label class="setting-toggle">
-                            <input type="checkbox" id="setting-sound" checked>
-                            <span>Sound alerts for P0 items</span>
-                        </label>
-                        <label class="setting-toggle">
-                            <input type="checkbox" id="setting-desktop" checked>
-                            <span>Desktop notifications</span>
-                        </label>
+                <!-- Settings View -->
+                <div class="view" id="view-settings">
+                    <div class="view-header">
+                        <div>
+                            <h2 class="view-title">Settings</h2>
+                            <p class="view-subtitle">Configure your command center</p>
+                        </div>
                     </div>
-                    <div class="settings-section">
-                        <h3>Display</h3>
-                        <label class="setting-toggle">
-                            <input type="checkbox" id="setting-dark" checked>
-                            <span>Dark mode</span>
-                        </label>
-                        <label class="setting-toggle">
-                            <input type="checkbox" id="setting-compact">
-                            <span>Compact view</span>
-                        </label>
-                    </div>
-                    <div class="settings-section">
-                        <h3>Data</h3>
-                        <button class="btn btn-secondary" onclick="loadRepoData()">Reload Repository Data</button>
-                        <button class="btn btn-secondary" onclick="exportLogs()">Export Activity Logs</button>
+                    <div class="settings-layout">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Notifications</h3>
+                            </div>
+                            <div class="settings-list">
+                                <label class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-label">Sound alerts</span>
+                                        <span class="setting-desc">Play sound for priority items</span>
+                                    </div>
+                                    <input type="checkbox" class="toggle" id="setting-sound" checked>
+                                </label>
+                                <label class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-label">Desktop notifications</span>
+                                        <span class="setting-desc">Show system notifications</span>
+                                    </div>
+                                    <input type="checkbox" class="toggle" id="setting-desktop" checked>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Appearance</h3>
+                            </div>
+                            <div class="settings-list">
+                                <label class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-label">Dark mode</span>
+                                        <span class="setting-desc">Use dark color scheme</span>
+                                    </div>
+                                    <input type="checkbox" class="toggle" id="setting-dark" checked>
+                                </label>
+                                <label class="setting-item">
+                                    <div class="setting-info">
+                                        <span class="setting-label">Compact mode</span>
+                                        <span class="setting-desc">Reduce spacing for more content</span>
+                                    </div>
+                                    <input type="checkbox" class="toggle" id="setting-compact">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Data</h3>
+                            </div>
+                            <div class="settings-actions">
+                                <button class="btn btn-secondary" onclick="loadRepoData()">
+                                    <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                                        <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/>
+                                    </svg>
+                                    Reload Repository Data
+                                </button>
+                                <button class="btn btn-secondary" onclick="exportLogs()">
+                                    <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                                        <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                    </svg>
+                                    Export Activity Logs
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -403,31 +616,51 @@
         <div class="modal" id="modal">
             <div class="modal-header">
                 <h2 id="modal-title">Modal Title</h2>
-                <button class="modal-close" onclick="closeModal()">×</button>
+                <button class="modal-close" onclick="closeModal()">
+                    <svg viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                    </svg>
+                </button>
             </div>
-            <div class="modal-body" id="modal-body">
-                <!-- Dynamic content -->
+            <div class="modal-body" id="modal-body"></div>
+            <div class="modal-footer" id="modal-footer"></div>
+        </div>
+    </div>
+
+    <!-- Agent Drawer -->
+    <div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
+    <div class="drawer" id="agent-drawer">
+        <div class="drawer-header">
+            <div class="drawer-agent-info">
+                <div class="drawer-avatar" id="drawer-avatar">00</div>
+                <div>
+                    <h3 id="drawer-agent-name">Agent 00 - Coordinator</h3>
+                    <span class="drawer-status" id="drawer-status">Active</span>
+                </div>
             </div>
-            <div class="modal-footer" id="modal-footer">
-                <!-- Dynamic buttons -->
+            <button class="drawer-close" onclick="closeDrawer()">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                </svg>
+            </button>
+        </div>
+        <div class="drawer-body">
+            <div class="chat-messages" id="chat-messages"></div>
+        </div>
+        <div class="drawer-footer">
+            <div class="chat-input-wrap">
+                <input type="text" class="chat-input" id="chat-input" placeholder="Message this agent...">
+                <button class="chat-send" onclick="sendAgentMessage()">
+                    <svg viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/>
+                    </svg>
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Agent Chat Drawer -->
-    <div class="drawer" id="agent-drawer">
-        <div class="drawer-header">
-            <h3 id="drawer-agent-name">Agent 00 - Coordinator</h3>
-            <button class="drawer-close" onclick="closeDrawer()">×</button>
-        </div>
-        <div class="drawer-body">
-            <div class="chat-messages" id="chat-messages"></div>
-            <div class="chat-input-container">
-                <input type="text" class="chat-input" id="chat-input" placeholder="Send a message to this agent...">
-                <button class="btn btn-primary" onclick="sendAgentMessage()">Send</button>
-            </div>
-        </div>
-    </div>
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
 
     <script src="app.js"></script>
 </body>
