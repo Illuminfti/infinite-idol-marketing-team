@@ -42,10 +42,11 @@ Tasks for orchestration, scheduling, and oversight.
 | ID | Priority | Task | Status | Created | Due | Notes |
 |----|----------|------|--------|---------|-----|-------|
 | **VIBING OVERHAUL PROJECT** | | | | | | **8-10 days** |
-| COORD-VIB-001 | P0 | Vibing Overhaul: Phase 1 orchestration | IN_PROGRESS | 2026-01-09 | 2026-01-10 | Assign agents 08, 01, 09. Create timeline. Human approved Option A |
-| COORD-VIB-002 | P0 | Vibing: Priority matrix creation | PENDING | 2026-01-09 | 2026-01-09 | P0/P1/P2 classification of all 50+ issues |
-| COORD-VIB-003 | P0 | Vibing: Phase 2-6 agent assignments | BLOCKED | 2026-01-09 | 2026-01-11 | Wait for Phase 1 completion |
-| COORD-VIB-004 | P0 | Vibing: PR #1-8 review & approval | BLOCKED | 2026-01-09 | 2026-01-17 | Sequential PR approvals |
+| COORD-VIB-001 | P0 | Vibing Overhaul: Phase 1 orchestration | COMPLETE | 2026-01-09 | 2026-01-10 | ✅ All Phase 1 agents complete (08, 01, 09). Human approved Option A. PR #1 implemented. |
+| COORD-VIB-001B | P0 | Vibing: PR #1 implementation (Canon Compliance) | COMPLETE | 2026-01-09 | 2026-01-09 | ✅ Fading mechanic removed. 477 lines deleted. Committed & pushed to vibing repo. |
+| COORD-VIB-002 | P0 | Vibing: Priority matrix creation | PENDING | 2026-01-09 | 2026-01-09 | P0/P1/P2 classification of remaining issues (PRs #2-8) |
+| COORD-VIB-003 | P0 | Vibing: Phase 2-6 agent assignments | PENDING | 2026-01-09 | 2026-01-11 | Phase 1 complete - ready to begin |
+| COORD-VIB-004 | P0 | Vibing: PR #2-8 implementation | PENDING | 2026-01-09 | 2026-01-17 | PR #1 complete. Begin sequential execution. |
 | **REGULAR TASKS** | | | | | | |
 | COORD-001 | P1 | Morning coordination check | PENDING | 2026-01-09 | Daily | Process all agent queues |
 | COORD-002 | P1 | Review pending content for scheduling | PENDING | 2026-01-09 | Daily | Final approval before publish |
