@@ -3,23 +3,23 @@
   "spec": "001-read-the-attached-file-full-auto-claude-prompt-md-",
   "state": "building",
   "subtasks": {
-    "completed": 33,
+    "completed": 36,
     "total": 52,
     "in_progress": 1,
     "failed": 0
   },
   "phase": {
-    "current": "Game Mechanics",
+    "current": "Brand & Crypto Documentation",
     "id": null,
-    "total": 5
+    "total": 7
   },
   "workers": {
     "active": 0,
     "max": 1
   },
   "session": {
-    "number": 34,
+    "number": 37,
     "started_at": "2026-01-08T22:56:57.335664"
   },
-  "last_update": "2026-01-09T00:18:51.210360"
+  "last_update": "2026-01-09T00:26:01.603533"
 }

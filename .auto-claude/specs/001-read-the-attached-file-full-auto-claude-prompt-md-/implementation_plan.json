@@ -770,9 +770,9 @@
             "command": "grep -q '30 complete outfit sets' knowledge-base/game-mechanics/cosmetics.md && echo 'OK'",
             "expected": "OK"
           },
-          "status": "in_progress",
-          "notes": "Creating cosmetics.md with 30 outfit sets, 9 item slots, rarity tiers, and burn system",
-          "updated_at": "2026-01-09T00:19:17.533134+00:00"
+          "status": "completed",
+          "notes": "Created cosmetics.md with 30 complete outfit sets, 9 item slots, rarity tiers (Common/Rare/Ultra Rare/Legendary), and burn system. Verification passed. Committed to git.",
+          "updated_at": "2026-01-09T00:21:33.456218+00:00"
         }
       ]
     },
@@ -802,7 +802,9 @@
             "command": "grep -q 'shameless but genuine' knowledge-base/brand/voice-and-tone.md && grep -q 'dark luxury' knowledge-base/brand/voice-and-tone.md && echo 'OK'",
             "expected": "OK"
           },
-          "status": "pending"
+          "status": "completed",
+          "notes": "Created comprehensive voice-and-tone.md brand guidelines with all four core voice pillars: shameless but genuine, self-aware, dark luxury, existentially dramatic. Includes character voice guidelines (Ika Minami), content type guidelines for Twitter/X/Discord/long-form, master do's and don'ts, voice checklist. Verification passed - both 'shameless but genuine' and 'dark luxury' present in file. Committed as 6750bf2.",
+          "updated_at": "2026-01-09T00:23:52.527225+00:00"
         },
         {
           "id": "subtask-7-2",
@@ -820,7 +822,9 @@
             "command": "grep -q 'dark luxury' knowledge-base/brand/visual-identity.md && echo 'OK'",
             "expected": "OK"
           },
-          "status": "pending"
+          "status": "completed",
+          "notes": "Created comprehensive visual-identity.md with dark luxury aesthetic guidelines, color palette (black, gold), typography, and asset creation guidance. Verification passed.",
+          "updated_at": "2026-01-09T00:25:48.669964+00:00"
         },
         {
           "id": "subtask-7-3",
@@ -1255,5 +1259,5 @@
   "status": "in_progress",
   "planStatus": "in_progress",
   "updated_at": "2026-01-08T22:56:21.596Z",
-  "last_updated": "2026-01-09T00:19:17.533141+00:00"
+  "last_updated": "2026-01-09T00:25:48.669973+00:00"
 }
