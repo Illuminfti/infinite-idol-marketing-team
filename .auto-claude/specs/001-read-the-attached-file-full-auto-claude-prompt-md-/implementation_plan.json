@@ -597,7 +597,9 @@
             "command": "grep -q 'Senpai' knowledge-base/lore/mechanics/the-chase.md && echo 'OK'",
             "expected": "OK"
           },
-          "status": "pending"
+          "status": "completed",
+          "notes": "Created comprehensive the-chase.md with core competition format, obstacle courses (physical, mental, social, Devotion-based), Senpai pursuit mechanics, tournament structure, rankings system, strategy/tactics, special variants, Foundation control, and historical moments. Verification passed - Senpai is referenced throughout the file.",
+          "updated_at": "2026-01-08T23:59:07.907149+00:00"
         },
         {
           "id": "subtask-5-5",
@@ -615,7 +617,9 @@
             "command": "grep -q 'cease to exist' knowledge-base/lore/mechanics/fading.md && echo 'OK'",
             "expected": "OK"
           },
-          "status": "pending"
+          "status": "completed",
+          "notes": "Created comprehensive fading.md with all four stages (Dimming, Flickering, Dissolution, Erasure), Foundation FADE-WATCH system, protection methods, historical events, and canon rules. Verification passed - 'cease to exist' phrase included.",
+          "updated_at": "2026-01-09T00:01:33.313662+00:00"
         },
         {
           "id": "subtask-5-6",
@@ -633,7 +637,9 @@
             "command": "test -f knowledge-base/lore/mechanics/senpai-mystery.md && echo 'OK'",
             "expected": "OK"
           },
-          "status": "pending"
+          "status": "completed",
+          "notes": "Created senpai-mystery.md with comprehensive documentation of the Senpai enigma. Includes canon rules, physical manifestation, Himeko connection, five major theories, the Blush event, Erina's secret, Foundation relationship, and visual representation rules. Follows pattern from other mechanics files. Verified file exists and committed successfully.",
+          "updated_at": "2026-01-09T00:04:36.645173+00:00"
         },
         {
           "id": "subtask-5-7",
@@ -652,8 +658,9 @@
             "command": "test -f knowledge-base/light-novels/volume-1-awakening.md && test -f knowledge-base/light-novels/volume-2-the-fall.md && echo 'OK'",
             "expected": "OK"
           },
-          "status": "pending",
-          "notes": "These are placeholders - full novel text not provided in source materials"
+          "status": "in_progress",
+          "notes": "Creating light novel placeholder files following existing markdown patterns",
+          "updated_at": "2026-01-09T00:06:27.971378+00:00"
         }
       ]
     },
@@ -1243,5 +1250,5 @@
   "status": "in_progress",
   "planStatus": "in_progress",
   "updated_at": "2026-01-08T22:56:21.596Z",
-  "last_updated": "2026-01-08T23:56:20.978484+00:00"
+  "last_updated": "2026-01-09T00:06:27.971392+00:00"
 }
