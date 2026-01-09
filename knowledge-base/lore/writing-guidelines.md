@@ -348,37 +348,49 @@ Use a single line with three asterisks:
 
 **IMPORTANT**: The authoritative list of 10 Inviolable Facts is maintained in `CLAUDE.md`. All writing must respect these facts absolutely:
 
-1. **Devotion is Literal** - Real emotional energy from fans, not metaphor
-2. **Fading is Death** - Permanent, no reversal, no exceptions
-3. **Ika Has 47 Fans** - Exactly 47 at story start
-4. **Ika's Hair: Pink Gradient** - Rose roots → magenta tips
-5. **Senpai Never Shown** - Always obscured, face never revealed
-6. **Foundation Controls All** - Run by Erina, controls industry
-7. **The Chase is Core** - Primary competition, determines survival
-8. **Chain-Agnostic Web3** - Multi-chain via Ika Network, blockchain abstracted
-9. **Gems = Currency** - Universal in-world currency, account-bound
-10. **Dark Luxury Aesthetic** - Black/gold, NOT pink/cutesy
+| # | Fact | Writing Implication |
+|---|------|---------------------|
+| 1 | **Devotion Sustains Existence** | Idols need fan devotion to exist. Show this as real, not metaphorical. |
+| 2 | **Fading is Permanent Death** | No resurrection, no reversal. Treat death with weight. |
+| 3 | **The Faded Are Forgotten** | When someone Fades, memories blur. Use this horror. |
+| 4 | **Senpai is the Unattainable Goal** | The pursuit matters. What catching him means = mystery. |
+| 5 | **Senpai's Face Never Revealed** | Audience never sees his face. Characters may glimpse it. |
+| 6 | **The Foundation Controls the System** | They run the industry. Resistance exists but struggles. |
+| 7 | **The Chase is Survival** | Competition is coerced. "Choice" under death threat isn't free. |
+| 8 | **Authenticity Generates Power** | Genuine connection beats manufactured appeal. |
+| 9 | **The System Predates Its Masters** | Origins unknown. Adds mystery—use it. |
+| 10 | **No One Knows What Catching Senpai Means** | Keep this mystery. Don't resolve it casually. |
 
 Always reference `CLAUDE.md` as the master source for canon rules.
+
+### Important Character/Brand Details (NOT Inviolable, but Consistent)
+
+These are important for consistency but NOT world-defining rules:
+
+| Detail | Reference Location | Note |
+|--------|-------------------|------|
+| Ika's 47 fans at story start | `characters/ika-minami.md` | Starting point, changes over time |
+| Ika's pink gradient hair | `characters/ika-minami.md` | Character design consistency |
+| Gems as currency | `game-mechanics/gem-system.md` | Game mechanic |
+| Dark luxury aesthetic | `brand/visual-identity.md` | Brand guideline |
 
 ---
 
 ### Narrative Themes (Writing Guidance)
 
-Beyond the Inviolable Facts, these narrative themes should inform your writing:
+These themes enrich the narrative and align with the Inviolable Facts:
 
 | Theme | Application |
 |-------|-------------|
-| **Devotion is quantifiable** | Show characters sensing and measuring their Devotion levels |
-| **Memory anchors identity** | Ika's amnesia is genuine and central to her mystery |
+| **Devotion is quantifiable** | Show characters sensing their Devotion levels |
+| **Memory anchors identity** | Ika's amnesia is genuine and central |
 | **Names carry weight** | Stage names vs. real names have significance |
-| **The system predates Erina** | Origins remain mysterious, older than current management |
 | **Graduation hides dark truth** | See `mechanics/graduation.md` for details |
-| **Unity can delay Fading** | Collective Devotion from fan communities provides protection |
+| **Unity can delay Fading** | Collective Devotion provides protection |
 | **Love transcends categories** | Devotion flows regardless of relationship type |
-| **The Chase is "voluntary"** | See `mechanics/the-chase.md` for the coercion tension |
+| **The Chase is "voluntary"** | See `mechanics/the-chase.md` for coercion tension |
 
-These themes enrich the narrative but do not override the 10 Inviolable Facts.
+These themes support but do not override the 10 Inviolable Facts.
 
 ### Canon Tier Reference
 

@@ -22,9 +22,10 @@
 Stop work and escalate NOW for:
 
 ### Canon Violations
-- Any content contradicting 10 Inviolable Facts
+- Any content contradicting 10 Inviolable Facts (world-defining truths)
 - Sources that conflict with each other
 - Agent outputs creating lore inconsistencies
+- Note: Character/brand details (hair color, currency names) are consistency issues, not P0 violations
 
 ### Crisis Situations
 - Negative community reaction gaining momentum
@@ -67,7 +68,7 @@ Escalate same-day for:
 Escalate within 24-48 hours for:
 
 ### Technical
-- Blockchain/SUI questions
+- Blockchain/Web3 questions
 - Integration problems
 
 ### Financial
