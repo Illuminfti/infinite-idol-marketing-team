@@ -29,7 +29,12 @@
       "description": "Complete gem system documentation with 6 package tiers (1 SUI to 100,000 SUI), base rate 1 SUI = 100 Gems, bonuses from 0% to 30%, account-bound rules preventing transfer/trading, spending rates (69 Gems/level, 420 Gems/pet egg), and dark luxury aesthetic integration.",
       "category": "game-mechanics",
       "discovered_at": "2026-01-09T00:13:29.980344+00:00"
+    },
+    "logs/decisions.md": {
+      "description": "Decision log template with structured format: Decision ID (DEC-XXX), decision types (Strategy/Content/Canon/Technical/Escalation/Process), priority levels (P0-P3), human approval matrix aligned with CLAUDE.md escalation triggers, and superseding decision workflow.",
+      "category": "infrastructure",
+      "discovered_at": "2026-01-09T00:43:44.061828+00:00"
     }
   },
-  "last_updated": "2026-01-09T00:13:29.980354+00:00"
+  "last_updated": "2026-01-09T00:43:44.061841+00:00"
 }
