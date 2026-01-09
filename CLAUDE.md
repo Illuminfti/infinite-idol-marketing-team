@@ -40,7 +40,7 @@
 | 5 | **Senpai's Face Never Revealed** | We (audience) never see Senpai's face. Characters may glimpse it. Mystery preserved. |
 | 6 | **The Foundation Controls the System** | They run the industry—not everything, but the SYSTEM. Resistance exists. |
 | 7 | **The Chase is Survival** | Competition isn't optional. Refusing = Fading. Choice is coerced. |
-| 8 | **Authenticity Generates Power** | Genuine connection > manufactured appeal. Quality > quantity. |
+| 8 | **Fan Service Fuels Devotion** | Beach episodes, shipping moments, costumes, vulnerability—fans reward idols who give them what they crave. Refusing fan service = less Devotion = Fading. It's survival, not vanity. |
 | 9 | **The System Predates Its Masters** | Origins unknown. Existed before Erina, before current Foundation. |
 | 10 | **No One Knows What Catching Senpai Means** | The ultimate mystery. Some say eternal fame. Some say something else. |
 
