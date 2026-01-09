@@ -420,7 +420,7 @@ infinite-idol-marketing-team/
 
 ## Human Escalation Triggers
 
-Agents should escalate to human review (Sheran) in these situations:
+Agents should escalate to human review in these situations:
 
 1. **Canon Conflicts**: Two sources contradict each other
 2. **New Canon**: Adding to the established world requires approval

@@ -20,7 +20,7 @@ Infinite Idol is a dark luxury gacha game where idols are sustained by **Devotio
 
 ## What is This Repository?
 
-This is the **Marketing HQ** — an AI agent-driven content production system. Nine specialized AI agents work together to handle all marketing operations:
+This is the **Marketing HQ** — an AI agent-driven content production system. Ten specialized AI agents work together to handle all marketing operations:
 
 | Agent | Role | Focus |
 |-------|------|-------|
@@ -33,6 +33,7 @@ This is the **Marketing HQ** — an AI agent-driven content production system. N
 | **06 - Asset Coordinator** | Creative Asset Manager | Suno & Midjourney prompts |
 | **07 - Light Novel Writer** | Narrative Specialist | Light novel creation, character voice mastery, story development |
 | **08 - Lore Guardian** | Collaborative Validation | Real-time lore validation, active lore expansion, bidirectional canon updates |
+| **09 - Resident Degen** | Cultural Enforcer | Degeneracy standards, cultural relevance, trend authenticity across crypto/gacha/otaku spaces |
 
 ---
 
@@ -99,6 +100,7 @@ After reading both files, confirm you understand your role and ask what task I'd
 | Asset Coordinator | `agents/06-asset-coordinator.md` |
 | Light Novel Writer | `agents/07-light-novel-writer.md` |
 | Lore Guardian | `agents/08-lore-guardian.md` |
+| Resident Degen | `agents/09-resident-degen.md` |
 
 ### Running Multiple Agents
 
@@ -157,7 +159,7 @@ For complex tasks requiring multiple agents:
 infinite-idol-marketing-team/
 ├── CLAUDE.md                  # Master instructions (agents read this first)
 ├── README.md                  # You are here
-├── agents/                    # 9 AI agent persona definitions
+├── agents/                    # 10 AI agent persona definitions
 ├── knowledge-base/
 │   ├── lore/                 # World, characters, factions, mechanics
 │   ├── light-novels/         # Novel drafts and published volumes
@@ -242,7 +244,7 @@ Agents escalate to human review when encountering:
 
 ## Version
 
-**v2.0.0** — Agent System Expansion (9 agents)
+**v2.1.0** — Cultural Enforcement Update (10 agents)
 
 ---
 
