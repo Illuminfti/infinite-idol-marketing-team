@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Idol - Agent Command Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">II</div>
+                <div class="logo-text">
+                    <span class="logo-title">Infinite Idol</span>
+                    <span class="logo-subtitle">Command Center</span>
+                </div>
+            </div>
+
+            <nav class="nav">
+                <a href="#" class="nav-item active" data-view="dashboard">
+                    <span class="nav-icon">◉</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-view="agents">
+                    <span class="nav-icon">◈</span>
+                    <span>Agents</span>
+                </a>
+                <a href="#" class="nav-item" data-view="content">
+                    <span class="nav-icon">◇</span>
+                    <span>Content Pipeline</span>
+                </a>
+                <a href="#" class="nav-item" data-view="reviews">
+                    <span class="nav-icon">◆</span>
+                    <span>Reviews</span>
+                    <span class="nav-badge" id="review-count">0</span>
+                </a>
+                <a href="#" class="nav-item" data-view="lore">
+                    <span class="nav-icon">◊</span>
+                    <span>Canon & Lore</span>
+                </a>
+                <a href="#" class="nav-item" data-view="logs">
+                    <span class="nav-icon">▤</span>
+                    <span>Activity Logs</span>
+                </a>
+                <a href="#" class="nav-item" data-view="settings">
+                    <span class="nav-icon">⚙</span>
+                    <span>Settings</span>
+                </a>
+            </nav>
+
+            <div class="canon-health">
+                <div class="canon-health-header">
+                    <span>Canon Health</span>
+                    <span class="canon-status healthy" id="canon-status">●</span>
+                </div>
+                <div class="canon-health-bar">
+                    <div class="canon-health-fill" id="canon-health-fill" style="width: 100%"></div>
+                </div>
+                <div class="canon-health-label">All systems nominal</div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Top Bar -->
+            <header class="topbar">
+                <div class="command-bar">
+                    <span class="command-icon">⌘</span>
+                    <input type="text" class="command-input" id="command-input" placeholder="Command an agent... (e.g., 'Agent 02, draft a tweet about the Chase')">
+                </div>
+                <div class="topbar-actions">
+                    <button class="btn-icon" id="refresh-btn" title="Refresh Data">↻</button>
+                    <button class="btn-icon" id="notifications-btn" title="Notifications">
+                        <span>🔔</span>
+                        <span class="notification-dot" id="notification-dot"></span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Action Required Banner -->
+            <div class="action-required" id="action-required" style="display: none;">
+                <div class="action-required-icon">⚠</div>
+                <div class="action-required-text">
+                    <strong id="action-count">0</strong> items require your review
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="showView('reviews')">Review Now</button>
+            </div>
+
+            <!-- Dashboard View -->
+            <div class="view active" id="view-dashboard">
+                <div class="view-header">
+                    <h1>Dashboard</h1>
+                    <span class="view-subtitle">Real-time overview of your AI marketing team</span>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📝</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="stat-content-today">0</div>
+                            <div class="stat-label">Content Today</div>
+                        </div>
+                        <div class="stat-trend up">+12%</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🤖</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="stat-agents-active">9</div>
+                            <div class="stat-label">Agents Active</div>
+                        </div>
+                        <div class="stat-trend neutral">—</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📋</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="stat-pending-review">0</div>
+                            <div class="stat-label">Pending Review</div>
+                        </div>
+                        <div class="stat-trend" id="review-trend">—</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✓</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="stat-canon-compliance">100%</div>
+                            <div class="stat-label">Canon Compliance</div>
+                        </div>
+                        <div class="stat-trend up">✓</div>
+                    </div>
+                </div>
+
+                <!-- Dashboard Grid -->
+                <div class="dashboard-grid">
+                    <!-- Agent Status Panel -->
+                    <div class="panel agent-status-panel">
+                        <div class="panel-header">
+                            <h2>Agent Status</h2>
+                            <button class="btn-text">View All →</button>
+                        </div>
+                        <div class="agent-grid" id="agent-grid">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Activity Feed -->
+                    <div class="panel activity-panel">
+                        <div class="panel-header">
+                            <h2>Live Activity</h2>
+                            <div class="live-indicator">
+                                <span class="live-dot"></span>
+                                <span>Live</span>
+                            </div>
+                        </div>
+                        <div class="activity-feed" id="activity-feed">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="panel quick-actions-panel">
+                        <div class="panel-header">
+                            <h2>Quick Actions</h2>
+                        </div>
+                        <div class="quick-actions">
+                            <button class="quick-action" onclick="quickAction('tweet')">
+                                <span class="qa-icon">🐦</span>
+                                <span>Draft Tweet</span>
+                            </button>
+                            <button class="quick-action" onclick="quickAction('thread')">
+                                <span class="qa-icon">🧵</span>
+                                <span>Create Thread</span>
+                            </button>
+                            <button class="quick-action" onclick="quickAction('lore')">
+                                <span class="qa-icon">📖</span>
+                                <span>Lore Check</span>
+                            </button>
+                            <button class="quick-action" onclick="quickAction('calendar')">
+                                <span class="qa-icon">📅</span>
+                                <span>View Calendar</span>
+                            </button>
+                            <button class="quick-action" onclick="quickAction('banner')">
+                                <span class="qa-icon">🎨</span>
+                                <span>Banner Design</span>
+                            </button>
+                            <button class="quick-action" onclick="quickAction('report')">
+                                <span class="qa-icon">📊</span>
+                                <span>Weekly Report</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Content Pipeline Preview -->
+                    <div class="panel pipeline-preview-panel">
+                        <div class="panel-header">
+                            <h2>Content Pipeline</h2>
+                            <button class="btn-text" onclick="showView('content')">Full View →</button>
+                        </div>
+                        <div class="pipeline-mini">
+                            <div class="pipeline-stage">
+                                <div class="pipeline-stage-header">
+                                    <span>Draft</span>
+                                    <span class="pipeline-count" id="pipeline-draft">0</span>
+                                </div>
+                            </div>
+                            <div class="pipeline-arrow">→</div>
+                            <div class="pipeline-stage">
+                                <div class="pipeline-stage-header">
+                                    <span>Review</span>
+                                    <span class="pipeline-count" id="pipeline-review">0</span>
+                                </div>
+                            </div>
+                            <div class="pipeline-arrow">→</div>
+                            <div class="pipeline-stage">
+                                <div class="pipeline-stage-header">
+                                    <span>Scheduled</span>
+                                    <span class="pipeline-count" id="pipeline-scheduled">0</span>
+                                </div>
+                            </div>
+                            <div class="pipeline-arrow">→</div>
+                            <div class="pipeline-stage">
+                                <div class="pipeline-stage-header">
+                                    <span>Published</span>
+                                    <span class="pipeline-count" id="pipeline-published">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Agents View -->
+            <div class="view" id="view-agents">
+                <div class="view-header">
+                    <h1>Agent Control</h1>
+                    <span class="view-subtitle">Monitor and direct your AI marketing team</span>
+                </div>
+                <div class="agents-container" id="agents-container">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Content Pipeline View -->
+            <div class="view" id="view-content">
+                <div class="view-header">
+                    <h1>Content Pipeline</h1>
+                    <span class="view-subtitle">Track content from creation to publication</span>
+                </div>
+                <div class="kanban-board" id="kanban-board">
+                    <div class="kanban-column" data-stage="draft">
+                        <div class="kanban-header">
+                            <h3>Draft</h3>
+                            <span class="kanban-count">0</span>
+                        </div>
+                        <div class="kanban-cards" id="kanban-draft"></div>
+                    </div>
+                    <div class="kanban-column" data-stage="review">
+                        <div class="kanban-header">
+                            <h3>Review</h3>
+                            <span class="kanban-count">0</span>
+                        </div>
+                        <div class="kanban-cards" id="kanban-review"></div>
+                    </div>
+                    <div class="kanban-column" data-stage="scheduled">
+                        <div class="kanban-header">
+                            <h3>Scheduled</h3>
+                            <span class="kanban-count">0</span>
+                        </div>
+                        <div class="kanban-cards" id="kanban-scheduled"></div>
+                    </div>
+                    <div class="kanban-column" data-stage="published">
+                        <div class="kanban-header">
+                            <h3>Published</h3>
+                            <span class="kanban-count">0</span>
+                        </div>
+                        <div class="kanban-cards" id="kanban-published"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reviews View -->
+            <div class="view" id="view-reviews">
+                <div class="view-header">
+                    <h1>Pending Reviews</h1>
+                    <span class="view-subtitle">Items requiring your approval</span>
+                </div>
+                <div class="reviews-container" id="reviews-container">
+                    <div class="empty-state" id="no-reviews">
+                        <div class="empty-icon">✓</div>
+                        <h3>All caught up!</h3>
+                        <p>No items require your review at this time.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lore View -->
+            <div class="view" id="view-lore">
+                <div class="view-header">
+                    <h1>Canon & Lore</h1>
+                    <span class="view-subtitle">The 10 Inviolable Facts and world reference</span>
+                </div>
+                <div class="lore-container">
+                    <div class="inviolable-facts">
+                        <h2>The 10 Inviolable Facts</h2>
+                        <p class="lore-warning">These facts are ABSOLUTE. They cannot be contradicted under ANY circumstances.</p>
+                        <div class="facts-grid" id="facts-grid">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                    <div class="lore-sections">
+                        <div class="lore-section">
+                            <h3>Characters</h3>
+                            <div class="lore-links" id="character-links"></div>
+                        </div>
+                        <div class="lore-section">
+                            <h3>World</h3>
+                            <div class="lore-links" id="world-links"></div>
+                        </div>
+                        <div class="lore-section">
+                            <h3>Mechanics</h3>
+                            <div class="lore-links" id="mechanics-links"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logs View -->
+            <div class="view" id="view-logs">
+                <div class="view-header">
+                    <h1>Activity Logs</h1>
+                    <span class="view-subtitle">Complete history of agent actions and decisions</span>
+                </div>
+                <div class="logs-controls">
+                    <select class="log-filter" id="log-agent-filter">
+                        <option value="all">All Agents</option>
+                        <option value="00">00 - Coordinator</option>
+                        <option value="01">01 - Lore Architect</option>
+                        <option value="02">02 - Content Strategist</option>
+                        <option value="03">03 - Community Manager</option>
+                        <option value="04">04 - Gacha Designer</option>
+                        <option value="05">05 - Analytics Observer</option>
+                        <option value="06">06 - Asset Coordinator</option>
+                        <option value="07">07 - Light Novel Writer</option>
+                        <option value="08">08 - Lore Guardian</option>
+                    </select>
+                    <select class="log-filter" id="log-type-filter">
+                        <option value="all">All Types</option>
+                        <option value="action">Actions</option>
+                        <option value="decision">Decisions</option>
+                        <option value="escalation">Escalations</option>
+                    </select>
+                </div>
+                <div class="logs-container" id="logs-container">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Settings View -->
+            <div class="view" id="view-settings">
+                <div class="view-header">
+                    <h1>Settings</h1>
+                    <span class="view-subtitle">Configure your command center</span>
+                </div>
+                <div class="settings-container">
+                    <div class="settings-section">
+                        <h3>Notifications</h3>
+                        <label class="setting-toggle">
+                            <input type="checkbox" id="setting-sound" checked>
+                            <span>Sound alerts for P0 items</span>
+                        </label>
+                        <label class="setting-toggle">
+                            <input type="checkbox" id="setting-desktop" checked>
+                            <span>Desktop notifications</span>
+                        </label>
+                    </div>
+                    <div class="settings-section">
+                        <h3>Display</h3>
+                        <label class="setting-toggle">
+                            <input type="checkbox" id="setting-dark" checked>
+                            <span>Dark mode</span>
+                        </label>
+                        <label class="setting-toggle">
+                            <input type="checkbox" id="setting-compact">
+                            <span>Compact view</span>
+                        </label>
+                    </div>
+                    <div class="settings-section">
+                        <h3>Data</h3>
+                        <button class="btn btn-secondary" onclick="loadRepoData()">Reload Repository Data</button>
+                        <button class="btn btn-secondary" onclick="exportLogs()">Export Activity Logs</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal" id="modal">
+            <div class="modal-header">
+                <h2 id="modal-title">Modal Title</h2>
+                <button class="modal-close" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Dynamic content -->
+            </div>
+            <div class="modal-footer" id="modal-footer">
+                <!-- Dynamic buttons -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Agent Chat Drawer -->
+    <div class="drawer" id="agent-drawer">
+        <div class="drawer-header">
+            <h3 id="drawer-agent-name">Agent 00 - Coordinator</h3>
+            <button class="drawer-close" onclick="closeDrawer()">×</button>
+        </div>
+        <div class="drawer-body">
+            <div class="chat-messages" id="chat-messages"></div>
+            <div class="chat-input-container">
+                <input type="text" class="chat-input" id="chat-input" placeholder="Send a message to this agent...">
+                <button class="btn btn-primary" onclick="sendAgentMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
