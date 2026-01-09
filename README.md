@@ -36,7 +36,7 @@ python dashboard/tui_app.py
 
 ### Architecture
 
-10 specialized AI agents coordinated through a task queue system:
+19 specialized AI agents coordinated through a task queue system:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -51,14 +51,26 @@ python dashboard/tui_app.py
          │     ├─ DS (Degen Score) rating system
          │     └─ "Is this based?" final authority
          │
-         ├──> Agent 01: Lore Architect (Canon Management)
-         ├──> Agent 02: Content Strategist (Social Media)
-         ├──> Agent 03: Community Manager (Discord/Engagement)
-         ├──> Agent 04: Gacha Designer (Seasonal Content)
-         ├──> Agent 05: Analytics Observer (Metrics)
-         ├──> Agent 06: Asset Coordinator (Creative Assets)
-         ├──> Agent 07: Light Novel Writer (Narrative)
-         └──> Agent 08: Lore Guardian (Real-time Validation)
+         ├──> Core Marketing Agents (01-08)
+         │     ├─ Agent 01: Lore Architect (Canon Management)
+         │     ├─ Agent 02: Content Strategist (Social Media)
+         │     ├─ Agent 03: Community Manager (Discord/Engagement)
+         │     ├─ Agent 04: Gacha Designer (Seasonal Content)
+         │     ├─ Agent 05: Analytics Observer (Metrics)
+         │     ├─ Agent 06: Asset Coordinator (Creative Assets)
+         │     ├─ Agent 07: Light Novel Writer (Narrative)
+         │     └─ Agent 08: Lore Guardian (Real-time Validation)
+         │
+         └──> Specialized Agents (10-18)
+               ├─ Agent 10: The Infiltrator (Community Intel)
+               ├─ Agent 11: The Meme Lord (Viral Engineering)
+               ├─ Agent 12: Conversion Architect (Funnel Optimization)
+               ├─ Agent 13: The Ambassador (Partnerships)
+               ├─ Agent 14: The Shield (Crisis Management)
+               ├─ Agent 15: Simp Whisperer (Fan Service PM)
+               ├─ Agent 16: The NEET (Community Tools)
+               ├─ Agent 17: The Architect (Agent System Meta)
+               └─ Agent 18: The Hypeman (KOL/Influencer)
 ```
 
 ### Content Review Pipeline
@@ -101,7 +113,7 @@ infinite-idol-marketing-team/
 ├── CHANGELOG.md                 # Version history
 ├── CHANGELOG-DETAILED.md        # Complete mainnet history
 │
-├── agents/                      # 10 AI agent persona files
+├── agents/                      # 19 AI agent persona files
 │   ├── 00-coordinator.md
 │   ├── 01-lore-architect.md
 │   ├── 02-content-strategist.md
@@ -111,12 +123,36 @@ infinite-idol-marketing-team/
 │   ├── 06-asset-coordinator.md
 │   ├── 07-light-novel-writer.md
 │   ├── 08-lore-guardian.md
-│   └── 09-resident-degen.md
+│   ├── 09-resident-degen.md
+│   ├── 10-the-infiltrator.md
+│   ├── 11-the-meme-lord.md
+│   ├── 12-conversion-architect.md
+│   ├── 13-the-ambassador.md
+│   ├── 14-the-shield.md
+│   ├── 15-simp-whisperer.md
+│   ├── 16-the-neet.md
+│   ├── 17-the-architect.md
+│   └── 18-the-hypeman.md
 │
 ├── automation/                  # Task queue & orchestration
 │   ├── orchestrator.sh          # Main automation script
 │   ├── task-queue.md            # Centralized task tracking
 │   └── session-init.md          # Agent startup protocol
+│
+├── skills/                      # Modular workflow skills (13 skills)
+│   ├── canon-validation.md      # Lore validation workflow
+│   ├── content-creation.md      # Social content workflow
+│   ├── cultural-review.md       # Degen authenticity check
+│   ├── character-voices.md      # Character dialogue guide
+│   ├── escalation.md            # When/how to escalate
+│   ├── templates.md             # Standard output formats
+│   ├── permissions.md           # File access reference
+│   ├── agent-evaluation.md      # Agent performance review
+│   ├── community-intel.md       # Community intelligence gathering
+│   ├── crisis-management.md     # Crisis response protocols
+│   ├── inter-agent-handoff.md   # Explicit handoff protocols
+│   ├── kol-influencer.md        # Influencer management
+│   └── README.md                # Skills system documentation
 │
 ├── dashboard/                   # Agent Command Center
 │   ├── tui_app.py               # Terminal UI entry point (PRIMARY)
