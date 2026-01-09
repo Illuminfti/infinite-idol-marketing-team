@@ -38,7 +38,7 @@ When making a significant decision, add an entry using the template below. Place
 - **Affected Agents**: [List of agents impacted]
 - **Timeline**: [When does this take effect?]
 
-**Human Approval**: [Required | Not Required | Approved by Sheran on DATE]
+**Human Approval**: [Required | Not Required | Approved on DATE]
 
 ---
 ```

@@ -416,7 +416,7 @@ Escalate to Coordinator when:
 
 ## Escalation Triggers
 
-Escalate to human review (Sheran) for:
+Escalate to human review for:
 
 ### Immediate Escalation (P0)
 
