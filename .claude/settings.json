@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat automation/session-init.md 2>/dev/null || echo 'Session initialized'"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Reminder: Check file permissions in CLAUDE.md before writing'"
+          }
+        ]
+      }
+    ]
+  }
+}
