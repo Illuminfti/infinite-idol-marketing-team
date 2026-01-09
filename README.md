@@ -4,7 +4,7 @@
 
 **An autonomous AI agent system for marketing content production.**
 
-Built for [Infinite Idol](https://infiniteidol.com) — a Web3 gacha game on the SUI blockchain where idols fight for survival through fan devotion.
+Built for [Infinite Idol](https://infiniteidol.com) — a Web3 gacha game built on SUI blockchain (NFTs, contracts, core logic) with multi-chain payment support (ETH/Base, Solana). Idols fight for survival through fan devotion.
 
 ---
 
@@ -128,7 +128,14 @@ infinite-idol-marketing-team/
 ├── knowledge-base/              # World, game, brand documentation
 │   ├── lore/                    # Characters, world, mechanics
 │   ├── light-novels/            # Novel volumes
-│   ├── game-mechanics/          # Pre-reg, gacha, gems, battle pass
+│   ├── game-mechanics/          # Unified marketing + technical docs
+│   │   ├── README.md            # Master index, quick reference
+│   │   ├── gacha-system.md      # 5-tier rarity, pity system
+│   │   ├── cosmetics.md         # 5-tier cosmetics, asset merging
+│   │   ├── gem-system.md        # Multi-chain payments, referrals
+│   │   ├── battle-pass.md       # DKG integration, daily check-in
+│   │   ├── pre-registration-spec.md  # Comprehensive overview
+│   │   └── technical-reference/ # Developer deep-dives (9 docs)
 │   ├── brand/                   # Voice, visuals, audience
 │   └── crypto/                  # SUI integration, tokenomics
 │

@@ -17,7 +17,7 @@
 
 ## Project Overview
 
-**Infinite Idol** is a Web3 gacha game on **SUI** blockchain. Idols compete in "The Chase" pursuing Senpai. Powered by **Devotion** (fan energy) - without it, idols **Fade** (cease to exist).
+**Infinite Idol** is a Web3 gacha game built on **SUI** blockchain (NFTs, contracts, core logic) with multi-chain payment support (ETH/Base, Solana treasuries). Idols compete in "The Chase" pursuing Senpai. Powered by **Devotion** (fan energy) - without it, idols **Fade** (cease to exist).
 
 ### Brand Pillars
 - **Dark Luxury**: Black/gold premium aesthetic, NOT pink/cutesy
@@ -40,7 +40,7 @@
 | 5 | **Senpai Never Shown** | Always obscured, face never revealed |
 | 6 | **Foundation Controls All** | Run by Erina, controls industry |
 | 7 | **The Chase is Core** | Primary competition, determines survival |
-| 8 | **Built on SUI** | SUI blockchain only |
+| 8 | **Built on SUI** | Sui-native blockchain (NFTs, contracts, game logic). Multi-chain payment support via ETH/Base and Solana treasuries. |
 | 9 | **Gems = Currency** | 1 SUI = 100 Gems, account-bound |
 | 10 | **Dark Luxury Aesthetic** | Black/gold, NOT pink/cutesy |
 

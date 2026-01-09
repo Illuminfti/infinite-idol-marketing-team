@@ -116,21 +116,26 @@ This index maps **content types** to **required reading** so agents know exactly
 ### Creating Gacha/Banner Content
 
 **MUST READ**:
-- `/knowledge-base/game-mechanics/gacha-system.md` - Gacha mechanics, rates
-- `/knowledge-base/game-mechanics/gem-system.md` - Currency system
+- `/knowledge-base/game-mechanics/README.md` - Quick reference for all systems
+- `/knowledge-base/game-mechanics/gacha-system.md` - 5-tier rarity system, pity mechanics
+- `/knowledge-base/game-mechanics/gem-system.md` - Currency + multi-chain payments
+- `/knowledge-base/game-mechanics/cosmetics.md` - 5-tier cosmetics, asset merging
 - `/knowledge-base/brand/visual-identity.md` - Dark luxury aesthetic
 - `/knowledge-base/crypto/sui-integration.md` - SUI blockchain facts
 
 **SHOULD READ**:
-- `/knowledge-base/game-mechanics/cosmetics.md` - Cosmetics system
+- `/knowledge-base/game-mechanics/battle-pass.md` - Battle Pass system, DKG integration
 - `/knowledge-base/brand/voice-and-tone.md` - Banner announcement tone
+- `/knowledge-base/game-mechanics/technical-reference/` - Deep technical specs (for dev questions)
 
 **OPTIONAL**:
 - `/knowledge-base/brand/competitors.md` - Competitor analysis
 
 **Key Facts to Check**:
+- ✅ 5-tier rarity system: Common(0)/Uncommon(1)/Epic(2)/Mythic(3)/Limited(4)
+- ✅ Pity system: Transparent, guaranteed rewards at thresholds
 - ✅ 1 SUI = 100 Gems (Inviolable Fact #9)
-- ✅ Built on SUI blockchain (Inviolable Fact #8)
+- ✅ Built on SUI - Sui-native with multi-chain payment support (Fact #8)
 - ✅ Dark luxury, not pink cutesy (Inviolable Fact #10)
 
 ---
@@ -336,13 +341,17 @@ This index maps **content types** to **required reading** so agents know exactly
 
 ### Agent 04 (Gacha Designer)
 **Always Read**:
-- `/knowledge-base/game-mechanics/gacha-system.md` - Gacha mechanics
-- `/knowledge-base/game-mechanics/gem-system.md` - Economy
+- `/knowledge-base/game-mechanics/README.md` - Systems quick reference
+- `/knowledge-base/game-mechanics/gacha-system.md` - 5-tier rarity, pity system
+- `/knowledge-base/game-mechanics/cosmetics.md` - 5-tier cosmetics, asset merging
+- `/knowledge-base/game-mechanics/gem-system.md` - Multi-chain economy
+- `/knowledge-base/game-mechanics/battle-pass.md` - Battle Pass, DKG integration
 - `/knowledge-base/brand/visual-identity.md` - Visual specs
 
 **Per Task**:
 - Character profiles for banner characters
 - `/knowledge-base/crypto/sui-integration.md` - For on-chain elements
+- `/knowledge-base/game-mechanics/technical-reference/` - Deep technical specs when needed
 
 ---
 
@@ -408,7 +417,7 @@ This index maps **content types** to **required reading** so agents know exactly
 **Character Appearance Details** → `/knowledge-base/lore/characters/[name].md`
 **Character Voice Guidelines** → `/knowledge-base/lore/characters/[name].md` + `/skills/character-voices.md`
 **World Mechanics** → `/knowledge-base/lore/mechanics/[mechanic].md`
-**Game Mechanics** → `/knowledge-base/game-mechanics/[system].md`
+**Game Mechanics** → `/knowledge-base/game-mechanics/README.md` (quick ref) or `/knowledge-base/game-mechanics/[system].md`
 **Brand Voice** → `/knowledge-base/brand/voice-and-tone.md`
 **Visual Specs** → `/knowledge-base/brand/visual-identity.md`
 **DS Scale** → `/knowledge-base/brand/voice-and-tone.md` or `/skills/cultural-review.md`
@@ -438,10 +447,22 @@ knowledge-base/
 │   ├── volume-1-awakening.md
 │   └── volume-2-the-fall.md
 ├── game-mechanics/
-│   ├── gacha-system.md
-│   ├── gem-system.md
-│   ├── battle-pass.md
-│   └── cosmetics.md
+│   ├── README.md (master index, quick reference)
+│   ├── gacha-system.md (5-tier rarity, pity system)
+│   ├── gem-system.md (multi-chain payments, referrals)
+│   ├── battle-pass.md (DKG integration, daily check-in)
+│   ├── cosmetics.md (5-tier system, asset merging)
+│   ├── pre-registration-spec.md (comprehensive system overview)
+│   └── technical-reference/ (developer deep-dives)
+│       ├── README.md
+│       ├── ARCHITECTURE.md
+│       ├── BACKEND.md
+│       ├── FRONTEND.md
+│       ├── UNITY.md
+│       ├── ADMIN.md
+│       ├── SUI_CONTRACTS.md
+│       ├── ETHEREUM_CONTRACTS.md
+│       └── SOLANA_CONTRACTS.md
 ├── brand/
 │   ├── voice-and-tone.md
 │   ├── visual-identity.md

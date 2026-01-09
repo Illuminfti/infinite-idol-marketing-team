@@ -439,6 +439,424 @@ The Battle Pass system mirrors the idol system in the narrative:
 
 ---
 
+## Cross-Chain Wallet System (DKG Integration)
+
+The Battle Pass is directly tied to **dWallet** (Distributed Wallet) generation for cross-chain capabilities:
+
+### DKG Requirement for Progression
+
+**Key Milestone**: Reaching certain progression levels **requires** DKG wallet generation:
+
+| Trigger | Requirement | Purpose |
+|---------|-------------|---------|
+| **Level 50** | DKG wallet generation | Unlock cross-chain features |
+| **Level 100** | DKG wallet active | Silver tier access |
+| **Level 1,000** | Presign capability enabled | Advanced features |
+
+**Why Tie to Battle Pass:**
+- **Progressive onboarding**: Users don't need DKG immediately
+- **Value demonstration**: Users understand what they're getting before DKG
+- **Security awareness**: Time to learn about distributed keys before using them
+- **Feature gating**: Advanced features require cross-chain capabilities
+
+### DKG Generation Flow
+
+**When Level 50 is Reached:**
+
+1. **Frontend Notification**: "Unlock cross-chain capabilities! Generate your dWallet"
+2. **User Initiates DKG**: Click "Generate dWallet" button
+3. **Backend Submission**: Submit DKG operation to Sui smart contract
+4. **IKA Network Processing**: Distributed key generation across network nodes
+5. **dWallet Address Created**: New Sui address generated (no exposed private key)
+6. **Battle Pass Updated**: `dWallet_address` field populated
+7. **Progression Unlocked**: Can now level past 50
+
+**Without DKG**: Users are **soft-locked** at level 50 until they generate dWallet.
+
+### dWallet Features Unlocked
+
+| Feature | Level Requirement | DKG Status | Capability |
+|---------|-------------------|------------|------------|
+| **Basic Progression** | 1-49 | Not required | Level up, earn lootboxes |
+| **Cross-Chain Features** | 50+ | Required | Multi-chain signing |
+| **Advanced Gameplay** | 100+ | Required + Active | Future gameplay mechanics |
+| **Presign Operations** | 1,000+ | Presign enabled | High-frequency transactions |
+
+### Technical Integration
+
+**Battle Pass NFT Field:**
+```move
+public struct BattlePass has key, store {
+    id: UID,
+    level: u64,
+    dWallet_address: Option<address>,  // Populated after DKG
+    dWallet_generated_at: Option<u64>, // Timestamp
+    // ... other fields
+}
+```
+
+**Level-Up Check:**
+```move
+public fun level_up(pass: &mut BattlePass) {
+    if (pass.level >= 50 && option::is_none(&pass.dWallet_address)) {
+        abort E_DKG_REQUIRED  // Cannot level past 50 without DKG
+    }
+    pass.level = pass.level + 1;
+}
+```
+
+**Database Tracking:**
+```typescript
+User {
+  id: UUID,
+  battlePassId: UUID,
+  dWalletAddress: String?,
+  dWalletGeneratedAt: DateTime?,
+  dWalletStatus: "NOT_GENERATED" | "PENDING" | "COMPLETED" | "FAILED",
+}
+
+DWalletGeneration {
+  id: UUID,
+  userId: UUID,
+  battlePassLevel: Int,       // Level when DKG initiated
+  status: String,
+  dWalletAddress: String?,
+  ikaTxHash: String?,         // IKA network transaction
+  createdAt: DateTime,
+  completedAt: DateTime?,
+}
+```
+
+### User Experience
+
+**Level 49 → 50 Transition:**
+- **Before DKG**: "Level up to 50! (dWallet generation required)"
+- **Button State**: "Generate dWallet" (highlighted, glowing)
+- **After Click**: Processing animation (30-60 seconds typical)
+- **On Success**: "dWallet generated! Cross-chain features unlocked!"
+- **Level 50 Complete**: Continue normal progression
+
+**Messaging:**
+> *"You've reached level 50. Your Devotion has earned you cross-chain capabilities. Generate your distributed wallet to continue The Chase across all blockchains."*
+
+---
+
+## Daily Check-In Integration
+
+The Battle Pass tracks daily check-in streaks, directly impacting progression and rewards:
+
+### Daily Check-In Mechanics
+
+**Core Concept**: Sign a message daily to prove you're actively engaged.
+
+| Action | Requirement | Reward |
+|--------|-------------|--------|
+| **Daily Check-In** | Sign message with wallet | Base 10 gems |
+| **Streak Milestone** | Consecutive days | Bonus gems + lootboxes |
+| **Perfect Month** | 30-day streak | Golden Lootbox |
+| **100-Day Streak** | 100 consecutive days | Diamond Lootbox |
+
+### Streak Tracking
+
+**Battle Pass Fields:**
+```move
+public struct BattlePass has key, store {
+    // ... existing fields
+    streak_current: u32,        // Current consecutive check-ins
+    streak_best: u32,           // All-time best streak
+    last_checkin: u64,          // Timestamp of last check-in
+    total_checkins: u64,        // Lifetime check-ins
+}
+```
+
+**Streak Rules:**
+- **Check-in Window**: 24 hours from last check-in
+- **Grace Period**: None (miss a day = streak resets to 0)
+- **Max Streak**: Unlimited
+- **Retroactive**: Cannot claim missed days
+- **Time Zone**: Based on UTC midnight
+
+### Gem Rewards by Streak
+
+| Streak Length | Daily Gems | Bonus | Milestone Reward |
+|---------------|------------|-------|------------------|
+| 1-6 days | 10 | - | - |
+| 7 days | 10 | +20 | 7-day streak badge |
+| 8-13 days | 12 | - | - |
+| 14 days | 12 | +50 | Standard Lootbox |
+| 15-29 days | 15 | - | - |
+| 30 days | 15 | +100 | Golden Lootbox |
+| 31-99 days | 20 | - | - |
+| 100 days | 20 | +500 | Diamond Lootbox |
+| 101-364 days | 25 | - | - |
+| 365 days | 25 | +1,000 | Anniversary Exclusive |
+
+**Monthly Maximum (Perfect 30-day streak):**
+- Base gems: 30 days × 15 avg = ~450 gems
+- Milestones: 7-day (20) + 14-day (50) + 30-day (100) = 170 gems
+- Potential pet egg: 420 gems from 30-day lootbox
+- **Total: ~1,150 gems/month** (with perfect attendance)
+
+### Message Signing Verification
+
+**Check-In Flow:**
+
+1. **User Clicks "Check In"**: Frontend displays daily prompt
+2. **Wallet Signature Request**: User signs message with wallet
+   - Message: `"Infinite Idol Daily Check-In: [timestamp] [user_id]"`
+3. **Backend Verification**:
+   - Verify signature matches wallet
+   - Verify timestamp is within check-in window
+   - Verify not already checked in today
+4. **Streak Update**:
+   - If within 24 hours: `streak_current += 1`
+   - If missed window: `streak_current = 1` (reset)
+   - If new best: `streak_best = streak_current`
+5. **Reward Credit**:
+   - Base gems awarded
+   - Milestone bonus if applicable
+   - Lootbox minted if milestone
+6. **Battle Pass Update**: On-chain update to streak fields
+
+**Security:**
+- Signature prevents botting (must control wallet)
+- Timestamp prevents replay attacks
+- Server-side verification prevents manipulation
+- Battle Pass on-chain record is source of truth
+
+### Streak Reset Scenarios
+
+| Scenario | Streak Behavior |
+|----------|-----------------|
+| **Miss 1 Day** | Reset to 0, start fresh next check-in |
+| **Trade Battle Pass** | Streak resets to 0 (new owner starts fresh) |
+| **Check In Twice Same Day** | Rejected, no reward |
+| **Network Downtime** | Manual admin restoration (rare) |
+
+### Database Schema
+
+**DailyCheckIn Table:**
+```sql
+DailyCheckIn {
+  id: UUID,
+  userId: UUID,
+  battlePassId: UUID,
+  checkinDate: Date,
+  timestamp: DateTime,
+  signature: String,          // Wallet signature
+  streakLength: Int,          // Streak at time of check-in
+  gemsAwarded: Int,
+  bonusGemsAwarded: Int,
+  lootboxAwarded: Boolean,
+  createdAt: DateTime,
+}
+```
+
+**Battle Pass Streak Summary:**
+```sql
+BattlePassStreak {
+  battlePassId: UUID,
+  currentStreak: Int,
+  bestStreak: Int,
+  lastCheckinDate: Date,
+  totalCheckins: Int,
+  longestStreakStartDate: Date,
+  longestStreakEndDate: Date,
+}
+```
+
+### Milestone Notifications
+
+**In-App Notifications:**
+- **3-day streak**: "Keep it going! 🔥"
+- **7-day streak**: "One week strong! +20 bonus gems"
+- **14-day streak**: "Two weeks of Devotion! Standard Lootbox earned"
+- **30-day streak**: "Perfect month! Golden Lootbox unlocked 🎁"
+- **100-day streak**: "LEGENDARY. Diamond Lootbox + Cosmic respect"
+
+**Community Celebrations:**
+- First user to 365-day streak: Major community announcement
+- Monthly perfect streak leaderboard
+- Streak recovery tips after reset
+
+### Visual Indicators
+
+**Battle Pass Display:**
+- **Flame Icon**: Shows current streak (e.g., "🔥 47 days")
+- **Best Streak Badge**: Displayed prominently (e.g., "Best: 182 days")
+- **Next Milestone**: Progress bar (e.g., "23/30 days to Golden Lootbox")
+- **Check-In Reminder**: Pulsing notification if not checked in today
+
+---
+
+## Technical Implementation
+
+### Battle Pass NFT Structure (Sui Move)
+
+```move
+public struct BattlePass has key, store {
+    id: UID,
+
+    // Core Progression
+    level: u64,                    // Current level (0-999,999)
+
+    // Investment Tracking
+    total_sui_spent: u64,          // Lifetime SUI purchases
+    gems_earned_free: u64,         // Gems from check-ins
+    gems_purchased: u64,           // Gems from SUI
+
+    // Streak Data
+    streak_current: u32,           // Current consecutive check-ins
+    streak_best: u32,              // All-time best streak
+    last_checkin: u64,             // Timestamp of last check-in
+    total_checkins: u64,           // Lifetime check-ins
+
+    // Cross-Chain Integration
+    dWallet_address: Option<address>,  // Generated dWallet (level 50+)
+    dWallet_generated_at: Option<u64>, // DKG timestamp
+
+    // Metadata
+    mint_timestamp: u64,           // When pass was created
+    season: u32,                   // Season number at mint
+    original_owner: address,       // First owner
+    times_traded: u32,             // Trade count
+
+    // Flexible Attributes
+    attributes: VecMap<String, String>,  // Additional metadata
+}
+```
+
+### Smart Contract Functions
+
+**Level Up:**
+```move
+public entry fun level_up(
+    pass: &mut BattlePass,
+    gems: Coin<GEM>,              // Must be exactly 69 gems
+    clock: &Clock,
+    ctx: &TxContext,
+) {
+    // Verify DKG requirement at level 50
+    if (pass.level >= 50 && option::is_none(&pass.dWallet_address)) {
+        abort E_DKG_REQUIRED
+    }
+
+    // Verify gem amount
+    assert!(coin::value(&gems) == 69, E_INSUFFICIENT_GEMS);
+
+    // Increment level
+    pass.level = pass.level + 1;
+
+    // Burn gems
+    coin::destroy_zero(gems);
+
+    // Emit event
+    event::emit(LevelUp { pass_id: object::id(pass), new_level: pass.level });
+}
+```
+
+**Daily Check-In:**
+```move
+public entry fun check_in(
+    pass: &mut BattlePass,
+    clock: &Clock,
+    ctx: &TxContext,
+) {
+    let current_time = clock::timestamp_ms(clock);
+    let last_check = pass.last_checkin;
+
+    // Verify 24-hour cooldown
+    assert!(current_time >= last_check + 86_400_000, E_CHECKIN_COOLDOWN);
+
+    // Check if streak continues (within 24-48 hour window)
+    if (current_time <= last_check + 172_800_000) {
+        pass.streak_current = pass.streak_current + 1;
+    } else {
+        pass.streak_current = 1;  // Reset streak
+    };
+
+    // Update best streak
+    if (pass.streak_current > pass.streak_best) {
+        pass.streak_best = pass.streak_current;
+    };
+
+    // Update counters
+    pass.last_checkin = current_time;
+    pass.total_checkins = pass.total_checkins + 1;
+
+    // Emit event (backend handles gem reward)
+    event::emit(CheckIn {
+        pass_id: object::id(pass),
+        streak: pass.streak_current,
+        timestamp: current_time,
+    });
+}
+```
+
+**Link dWallet:**
+```move
+public entry fun link_dwallet(
+    pass: &mut BattlePass,
+    dwallet_address: address,
+    admin_cap: &AdminCap,  // Only admin can link after DKG
+) {
+    assert!(option::is_none(&pass.dWallet_address), E_DWALLET_ALREADY_LINKED);
+    pass.dWallet_address = option::some(dwallet_address);
+    pass.dWallet_generated_at = option::some(clock::timestamp_ms(clock));
+}
+```
+
+### Backend API Endpoints
+
+**User Endpoints:**
+- `POST /battlepass/levelup` - Level up (costs 69 gems)
+- `POST /battlepass/checkin` - Daily check-in (sign message)
+- `GET /battlepass/:id` - Get Battle Pass data
+- `GET /battlepass/streak` - Get current streak info
+- `POST /dwallet/generate` - Initiate DKG generation
+
+**Admin Endpoints:**
+- `POST /admin/battlepass/mint` - Manual mint (emergency)
+- `POST /admin/battlepass/reset-streak` - Reset streak (support)
+- `POST /admin/dwallet/link` - Link generated dWallet to pass
+- `GET /admin/streaks/leaderboard` - View top streaks
+
+### Database Tracking
+
+**BattlePass Table (Off-Chain Mirror):**
+```sql
+BattlePass {
+  id: UUID,
+  userId: UUID,
+  tokenId: BigInt,           // On-chain NFT ID
+  level: Int,
+  visualTier: String,        // Bronze/Silver/Gold/Platinum/Diamond/Cosmic
+
+  streakCurrent: Int,
+  streakBest: Int,
+  lastCheckinDate: Date,
+  totalCheckins: Int,
+
+  dWalletAddress: String?,
+  dWalletGeneratedAt: DateTime?,
+
+  totalSuiSpent: Decimal,
+  gemsEarnedFree: Int,
+  gemsPurchased: Int,
+
+  mintTimestamp: DateTime,
+  season: Int,
+  originalOwner: String,
+  currentOwner: String,
+  timesTraded: Int,
+
+  createdAt: DateTime,
+  updatedAt: DateTime,
+}
+```
+
+---
+
 ## Error Handling
 
 | Error | Cause | Resolution |
@@ -452,20 +870,29 @@ The Battle Pass system mirrors the idol system in the narrative:
 
 ---
 
-## Cross-References
+## Technical Reference
 
-### Immediate Dependencies
+For developers and deep technical implementation details:
 
-- **Gem System**: Gems → Level ups → Tier progression
-- **Daily Check-In**: Streak data stored in Battle Pass
-- **Leveling System**: Levels tracked in Battle Pass NFT
+**Smart Contracts:**
+- [SUI_CONTRACTS.md](./technical-reference/SUI_CONTRACTS.md) - Move contracts, BattlePass NFT struct, level-up functions, check-in logic
+- [BACKEND.md](./technical-reference/BACKEND.md) - REST API endpoints, database schema, streak tracking, DKG integration
 
-### Related Documentation
+**Architecture:**
+- [ARCHITECTURE.md](./technical-reference/ARCHITECTURE.md) - System architecture, dWallet integration flows, data synchronization
 
-- See `knowledge-base/game-mechanics/pre-registration-spec.md` for system overview
-- See `knowledge-base/game-mechanics/gem-system.md` for currency that funds levels
-- See `knowledge-base/game-mechanics/gacha-system.md` for lootbox rewards from leveling
-- See `knowledge-base/game-mechanics/cosmetics.md` for items earned through progression
+---
+
+## Related Documentation
+
+### Core Systems
+- [gem-system.md](./gem-system.md) - Currency that funds leveling, dWallet payment integration
+- [gacha-system.md](./gacha-system.md) - Lootbox rewards from leveling milestones
+- [cosmetics.md](./cosmetics.md) - Items earned through progression
+- [cross-chain-architecture.md](./cross-chain-architecture.md) - dWallet deep-dive, DKG process
+- [pre-registration-spec.md](./pre-registration-spec.md) - Complete system overview
+
+### Additional Context
 - See `knowledge-base/crypto/sui-integration.md` for NFT implementation details
 - See `knowledge-base/lore/mechanics/devotion-system.md` for narrative parallel
 

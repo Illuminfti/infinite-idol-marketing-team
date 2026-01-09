@@ -1,6 +1,6 @@
 # GACHA SYSTEM - Complete Lootbox Mechanics
 
-> *"Every box you open is another roll in The Chase. The odds are published. The thrill is real. And somewhere in that 3%... your Legendary awaits."*
+> *"Every box you open is another roll in The Chase. The odds are published. The thrill is real. And we guarantee you'll get rare rewards. That's not pity—that's promise."*
 > — Ika Minami, Lootbox Tutorial
 
 ---
@@ -15,25 +15,27 @@ This system is designed around transparent odds, time-gated content releases, an
 
 ## Rarity Tiers
 
-All lootbox contents follow a unified rarity system:
+All lootbox contents follow a unified 5-tier rarity system:
 
-| Rarity | Drop Chance | Visual Treatment | Description |
-|--------|-------------|------------------|-------------|
-| **Common** | 60% | Silver border, subtle shimmer | Basic designs, foundational pieces |
-| **Rare** | 25% | Gold border, gentle glow | Enhanced details, refined aesthetics |
-| **Ultra Rare** | 12% | Purple border, particle effects | Special effects, unique patterns |
-| **Legendary** | 3% | Black + gold flames, full animation | Premium exclusive designs, ultimate prestige |
+| Tier | Rarity | Numeric | Drop Chance | Visual Treatment | Description |
+|------|--------|---------|-------------|------------------|-------------|
+| 0 | **Common** | 0 | 55% | Silver border, subtle shimmer | Basic designs, foundational pieces |
+| 1 | **Uncommon** | 1 | 25% | Bronze border, warm glow | Enhanced details, refined aesthetics |
+| 2 | **Epic** | 2 | 13% | Purple border, particle effects | Special effects, unique patterns |
+| 3 | **Mythic** | 3 | 6% | Gold + black flames, animated | Rare exclusive designs, high prestige |
+| 4 | **Limited** | 4 | 1% | Black + gold explosion, full animation | Ultra-premium exclusive designs, ultimate prestige |
 
 ### Rarity Philosophy
 
-The 60/25/12/3 distribution is intentional:
+The 55/25/13/6/1 distribution is intentional:
 
 | Rarity | Purpose | Player Psychology |
 |--------|---------|-------------------|
-| Common (60%) | Collection building | Satisfying progress, completionism fuel |
-| Rare (25%) | Excitement spikes | "Better than common!" dopamine |
-| Ultra Rare (12%) | Goal creation | Pursuit targets, collection prestige |
-| Legendary (3%) | Dream pulls | Ultimate chase goal, flex material |
+| Common (55%) | Collection building | Satisfying progress, completionism fuel |
+| Uncommon (25%) | Excitement spikes | "Better than common!" dopamine |
+| Epic (13%) | Goal creation | Pursuit targets, collection prestige |
+| Mythic (6%) | Premium pulls | Rare chase goal, strong flex material |
+| Limited (1%) | Dream pulls | Ultimate chase goal, maximum prestige |
 
 ---
 
@@ -57,28 +59,30 @@ Each family contains 6 complete outfit sets × 6 pieces = 36 items per family.
 
 Higher-tier lootboxes with improved odds:
 
-| Box Type | Source | Improved Odds | Special Features |
-|----------|--------|---------------|------------------|
-| **Golden Lootbox** | 1,000-level milestones, 30-day streaks | 2× Legendary chance (6%) | Any family cosmetics |
-| **Diamond Lootbox** | 10,000-level milestones, Prestige Burn (40,000) | 3× Legendary chance (9%) | Any family + exclusive items |
+| Box Type | Category | Source | Improved Odds | Special Features |
+|----------|----------|--------|---------------|------------------|
+| **Golden Lootbox** | 1 | 1,000-level milestones, 30-day streaks | Boosted Mythic/Limited rates | Any family cosmetics |
+| **Diamond Lootbox** | 2 | 10,000-level milestones, Prestige Burn (40,000) | Heavily boosted rare rates | Any family + exclusive items |
 
 ### Golden Lootbox Odds
 
 | Rarity | Standard Chance | Golden Chance |
 |--------|-----------------|---------------|
-| Common | 60% | 45% |
-| Rare | 25% | 30% |
-| Ultra Rare | 12% | 19% |
-| Legendary | 3% | 6% |
+| Common | 55% | 35% |
+| Uncommon | 25% | 28% |
+| Epic | 13% | 20% |
+| Mythic | 6% | 14% |
+| Limited | 1% | 3% |
 
 ### Diamond Lootbox Odds
 
 | Rarity | Standard Chance | Diamond Chance |
 |--------|-----------------|----------------|
-| Common | 60% | 30% |
-| Rare | 25% | 35% |
-| Ultra Rare | 12% | 26% |
-| Legendary | 3% | 9% |
+| Common | 55% | 20% |
+| Uncommon | 25% | 25% |
+| Epic | 13% | 25% |
+| Mythic | 6% | 22% |
+| Limited | 1% | 8% |
 
 ---
 
@@ -178,9 +182,10 @@ Lootbox Opening Flow:
 | Rarity | Animation | Sound | Screen Effect |
 |--------|-----------|-------|---------------|
 | Common | Quick silver burst | Subtle chime | Minimal |
-| Rare | Gold particle spiral | Triumphant sting | Golden rim glow |
-| Ultra Rare | Purple beam + particles | Dramatic fanfare | Screen shake |
-| Legendary | Black fire + gold explosion | Epic orchestral | Full screen takeover |
+| Uncommon | Bronze glow + spark | Warm sting | Bronze rim glow |
+| Epic | Purple beam + particles | Dramatic fanfare | Screen shake |
+| Mythic | Gold + black flames | Epic orchestral | Intense glow + shake |
+| Limited | Black fire + gold explosion | Ultimate orchestral climax | Full screen takeover |
 
 ---
 
@@ -237,16 +242,33 @@ All lootbox outcomes use provably fair randomness:
 | Historical Rates | Aggregatable from chain | Always |
 | Server Seed (revealed) | Post-opening publication | After result |
 
-### No Pity System
+### Pity/Mercy System
 
-Infinite Idol uses **pure randomness** with no pity timer:
+Infinite Idol implements a **transparent pity system** to guarantee rare rewards:
 
-- Every pull has exactly the published odds
-- No guaranteed drops after X pulls
-- No soft pity or hard pity mechanics
-- Pure gacha experience
+**How It Works:**
+- Every lootbox opening increments your pity counter for that category
+- Admin-configurable thresholds trigger guaranteed rewards
+- Example: Opening 50 Regular boxes without an Epic guarantees an Epic on the 50th
+- Pity counters are tracked per user, per lootbox category
+- Counter resets when you receive the guaranteed reward
 
-> *This aligns with the narrative: The Chase is never guaranteed. Senpai cannot be caught through persistence alone.*
+**Player Benefits:**
+- **Guaranteed Progress**: Never stuck with only common drops forever
+- **Transparent Thresholds**: You know when your guaranteed reward is coming
+- **Per-Category Tracking**: Each lootbox type (Regular/Golden/Diamond/Pet) has independent counters
+- **Fair Chase**: Combines luck with guaranteed milestones
+
+**Example Thresholds** (admin-configurable):
+| Lootbox Category | Guaranteed Reward | Opens Required |
+|------------------|-------------------|----------------|
+| Regular Box | Epic (Tier 2) | 50 |
+| Regular Box | Mythic (Tier 3) | 150 |
+| Golden Box | Mythic (Tier 3) | 75 |
+| Diamond Box | Limited (Tier 4) | 50 |
+
+> *"The Chase is unpredictable, but we don't let you run forever empty-handed. That's the difference between cruel chance and exciting pursuit."*
+> — Ika Minami on the pity system
 
 ---
 
@@ -340,36 +362,201 @@ The lootbox system is designed for seasonal content updates:
 
 ## Technical Implementation
 
-### Lootbox NFT Structure
+### Lootbox Categories (Numeric System)
+
+Lootboxes use numeric categories in the smart contract:
+
+| Category | Numeric Value | Player-Facing Name | Description |
+|----------|---------------|-------------------|-------------|
+| 0 | `category: 0` | Regular Box (A/B/C/D/E) | Standard family-specific lootboxes |
+| 1 | `category: 1` | Golden Lootbox | Premium with boosted rates |
+| 2 | `category: 2` | Diamond Lootbox | Ultra-premium with best rates |
+| 3 | `category: 3` | Pet Egg | Pet-specific lootbox |
+
+**Family Boxes (Category 0):**
+- Internally use attributes to distinguish A/B/C/D/E families
+- All category 0, differentiated by metadata
+- Cycle through families in level rewards
+
+### Lootbox NFT Structure (Sui Move)
+
+```move
+public struct Lootbox has key, store {
+    id: UID,
+    category: u8,              // 0-3 (Regular/Golden/Diamond/Pet)
+    attributes: VecMap<String, String>,  // Family, season, etc.
+    token_id: u64,             // Unique lootbox ID
+}
+```
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `box_type` | String | A/B/C/D/E/Golden/Diamond |
-| `family` | String | Cosmetic family (standard boxes) |
-| `unlock_timestamp` | u64 | When box can be opened |
-| `season` | u32 | Season number |
-| `mintable_rarities` | Array | Possible rarity outcomes |
-| `is_opened` | bool | Always false (burned on open) |
+| `category` | u8 | Numeric category (0-3) |
+| `attributes` | VecMap | Metadata (family, unlock time, season) |
+| `token_id` | u64 | Unique identifier |
 
-### Opening Transaction
+### Rarity System (Numeric Values)
 
-| Step | Action | Gas Cost |
-|------|--------|----------|
-| 1 | Verify box ownership | Minimal |
-| 2 | Check unlock time | Minimal |
-| 3 | Generate randomness | Moderate |
-| 4 | Burn lootbox NFT | Minimal |
-| 5 | Mint item NFT | Moderate |
-| 6 | Record result on-chain | Minimal |
+Smart contract uses numeric rarity values:
+
+| Rarity Name | Numeric Value | Contract Representation |
+|-------------|---------------|------------------------|
+| Common | 0 | `rarity: 0` |
+| Uncommon | 1 | `rarity: 1` |
+| Epic | 2 | `rarity: 2` |
+| Mythic | 3 | `rarity: 3` |
+| Limited | 4 | `rarity: 4` |
+
+### Blockchain Random Generation
+
+Lootbox opening uses **Sui Random** for provably fair outcomes:
+
+```move
+entry fun open_lootbox(
+    self: &mut State,
+    av: &AV,
+    lootbox: Lootbox,
+    random: &Random,          // Sui's on-chain randomness source
+    clock: &Clock,
+    ctx: &mut TxContext,
+)
+```
+
+**Randomness Components:**
+- **Sui Random Object**: Blockchain-native random source (no off-chain manipulation)
+- **Clock**: Timestamp for additional entropy
+- **Transaction Context**: User signature + gas + sender address
+
+**Process Flow:**
+1. Extract category from lootbox (0-3)
+2. Increment user's pity counter for this category
+3. Check if pity threshold reached → guarantee rare drop
+4. If no pity trigger: Query Sui Random for rarity selection
+5. Select random item ID from chosen rarity pool
+6. Mint Asset NFT with selected item + rarity
+7. Burn Lootbox NFT
+8. Transfer Asset to user
+
+### Pity System Implementation
+
+**Database Tracking:**
+```typescript
+// Per-user, per-category pity counters
+PityCounter {
+  userId: string,
+  lootboxCategory: number,  // 0-3
+  opensSinceEpic: number,
+  opensSinceMythic: number,
+  opensSinceLimited: number,
+}
+```
+
+**Smart Contract Logic:**
+1. `open_lootbox()` increments pity counter before random roll
+2. Check thresholds:
+   - If `opensSinceEpic >= EPIC_THRESHOLD` → guarantee Epic (rarity 2)
+   - If `opensSinceMythic >= MYTHIC_THRESHOLD` → guarantee Mythic (rarity 3)
+   - If `opensSinceLimited >= LIMITED_THRESHOLD` → guarantee Limited (rarity 4)
+3. On guaranteed drop: Reset appropriate counter(s)
+4. On natural rare drop: Reset counter for that tier + lower tiers
+
+**Admin Configuration:**
+```move
+public struct PitySystem has store {
+    thresholds: VecMap<u8, VecMap<u8, u64>>,
+    // thresholds[category][rarity] = opens_required
+}
+```
+
+Admins can adjust thresholds per category per rarity:
+- `thresholds[0][2] = 50` → Regular boxes guarantee Epic at 50 opens
+- `thresholds[1][3] = 75` → Golden boxes guarantee Mythic at 75 opens
+
+### Opening Transaction Flow
+
+| Step | Action | Smart Contract Function | Gas Cost |
+|------|--------|-------------------------|----------|
+| 1 | Verify box ownership | `ctx.sender()` check | Minimal |
+| 2 | Check unlock time | Compare `clock.timestamp()` vs attributes | Minimal |
+| 3 | Increment pity counter | `pity_system.increment()` | Minimal |
+| 4 | Check pity thresholds | `pity_system.check_threshold()` | Minimal |
+| 5 | Generate randomness | `random.generate_u8()` | Moderate |
+| 6 | Select item from pool | `id_manager.get_random_item()` | Minimal |
+| 7 | Burn lootbox NFT | `object::delete(lootbox.id)` | Minimal |
+| 8 | Mint item NFT | `asset::mint()` | Moderate |
+| 9 | Record pity reset | `pity_system.reset()` if threshold hit | Minimal |
+| 10 | Transfer asset to user | `transfer::public_transfer()` | Minimal |
+
+### Asset Output Structure
+
+```move
+public struct Asset has key, store {
+    id: UID,
+    token_id: u64,           // Unique asset ID
+    metadata: Metadata,       // Item details
+    upgrade_level: u8,        // 0 (base), 1 (+), 2 (++)
+}
+
+public struct Metadata has copy, drop, store {
+    id: ID,                   // Item definition ID
+    slot: u8,                 // 0=Set, 1=Accessory, 9=Pet
+    name: String,
+    rarity: u8,               // 0-4
+    attributes: VecMap<String, String>,
+}
+```
 
 ### Error Handling
 
 | Error | Cause | Resolution |
 |-------|-------|------------|
-| `BOX_LOCKED` | Opening before unlock date | Wait for unlock |
-| `NOT_OWNER` | Opening box not in wallet | Verify ownership |
-| `ALREADY_OPENED` | Attempting to open twice | N/A (impossible) |
-| `NETWORK_ERROR` | Connection lost | Retry logic |
+| `BOX_LOCKED` | Opening before unlock timestamp | Wait for unlock time |
+| `NOT_OWNER` | Opening box not in wallet | Verify ownership via wallet connect |
+| `INVALID_CATEGORY` | Category not 0-3 | Contact support (shouldn't happen) |
+| `EMPTY_ITEM_POOL` | No items available for rarity | Admin must register items |
+| `NETWORK_ERROR` | Connection lost | Retry transaction |
+
+### Database Schema
+
+**Lootbox Table:**
+```sql
+Lootbox {
+  id: UUID,
+  userId: UUID,
+  category: Int,          // 0-3
+  family: String?,        // For category 0 only
+  unlockTimestamp: DateTime,
+  season: Int,
+  createdAt: DateTime,
+}
+```
+
+**Pity Tracking Table:**
+```sql
+PityCounter {
+  id: UUID,
+  userId: UUID,
+  lootboxCategory: Int,   // 0-3
+  opensSinceEpic: Int,
+  opensSinceMythic: Int,
+  opensSinceLimited: Int,
+  lastOpened: DateTime,
+}
+```
+
+### Admin Operations
+
+**Smart Contract Functions:**
+- `admin_set_pity_threshold(category: u8, rarity: u8, threshold: u64)` - Configure pity
+- `admin_register_item(rarity: u8, slot: u8, metadata: Metadata)` - Add new items
+- `admin_disable_item(item_id: ID)` - Remove from drop pool
+- `admin_set_lootbox_config(category: u8, rarity_weights: vector<u64>)` - Adjust drop rates
+- `admin_mint_lootbox(user: address, category: u8)` - Direct lootbox grant
+
+**Backend API Endpoints:**
+- `POST /admin/lootbox/mint` - Mint lootbox to user
+- `GET /admin/pity/status/:userId` - View user's pity counters
+- `POST /admin/pity/reset/:userId/:category` - Reset pity counter (emergency)
 
 ---
 
@@ -449,27 +636,35 @@ The gacha experience maintains brand identity:
 
 ---
 
-## Cross-References
+## Technical Reference
 
-### Immediate Dependencies
+For developers and deep technical implementation details:
 
-- **Leveling System**: Levels → Lootboxes
-- **Gem System**: Gems → Levels → Lootboxes
-- **Item System**: Lootboxes → Cosmetics
-- **Burn System**: Duplicates → New Lootboxes
+**Smart Contracts:**
+- [SUI_CONTRACTS.md](./technical-reference/SUI_CONTRACTS.md) - Move contracts, lootbox/asset structs, pity system, admin functions
+- [BACKEND.md](./technical-reference/BACKEND.md) - REST API endpoints, database schema, pity tracking
 
-### Related Documentation
-
-- See `knowledge-base/game-mechanics/pre-registration-spec.md` for system overview
-- See `knowledge-base/game-mechanics/gem-system.md` for currency that funds levels
-- See `knowledge-base/game-mechanics/battle-pass.md` for level tracking NFT
-- See `knowledge-base/game-mechanics/cosmetics.md` for items obtained from lootboxes
-- See `knowledge-base/crypto/sui-integration.md` for NFT implementation
-- See `knowledge-base/lore/mechanics/the-chase.md` for narrative parallel
+**Architecture:**
+- [ARCHITECTURE.md](./technical-reference/ARCHITECTURE.md) - System architecture, data flows, randomness implementation
 
 ---
 
-*"3%. That's the Legendary chance. Some call it cruel. I call it honest. Every idol on the Eternal Stage knows the odds are against them. We chase anyway. That's what makes the catch worth everything."*
+## Related Documentation
+
+### Core Systems
+- [cosmetics.md](./cosmetics.md) - Items obtained from lootboxes, asset details
+- [gem-system.md](./gem-system.md) - Currency that funds leveling → lootboxes
+- [battle-pass.md](./battle-pass.md) - Level tracking NFT, progression system
+- [pre-registration-spec.md](./pre-registration-spec.md) - Complete system overview
+
+### Additional Context
+- See `knowledge-base/crypto/sui-integration.md` for blockchain NFT implementation
+- See `knowledge-base/lore/mechanics/the-chase.md` for narrative parallel
+- See `knowledge-base/brand/dark-luxury-guide.md` for aesthetic guidelines
+
+---
+
+*"1%. That's the Limited chance. Some would call it impossible. But we also promise you'll never run empty-handed—the pity system guarantees progress. The Chase has rules now. Fair rules. That's what makes the pursuit worth everything."*
 
 — Ika Minami
 

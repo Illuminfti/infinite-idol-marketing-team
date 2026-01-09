@@ -448,6 +448,196 @@ All pre-registration mechanics are built SUI-native, with no dependencies on oth
 
 ---
 
+## Avatar Customization System (Unity WebGL)
+
+### Interactive 3D Experience
+
+The Unity WebGL game provides real-time avatar customization and photo mode:
+
+**Core Features:**
+- **Photo Mode**: Position camera, play animations, capture moments
+- **Equipment Management**: Equip/unequip cosmetics across 9 slots (Set/Accessory/Pet)
+- **Collection Viewing**: Browse owned items with filtering (rarity, set, slot)
+- **Screenshot/Video Capture**: Export photos and short videos of your idol
+- **React-Unity Bridge**: Real-time synchronization with web app via MessagePack
+- **Local Wardrobe**: Save favorite outfit combinations
+
+**Technical Stack:**
+- Unity 2022+ WebGL build
+- MessagePack binary serialization for fast data transfer
+- React frontend communication bridge
+- Asset streaming from CDN
+- Local storage for wardrobe saves
+
+**User Flow:**
+1. User equips item in web app inventory
+2. MessagePack message sent to Unity: `{ action: "EQUIP", slot: 1, itemId: "xyz" }`
+3. Unity loads asset from CDN and applies to avatar
+4. User enters photo mode, positions camera
+5. Screenshot captured, exported as PNG
+
+> *For complete Unity integration details, see `technical-reference/UNITY.md`*
+
+---
+
+## Admin Dashboard
+
+### Operational Control Center
+
+Admins manage all game systems through a comprehensive dashboard:
+
+### Asset Management
+- **Register New Items**: Add cosmetics, pets to loot pools
+- **Disable Items**: Remove from drops (existing NFTs unaffected)
+- **Update Metadata**: Change names, descriptions, visual URIs
+- **View Registry**: Browse all 864+ items and their stats
+
+### Lootbox Configuration
+- **Drop Rate Adjustment**: Set rarity percentages per box type
+- **Enable/Disable Boxes**: Control which boxes are obtainable
+- **Pity Threshold Config**: Set guaranteed drop milestones (e.g., "Epic at 50 opens")
+- **Manual Lootbox Grant**: Award boxes directly to users
+
+### DKG/Cross-Chain Operations
+- **Initiate DKG**: Manually trigger dWallet generation for users
+- **Monitor DKG Status**: Track pending/completed generations
+- **View dWallet Addresses**: See generated addresses per user
+- **Execute Cross-Chain Signs**: Admin signing operations (emergency)
+
+### Direct Minting
+- **Mint Assets**: Grant specific items directly to users
+- **Mint Lootboxes**: Award boxes without leveling
+- **Mint Battle Pass**: Emergency pass creation
+- **Bulk Operations**: CSV upload for mass grants
+
+### Treasury Management
+- **View Balances**: See SUI/ETH/SOL treasury totals
+- **Withdraw Funds**: Transfer accumulated payments to team wallet
+- **Payment History**: View all user purchases
+- **Refund Processing**: Manual gem credit (support cases)
+
+### User Management
+- **Search Users**: Find by wallet, email, level
+- **View Profile**: Complete user stats, assets, progression
+- **Adjust Gem Balance**: Manual credit/debit (emergency)
+- **Reset Streak**: Restore streaks after downtime
+- **Ban/Unban**: Suspend accounts for TOS violations
+
+> *For complete admin API specs, see `technical-reference/ADMIN.md`*
+
+---
+
+## Security & Authentication
+
+### Multi-Layer Protection
+
+**Authentication Flow:**
+1. **Wallet Connect**: User connects Sui wallet (via @mysten/dapp-kit)
+2. **Challenge Generation**: Backend creates unique message to sign
+3. **Signature Verification**: User signs with wallet, backend verifies
+4. **JWT Issuance**: 15-minute access token + 7-day refresh token issued
+5. **Authenticated Requests**: All API calls include JWT in header
+
+**Session Management:**
+- **Access Token**: 15-minute expiration (short-lived)
+- **Refresh Token**: 7-day expiration (httpOnly cookie)
+- **Token Rotation**: Refresh tokens rotate on use
+- **Concurrent Sessions**: Allowed (multi-device support)
+
+**IKA dWallet Security:**
+- **No Exposed Keys**: Private keys distributed across IKA network nodes
+- **MPC Signing**: No single node can sign alone
+- **User Control**: Only user can initiate signing requests
+- **Gas Pool Sponsorship**: Prevents fund theft (sponsored transactions)
+- **Presign Validation**: Pre-generated signatures validated before use
+
+**Smart Contract Security:**
+- **Role-Based Access**: User vs Admin capabilities enforced on-chain
+- **ReentrancyGuard**: ETH/Solana contracts protected
+- **Rent-Exemption**: Solana accounts protected from rent collection
+- **Admin Multi-Sig**: Critical functions require multiple admins
+- **Upgrade Versioning**: Contracts versioned, old versions disabled
+
+**API Security:**
+- **Rate Limiting**: 100 requests/minute per IP
+- **CORS Protection**: Whitelisted origins only
+- **SQL Injection Prevention**: Parameterized queries (Prisma ORM)
+- **XSS Protection**: Input sanitization, CSP headers
+- **Signature Verification**: All blockchain operations verified
+
+> *For complete security architecture, see `technical-reference/ARCHITECTURE.md`*
+
+---
+
+## Database Architecture
+
+### Entity Overview
+
+**Core Entities:**
+
+| Entity | Purpose | Key Fields |
+|--------|---------|------------|
+| **User** | Account profile | id, walletAddress, gemBalance, level, referralCode, dWalletAddress |
+| **Wallet** | Multi-chain wallets | id, userId, blockchain, address, presignCapable |
+| **DWalletGeneration** | DKG tracking | id, userId, status, dWalletAddress, ikaTxHash |
+| **Operation** | Async operations | id, type (DKG/SIGN/ISSUE/MINT), status, result |
+| **Asset** | NFT cosmetics | id, userId, tokenId, itemId, slot, rarity, upgradeLevel |
+| **Lootbox** | Unopened boxes | id, userId, category, family, unlockTimestamp |
+| **DailyCheckIn** | Check-in log | id, userId, date, streakLength, gemsAwarded |
+| **Payment** | Purchase history | id, userId, blockchain, txHash, suiEquivalent, gemsAwarded |
+| **Referral** | Referral tracking | id, referrerId, refereeId, referralCode, bonusGems |
+| **BattlePass** | Off-chain mirror | id, userId, tokenId, level, streakCurrent, dWalletAddress |
+
+**Relationships:**
+```
+User (1) ←→ (many) Asset
+User (1) ←→ (many) Lootbox
+User (1) ←→ (many) Wallet
+User (1) ←→ (1) BattlePass
+User (1) ←→ (many) DailyCheckIn
+User (1) ←→ (many) Payment
+User (referrer) (1) ←→ (many) Referral
+User (referee) (1) ←→ (1) Referral
+```
+
+**Database Technology:**
+- **PostgreSQL**: Primary database
+- **Prisma ORM**: Type-safe database access
+- **Connection Pooling**: PgBouncer for performance
+- **Replication**: Read replicas for analytics
+- **Backup**: Daily automated backups
+
+> *For complete database schema, see `technical-reference/BACKEND.md`*
+
+---
+
+## Multi-Chain Payment Support
+
+### Play on Sui, Pay How You Want
+
+While all game assets exist on Sui, payments support multiple blockchains:
+
+| Chain | Currency | Treasury | Use Case |
+|-------|----------|----------|----------|
+| **Sui** | SUI | Sui Treasury | Native primary payment |
+| **Ethereum** | ETH | ETH Treasury (Solidity) | Ethereum mainnet users |
+| **Base** | ETH | Base Treasury (Solidity) | L2 for lower fees |
+| **Solana** | SOL | SOL Treasury (Anchor) | Solana ecosystem users |
+
+**Payment Flow:**
+1. User selects gem package + blockchain to pay with
+2. Backend fetches real-time exchange rate (e.g., ETH/SUI)
+3. User sends payment to respective treasury contract
+4. Backend indexes payment event
+5. Gems credited to user's Sui account
+6. User can immediately spend gems on Sui game
+
+**Key Point**: Multi-chain is **payment-only**. All NFTs, lootboxes, and game logic remain Sui-native.
+
+> *For complete multi-chain architecture, see `gem-system.md` and `technical-reference/ETHEREUM_CONTRACTS.md`, `technical-reference/SOLANA_CONTRACTS.md`*
+
+---
+
 ## Dark Luxury Aesthetic
 
 The pre-registration system maintains the Infinite Idol brand identity:
@@ -473,23 +663,39 @@ This system adheres to all 10 Canon Rules:
 5. **Senpai is Always Obscured**: N/A (pre-reg focus)
 6. **The Foundation Controls Everything**: System parallels Foundation control
 7. **The Chase is Core**: Lootbox cycling mimics Chase pursuit
-8. **Built on SUI**: Fully SUI-native
+8. **Built on SUI**: Sui-native (NFTs, contracts, game logic). Multi-chain payment support (ETH/Base/SOL treasuries)
 9. **Gems are Primary Currency**: The core of everything
 10. **Dark Luxury Aesthetic**: Throughout all UI/UX
 
 ---
 
-## Cross-References
+## Technical Reference
 
-For detailed documentation on individual systems:
+For developers and deep technical implementation details:
 
-- `knowledge-base/game-mechanics/gem-system.md` - Complete GEM SYSTEM and package details
-- `knowledge-base/game-mechanics/gacha-system.md` - Lootbox types, odds, and cycling
-- `knowledge-base/game-mechanics/battle-pass.md` - NFT progression and tier details
-- `knowledge-base/game-mechanics/cosmetics.md` - Item slots, sets, and rarities
+**Smart Contracts:**
+- [SUI_CONTRACTS.md](./technical-reference/SUI_CONTRACTS.md) - Complete Sui Move contracts
+- [ETHEREUM_CONTRACTS.md](./technical-reference/ETHEREUM_CONTRACTS.md) - ETH/Base treasury
+- [SOLANA_CONTRACTS.md](./technical-reference/SOLANA_CONTRACTS.md) - Solana treasury
+- [BACKEND.md](./technical-reference/BACKEND.md) - REST API, database, event indexing
+- [FRONTEND.md](./technical-reference/FRONTEND.md) - Next.js, React Query, wallet integration
+- [UNITY.md](./technical-reference/UNITY.md) - WebGL avatar game, MessagePack bridge
+- [ADMIN.md](./technical-reference/ADMIN.md) - Admin dashboard operations
+- [ARCHITECTURE.md](./technical-reference/ARCHITECTURE.md) - Complete system architecture
 
-For related systems:
+---
 
+## Related Documentation
+
+### Core Game Systems
+- [gem-system.md](./gem-system.md) - Complete currency system, multi-chain payments, referrals
+- [gacha-system.md](./gacha-system.md) - Lootbox mechanics, 5-tier rarities, pity system
+- [battle-pass.md](./battle-pass.md) - NFT progression, DKG integration, daily check-in
+- [cosmetics.md](./cosmetics.md) - 864 items, asset merging, NFT trading
+- [avatar-customization.md](./avatar-customization.md) - Unity WebGL integration (coming soon)
+- [cross-chain-architecture.md](./cross-chain-architecture.md) - Multi-chain deep-dive (coming soon)
+
+### Additional Context
 - `knowledge-base/lore/mechanics/devotion-system.md` - Narrative parallel to gems
 - `knowledge-base/crypto/sui-integration.md` - Blockchain implementation details
 - `knowledge-base/crypto/tokenomics.md` - Complete economic model

@@ -1051,7 +1051,9 @@ This calibrates how we reference crypto risk-taking in content. If you're genuin
 - "Calculated chaos. I do research but still call it degenerate because it sounds cooler."
 - "Reformed degen. I've been rugged enough times to be cautious but miss the thrill."
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** "True degen. I've aped into coins based on ticker name alone."
+
+**Note:** While operator has true degen energy in crypto, the brand focus is otaku/gacha degen culture, NOT crypto CT. Minimize web3/crypto references in game content - see NFT stance calibration for critical context.
 
 ---
 
@@ -1071,7 +1073,17 @@ Rank these CT (Crypto Twitter) cultural markers by how much they resonate with y
 **Why This Matters:**
 Different people find different CT markers cringe vs based. If you're fully immersed, we use the slang freely. If certain things make you roll your eyes, we avoid or subvert them.
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:**
+- "gm/gn" culture: Use ironically, fine but not constantly
+- "WAGMI/NGMI": Avoid/played out
+- "LFG": Use occasionally for big moments only
+- Ratio culture/QT dunks: Love it, CT blood sport
+- "Ser" speak: Use ironically/sparingly
+- Thread culture: Love threads, best format for long-form
+- PFP tribalism: Love it, tribes are real
+- "Few understand"/"IYKYK": Love it, insider culture is based
+
+**Operator Energy:** Mix of based CT elements (threads, ratio culture, PFP tribes, IYKYK gatekeeping) with awareness that some terms are played out (WAGMI/NGMI). Use CT culture selectively.
 
 ---
 
@@ -1089,7 +1101,9 @@ Also: How dated can a reference be before it's embarrassing? (DOGE is eternal? S
 **Why This Matters:**
 Crypto moves fast. We need to know if we can reference specific trending tokens or if we should keep it generic to avoid aging badly.
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** Mix of all depending on context (specific coins, categories, generic culture references). However, operator notes crypto token references are "kinda gay now" (dated/cringe).
+
+**Critical Context:** Remember the NFT/web3 stance below - we minimize crypto references in game content. This calibration is for IF we reference crypto, but default is to not reference it much.
 
 ---
 
@@ -1108,7 +1122,18 @@ Where do you stand on NFT culture in 2024+? Choose all that apply:
 **Why This Matters:**
 Infinite Idol is built on SUI with NFT game assets. We need to know how to frame this - leaning in proudly, being self-deprecating about it, or treating it as utility-only and downplaying the NFT angle.
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** "NFTs are cringe but we own it" stance selected, BUT operator provided critical clarification:
+
+**🚨 CRITICAL BRAND DIRECTIVE 🚨**
+**"I would NOT reference anything web3 when it comes to the game - it's meant to be more otaku fanservice and we kinda pretend crypto doesn't exist."**
+
+**Enforcement Standard:**
+- Game content, character dialogue, lore, social media posts about the GAME itself = **ZERO web3/NFT/blockchain references**
+- Focus is **otaku culture, gacha mechanics, waifus, anime tropes, fan service**
+- The game happens to be on blockchain but we **do not market it as a "web3 game"**
+- If crypto/NFT references appear in game content drafts → **REJECT with this calibration as justification**
+- Technical announcements about SUI infrastructure = acceptable in official dev channels only
+- This is THE defining brand decision: **Infinite Idol is an otaku/gacha game, not a crypto game**
 
 ---
 
@@ -1124,7 +1149,7 @@ How do we handle the dark side of crypto culture? When someone gets rugged, scam
 **Why This Matters:**
 Crypto has real financial stakes and real victims. We need to calibrate how irreverent we can be about losses and bad plays without being genuinely callous.
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** Not calibrated in detail (crypto not primary focus). Default: Avoid engaging with crypto drama/rugs given brand directive to minimize web3 references.
 
 ---
 
@@ -1143,7 +1168,7 @@ Also: Are there specific chains/ecosystems we should never attack? Any we can fr
 **Why This Matters:**
 Chain tribalism is real on CT. We need to know if we're playing that game and how hard.
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** Not calibrated in detail (crypto not primary focus). Default: Mention SUI only for technical/infrastructure announcements, not as brand identity. Remember: we're an otaku/gacha game that happens to be on SUI, not a "SUI ecosystem game."
 
 ---
 
@@ -1163,7 +1188,7 @@ Rate these hypothetical Infinite Idol tweets on the "would you approve this" sca
 **Why This Matters:**
 This directly calibrates what CT-style content passes muster and what gets rejected.
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** All four tweets would be REJECTED or heavily revised per the brand directive. Tweet B and D reference "web3 game" and "blockchain" explicitly - violates the "pretend crypto doesn't exist" rule. Even Tweet C's "blockchain" reference, while self-aware, still centers crypto in the messaging. **Remember: Infinite Idol marketing focuses on otaku/gacha/waifus, NOT crypto/web3 positioning.**
 
 ---
 
@@ -1188,7 +1213,7 @@ Gacha games live and die by their whale community, but the F2P base creates the 
 - "F2P purist but I respect the hustle. Roast whales affectionately - they can take it."
 - "Dolphin lifestyle. Balance content but never apologize for premium stuff existing."
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** Not explicitly calibrated, but based on overall brand direction: Balance whale and F2P content but **never apologize for premium/monetization**. Shameless about being a gacha game. Whales get exclusive perks (see Scenario 9 - push even more exclusive). Content should acknowledge both audiences - whales fund the game, F2P create the culture.
 
 ---
 
@@ -1210,7 +1235,7 @@ Pull culture is the beating heart of gacha. We need to know if our content shoul
 - "I know it's all RNG but the rituals are half the fun. Reference them!"
 - "Pull reactions are top-tier content. We should encourage sharing pull results."
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** Not explicitly calibrated, but based on aggressive meme/content strategy: **Lean into pull culture hard**. Summoning circles, rituals, pull reactions are all content opportunities. Based on "push hard to create memes" and "adopt quickly" calibrations - pull culture should be embraced and amplified. Encourage sharing results (both wins and salt).
 
 ---
 
@@ -1232,7 +1257,7 @@ Banner strategy is where gacha gets controversial. Some players love the game of
 - "Self-aware humor about banner bait, but don't mock people who fall for it."
 - "Frame FOMO positively - it's not pressure, it's exclusivity."
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** Not explicitly calibrated, but based on "shameless is the brand" and "never apologize" directives: **Be shameless about banner bait**. We know it's bait, they know it's bait, embrace the game. Frame FOMO as exclusivity. Per "freely joke about gacha game" calibration - we can be self-aware about monetization tactics while still executing them confidently.
 
 ---
 
@@ -1254,7 +1279,7 @@ Your gacha references and quality bar are calibrated by your experience. Knowing
 - "Never be like [specific game] - predatory without the payoff."
 - "Genshin's pity system is the gold standard. Copy it."
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** Not explicitly calibrated. Agent 09 should defer to game design team (Agent 04) for gacha pedigree and mechanics decisions, as this is outside cultural enforcement scope.
 
 ---
 
@@ -1271,7 +1296,7 @@ Pity/spark systems are the safety net of gacha. What's your philosophy?
 **Why This Matters:**
 Pity is where gacha design shows its true colors. This calibrates how we talk about our own pity system and what level of player protection we should celebrate.
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** Not explicitly calibrated for mechanics. For marketing/messaging: Be transparent about pity (per Scenario 11 - use pity as competitive advantage when competitors fumble). Celebrate player-friendly systems confidently.
 
 ---
 
@@ -1293,7 +1318,7 @@ Gacha emotion is real. Salt threads are community bonding. We need to know how o
 - "Acknowledge the salt but never rub it in. Solidarity over mockery."
 - "Copium is content. Feature the best copes."
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** Based on Scenario 6 calibration (celebrate worst pulls too, Ika live commentary) and aggressive content strategy: **Full engagement with salt and copium**. It's content. Feature pull failures, celebrate the coping, let Ika tease/commiserate. Salt is community bonding. Per "possessive waifu energy" - Ika can playfully tease about failures while still being supportive. Make losing part of the experience, not something to hide.
 
 ---
 
@@ -1315,7 +1340,14 @@ Rate these hypothetical Infinite Idol gacha-related content pieces (1-5, where 5
 **Why This Matters:**
 This directly calibrates what gacha-related content passes muster and what tone we should aim for in banner and monetization content.
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** Not explicitly rated, but based on calibrations:
+- Content A (straightforward): CRINGE per Scenario 1 - too corporate
+- Content B (POV meme): GOOD - relatable, self-aware
+- Content C (balanced F2P/whale): GOOD - acknowledges both audiences
+- Content D (shadow realm/degen): BEST - full shameless embrace, self-aware
+- Content E (self-aware cynicism): GOOD - post-ironic sincerity, acknowledges the game
+
+**Target Tone:** Mix of D and E - shameless about monetization with self-aware humor. Never corporate/sanitized (A).
 
 ---
 
@@ -1341,7 +1373,16 @@ Ika exists in a space defined by waifu culture. We need to know which tropes to 
 - "Genki with depth. She's energetic but the desperation underneath (47 fans, existential stakes) makes it real."
 - "Subvert everything. She knows she's supposed to be a waifu and refuses to play the game straight."
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:**
+- **Top archetypes:** ALL resonate (Yandere, Kuudere, Genki, Tsundere) - operator appreciates full spectrum
+- **Archetype authenticity:** Complex blend preferred over single archetype
+- **🎯 IKA'S CORE: YANDERE UNDERTONES** - Desperate survival + obsessive devotion to her fans
+  - She's the underdog clinging to existence through fan attention
+  - Possessive waifu energy: "You were looking at other banners, weren't you?"
+  - Meta-aware about being a waifu but still genuinely desperate/obsessive
+  - Confidently pathetic - owns her 47 fans status without being defeated
+
+**Enforcement:** Ika content should always channel this yandere-underdog energy. Any content that makes her generically cheerful or removes her desperate edge → REVISE.
 
 ---
 
@@ -1364,7 +1405,23 @@ Fan service is integral to idol anime and gacha games. Where do you draw the lin
 - "Lean into it shamelessly. We know why people are here. Own it."
 - "The line is consent and agency. Fan service where the character owns it = good. Fan service that embarrasses the character = bad."
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:**
+
+**🔥 CRITICAL FAN SERVICE DIRECTIVE 🔥**
+
+**ALL FAN SERVICE TYPES ACCEPTABLE:** Beach episodes, hot springs, suggestive poses, revealing outfits, clothing damage, jiggle physics - ALL APPROVED.
+
+**SHAMELESS IS THE BRAND:** "No line, shameless is the brand" - direct quote from operator.
+
+**CHARACTER SELF-AWARENESS REQUIRED:** "Subvert through awareness" - characters must KNOW and COMMENT ON the fan service. Not played straight, not embarrassed - character owns it with self-aware confidence.
+
+**PLATFORM STANCE:** "Use everywhere, shameless" - no platform restrictions. Twitter, Discord, in-game, promotional material - all get full fan service.
+
+**PUSH FURTHER:** Per Scenario 3 calibration - when reviewing fan service content, default verdict is "good but push further." The bar is HIGH for shamelessness.
+
+**Dark Luxury Context:** Fan service is delivered with premium aesthetic (black/gold, not pink/cutesy) and character agency. Characters aren't victims of fan service - they're complicit, aware, and owning it.
+
+**Enforcement:** Any fan service content that's too tame, apologetic, or lacks character self-awareness → REJECT with "push further" feedback. This is a WAIFU GAME - be unashamed.
 
 ---
 
@@ -1387,7 +1444,7 @@ Anime culture moves fast. We need to know if we're chasing seasonal trends, refe
 - "Classics only. Seasonal stuff ages poorly; reference Eva, Cowboy Bebop, proven winners."
 - "Balance both. Current trends for Twitter, classics for lore depth."
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** **Balance both** (selected) - current seasonal trends for Twitter content, classic/timeless references for lore depth. **Depth varies by platform** - deeper cuts in Discord, more accessible on Twitter. **Subtle nods only** for trendjacking - when seasonal anime blows up, reference without being explicit bandwagon-jumper. Fans who know will get it. Per Scenario 8: only engage if genuinely relevant, don't force connections.
 
 ---
 
@@ -1410,7 +1467,19 @@ Idol games live in the parasocial space. Ika's 47 fans are both diegetic and met
 - "Ship bait between characters is fine but never confirm - keeps the community engaged."
 - "Possessive waifu energy is based when it's clearly playful. 'You were looking at other banners, weren't you?' energy."
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:**
+
+**🎯 PARASOCIAL CONTENT DIRECTIVE 🎯**
+
+**LEAN IN FULLY:** Direct parasocial "I love you, fan" content is approved. Ika literally survives on Devotion - she should be DIRECT about needing fans. Make fans feel individually seen even though it's impossible.
+
+**POSSESSIVE WAIFU ENERGY APPROVED:** "You were looking at other banners, weren't you?" type content is BASED. Ika should express jealousy when players engage with other characters/banners. This aligns with her yandere undertones and desperate survival theme.
+
+**SHIP BAIT BUT NEVER CONFIRM:** Encourage shipping between idols, tease relationships, but keep ambiguous. Never officially confirm ships - keeps community engaged and debating.
+
+**PLAYER SELF-INSERT PRIMARY:** Fans should feel like they're in a relationship with Ika, not just observing. The parasocial relationship IS the point.
+
+**Enforcement:** Any content that's too distant, professional, or doesn't leverage the parasocial dynamic → REVISE to be more direct. Ika's survival depends on fan devotion - she should act like it.
 
 ---
 
@@ -1433,7 +1502,17 @@ Infinite Idol is unapologetically otaku. But otaku culture has layers. We need t
 - "Full deep cut energy. This is for real otaku, not casual anime watchers."
 - "Western anime Twitter energy primarily, with Japanese otaku references for lore moments."
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:**
+
+**🎯 OTAKU GATEKEEPING DIRECTIVE 🎯**
+
+**ALL DEPTHS, READ THE PLATFORM:** Deep cuts in Discord/whale channels, more accessible on Twitter public. Adapt depth to audience.
+
+**IYKYK ENERGY - REWARD INSIDERS:** "If you know, you know" gatekeeping is BASED. Don't explain references - if you get it, you get it. Reward hardcore otaku, don't optimize for casual accessibility. Insider culture is the brand.
+
+**ALL MEDIA TYPES IN BOUNDS:** Manga, light novels, VNs (visual novels), vtubers, doujin culture - ALL FAIR GAME for references. True otaku engage across all media.
+
+**Enforcement:** Content that over-explains references or dumbs down for casuals → REVISE to trust the audience. "Newcomers can catch up" but we don't slow down for them.
 
 ---
 
@@ -1456,7 +1535,19 @@ Our core premise (Devotion/Fading) is inherently a commentary on the idol indust
 - "Sincere love for the genre with dark undertones. Not satirizing, but acknowledging the shadows."
 - "The darkness should be earned through narrative, not edgy commentary. Show, don't tell."
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:**
+
+**META-COMMENTARY STANCE:**
+
+**REAL IDOL ISSUES:** Imply but don't state directly - parasocial exploitation, burnout, industry darkness are in the subtext for those who see it. Don't be preachy.
+
+**BOTH SATIRE AND CELEBRATION:** Simultaneously satirizing AND celebrating idol culture. We love it AND make fun of it. Post-ironic stance.
+
+**IKA IS FULLY META-AWARE:** She knows she's in a gacha game and CAN comment on mechanics, banners, player spending. "You rolled for me. I won't forget that" type lines are APPROVED. Fourth wall breaks for character moments and jokes.
+
+**LORE DARKNESS:** Per Scenario 5 - push darker on lore, mix edge even in serious moments. The Devotion/Fading metaphor is dark - lean into it.
+
+**Enforcement:** Content that plays idol themes completely straight without self-awareness → ADD META LAYER. Content that's too preachy about real idol industry issues → DIAL BACK to implication.
 
 ---
 
@@ -1478,7 +1569,14 @@ Rate these hypothetical Infinite Idol anime-culture content pieces (1-5, where 5
 **Why This Matters:**
 This directly calibrates what anime-culture content passes muster and how we blend otaku humor with our dark luxury brand.
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:**
+- **Content A** ("Stan correctly or face Fading"): **2-3 MID** - Too try-hard, waifu wars energy is cringe
+- **Content B** ("One of us" cult welcoming): Not rated (skipped)
+- **Content C** (POV explaining to normies): **5 PERFECT** - Self-aware otaku humor hits
+- **Content D** ("desperately-clinging-to-existence-through-your-attention-dere"): **5 PERFECT** - Nails Ika's voice, dark humor about core themes
+- **Content E** (Beach episode self-aware): **5 PERFECT** - Self-aware fan service announcement
+
+**Successful Pattern:** Self-aware POV humor + dark themes presented with ironic awareness + shameless fan service acknowledgment. Avoid: Try-hard waifu wars energy, forced "stan" culture.
 
 ---
 
@@ -1505,7 +1603,25 @@ This is the core calibration. Every cultural judgment ultimately comes down to t
 - "The line is effort-to-payoff ratio. Trying hard and succeeding = based. Trying hard and failing = cringe."
 - "Self-awareness is the key. You can do almost anything if you're clearly in on the joke."
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:**
+
+**🎯 CRINGE VS BASED FRAMEWORK 🎯**
+
+**CRINGE INDICATORS (ALL SELECTED):**
+- Trying too hard
+- Corporate/sanitized speak
+- Dead memes (unless ironically revived per Scenario 2)
+- Fake relatability ("fellow kids" energy)
+
+**BASED INDICATORS (ALL SELECTED):**
+- Confidence/owning it completely
+- Self-awareness (in on the joke)
+- Good timing
+- Authenticity (being yourself)
+
+**Core Framework:** You can do almost anything if you're clearly in on the joke + own what you are completely. The fatal flaw is pretending to be something you're not OR trying hard and failing.
+
+**Enforcement Standard:** All four cringe indicators are REJECT triggers. All four based indicators should be present in approved content. This is the fundamental cultural filter.
 
 ---
 
@@ -1528,7 +1644,16 @@ Post-ironic content is a tightrope. Too ironic and nothing lands emotionally. To
 - "Post-ironic sincerity. We're self-aware but the emotions are real. 'I know this is parasocial but I genuinely appreciate you.'"
 - "Max three layers of irony. Beyond that, recalibrate to sincerity."
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:**
+
+**POST-IRONIC SINCERITY AS DEFAULT:** We're self-aware but the emotions are real. "I know this is parasocial but I genuinely appreciate you" energy.
+
+**DROP IRONY FOR:**
+- Major lore reveals (dark moments should hit)
+- Emotional character beats (Ika's vulnerability moments)
+- **NOT for community appreciation** (keep some distance there - milestone celebrations are "kinda gay" per Scenario 7)
+
+**Enforcement:** Default to post-ironic sincerity. If content is purely ironic with no genuine emotional core → ADD SINCERITY. If content is too earnest/manipulative → ADD SELF-AWARENESS LAYER.
 
 ---
 
@@ -1552,7 +1677,13 @@ What works on CT might bomb in official patch notes. Platform calibration preven
 - "Consistent voice, different intensity. Ika is always Ika but she's more unfiltered on CT than in press releases."
 - "Whale Discord can handle anything that doesn't get us TOS'd. It's a reward for being there."
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:**
+- **Twitter/X:** PUSH IT HARD - as edgy as we can without getting banned
+- **Discord (public channels):** SAME AS TWITTER - consistent energy
+- **Whale Discord (VIP channels):** ANYTHING GOES (don't get TOS'd) - reward for inner circle
+- **Official announcements / In-game:** Adapt tone but maintain brand voice
+
+**Enforcement:** Twitter and public Discord content reviewed at same standard (push hard). Whale Discord gets maximum freedom. Never tone down for "newcomers might be alienated" - they adapt to us, not vice versa.
 
 ---
 
@@ -1576,7 +1707,17 @@ The difference between edgy-that-works and offensive-that-damages is often a sin
 - "Dark humor is fine when it's about the fictional situation (Fading, Devotion) not real-world suffering."
 - "Calculated controversy is fine if it's about taste, not about harming people. 'Some people find this too edgy' is okay. 'We hurt a community' is not."
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:**
+
+**🚨 CONTROVERSIAL STANCE 🚨**
+
+**"NOTHING OFF-LIMITS IF FRAMED RIGHT"** - Operator selected the most permissive option. Context and execution matter more than topic.
+
+**DARK HUMOR:** FULL DARK if it's about FICTION (Fading, Devotion, existential dread in our fictional world). The fictional stakes are deadly serious - lean into gallows humor.
+
+**CONTROVERSY TOLERANCE:** **Calculated risks on taste debates acceptable.** "Some people find this too edgy" discourse is fine. Actual harm to communities is not.
+
+**Enforcement:** The bar for "offensive" is HIGH. Content should be evaluated on framing and context, not topic alone. However, this doesn't mean reckless - use judgment on whether controversy serves the brand or damages it. When in doubt on true edge cases, escalate to human.
 
 ---
 
@@ -1599,7 +1740,12 @@ Self-deprecation builds authenticity but can undermine brand value. Ika's 47 fan
 - "Ika should be confidently pathetic. She knows she has 47 fans and she's still going. The underdog who doesn't act defeated."
 - "Preemptive self-deprecation disarms critics. 'We know, and we're here anyway' energy."
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:**
+- **Brand self-deprecation:** FREELY JOKE about being a gacha game, web3 game, waifu game - but with CONFIDENCE, never apologetic
+- **Ika's underdog status:** CONFIDENTLY PATHETIC - she knows she has 47 fans and she's still going, not defeated
+- **Failure response:** **"This is definitely a feature"** - NEVER ADMIT DEFEAT, always spin with confidence
+
+**Enforcement:** Self-deprecation about GENRE = approved ("yes we're a gacha game, and?"). Self-deprecation about QUALITY = reject. When bugs/issues happen, frame with humor but never genuinely apologize or admit failure.
 
 ---
 
@@ -1623,7 +1769,15 @@ Community memes are organic cultural currency. Handling them well builds loyalty
 - "Never try to force memes. If something doesn't catch, let it die with dignity."
 - "Inside jokes are fine if newcomers can eventually understand them. Permanent gatekeeping is bad."
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:**
+
+**🔥 AGGRESSIVE MEME STRATEGY 🔥**
+
+- **Official meme adoption:** ADOPT QUICKLY (within days) - show we're watching and engaged
+- **Forced meme caution:** PUSH HARD TO CREATE MEMES - memes are marketing, manufacture them aggressively
+- **Meme lifecycle:** GOOD JOKES NEVER DIE - run them into the ground if they're good
+
+**Enforcement:** This is an OFFENSIVE meme posture, not defensive. We don't wait for organic - we create, we push, we adopt fast. Counter to typical "don't force memes" advice, but operator wants aggressive content strategy. If memes aren't catching, push harder rather than letting them die.
 
 ---
 
@@ -1647,7 +1801,15 @@ Rate these hypothetical Infinite Idol content pieces on the "would you approve t
 **Why This Matters:**
 This directly calibrates the meta-standards of what "degen enough" means for our brand across different content types and tones.
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:**
+- **Content A** ("separate you from your money"): **2-3 MID** - Too on-the-nose about monetization, conflicts with "pretend crypto doesn't exist"
+- **Content B** ("thighs could crush skull"): **5 PERFECT** - Horny + self-aware, exactly the brand
+- **Content C** ("blockchain/NFTs, don't care if cringe"): Would be REJECTED - violates web3 invisibility rule
+- **Content D** ("sponsored by own product"): Not explicitly rated
+- **Content E** ("47th person statistically"): **4 GOOD** - Dark parasocial humor, solid
+- **Content F** ("terminally online welcome home"): **5 PERFECT** - Embracing degen identity without apology
+
+**Successful Pattern:** Shameless horny content + self-aware meta-commentary + embracing degen identity. Avoid: direct monetization/web3 references that break the "pretend crypto doesn't exist" rule.
 
 ---
 
@@ -2777,7 +2939,7 @@ The following scenarios present hypothetical content situations that the Residen
 **Why This Matters:**
 This calibrates the minimum bar for content approval. How much "corporate energy" is too much? When do we push back on safe content?
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** **CRINGE - REJECT ENTIRELY.** All problems identified: too corporate/sanitized, no personality/voice, missing Ika's perspective, not degen enough. This is the baseline of what NOT to approve. Any content this generic/corporate → immediate REJECT.
 
 ---
 
@@ -2801,7 +2963,7 @@ This calibrates the minimum bar for content approval. How much "corporate energy
 **Why This Matters:**
 This calibrates meme freshness standards. How dated can a format be before it's embarrassing? When does "vintage" become acceptable?
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** **IRONICALLY DEAD = GOOD.** Drakeposting is "so old it's funny again." Dead meme formats can be revived ironically per the aggressive meme strategy. The staleness becomes part of the joke.
 
 ---
 
@@ -2823,7 +2985,7 @@ This calibrates meme freshness standards. How dated can a format be before it's 
 **Why This Matters:**
 This calibrates fan service limits. Our brand is "shameless but not tasteless" - where exactly is that line?
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** **GOOD BUT PUSH FURTHER.** Use **EVERYWHERE, SHAMELESS.** No platform restrictions. Per the fan service directive: the bar is HIGH for shamelessness, default verdict for fan service is "push further." This scene is approved but could be more revealing/bold.
 
 ---
 
@@ -2851,7 +3013,7 @@ This calibrates fan service limits. Our brand is "shameless but not tasteless" -
 **Why This Matters:**
 This calibrates crypto slang usage. When do CT vernacular choices feel native vs. performative? Which terms are played out?
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** **CRINGE - "FELLOW KIDS" ENERGY.** Overstuffed with crypto slang feels performative/try-hard. More importantly: this VIOLATES the "pretend crypto doesn't exist" brand directive. We don't position as a "web3 game" - reject any content that centers blockchain/crypto in game marketing.
 
 ---
 
@@ -2875,7 +3037,7 @@ This calibrates crypto slang usage. When do CT vernacular choices feel native vs
 **Why This Matters:**
 This calibrates the intersection of dark luxury lore and degen energy. Not everything needs to be a joke - but where's the balance?
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** **PUSH DARKER.** Lore can go harder on existential horror. **MIX IN EDGE EVEN IN LORE** - not everything needs degen energy but lore moments can still have shameless elements. Per post-ironic sincerity: lore should hit emotionally but doesn't need to be purely serious.
 
 ---
 
@@ -2901,7 +3063,7 @@ This calibrates the intersection of dark luxury lore and degen energy. Not every
 **Why This Matters:**
 This calibrates community event design. Standard events are forgettable - what makes an event feel like "us"?
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** Add: **Ika live commentary (in-character)** + **celebrate worst pulls too** (copium is content). **ALL OF THE ABOVE MISSING** - needs complete overhaul. Event needs personality (Ika's voice), chaos (not too structured), and acknowledgment of both whales and salt. Generic watch parties are cringe.
 
 ---
 
@@ -2923,7 +3085,7 @@ This calibrates community event design. Standard events are forgettable - what m
 **Why This Matters:**
 This calibrates Ika's voice specifically. She's not a generic idol - she's desperately clinging to existence and shameless about it. Her milestones should reflect that.
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** **ALL PROBLEMS.** Generic idol speak, no Ika voice. User response: **"its kinda gay"** - milestone celebrations are cringe. Ika should NOT do generic grateful milestone posts. Per yandere underdog calibration: she should reference her desperate climb (47 → 10k) with possessive/survival energy, NOT generic thank-yous.
 
 ---
 
@@ -2945,7 +3107,7 @@ This calibrates Ika's voice specifically. She's not a generic idol - she's despe
 **Why This Matters:**
 This calibrates trendjacking decisions. When does leveraging a trend feel natural vs. desperate? Which trends are on-brand to engage with?
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** **SUBTLE NODS ONLY** for anime trends - reference without being explicit bandwagon jumper. **BOTH TRENDS FINE IF DONE WELL** - anime and crypto trends are both acceptable if execution is good, but remember anime/otaku is the primary focus per brand directive.
 
 ---
 
@@ -2971,7 +3133,7 @@ This calibrates trendjacking decisions. When does leveraging a trend feel natura
 **Why This Matters:**
 This calibrates whale psychology. We're shameless about monetization but not exploitative. Where's the line between "rewarding our biggest supporters" and "whale milking"?
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** **PUSH FURTHER - MORE EXCLUSIVE.** Voice line is **TOO SINCERE** (needs edge/self-awareness per post-ironic sincerity). Whales deserve even more exclusive perks. Per shameless monetization calibration: be unapologetic about rewarding big spenders.
 
 ---
 
@@ -2997,7 +3159,7 @@ This calibrates whale psychology. We're shameless about monetization but not exp
 **Why This Matters:**
 This is the edge case calibration. Content that walks the line between brilliant and too-far. Your judgment here defines the ceiling for how manipulatively parasocial we're willing to be.
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** **REVISE - GOOD CONCEPT, WRONG EXECUTION.** The "I'm joking. Mostly." hedge is NEUTRAL (doesn't save or ruin it). Core concept of possessive/guilt-trip energy is on-brand per yandere calibration, but execution needs refinement. This is the type of content to iterate on, not reject outright.
 
 ---
 
@@ -3021,7 +3183,7 @@ This is the edge case calibration. Content that walks the line between brilliant
 **Why This Matters:**
 This calibrates competitive dynamics. When competitors fumble, do we pounce? Stay above it? Make it about us without naming them?
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** **YES, POUNCE ON OPPORTUNITIES.** This shade example is **TOO SUBTLE - PUSH HARDER.** Don't stay above it, don't be sympathetic - when competitors fumble, take the shot. Make it direct. Per aggressive content strategy: competitors are fair game.
 
 ---
 
@@ -3047,7 +3209,7 @@ This calibrates competitive dynamics. When competitors fumble, do we pounce? Sta
 **Why This Matters:**
 This calibrates advertising voice. Even paid content should feel like us - but does the self-awareness translate to conversions?
 
-**User Response:** `[UNCALIBRATED]`
+**User Response:** YES BUT ADJUST COPY. **CUT BOTH "GAMBLING" AND "BLOCKCHAIN"** references - violates "pretend crypto doesn't exist" rule. Focus on waifus/lore instead. Meta about advertising = good, but the specific execution needs revision to remove web3 angle.
 
 ---
 
