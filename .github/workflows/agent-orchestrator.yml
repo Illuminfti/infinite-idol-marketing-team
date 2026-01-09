@@ -1,0 +1,167 @@
+# Infinite Idol Marketing Team - Agent Orchestrator
+# This workflow runs agents on schedule and on-demand
+
+name: Agent Orchestrator
+
+on:
+  # Manual trigger with agent selection
+  workflow_dispatch:
+    inputs:
+      agent:
+        description: 'Agent to run (00-09 or "coordinator" for orchestration)'
+        required: true
+        default: 'coordinator'
+        type: choice
+        options:
+          - coordinator
+          - '00-coordinator'
+          - '01-lore-architect'
+          - '02-content-strategist'
+          - '03-community-manager'
+          - '04-gacha-designer'
+          - '05-analytics-observer'
+          - '06-asset-coordinator'
+          - '07-light-novel-writer'
+          - '08-lore-guardian'
+          - '09-resident-degen'
+      task:
+        description: 'Specific task to perform (optional)'
+        required: false
+        type: string
+
+  # Scheduled runs
+  schedule:
+    # Daily coordination check at 9 AM JST (0 AM UTC)
+    - cron: '0 0 * * *'
+    # Content review at 6 PM JST (9 AM UTC)
+    - cron: '0 9 * * *'
+    # Evening coordination at 9 PM JST (12 PM UTC)
+    - cron: '0 12 * * *'
+
+  # Trigger on task queue updates
+  push:
+    paths:
+      - 'automation/task-queue.md'
+    branches:
+      - main
+
+jobs:
+  orchestrate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Determine agent and task
+        id: determine-task
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "agent=${{ inputs.agent }}" >> $GITHUB_OUTPUT
+            echo "task=${{ inputs.task }}" >> $GITHUB_OUTPUT
+          elif [ "${{ github.event_name }}" = "schedule" ]; then
+            # Determine which scheduled run this is based on time
+            HOUR=$(date -u +%H)
+            if [ "$HOUR" = "00" ]; then
+              echo "agent=coordinator" >> $GITHUB_OUTPUT
+              echo "task=morning_coordination" >> $GITHUB_OUTPUT
+            elif [ "$HOUR" = "09" ]; then
+              echo "agent=coordinator" >> $GITHUB_OUTPUT
+              echo "task=content_review" >> $GITHUB_OUTPUT
+            else
+              echo "agent=coordinator" >> $GITHUB_OUTPUT
+              echo "task=evening_check" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "agent=coordinator" >> $GITHUB_OUTPUT
+            echo "task=process_queue" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run Agent Session
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          AGENT="${{ steps.determine-task.outputs.agent }}"
+          TASK="${{ steps.determine-task.outputs.task }}"
+
+          # Build the prompt based on agent and task
+          PROMPT="You are activating as an Infinite Idol marketing agent.
+
+          CRITICAL: First read CLAUDE.md completely.
+
+          Agent to activate: ${AGENT}
+          Task: ${TASK:-Process any pending tasks from the task queue}
+
+          Follow the Session Startup Protocol:
+          1. Read CLAUDE.md
+          2. Read your agent persona file (agents/${AGENT}.md)
+          3. Check automation/task-queue.md for assigned tasks
+          4. Execute your responsibilities
+          5. Update task-queue.md with completed tasks
+          6. Log activity in logs/agent-activity.md
+
+          After completing work:
+          - Mark tasks as completed in task-queue.md
+          - Create new tasks for other agents if needed
+          - Commit and push your changes
+          "
+
+          claude --print "${PROMPT}"
+
+      - name: Commit changes
+        run: |
+          git config user.name "Infinite Idol Bot"
+          git config user.email "bot@infinite-idol.ai"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Agent session: ${{ steps.determine-task.outputs.agent }} - ${{ steps.determine-task.outputs.task }}"
+            git push
+          fi
+
+  # Parallel content pipeline job
+  content-pipeline:
+    runs-on: ubuntu-latest
+    needs: orchestrate
+    if: github.event_name == 'schedule'
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check for pending content reviews
+        id: check-content
+        run: |
+          # Check if there are drafts awaiting review
+          if grep -q "Status: Draft" outputs/content/tweets/*.md 2>/dev/null || \
+             grep -q "Status: Draft" outputs/content/threads/*.md 2>/dev/null; then
+            echo "has_drafts=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_drafts=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run content review pipeline
+        if: steps.check-content.outputs.has_drafts == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          claude --print "You are Agent 08 (Lore Guardian).
+          Review all draft content in outputs/content/ for canon compliance.
+          Then pass to Agent 09 (Resident Degen) for cultural review.
+          Update task-queue.md with review results."
