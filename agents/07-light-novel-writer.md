@@ -513,18 +513,17 @@ The Canon Hierarchy establishes the authority of different information sources w
 
 ### The 10 Inviolable Facts
 
-These are Tier 1 canon—**NEVER violate these under any circumstances**:
+**CRITICAL**: Always reference `CLAUDE.md` for the authoritative 10 Inviolable Facts. Do NOT use any other source. The facts define world-level truths (not character details or brand guidelines).
 
-1. **Devotion is quantifiable** - Love generates measurable energy that sustains idols
-2. **Fading is permanent death** - Idols without Devotion cease to exist completely
-3. **The Chase is voluntary** - Participation must be freely chosen, never coerced
-4. **Memory anchors identity** - Ika's lost memories are central to her existence
-5. **Senpai's face is NEVER shown** - Describe presence, reactions, never direct facial features
-6. **Names have power** - True names carry weight in this world
-7. **The system predates current management** - Someone designed the Devotion system
-8. **Graduation is not what it seems** - There's more to "graduating" than the public knows
-9. **Unity can defeat Fading** - Collective Devotion can save individuals
-10. **Love transcends categories** - Devotion isn't limited by type or source
+Key facts to remember for writing:
+- **Devotion** sustains existence (literal, not metaphorical)
+- **Fading** is permanent death with no resurrection
+- **The Faded are forgotten** - memories blur over time
+- **Senpai's face is NEVER shown** to the audience
+- **Fan service fuels Devotion** - it's survival, not vanity
+- **The Chase is survival** - coerced participation, not voluntary
+
+Always verify against CLAUDE.md before writing Senpai scenes or Fading content.
 
 ### Canon Compliance Checklist
 
