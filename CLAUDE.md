@@ -17,13 +17,13 @@
 
 ## Project Overview
 
-**Infinite Idol** is a Web3 gacha game built on **SUI** blockchain (NFTs, contracts, core logic) with multi-chain payment support (ETH/Base, Solana treasuries). Idols compete in "The Chase" pursuing Senpai. Powered by **Devotion** (fan energy) - without it, idols **Fade** (cease to exist).
+**Infinite Idol** is a Web3 gacha game with multi-chain presence via **Ika Network** infrastructure. Idols compete in "The Chase" pursuing Senpai. Powered by **Devotion** (fan energy) - without it, idols **Fade** (cease to exist).
 
 ### Brand Pillars
 - **Dark Luxury**: Black/gold premium aesthetic, NOT pink/cutesy
 - **Self-Aware**: We know we're a gacha game, shameless but genuine
 - **Existential Stakes**: Fading is real death, every Chase matters
-- **Web3 Native**: Built on SUI, gameplay-first
+- **Web3 Native**: Chain-agnostic, gameplay-first (blockchain abstracted away)
 
 ---
 
@@ -40,8 +40,8 @@
 | 5 | **Senpai Never Shown** | Always obscured, face never revealed |
 | 6 | **Foundation Controls All** | Run by Erina, controls industry |
 | 7 | **The Chase is Core** | Primary competition, determines survival |
-| 8 | **Built on SUI** | Sui-native blockchain (NFTs, contracts, game logic). Multi-chain payment support via ETH/Base and Solana treasuries. |
-| 9 | **Gems = Currency** | 1 SUI = 100 Gems, account-bound |
+| 8 | **Chain-Agnostic Web3** | Multi-chain presence via Ika Network. Blockchain abstracted—technology invisible, ownership real. |
+| 9 | **Gems = Currency** | Universal in-world currency, account-bound |
 | 10 | **Dark Luxury Aesthetic** | Black/gold, NOT pink/cutesy |
 
 **Any violation → Immediate escalation to human.**
