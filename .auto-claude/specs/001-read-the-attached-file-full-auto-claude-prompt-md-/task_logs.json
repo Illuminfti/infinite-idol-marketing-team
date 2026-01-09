@@ -1,7 +1,7 @@
 {
   "spec_id": "001-read-the-attached-file-full-auto-claude-prompt-md-",
   "created_at": "2026-01-08T22:45:30.018931+00:00",
-  "updated_at": "2026-01-09T00:15:56.640639+00:00",
+  "updated_at": "2026-01-09T00:18:29.257034+00:00",
   "phases": {
     "planning": {
       "phase": "planning",
@@ -9228,6 +9228,237 @@
           "tool_input": "git add . && git commit -m \"$(cat <<'EOF'\nauto-...",
           "subtask_id": "subtask-6-3",
           "session": 32
+        },
+        {
+          "timestamp": "2026-01-09T00:15:58.323359+00:00",
+          "type": "tool_end",
+          "content": "[Bash] Done",
+          "phase": "coding",
+          "tool_name": "Bash",
+          "subtask_id": "subtask-6-3",
+          "session": 32,
+          "detail": "[auto-claude/001-read-the-attached-file-full-auto-claude-prompt-md- f9590a8] auto-claude: subtask-6-3 - Create gacha-system.md - Lootbox types, rarity odd\n Committer: Sheran Hussain <sheranhussain@Sherans-MacBook-Air-2.local>\nYour name and email address were configured automatically based\non your username and hostname. Please check that they are accurate.\nYou can suppress this message by setting them explicitly. Run the\nfollowing command and follow the instructions in your editor to edit\nyour configuration file:\n\n    git config --global --edit\n\nAfter doing this, you may fix the identity used for this commit with:\n\n    git commit --amend --reset-author\n\n 8 files changed, 770 insertions(+), 11 deletions(-)\n create mode 100644 .auto-claude/specs/001-read-the-attached-file-full-auto-claude-prompt-md-/memory/session_insights/session_031.json\n create mode 100644 knowledge-base/game-mechanics/gacha-system.md",
+          "collapsed": true
+        },
+        {
+          "timestamp": "2026-01-09T00:16:05.165403+00:00",
+          "type": "tool_start",
+          "content": "[mcp__auto-claude__update_subtask_status]",
+          "phase": "coding",
+          "tool_name": "mcp__auto-claude__update_subtask_status",
+          "subtask_id": "subtask-6-3",
+          "session": 32
+        },
+        {
+          "timestamp": "2026-01-09T00:16:05.205530+00:00",
+          "type": "tool_end",
+          "content": "[mcp__auto-claude__update_subtask_status] Done",
+          "phase": "coding",
+          "tool_name": "mcp__auto-claude__update_subtask_status",
+          "subtask_id": "subtask-6-3",
+          "session": 32,
+          "collapsed": true
+        },
+        {
+          "timestamp": "2026-01-09T00:16:13.827088+00:00",
+          "type": "text",
+          "content": "## Subtask 6-3 Complete ✅\n\nSuccessfully created `knowledge-base/game-mechanics/gacha-system.md` with:\n\n### Content Included:\n- **Rarity Odds**: Common (60%), Rare (25%), Ultra Rare (12%), Legendary (3%)\n- **Lootbox Types**: \n  - Standard Family Boxes (A-E)\n  - Golden Lootbox (2× Legendary chance)\n  - Diamond Lootbox (3× Legendary chance)\n- **Time-Locked Releases**:\n  - A Box: Day 1\n  - B Box: 3 weeks after launch\n  - C Box: 6 weeks after launch\n  - D Box: 9 weeks after launch\n  - E Box: 12 weeks after launch\n- **Acquisition Sources**: Level milestones, daily streaks, burn system\n- **Opening Mechanics**: NFT burning, randomness verification, visual feedback\n- **Burn System Integration**: 4 duplicates → 1 lootbox recycling\n- **Whale Psychology**: Ethical design with transparent odds\n- **Dark Luxury Aesthetic**: Black/gold UI, premium animations\n\n### Verification:\n```\n✅ grep -q '60%' gacha-system.md\n✅ grep -q 'Golden Lootbox' gacha-system.md\n```\n\n### Committed:\n```\nauto-claude: subtask-6-3 - Create gacha-system.md - Lootbox types, rarity odd\n```",
+          "phase": "coding",
+          "subtask_id": "subtask-6-3",
+          "session": 32
+        },
+        {
+          "timestamp": "2026-01-09T00:16:25.854923+00:00",
+          "type": "text",
+          "content": "I'll implement subtask-6-4 to create the battle-pass.md file. Let me start by reading the pattern files and understanding the existing structure.",
+          "phase": "coding",
+          "subtask_id": "subtask-6-4",
+          "session": 33
+        },
+        {
+          "timestamp": "2026-01-09T00:16:26.465270+00:00",
+          "type": "tool_start",
+          "content": "[Read] ./SOURCE_MATERIALS_APPENDIX.md",
+          "phase": "coding",
+          "tool_name": "Read",
+          "tool_input": "./SOURCE_MATERIALS_APPENDIX.md",
+          "subtask_id": "subtask-6-4",
+          "session": 33
+        },
+        {
+          "timestamp": "2026-01-09T00:16:26.750842+00:00",
+          "type": "tool_start",
+          "content": "[Glob] pattern: knowledge-base/game-mechanics/*.md",
+          "phase": "coding",
+          "tool_name": "Glob",
+          "tool_input": "pattern: knowledge-base/game-mechanics/*.md",
+          "subtask_id": "subtask-6-4",
+          "session": 33
+        },
+        {
+          "timestamp": "2026-01-09T00:16:26.781090+00:00",
+          "type": "tool_end",
+          "content": "[Glob] Error: <tool_use_error>File does not exist.</tool_use_error>",
+          "phase": "coding",
+          "tool_name": "Glob",
+          "subtask_id": "subtask-6-4",
+          "session": 33,
+          "detail": "<tool_use_error>File does not exist.</tool_use_error>",
+          "collapsed": true
+        },
+        {
+          "timestamp": "2026-01-09T00:16:30.903016+00:00",
+          "type": "text",
+          "content": "Let me read the existing game mechanics files to understand the pattern, and also check the spec file:",
+          "phase": "coding",
+          "subtask_id": "subtask-6-4",
+          "session": 33
+        },
+        {
+          "timestamp": "2026-01-09T00:16:31.382159+00:00",
+          "type": "tool_start",
+          "content": "[Read] ./knowledge-base/game-mechanics/gem-system.md",
+          "phase": "coding",
+          "tool_name": "Read",
+          "tool_input": "./knowledge-base/game-mechanics/gem-system.md",
+          "subtask_id": "subtask-6-4",
+          "session": 33
+        },
+        {
+          "timestamp": "2026-01-09T00:16:31.824516+00:00",
+          "type": "tool_start",
+          "content": "[Read] ./knowledge-base/game-mechanics/gacha-system.md",
+          "phase": "coding",
+          "tool_name": "Read",
+          "tool_input": "./knowledge-base/game-mechanics/gacha-system.md",
+          "subtask_id": "subtask-6-4",
+          "session": 33
+        },
+        {
+          "timestamp": "2026-01-09T00:16:32.710492+00:00",
+          "type": "tool_start",
+          "content": "[Read] ...tached-file-full-auto-claude-prompt-md-/spec.md",
+          "phase": "coding",
+          "tool_name": "Read",
+          "tool_input": "...tached-file-full-auto-claude-prompt-md-/spec.md",
+          "subtask_id": "subtask-6-4",
+          "session": 33
+        },
+        {
+          "timestamp": "2026-01-09T00:16:32.735981+00:00",
+          "type": "tool_end",
+          "content": "[Read] Done",
+          "phase": "coding",
+          "tool_name": "Read",
+          "subtask_id": "subtask-6-4",
+          "session": 33,
+          "detail": "     1→# GEM SYSTEM - Complete Currency Mechanics\n     2→\n     3→> *\"Every gem spent is a declaration: I will not let her Fade. Every purchase is proof: my Devotion is real.\"*\n     4→> — Pre-Registration Launch Trailer\n     5→\n     6→---\n     7→\n     8→## Overview\n     9→\n    10→**Gems** are the primary in-game currency of Infinite Idol. Everything in the pre-registration experience—and ultimately the full game—flows through Gems. This document provides the complete specification of how Gems are acquired, stored, spent, and managed.\n    11→\n    12→Gems represent the bridge between real-world investment (SUI) and in-game engagement. They are the player's equivalent of **Devotion**—tangible commitment to supporting Ika and her journey on the Eternal Stage.\n    13→\n    14→---\n    15→\n    16→## Core Conversion Rate\n    17→\n    18→The fundamental exchange rate between SUI and Gems:\n    19→\n    20→> **1 SUI = 100 Gems** (Base Rate)\n    21→\n    22→This rate serves as the foundation for all Gem calculations. Bulk purchases receive bonuses, incentivizing higher investment tiers.\n    23→\n    24→---\n    25→\n    26→## Gem Package Tiers\n    27→\n    28→Six purchase tiers are available, each offering progressively better value for higher commitment:\n    29→\n    30→| SUI Spent | Base Gems | Bonus % | Bonus Gems | Total Gems | Effective Rate |\n    31→|-----------|-----------|---------|------------|------------|----------------|\n    32→| **1 SUI** | 100 | 0% | 0 | 100 | 100 Gems/SUI |\n    33→| **10 SUI** | 1,000 | 10% | 100 | 1,100 | 110 Gems/SUI |\n    34→| **100 SUI** | 10,000 | 15% | 1,500 | 11,500 | 115 Gems/SUI |\n    35→| **1,000 SUI** | 100,000 | 20% | 20,000 | 120,000 | 120 Gems/SUI |\n    36→| **10,000 SUI** | 1,000,000 | 25% | 250,000 | 1,250,000 | 125 Gems/SUI |\n    37→| **100,000 SUI** | 10,000,000 | 30% | 3,000,000 | 13,000,000 | 130 Gems/SUI |\n    38→\n    39→### Package Design Philosophy\n    40→\n    41→Each tier is designed with specific player segments in mind:\n    42→\n    43→| Tier | Target Audience | Psychology |\n    44→|------|-----------------|------------|\n    45→| 1 SUI | Casual fans, testers | Low barrier to entry |\n    46→| 10 SUI | Regular supporters | First bonus triggers investment |\n    47→| 100 SUI | Committed fans | Meaningful but accessible |\n    48→| 1,000 SUI | Dedicated collectors | Collector-tier commitment |\n    49→| 10,000 SUI | High-tier supporters | Whale territory begins |\n    50→| 100,000 SUI | Ultimate fans | Maximum Devotion demonstration |\n    51→\n    52→### Visual Package Presentation\n    53→\n    54→Each package tier has unique visual elements:\n    55→\n    56→| Package | Color Scheme | Animation | Icon |\n    57→|---------|--------------|-----------|------|\n    58→| 1 SUI | Silver | Subtle shimmer | Single gem |\n    59→| 10 SUI | Light gold | Gentle glow | Small pile |\n    60→| 100 SUI | Deep gold | Rotating sparkle | Medium chest |\n    61→| 1,000 SUI | Gold + black accents | Pulsing aura | Large chest |\n    62→| 10,000 SUI | Black + gold flames | Floating particles | Vault |\n    63→| 100,000 SUI | Cosmic black + stars | Full animation | Cosmic vault |\n    64→\n    65→---\n    66→\n    67→## Account-Bound Rules\n    68→\n    69→### Core Binding Principle\n    70→\n    71→> **Gems are permanently bound to the wallet address that purchased them.**\n    72→\n    73→This is non-negotiable and enforced at the smart contract level.\n    74→\n    75→### Binding Specifications\n    76→\n    77→| Property | Rule |\n    78→|----------|------|\n    79→| **Transfer** | NOT possible between wallets |\n    80→| **Trading** | NOT possible on any marketplace |\n    81→| **Gifting** | NOT possible between players |\n    82→| **Inheritance** | NOT applicable—bound to original wallet |\n    83→| **Refund** | NOT available—all purchases final |\n    84→| **Recovery** | Possible ONLY through original wallet access |\n    85→\n    86→### Why Account-Bound?\n    87→\n    88→The decision to make Gems account-bound is intentional:\n    89→\n    90→1. **Anti-RMT**: Prevents real-money trading of currency\n    91→2. **Fair Play**: Everyone earns/buys at the same rate\n    92→3. **Progress Ownership**: Your gems = your commitment\n    93→4. **Economy Stability**: No market manipulation of currency\n    94→5. **Investment Proof**: Gem balance proves personal investment\n    95→\n    96→### Storage Location\n    97→\n    98→| Component | Location | Details |\n    99→|-----------|----------|---------|\n   100→| Gem Balance | SUI Object | Stored as a SUI object owned by player wallet |\n   101→| Transaction History | On-chain | All purchases recorded immutably |\n   102→| Spending Log | On-chain | All expenditures tracked |\n   103→| Current Balance | Calculated | Real-time from transaction history |\n   104→\n   105→---\n   106→\n   107→## Gem Expenditure\n   108→\n   109→### Spending Rates\n   110→\n   111→| Action | Gem Cost | Result |\n   112→|--------|----------|--------|\n   113→| **Level Up** | 69 Gems | +1 Idol Aura (Level) |\n   114→| **Pet Egg Opening** | 420 Gems | Hatch one pet |\n   115→| **Special Events** | Variable | TBD per event |\n   116→\n   117→### The 69 Gems Per Level Rate\n   118→\n   119→The leveling cost is designed around accessible progression:\n   120→\n   121→**Level Calculations:**\n   122→\n   123→| Package | Total Gems | Levels Purchasable | Bonus Levels vs. Base |\n   124→|---------|------------|--------------------|-----------------------|\n   125→| 1 SUI | 100 | 1 level (+31 remainder) | 0 |\n   126→| 10 SUI | 1,100 | 15 levels (+65 remainder) | +1 extra level |\n   127→| 100 SUI | 11,500 | 166 levels (+46 remainder) | +16 extra levels |\n   128→| 1,000 SUI | 120,000 | 1,739 levels (+9 remainder) | +289 extra levels |\n   129→| 10,000 SUI | 1,250,000 | 18,115 levels (+65 remainder) | +3,623 extra levels |\n   130→| 100,000 SUI | 13,000,000 | 188,405 levels (+55 remainder) | +43,478 extra levels |\n   131→\n   132→### Pet Egg Opening Cost\n   133→\n   134→**420 Gems** per Pet Egg opening:\n   135→- Approximately $5 USD equivalent (at typical SUI prices)\n   136→- One egg = one pet (random rarity)\n   137→- Cannot open partial eggs\n   138→- Cost is fixed regardless of egg source\n   139→\n   140→---\n   141→\n   142→## Gem Acquisition Methods\n   143→\n   144→### Primary: SUI Purchase\n   145→\n   146→The main method of acquiring Gems. Six tiers available as detailed above.\n   147→\n   148→### Secondary: Daily Check-In\n   149→\n   150→Free gems earned through consistent engagement:\n   151→\n   152→| Method | Gems Earned |\n   153→|--------|-------------|\n   154→| Daily Claim | 10 Gems |\n   155→| 7-Day Streak Bonus | +50 Gems |\n   156→| 14-Day Streak Bonus | +100 Gems |\n   157→| 21-Day Streak Bonus | +200 Gems |\n   158→| 30-Day Streak Bonus | +500 Gems |\n   159→\n   160→**Monthly Maximum (Perfect Streak):**\n   161→- 30 days × 10 Gems = 300 Gems\n   162→- Streak bonuses = 850 Gems\n   163→- **Total: 1,150 Gems/month** (equivalent to 10 SUI package)\n   164→\n   165→### Tertiary: Events (Future)\n   166→\n   167→Promotional events may offer Gem rewards. These will be announced separately.\n   168→\n   169→---\n   170→\n   171→## Administrative Controls\n   172→\n   173→### Admin Capabilities\n   174→\n   175→The following can be adjusted by system administrators:\n   176→\n   177→| Setting | Admin Control | When Changed |\n   178→|---------|---------------|--------------|\n   179→| Base Rate | Yes | Major economic rebalancing only |\n   180→| Bonus Percentages | Yes | Promotional events |\n   181→| Package Availability | Yes | Limited-time offers |\n   182→| Spending Costs | Yes | System rebalancing |\n   183→| Daily Amounts | Yes | Event promotions |\n   184→\n   185→### Rate Lock Promise\n   186→\n   187→> The base rate of **1 SUI = 100 Gems** is intended to remain stable. Any changes would be communicated 30 days in advance.\n   188→\n   189→### Transparency Requirements\n   190→\n   191→- All rates displayed in-game\n   192→- Package contents clearly shown before purchase\n   193→- Historical rates available on request\n   194→- No hidden fees or conversion costs\n   195→\n   196→---\n   197→\n   198→## Technical Implementation\n   199→\n   200→### Smart Contract Integration\n   201→\n   202→```\n   203→Gem Purchase Flow:\n   204→1. Player selects package tier\n   205→2. Wallet prompts SUI transaction approval\n   206→3. SUI sent to game treasury address\n   207→4. Smart contract calculates total Gems (base + bonus)\n   208→5. Gem balance object updated on-chain\n   209→6. Transaction recorded immutably\n   210→7. UI refreshes to show new balance\n   211→```\n   212→\n   213→### Balance Tracking\n   214→\n   215→| Field | Type | Description |\n   216→|-------|------|-------------|\n   217→| `gem_balance` | u64 | Current gem count |\n   218→| `total_purchased` | u64 | Lifetime gems from purchases |\n   219→| `total_earned` | u64 | Lifetime gems from dailies/events |\n   220→| `total_spent` | u64 | Lifetime gems spent |\n   221→| `last_purchase` | Timestamp | Most recent SUI→Gem conversion |\n   222→\n   223→### Verification\n   224→\n   225→All gem balances are verifiable on the SUI blockchain:\n   226→- Balance stored in SUI object owned by player\n   227→- Transaction history publicly auditable\n   228→- No off-chain balance manipulation possible\n   229→\n   230→---\n   231→\n   232→## User Experience\n   233→\n   234→### Purchase Flow\n   235→\n   236→1. **Select** package tier from store\n   237→2. **Review** gem amount and bonus clearly displayed\n   238→3. **Confirm** SUI wallet transaction\n   239→4. **Receive** gems instantly upon confirmation\n   240→5. **Celebrate** with tier-appropriate animation\n   241→\n   242→### Balance Display\n   243→\n   244→| Location | Display Format |\n   245→|----------|----------------|\n   246→| Header bar | Gem icon + abbreviated count (e.g., \"1.2M\") |\n   247→| Store page | Full count + estimated value |\n   248→| Spending dialogs | Current balance + cost + remaining |\n   249→| Profile | Detailed breakdown of purchased/earned/spent |\n   250→\n   251→### Error Handling\n   252→\n   253→| Error | Message | Resolution |\n   254→|-------|---------|------------|\n   255→| Insufficient SUI | \"Not enough SUI for this package\" | Link to SUI acquisition |\n   256→| Transaction Failed | \"Transaction failed. SUI not charged.\" | Retry option |\n   257→| Network Iss\n\n... [truncated - full output was 14172 chars]",
+          "collapsed": true
+        },
+        {
+          "timestamp": "2026-01-09T00:16:39.650262+00:00",
+          "type": "text",
+          "content": "Let me also read the pre-registration spec to understand the battle pass details:",
+          "phase": "coding",
+          "subtask_id": "subtask-6-4",
+          "session": 33
+        },
+        {
+          "timestamp": "2026-01-09T00:16:40.172311+00:00",
+          "type": "tool_start",
+          "content": "[Read] ...ge-base/game-mechanics/pre-registration-spec.md",
+          "phase": "coding",
+          "tool_name": "Read",
+          "tool_input": "...ge-base/game-mechanics/pre-registration-spec.md",
+          "subtask_id": "subtask-6-4",
+          "session": 33
+        },
+        {
+          "timestamp": "2026-01-09T00:16:40.193772+00:00",
+          "type": "tool_end",
+          "content": "[Read] Done",
+          "phase": "coding",
+          "tool_name": "Read",
+          "subtask_id": "subtask-6-4",
+          "session": 33,
+          "detail": "     1→# Pre-Registration Specification - Complete System Overview\n     2→\n     3→> *\"47 fans. That's all I have. But every single one of you keeps me existing. Now, let me show you what your Devotion can become...\"*\n     4→> — Ika Minami, Pre-Registration Launch Day\n     5→\n     6→---\n     7→\n     8→## Overview\n     9→\n    10→The **Infinite Idol Pre-Registration System** is the complete economic and progression framework that powers player engagement on the SUI blockchain. Built with dark luxury aesthetics and whale psychology principles, this system transforms fan Devotion into tangible rewards while maintaining the existential stakes central to the Infinite Idol narrative.\n    11→\n    12→This document provides a comprehensive overview of all core mechanics. For detailed specifications on individual systems, see the cross-referenced files at the end of this document.\n    13→\n    14→---\n    15→\n    16→## Core Systems Summary\n    17→\n    18→The pre-registration experience consists of 16 interconnected systems:\n    19→\n    20→| # | System | Purpose | Primary Currency |\n    21→|---|--------|---------|------------------|\n    22→| 1 | GEM SYSTEM | Currency acquisition and conversion | SUI → Gems |\n    23→| 2 | Daily Check-In | Engagement rewards | Time → Gems |\n    24→| 3 | Leveling | Progression milestones | Gems → Levels |\n    25→| 4 | Battle Pass | Account representation (NFT) | N/A (Tracking) |\n    26→| 5 | Lootbox | Reward containers | N/A (Earned) |\n    27→| 6 | Items | Cosmetic equipment | Lootboxes → Items |\n    28→| 7 | Pets | Companion collectibles | Pet Eggs → Pets |\n    29→| 8 | Burn | Duplicate recycling | Items → Lootboxes |\n    30→| 9 | Inventory | Asset management | N/A (Storage) |\n    31→| 10 | Checkbook | Collection tracking | N/A (Display) |\n    32→| 11 | Wallet Connection | Blockchain integration | N/A (Auth) |\n    33→| 12 | Battle Pass Trading | Account transfer | SUI |\n    34→| 13 | Cosmetic Trading | Item marketplace | SUI |\n    35→| 14 | Notifications | User feedback | N/A (UX) |\n    36→| 15 | User Profile | Stats tracking | N/A (Display) |\n    37→| 16 | Randomness | Fair loot distribution | N/A (Backend) |\n    38→\n    39→---\n    40→\n    41→## 1. GEM SYSTEM\n    42→\n    43→### The Foundation of All Economy\n    44→\n    45→Gems are the primary in-game currency. Everything in the pre-registration flows through Gems.\n    46→\n    47→**Core Conversion Rate:** 1 SUI = 100 Gems\n    48→\n    49→### Gem Package Tiers\n    50→\n    51→| SUI Spent | Gems Received | Bonus | Total Value |\n    52→|-----------|---------------|-------|-------------|\n    53→| 1 SUI | 100 Gems | 0% | Base rate |\n    54→| 10 SUI | 1,100 Gems | 10% | +100 bonus |\n    55→| 100 SUI | 11,500 Gems | 15% | +1,500 bonus |\n    56→| 1,000 SUI | 120,000 Gems | 20% | +20,000 bonus |\n    57→| 10,000 SUI | 1,250,000 Gems | 25% | +250,000 bonus |\n    58→| 100,000 SUI | 13,000,000 Gems | 30% | +3,000,000 bonus |\n    59→\n    60→### Key Rules\n    61→\n    62→- **Account-Bound**: Gems are stored per wallet address and cannot be transferred\n    63→- **Spending**: 69 Gems = 1 Level (Idol Aura)\n    64→- **Admin Control**: Conversion rates can be adjusted by admin\n    65→- **Visual Feedback**: Each package tier has unique purchase animations\n    66→\n    67→> *For complete gem system details, see `knowledge-base/game-mechanics/gem-system.md`*\n    68→\n    69→---\n    70→\n    71→## 2. Daily Check-In System\n    72→\n    73→### Engagement Through Consistency\n    74→\n    75→Free gems for showing up. Streak milestones reward dedication.\n    76→\n    77→**Base Reward:** 10 Gems per day\n    78→\n    79→### Streak Milestones\n    80→\n    81→| Consecutive Days | Bonus Reward |\n    82→|------------------|--------------|\n    83→| 7 days | +50 Gems |\n    84→| 14 days | +100 Gems + 1 Lootbox + 1 Pet Egg |\n    85→| 21 days | +200 Gems |\n    86→| 30 days | +500 Gems + 1 Golden Lootbox + Special Badge |\n    87→\n    88→### Rules\n    89→\n    90→- 24-hour cooldown starts when you claim (not at midnight)\n    91→- Missing a claim resets streak to 0\n    92→- Streak data stored in Battle Pass NFT\n    93→- Streak resets if Battle Pass is traded to new owner\n    94→\n    95→---\n    96→\n    97→## 3. Leveling System\n    98→\n    99→### Permanent Progression\n   100→\n   101→**Cost:** 69 Gems = 1 Idol Aura (Level)\n   102→\n   103→### Milestone Rewards (Automatic)\n   104→\n   105→| Milestone | Reward |\n   106→|-----------|--------|\n   107→| Every 1 level | 1 Lootbox (A→B→C→D→E rotating) |\n   108→| Every 50 levels | 1 Pet Egg |\n   109→| Every 1,000 levels | 1 Golden Lootbox |\n   110→| Every 10,000 levels | 1 Diamond Lootbox |\n   111→\n   112→### Rules\n   113→\n   114→- Levels are permanent (never decrease)\n   115→- Maximum level: 999,999\n   116→- Level stored in Battle Pass NFT\n   117→- Cannot skip levels\n   118→\n   119→---\n   120→\n   121→## 4. Battle Pass System\n   122→\n   123→### Your Identity on the Eternal Stage\n   124→\n   125→The Battle Pass is an NFT that represents your complete account progress.\n   126→\n   127→**Creation:** Automatically minted when you first spend gems\n   128→\n   129→### Tracked Data\n   130→\n   131→- Current level\n   132→- Total SUI spent\n   133→- Daily check-in streak\n   134→- Total gems earned from dailies\n   135→- Mint date\n   136→- Season number\n   137→\n   138→### Visual Tiers\n   139→\n   140→The Battle Pass appearance evolves with your level:\n   141→\n   142→| Level Range | Tier | Aesthetic |\n   143→|-------------|------|-----------|\n   144→| 1-99 | Bronze | Base tier |\n   145→| 100-999 | Silver | Refined |\n   146→| 1,000-9,999 | Gold | Premium |\n   147→| 10,000-99,999 | Platinum | Elite |\n   148→| 100,000-420,068 | Diamond | Legendary |\n   149→| 420,069+ | Cosmic | Ultimate |\n   150→\n   151→### Trading Rules\n   152→\n   153→- Cannot trade current-season Battle Pass\n   154→- Trading resets streak to 0\n   155→- One Battle Pass per wallet maximum\n   156→\n   157→> *For complete Battle Pass details, see `knowledge-base/game-mechanics/battle-pass.md`*\n   158→\n   159→---\n   160→\n   161→## 5. Lootbox System\n   162→\n   163→### The Thrill of the Chase (For Items)\n   164→\n   165→NFT containers earned at level milestones. Opening burns the lootbox and creates items.\n   166→\n   167→### Lootbox Types\n   168→\n   169→| Type | Source | Contents |\n   170→|------|--------|----------|\n   171→| A Box | Level milestones (position 1 in cycle) | A-family cosmetic sets |\n   172→| B Box | Level milestones (position 2 in cycle) | B-family cosmetic sets |\n   173→| C Box | Level milestones (position 3 in cycle) | C-family cosmetic sets |\n   174→| D Box | Level milestones (position 4 in cycle) | D-family cosmetic sets |\n   175→| E Box | Level milestones (position 5 in cycle) | E-family cosmetic sets |\n   176→| Golden Lootbox | 1,000-level milestones, 30-day streak | Better odds |\n   177→| Diamond Lootbox | 10,000-level milestones | Best odds |\n   178→\n   179→### Cycling Pattern\n   180→\n   181→Lootboxes cycle A→B→C→D→E→A... as you level:\n   182→- Level 1 → A Box\n   183→- Level 2 → B Box\n   184→- Level 3 → C Box\n   185→- Level 4 → D Box\n   186→- Level 5 → E Box\n   187→- Level 6 → A Box (repeat)\n   188→\n   189→### Time-Locked Releases\n   190→\n   191→| Box Type | Availability |\n   192→|----------|--------------|\n   193→| A Box | Day 1 |\n   194→| B Box | 3 weeks after launch |\n   195→| C Box | 6 weeks after launch |\n   196→| D Box | 9 weeks after launch |\n   197→| E Box | 12 weeks after launch |\n   198→\n   199→### Rarity Odds (Standard Boxes)\n   200→\n   201→| Rarity | Chance |\n   202→|--------|--------|\n   203→| Common | 60% |\n   204→| Rare | 25% |\n   205→| Ultra Rare | 12% |\n   206→| Legendary | 3% |\n   207→\n   208→> *For complete lootbox details, see `knowledge-base/game-mechanics/gacha-system.md`*\n   209→\n   210→---\n   211→\n   212→## 6. Item System\n   213→\n   214→### Dressing IKA-Chan for the Chase\n   215→\n   216→Cosmetic pieces from lootboxes. NFTs that can be equipped, collected, or burned.\n   217→\n   218→### Item Slots (9 Total)\n   219→\n   220→| Slot | Type | Source |\n   221→|------|------|--------|\n   222→| Head | Core piece | Family boxes |\n   223→| Chest | Core piece | Family boxes |\n   224→| Arms | Core piece | Family boxes |\n   225→| Legs | Core piece | Family boxes |\n   226→| Feet | Core piece | Family boxes |\n   227→| Back | Core piece | Family boxes |\n   228→| Neck | Accessory | Any box |\n   229→| L Wrist | Accessory | Any box |\n   230→| R Wrist | Accessory | Any box |\n   231→\n   232→### Collection Scale\n   233→\n   234→- **30 complete outfit sets** (270 total pieces possible)\n   235→- Each set has up to 6 pieces (Head, Chest, Arms, Legs, Feet, Back)\n   236→- Accessories drop from any box type\n   237→\n   238→### Rarity Tiers\n   239→\n   240→| Tier | Description |\n   241→|------|-------------|\n   242→| Common | Basic designs |\n   243→| Rare | Enhanced details |\n   244→| Ultra Rare | Special effects/patterns |\n   245→| Legendary | Premium exclusive designs |\n   246→\n   247→> *For complete cosmetics details, see `knowledge-base/game-mechanics/cosmetics.md`*\n   248→\n   249→---\n   250→\n   251→## 7. Pet System\n   252→\n   253→### Companions on the Eternal Stage\n   254→\n   255→Collectible creatures that appear alongside IKA-Chan.\n   256→\n   257→**Acquisition:** Pet Eggs earned at level 50 milestones and 14-day streak\n   258→\n   259→**Opening Cost:** 420 Gems (approximately $5 USD equivalent)\n   260→\n   261→### Pet Variants\n   262→\n   263→| Rarity | Variants | Chance |\n   264→|--------|----------|--------|\n   265→| Common | 12 colors | 70% |\n   266→| Rare | 4 textures | 20% |\n   267→| Ultra Rare | 2 with effects | 8% |\n   268→| Cosmic Rare | 1 animated | 2% |\n   269→\n   270→### Mechanics\n   271→\n   272→- Eggs can be traded unopened\n   273→- Hatched pets can be traded\n   274→- Burn 5 duplicate pets → 1 Pet Egg\n   275→- Pets are purely cosmetic (no stats)\n   276→\n   277→---\n   278→\n   279→## 8. Burn System\n   280→\n   281→### Devotion Recycling\n   282→\n   283→Destroy duplicates to get new chances at rare items.\n   284→\n   285→### Burn Types\n   286→\n   287→| Method | Input | Output |\n   288→|--------|-------|--------|\n   289→| Regular Burn | 4 duplicate items | 1 Lootbox (same type) |\n   290→| Prestige Burn (4,000) | Lifetime 4,000 items \n\n... [truncated - full output was 18978 chars]",
+          "collapsed": true
+        },
+        {
+          "timestamp": "2026-01-09T00:16:49.098421+00:00",
+          "type": "text",
+          "content": "I now have all the information I need. Let me create the comprehensive `battle-pass.md` file following the established pattern:",
+          "phase": "coding",
+          "subtask_id": "subtask-6-4",
+          "session": 33
+        },
+        {
+          "timestamp": "2026-01-09T00:18:12.898522+00:00",
+          "type": "tool_start",
+          "content": "[Write] ./knowledge-base/game-mechanics/battle-pass.md",
+          "phase": "coding",
+          "tool_name": "Write",
+          "tool_input": "./knowledge-base/game-mechanics/battle-pass.md",
+          "subtask_id": "subtask-6-4",
+          "session": 33
+        },
+        {
+          "timestamp": "2026-01-09T00:18:13.473054+00:00",
+          "type": "tool_end",
+          "content": "[Write] Done",
+          "phase": "coding",
+          "tool_name": "Write",
+          "subtask_id": "subtask-6-4",
+          "session": 33,
+          "detail": "File created successfully at: ./knowledge-base/game-mechanics/battle-pass.md",
+          "collapsed": true
+        },
+        {
+          "timestamp": "2026-01-09T00:18:17.626678+00:00",
+          "type": "text",
+          "content": "Now let me run the verification command to ensure the file meets requirements:",
+          "phase": "coding",
+          "subtask_id": "subtask-6-4",
+          "session": 33
+        },
+        {
+          "timestamp": "2026-01-09T00:18:20.340855+00:00",
+          "type": "tool_start",
+          "content": "[Bash] grep -q 'Bronze' knowledge-base/game-mechanics/...",
+          "phase": "coding",
+          "tool_name": "Bash",
+          "tool_input": "grep -q 'Bronze' knowledge-base/game-mechanics/...",
+          "subtask_id": "subtask-6-4",
+          "session": 33
+        },
+        {
+          "timestamp": "2026-01-09T00:18:20.507477+00:00",
+          "type": "tool_end",
+          "content": "[Bash] Done",
+          "phase": "coding",
+          "tool_name": "Bash",
+          "subtask_id": "subtask-6-4",
+          "session": 33,
+          "detail": "OK",
+          "collapsed": true
+        },
+        {
+          "timestamp": "2026-01-09T00:18:23.612543+00:00",
+          "type": "text",
+          "content": "Verification passed. Now let me commit the changes and update the plan:",
+          "phase": "coding",
+          "subtask_id": "subtask-6-4",
+          "session": 33
+        },
+        {
+          "timestamp": "2026-01-09T00:18:29.256837+00:00",
+          "type": "tool_start",
+          "content": "[Bash] git add . && git commit -m \"$(cat <<'EOF'\nauto-...",
+          "phase": "coding",
+          "tool_name": "Bash",
+          "tool_input": "git add . && git commit -m \"$(cat <<'EOF'\nauto-...",
+          "subtask_id": "subtask-6-4",
+          "session": 33
         }
       ]
     },
