@@ -34,7 +34,7 @@ These are **ABSOLUTE**. Immediate rejection if violated:
 | 5 | **Senpai's Face Never Revealed** | Is his face hidden from audience? (Characters may glimpse) |
 | 6 | **The Foundation Controls the System** | Are they dominant but not omnipotent? |
 | 7 | **The Chase is Survival** | Is competition framed as coerced, not optional? |
-| 8 | **Authenticity Generates Power** | Does genuine connection beat manufactured appeal? |
+| 8 | **Fan Service Fuels Devotion** | Does content show fan service as survival mechanism, not vanity? |
 | 9 | **The System Predates Its Masters** | Are origins mysterious, pre-Erina? |
 | 10 | **No One Knows What Catching Senpai Means** | Is this mystery preserved? |
 

@@ -357,7 +357,7 @@ Use a single line with three asterisks:
 | 5 | **Senpai's Face Never Revealed** | Audience never sees his face. Characters may glimpse it. |
 | 6 | **The Foundation Controls the System** | They run the industry. Resistance exists but struggles. |
 | 7 | **The Chase is Survival** | Competition is coerced. "Choice" under death threat isn't free. |
-| 8 | **Authenticity Generates Power** | Genuine connection beats manufactured appeal. |
+| 8 | **Fan Service Fuels Devotion** | Beach episodes, costumes, shipping moments = survival. Show fan service as necessity, not vanity. |
 | 9 | **The System Predates Its Masters** | Origins unknown. Adds mystery—use it. |
 | 10 | **No One Knows What Catching Senpai Means** | Keep this mystery. Don't resolve it casually. |
 
