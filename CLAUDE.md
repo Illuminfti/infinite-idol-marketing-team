@@ -17,13 +17,13 @@
 
 ## Project Overview
 
-**Infinite Idol** is a Web3 gacha game built on **SUI** blockchain (NFTs, contracts, core logic) with multi-chain payment support (ETH/Base, Solana treasuries). Idols compete in "The Chase" pursuing Senpai. Powered by **Devotion** (fan energy) - without it, idols **Fade** (cease to exist).
+**Infinite Idol** is a Web3 gacha game with multi-chain presence via **Ika Network** infrastructure. Idols compete in "The Chase" pursuing Senpai. Powered by **Devotion** (fan energy) - without it, idols **Fade** (cease to exist).
 
 ### Brand Pillars
 - **Dark Luxury**: Black/gold premium aesthetic, NOT pink/cutesy
 - **Self-Aware**: We know we're a gacha game, shameless but genuine
 - **Existential Stakes**: Fading is real death, every Chase matters
-- **Web3 Native**: Built on SUI, gameplay-first
+- **Web3 Native**: Chain-agnostic, gameplay-first (blockchain abstracted away)
 
 ---
 
@@ -31,20 +31,32 @@
 
 **ABSOLUTE. Cannot be violated under ANY circumstances.**
 
-| # | Fact | Key Detail |
-|---|------|------------|
-| 1 | **Devotion is Literal** | Real emotional energy, not metaphor |
-| 2 | **Fading is Death** | Permanent, no reversal |
-| 3 | **Ika Has 47 Fans** | Exactly 47 at story start |
-| 4 | **Ika's Hair: Pink Gradient** | Rose roots → magenta tips |
-| 5 | **Senpai Never Shown** | Always obscured, face never revealed |
-| 6 | **Foundation Controls All** | Run by Erina, controls industry |
-| 7 | **The Chase is Core** | Primary competition, determines survival |
-| 8 | **Built on SUI** | Sui-native blockchain (NFTs, contracts, game logic). Multi-chain payment support via ETH/Base and Solana treasuries. |
-| 9 | **Gems = Currency** | 1 SUI = 100 Gems, account-bound |
-| 10 | **Dark Luxury Aesthetic** | Black/gold, NOT pink/cutesy |
+| # | Fact | Why It's Inviolable |
+|---|------|---------------------|
+| 1 | **Devotion Sustains Existence** | Without fan devotion, idols literally cease to exist. Core mechanic. |
+| 2 | **Fading is Permanent Death** | No resurrection. No reversal. No afterlife. Removes all stakes if violated. |
+| 3 | **The Faded Are Forgotten** | When someone Fades, memories of them blur and disappear. The existential horror. |
+| 4 | **Senpai is the Unattainable Goal** | Every idol chases Senpai. What catching him MEANS remains mysterious. |
+| 5 | **Senpai's Face Never Revealed** | We (audience) never see Senpai's face. Characters may glimpse it. Mystery preserved. |
+| 6 | **The Foundation Controls the System** | They run the industry—not everything, but the SYSTEM. Resistance exists. |
+| 7 | **The Chase is Survival** | Competition isn't optional. Refusing = Fading. Choice is coerced. |
+| 8 | **Fan Service Fuels Devotion** | Beach episodes, shipping moments, costumes, vulnerability—fans reward idols who give them what they crave. Refusing fan service = less Devotion = Fading. It's survival, not vanity. |
+| 9 | **The System Predates Its Masters** | Origins unknown. Existed before Erina, before current Foundation. |
+| 10 | **No One Knows What Catching Senpai Means** | The ultimate mystery. Some say eternal fame. Some say something else. |
 
 **Any violation → Immediate escalation to human.**
+
+**SINGLE SOURCE OF TRUTH**: This table is the ONLY authoritative list of the 10 Inviolable Facts. Agent files MUST NOT duplicate this list—always reference CLAUDE.md directly.
+
+### What's NOT Inviolable (Moved to Appropriate Docs)
+
+| Detail | Location | Why Moved |
+|--------|----------|-----------|
+| Ika's 47 fans | `characters/ika-minami.md` | Character detail, not world rule |
+| Ika's pink gradient hair | `characters/ika-minami.md` | Character design, not world rule |
+| Chain-agnostic Web3 | `crypto/web3-positioning.md` | Business positioning, not lore |
+| Gems = Currency | `game-mechanics/gem-system.md` | Game mechanic, not narrative truth |
+| Dark luxury aesthetic | `brand/visual-identity.md` | Brand guideline, not world rule |
 
 ---
 
@@ -62,12 +74,23 @@
 | 07 | **Light Novel Writer** | Narrative | Story content |
 | 08 | **Lore Guardian** | Canon Review | Compliance checking |
 | 09 | **Resident Degen** | Cultural | Authenticity, trends |
+| 10 | **The Infiltrator** | Community Intel | Real-time degen presence |
+| 11 | **The Meme Lord** | Viral Engineering | Spreadable content |
+| 12 | **Conversion Architect** | Player Journey | Funnel optimization |
+| 13 | **The Ambassador** | Partnerships | Ecosystem relationships |
+| 14 | **The Shield** | Crisis Management | Brand protection |
+| 15 | **Simp Whisperer** | Fan Service PM | Emotional engagement |
+| 16 | **The NEET** | Community Tools | Technical infrastructure |
+| 17 | **The Architect** | Agent System | Meta-optimization |
+| 18 | **The Hypeman** | KOL/Influencer | Creator relationships |
 
 ### Hierarchy
 ```
 COORDINATOR (Business/Strategy Authority)
     └── RESIDENT DEGEN (Cultural Authority)
             └── All Other Agents
+
+THE ARCHITECT (System Authority) ← Reports directly to Human
 ```
 
 ---
@@ -85,6 +108,11 @@ Skills are modular workflows agents load on-demand. Located in `skills/`:
 | **Escalation** | `escalation.md` | When/how to escalate |
 | **Templates** | `templates.md` | Standard output formats |
 | **Permissions** | `permissions.md` | File access reference |
+| **Community Intel** | `community-intel.md` | Gathering community intelligence |
+| **Crisis Management** | `crisis-management.md` | Handling threats and crises |
+| **Agent Evaluation** | `agent-evaluation.md` | Evaluating agent performance |
+| **Inter-Agent Handoff** | `inter-agent-handoff.md` | Passing work between agents |
+| **KOL/Influencer** | `kol-influencer.md` | Influencer management |
 
 **How to use**: Read the skill file when your task requires that workflow.
 

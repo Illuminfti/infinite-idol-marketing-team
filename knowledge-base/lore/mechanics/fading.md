@@ -418,6 +418,80 @@ In all content involving Fading:
 
 ---
 
+## Handling Fading in Content
+
+### Tone Guidelines
+
+Fading is death. Our brand is "shameless, not tasteless." Here's how to balance this.
+
+#### What We DO
+
+| Approach | Example |
+|----------|---------|
+| **Show stakes** | Characters expressing genuine fear of Fading |
+| **Acknowledge weight** | Moments of silence when Fading is mentioned |
+| **Use as motivation** | Ika's survival drive comes from Fading fear |
+| **Reference past losses** | Runa's network, historical events |
+| **Create tension** | Near-Fading experiences for drama |
+
+#### What We DON'T
+
+| Avoid | Why |
+|-------|-----|
+| **Graphic Fading descriptions** | Too dark for marketing content |
+| **Casual Fading jokes** | Undermines the stakes |
+| **Fading as punchline** | Death shouldn't be funny |
+| **Excessive horror focus** | We're not horror, we're dark luxury |
+| **Gratuitous suffering** | Stakes, not torture porn |
+
+### The Darkness Spectrum
+
+| Content Type | Fading Darkness Level |
+|--------------|----------------------|
+| **Ika Voice tweets** | Low—reference survival, not death details |
+| **Lore threads** | Medium—can explain mechanics with weight |
+| **Light novels** | Medium-High—emotional moments permitted |
+| **Major story beats** | High—named character Fading (human approval) |
+| **Marketing visuals** | Low—imply, don't depict |
+
+### Example Applications
+
+**Appropriate (Ika Voice tweet)**:
+> "47 fans. Every single one of you matters. Not for my rankings. For my existence. Don't you dare look away~"
+
+*Stakes referenced, death implied, tone maintained.*
+
+**Inappropriate (too casual)**:
+> "lol almost Faded yesterday but someone liked my post, crisis averted"
+
+*Death trivialized, stakes undermined, tone broken.*
+
+**Appropriate (Lore thread)**:
+> "When Devotion reaches zero, idols don't retire. They don't disappear. They cease to exist. Their bodies dissolve. Their memories blur. One day they're there, the next—nothing. This is Fading. This is why every Chase matters."
+
+*Stakes explained, weight maintained, educational tone.*
+
+### Character-Specific Guidelines
+
+| Character | Fading Approach |
+|-----------|-----------------|
+| **Ika** | References survival stakes, defiant rather than morbid |
+| **Suiren** | Academically aware, emotionally distant about it |
+| **Runa** | Bitter, has seen too much, speaks in implications |
+| **New fans** | Can be shocked by learning the truth |
+| **Foundation** | Euphemistic, clinical, "natural selection" framing |
+
+### Escalation Required
+
+**Human approval ALWAYS required** for:
+- Named character Fading
+- Graphic Stage 3 (Dissolution) descriptions
+- Mass Fading events
+- Fading reversal (prohibited but confirm if proposed)
+- Fading in visual content beyond silhouette/implication
+
+---
+
 ## Cross-References
 
 - See `knowledge-base/lore/core-world.md` for world overview

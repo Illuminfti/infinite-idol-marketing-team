@@ -25,16 +25,27 @@ When sources conflict, this hierarchy determines truth:
 
 These are **ABSOLUTE**. Immediate rejection if violated:
 
-1. **Devotion is Literal** - Emotional energy from fans, not metaphorical
-2. **Fading is Death** - Permanent, no reversal, no exceptions
-3. **Ika Has 47 Fans** - Exactly 47 at story start
-4. **Ika's Hair is Pink Gradient** - Rose roots → magenta tips
-5. **Senpai is Never Shown** - Always obscured, never revealed
-6. **Foundation Controls Everything** - Run by Erina, controls industry
-7. **The Chase is Core** - Primary competition format
-8. **Built on SUI** - SUI blockchain, not any other
-9. **Gems are Currency** - 1 SUI = 100 Gems, account-bound
-10. **Dark Luxury Aesthetic** - Black/gold, NOT pink/cutesy
+| # | Fact | What to Check |
+|---|------|---------------|
+| 1 | **Devotion Sustains Existence** | Does content treat Devotion as real, not metaphorical? |
+| 2 | **Fading is Permanent Death** | Is death treated as final? No resurrection plots? |
+| 3 | **The Faded Are Forgotten** | Do characters forget the Faded over time? |
+| 4 | **Senpai is the Unattainable Goal** | Is Senpai the pursuit, not the catch? |
+| 5 | **Senpai's Face Never Revealed** | Is his face hidden from audience? (Characters may glimpse) |
+| 6 | **The Foundation Controls the System** | Are they dominant but not omnipotent? |
+| 7 | **The Chase is Survival** | Is competition framed as coerced, not optional? |
+| 8 | **Fan Service Fuels Devotion** | Does content show fan service as survival mechanism, not vanity? |
+| 9 | **The System Predates Its Masters** | Are origins mysterious, pre-Erina? |
+| 10 | **No One Knows What Catching Senpai Means** | Is this mystery preserved? |
+
+### What's NOT Inviolable (Check for consistency, not rejection)
+
+| Detail | Concern Level | Source |
+|--------|---------------|--------|
+| Ika's 47 fans | Minor continuity | `characters/ika-minami.md` |
+| Character designs | Visual consistency | Character files |
+| Currency names | Game consistency | `game-mechanics/gem-system.md` |
+| Aesthetic choices | Brand consistency | `brand/visual-identity.md` |
 
 ---
 

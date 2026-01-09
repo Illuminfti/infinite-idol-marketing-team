@@ -125,10 +125,10 @@ If any answer is "No," we don't build it—regardless of how "good for tokenomic
 
 | We ARE | Because |
 |--------|---------|
-| A gacha game on SUI | Gacha is our genre, SUI is our platform |
+| A gacha game with true ownership | Gacha is our genre, ownership is our edge |
 | An idol entertainment experience | Devotion and narrative come first |
 | A community of fans | We're building a fandom, not a fund |
-| True digital ownership | You own your Battle Pass, pets, cosmetics |
+| Chain-agnostic by design | Ika Network enables presence everywhere |
 | Honest about what we are | Shameless but genuine |
 
 ### Messaging Framework
@@ -136,7 +136,7 @@ If any answer is "No," we don't build it—regardless of how "good for tokenomic
 | Context | Our Message |
 |---------|-------------|
 | **To Gamers** | "A gacha game with true ownership of your pulls" |
-| **To Crypto Natives** | "A game that's actually fun, built on SUI" |
+| **To Crypto Natives** | "A game that's actually fun, works wherever you are" |
 | **To Skeptics** | "We know most Web3 games failed. That's why we built differently." |
 | **To Everyone** | "Support your idol. Own your progress. Enjoy the Chase." |
 
@@ -204,32 +204,36 @@ We take the best from both spaces:
 
 ---
 
-## The SUI Advantage
+## Chain Abstraction Philosophy
 
-### Why SUI Enables Our Vision
+### Blockchain Should Be Invisible
 
-| SUI Feature | How It Helps Gameplay-First |
-|-------------|----------------------------|
-| **Sub-second finality** | Instant feedback, game feels responsive |
-| **Sub-cent gas** | Micro-transactions don't hurt |
-| **Object model** | NFTs feel like actual items, not database entries |
-| **No ETH complexity** | Players don't need to understand gas estimation |
-| **Growing ecosystem** | Legitimate platform, not experimental |
+| Principle | Implementation |
+|-----------|----------------|
+| **Seamless experience** | Players connect and play—no chain education needed |
+| **Instant feedback** | Sub-second transactions feel like regular gaming |
+| **Minimal friction** | Low costs mean micro-transactions don't hurt |
+| **True ownership** | NFTs feel like actual items you own |
+| **Universal access** | Fans from any ecosystem can participate |
 
-### SUI vs. Alternatives for Gaming
+### The Ika Network Advantage
 
-| Blockchain | Why NOT for Us |
-|------------|----------------|
-| **Ethereum** | Gas costs kill casual gaming |
-| **Solana** | Network instability concerns |
-| **Polygon** | L2 complexity, bridge risks |
-| **Immutable X** | Limited to specific use cases |
-| **Custom L1** | Centralization, no ecosystem |
+Through Ika Network infrastructure, Infinite Idol maintains presence across the blockchain ecosystem:
+- Fans can engage from wherever they are
+- No single chain defines the experience
+- Interoperability without complexity for users
+- The technology stays invisible while ownership stays real
 
-### Canon Compliance
+### Multi-Chain Philosophy
 
-> *"Game is Built on SUI. Infinite Idol is built on the SUI blockchain. All NFTs, currency conversions, and on-chain activities use SUI. Not Ethereum, not Solana, not any other chain."*
-> — Canon Rule #8
+| Aspect | Approach |
+|--------|----------|
+| **Primary Infrastructure** | Built on proven, fast, low-cost chains |
+| **Interoperability** | Ika Network enables cross-chain presence |
+| **Solana Ecosystem** | Strong community presence and engagement |
+| **User Experience** | Chain complexity abstracted away entirely |
+
+Players don't need to care about which blockchain powers what. They just play.
 
 ---
 
@@ -268,7 +272,7 @@ GAME│                     │                     │ NATIVE
 | **Traditional Gacha** | "Same great gameplay, but you actually own your pulls" |
 | **Failed Web3 Games** | "What Web3 gaming should have been" |
 | **Current Web3 Games** | "Built by people who love games, not just crypto" |
-| **SUI Ecosystem Games** | "The flagship gaming experience on SUI" |
+| **Chain-specific games** | "Works wherever fans are, not locked to one ecosystem" |
 
 ---
 
@@ -278,12 +282,13 @@ GAME│                     │                     │ NATIVE
 
 | Message | Context |
 |---------|---------|
-| "Gacha game on SUI" | When describing what we are |
+| "Gacha game with true ownership" | When describing what we are |
 | "True ownership" | When explaining blockchain benefits |
 | "Gameplay first" | When asked about Web3 aspects |
 | "Dark luxury idol experience" | When describing aesthetic |
 | "Shameless but honest" | When discussing monetization |
 | "Built to last" | When addressing sustainability |
+| "Works wherever you are" | When discussing chain presence |
 
 ### DON'T Say
 
@@ -295,12 +300,14 @@ GAME│                     │                     │ NATIVE
 | "100x potential" | Speculative language attracts wrong audience |
 | "Metaverse" | Meaningless buzzword |
 | "Revolutionary" | Over-promising, under-delivering |
+| Chain comparisons/tribalism | We're chain-agnostic, not tribal |
+| Explicit chain shilling | Let the experience speak, not the tech |
 
 ### Platform-Specific Guidance
 
 | Platform | Positioning Emphasis |
 |----------|---------------------|
-| **Crypto Twitter** | SUI ecosystem, ownership benefits, sustainable design |
+| **Crypto Twitter** | Ika Network, Solana community, ownership benefits, sustainable design |
 | **Gaming Communities** | Gacha mechanics, idol narrative, gameplay quality |
 | **Discord** | Community, fan culture, Devotion system |
 | **Marketing Materials** | Dark luxury aesthetic, premium experience |
