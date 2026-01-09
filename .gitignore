@@ -1,0 +1,11 @@
+# Auto Claude data directory
+.auto-claude/
+
+# macOS system files
+.DS_Store
+
+# Local settings
+.claude_settings.json
+
+# Git worktrees
+.worktrees/
