@@ -24,7 +24,12 @@
       "description": "Supporting cast profiles follow the same detailed format as main characters: overview, basic info table, physical appearance (hair with color codes, eyes, build, fashion), personality (core traits table, philosophy, what they hide, what they're NOT, emotional range), background, relationships with main cast, voice guidelines (DO/DON'T), and cross-references. Each character serves a specific narrative function that contrasts or complements main characters.",
       "category": "pattern",
       "discovered_at": "2026-01-08T23:49:14.379230+00:00"
+    },
+    "knowledge-base/game-mechanics/gem-system.md": {
+      "description": "Complete gem system documentation with 6 package tiers (1 SUI to 100,000 SUI), base rate 1 SUI = 100 Gems, bonuses from 0% to 30%, account-bound rules preventing transfer/trading, spending rates (69 Gems/level, 420 Gems/pet egg), and dark luxury aesthetic integration.",
+      "category": "game-mechanics",
+      "discovered_at": "2026-01-09T00:13:29.980344+00:00"
     }
   },
-  "last_updated": "2026-01-08T23:49:14.379237+00:00"
+  "last_updated": "2026-01-09T00:13:29.980354+00:00"
 }

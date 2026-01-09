@@ -710,8 +710,9 @@
             "command": "grep -q '1 SUI = 100 Gems' knowledge-base/game-mechanics/gem-system.md && grep -q '100,000 SUI' knowledge-base/game-mechanics/gem-system.md && echo 'OK'",
             "expected": "OK"
           },
-          "status": "pending",
-          "notes": "Must include all 6 package tiers with exact bonus percentages"
+          "status": "completed",
+          "notes": "Created comprehensive gem-system.md with all 6 SUI to Gem conversion rates (1 SUI=100 Gems base rate up to 100,000 SUI=13,000,000 Gems with 30% bonus), account-bound rules, spending rates (69 Gems/level, 420 Gems/pet egg), admin controls, whale psychology integration, and dark luxury aesthetic compliance. Verification passed.",
+          "updated_at": "2026-01-09T00:13:22.822361+00:00"
         },
         {
           "id": "subtask-6-3",
@@ -1251,5 +1252,5 @@
   "status": "in_progress",
   "planStatus": "in_progress",
   "updated_at": "2026-01-08T22:56:21.596Z",
-  "last_updated": "2026-01-09T00:10:45.996911+00:00"
+  "last_updated": "2026-01-09T00:13:22.822372+00:00"
 }
