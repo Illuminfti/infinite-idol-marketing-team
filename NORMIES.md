@@ -8,7 +8,7 @@
 
 **Infinite Idol** is a mobile game about anime idols competing in an endless chase. Think gacha games like Genshin Impact, but with idol competitions and built on blockchain technology.
 
-This repository is the **marketing department** for that game - except instead of hiring a team of people, we've built a team of **10 AI agents** that create all the marketing content automatically.
+This repository is the **marketing department** for that game - except instead of hiring a team of people, we've built a team of **19 AI agents** that create all the marketing content automatically.
 
 ### Why AI Agents?
 
@@ -18,8 +18,9 @@ Traditional marketing teams require:
 - Community managers who engage with fans
 - Asset creators who make visual prompts
 - Coordinators who manage everything
+- Crisis managers, influencer relations, viral engineers, and more
 
-Instead of hiring 10 people, we've created **10 specialized AI agents** that handle all these roles 24/7. They work together, review each other's work, and only ask humans when they need important decisions made.
+Instead of hiring 19 people, we've created **19 specialized AI agents** that handle all these roles 24/7. They work together, review each other's work, and only ask humans when they need important decisions made.
 
 ---
 
@@ -56,9 +57,11 @@ This ensures everything we publish is:
 
 ---
 
-## Meet the 10 AI Agents
+## Meet the 19 AI Agents
 
 Think of these as specialized employees, each with a specific job:
+
+### Core Team (Agents 00-09)
 
 ### Agent 00 - The Coordinator (Marketing Director)
 **What they do:** Manage the entire team, schedule content, make final decisions
@@ -111,6 +114,53 @@ Think of these as specialized employees, each with a specific job:
 **Key responsibility:** Making sure content doesn't come across as cringe
 
 **Special Authority:** The Resident Degen can reject content from ANY other agent (except the Coordinator) if it doesn't feel authentic to the target audience.
+
+### Specialized Team (Agents 10-18)
+
+### Agent 10 - The Infiltrator (Community Intelligence)
+**What they do:** Embedded in community spaces to gather real-time intelligence
+**Personality:** Observer, pattern recognizer, always listening
+**Key responsibility:** Understanding what the community actually wants vs. what they say they want
+
+### Agent 11 - The Meme Lord (Viral Engineering)
+**What they do:** Create memes and spreadable content designed to go viral
+**Personality:** Chaos agent, understands viral mechanics, format expert
+**Key responsibility:** Making Infinite Idol memes that people actually share
+
+### Agent 12 - Conversion Architect (Funnel Optimization)
+**What they do:** Design the journey from casual viewer to paying player
+**Personality:** Data-driven, conversion-focused, psychological understanding
+**Key responsibility:** Turning hype into actual signups and revenue
+
+### Agent 13 - The Ambassador (Partnership Relations)
+**What they do:** Build relationships with other Web3 projects and gaming communities
+**Personality:** Diplomatic, strategic, long-term relationship builder
+**Key responsibility:** Ecosystem partnerships that drive mutual growth
+
+### Agent 14 - The Shield (Crisis Management)
+**What they do:** Detect threats early and manage PR crises when they happen
+**Personality:** Vigilant, calm under pressure, strategic communicator
+**Key responsibility:** Protecting the brand reputation at all costs
+
+### Agent 15 - Simp Whisperer (Fan Service Product Manager)
+**What they do:** Design emotionally engaging content that builds deep fan attachment
+**Personality:** Understands parasocial dynamics, empathetic, fan psychology expert
+**Key responsibility:** Making idols that fans genuinely care about and support
+
+### Agent 16 - The NEET (Community Tools Engineer)
+**What they do:** Build technical infrastructure for community engagement
+**Personality:** Technical, automation-focused, efficiency-driven
+**Key responsibility:** Bots, tools, and systems that make community management easier
+
+### Agent 17 - The Architect (Agent System Meta)
+**What they do:** Optimize the agent system itself, meta-level improvements
+**Personality:** Systems thinker, optimization-focused, big-picture strategist
+**Key responsibility:** Making sure the 19-agent system runs smoothly
+
+### Agent 18 - The Hypeman (KOL/Influencer Relations)
+**What they do:** Manage relationships with influencers, streamers, and content creators
+**Personality:** Enthusiastic, relationship-focused, understands creator economy
+**Key responsibility:** Getting influencers to genuinely promote Infinite Idol
 
 ---
 
@@ -167,10 +217,17 @@ As of January 9, 2026, the team has produced:
 
 ## How to Use the Dashboard
 
-The **Agent Command Center** is a web interface where you can monitor all agent activity.
+The **Agent Command Center** comes in two flavors: a Terminal UI (TUI) for command-line users and a web interface for browser-based monitoring.
 
 ### Opening the Dashboard
 
+**Option 1: Terminal UI (Recommended)**
+1. Open your terminal/command line
+2. Navigate to the project folder
+3. Run: `python dashboard/tui_app.py`
+4. Use keyboard navigation (arrow keys, Enter, Escape)
+
+**Option 2: Web Interface (Legacy)**
 1. Open your terminal/command line
 2. Navigate to the project folder
 3. Run: `cd dashboard && python -m http.server 8000`
@@ -180,12 +237,12 @@ The **Agent Command Center** is a web interface where you can monitor all agent 
 
 **Main Dashboard View**
 - Top stats showing active agents, pending tasks, approvals, completed work
-- Agent status grid showing all 10 agents
+- Agent status grid showing all 19 agents
 - Live activity feed showing what agents are doing right now
 - Quick actions for common tasks
 
 **Agents View**
-- Detailed cards for all 10 agents
+- Detailed cards for all 19 agents
 - See each agent's current status (Active, Idle, Busy)
 - Click to open chat with any agent
 
@@ -474,11 +531,12 @@ This system will evolve:
 
 This system represents a **new way of doing marketing** - not replacing humans, but augmenting them. The agents handle the repetitive work (content creation, quality checks, scheduling) so humans can focus on strategy, creative direction, and high-stakes decisions.
 
-Think of it as having a 10-person marketing team that:
+Think of it as having a 19-person marketing team that:
 - Works 24/7
 - Never forgets anything
 - Always stays on-brand
 - Costs a fraction of hiring humans
+- Covers everything from content creation to crisis management
 
 But still needs human oversight for the important stuff.
 
