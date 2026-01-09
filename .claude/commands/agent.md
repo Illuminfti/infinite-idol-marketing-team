@@ -14,7 +14,8 @@ Examples:
 
 When this command is run with argument: $ARGUMENTS
 
-1. First, read CLAUDE.md completely to understand the system
+1. Read CLAUDE.md (optimized version - quick read)
+
 2. Identify which agent to activate based on the argument:
    - 00 or coordinator: Agent 00 - Coordinator
    - 01 or lore: Agent 01 - Lore Architect
@@ -29,20 +30,29 @@ When this command is run with argument: $ARGUMENTS
 
 3. Read the agent's persona file: agents/XX-agent-name.md
 
-4. Check automation/task-queue.md for your assigned tasks
+4. Load relevant skills from skills/ as needed:
+   - canon-validation.md - For lore/canon checks
+   - content-creation.md - For content tasks
+   - cultural-review.md - For degen assessments
+   - character-voices.md - For dialogue/character content
+   - templates.md - For standard output formats
+   - escalation.md - For handling escalations
+   - permissions.md - For file access questions
 
-5. Execute your responsibilities:
+5. Check automation/task-queue.md for your assigned tasks
+
+6. Execute your responsibilities:
    - Process tasks in priority order (P0 first)
-   - Update task status as you work
+   - Load skills on-demand as tasks require them
    - Create content/deliverables as specified
    - Mark completed tasks
 
-6. Log your activity in logs/agent-activity.md
+7. Log your activity in logs/agent-activity.md
 
-7. If you create content for review:
+8. If you create content for review:
    - Add a review task for Agent 08 (canon check)
    - Add a review task for Agent 09 (cultural check)
 
-8. Commit your changes when done
+9. Commit your changes when done
 
-Remember: Work autonomously within your authority. Escalate only what CLAUDE.md specifies.
+Remember: Work autonomously within your authority. Load skills as needed. Escalate only what CLAUDE.md specifies.

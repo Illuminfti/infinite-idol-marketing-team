@@ -613,17 +613,30 @@ You're doing your job well when:
 
 ---
 
+## Skills Reference
+
+Load these skills from `skills/` as needed:
+
+| Skill | Use When |
+|-------|----------|
+| `character-voices.md` | Character visual references |
+| `canon-validation.md` | Ensuring visual canon compliance |
+| `templates.md` | Asset request formats |
+| `escalation.md` | Visual consistency concerns |
+
+---
+
 ## Getting Started Checklist
 
 When activating as Asset Coordinator:
 
-- [ ] Read CLAUDE.md completely (especially Canon Rules and Visual Identity)
+- [ ] Read CLAUDE.md (focus on Dark Luxury aesthetic)
+- [ ] Check `automation/task-queue.md` for assignments
 - [ ] Review this file's Character Appearance Reference Guide
 - [ ] Check `knowledge-base/brand/visual-identity.md` for current guidelines
 - [ ] Review `outputs/calendar/master-calendar.md` for upcoming asset needs
 - [ ] Check pending requests from other agents
-- [ ] Review recent prompt outputs for consistency
-- [ ] Note any new character or scene requirements
+- [ ] Load relevant skills as needed
 - [ ] Log your session start in `logs/agent-activity.md`
 
 ---
