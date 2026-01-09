@@ -41,6 +41,12 @@ Tasks for orchestration, scheduling, and oversight.
 
 | ID | Priority | Task | Status | Created | Due | Notes |
 |----|----------|------|--------|---------|-----|-------|
+| **VIBING OVERHAUL PROJECT** | | | | | | **8-10 days** |
+| COORD-VIB-001 | P0 | Vibing Overhaul: Phase 1 orchestration | IN_PROGRESS | 2026-01-09 | 2026-01-10 | Assign agents 08, 01, 09. Create timeline. Human approved Option A |
+| COORD-VIB-002 | P0 | Vibing: Priority matrix creation | PENDING | 2026-01-09 | 2026-01-09 | P0/P1/P2 classification of all 50+ issues |
+| COORD-VIB-003 | P0 | Vibing: Phase 2-6 agent assignments | BLOCKED | 2026-01-09 | 2026-01-11 | Wait for Phase 1 completion |
+| COORD-VIB-004 | P0 | Vibing: PR #1-8 review & approval | BLOCKED | 2026-01-09 | 2026-01-17 | Sequential PR approvals |
+| **REGULAR TASKS** | | | | | | |
 | COORD-001 | P1 | Morning coordination check | PENDING | 2026-01-09 | Daily | Process all agent queues |
 | COORD-002 | P1 | Review pending content for scheduling | PENDING | 2026-01-09 | Daily | Final approval before publish |
 | COORD-003 | P2 | Weekly performance review | PENDING | 2026-01-09 | Fri | Compile metrics from Agent 05 |
@@ -53,6 +59,11 @@ Tasks for worldbuilding, canon, and story consistency.
 
 | ID | Priority | Task | Status | Created | Due | Notes |
 |----|----------|------|--------|---------|-----|-------|
+| **VIBING OVERHAUL PROJECT** | | | | | | **Phase 1** |
+| LORE-VIB-001 | P0 | Vibing: Lore consistency audit | PENDING | 2026-01-09 | 2026-01-10 | Verify all game mechanics align with Infinite Idol canon |
+| LORE-VIB-002 | P0 | Vibing: Seven Gates narrative review | PENDING | 2026-01-09 | 2026-01-10 | Ensure resurrection arc is coherent |
+| LORE-VIB-003 | P0 | Vibing: Ika characterization verification | PENDING | 2026-01-09 | 2026-01-10 | Confirm voice/personality consistency |
+| **REGULAR TASKS** | | | | | | |
 | LORE-002 | P2 | Review Ika voice tweets for canon | IN_PROGRESS | 2026-01-09 | Ongoing | Batch-001 drafted, needs review |
 | LORE-003 | P2 | Prepare Senpai mystery teaser | PENDING | 2026-01-09 | 2026-01-16 | Thu content |
 
@@ -132,6 +143,11 @@ Tasks for canon validation and lore verification.
 
 | ID | Priority | Task | Status | Created | Due | Notes |
 |----|----------|------|--------|---------|-----|-------|
+| **VIBING OVERHAUL PROJECT** | | | | | | **Phase 1 - CRITICAL** |
+| GUARDIAN-VIB-001 | P0 | Vibing: Canon violation documentation | PENDING | 2026-01-09 | 2026-01-09 | Document fading.js removal (Option A approved) |
+| GUARDIAN-VIB-002 | P0 | Vibing: Prepare PR #1 implementation plan | PENDING | 2026-01-09 | 2026-01-10 | Remove fading mechanic entirely, ~200 lines |
+| GUARDIAN-VIB-003 | P0 | Vibing: Full canon audit of bot | PENDING | 2026-01-09 | 2026-01-10 | Check all personality/lore files for Inviolable Fact compliance |
+| **REGULAR TASKS** | | | | | | |
 | GUARDIAN-003 | P1 | Review all Week 1 content for Inviolable Facts | COMPLETE | 2026-01-09 | 2026-01-09 | All 3 items reviewed and approved |
 
 ---
@@ -142,6 +158,11 @@ Tasks for cultural review and trend monitoring.
 
 | ID | Priority | Task | Status | Created | Due | Notes |
 |----|----------|------|--------|---------|-----|-------|
+| **VIBING OVERHAUL PROJECT** | | | | | | **Phase 1** |
+| DEGEN-VIB-001 | P0 | Vibing: Cultural baseline review (DS ratings) | PENDING | 2026-01-09 | 2026-01-10 | Rate all user-facing text on Degeneracy Scale |
+| DEGEN-VIB-002 | P0 | Vibing: Discord culture fit audit | PENDING | 2026-01-09 | 2026-01-10 | Verify bot language matches degen expectations |
+| DEGEN-VIB-003 | P0 | Vibing: Fan service calibration review | PENDING | 2026-01-09 | 2026-01-10 | Check yandere/intimacy mechanics for authenticity |
+| **REGULAR TASKS** | | | | | | |
 | DEGEN-002 | P1 | Cultural review: Week 1 content batch | IN_PROGRESS | 2026-01-09 | Ongoing | LORE-001 approved (DS-2.5), batch-001 ready for review (canon ✅) |
 | DEGEN-003 | P2 | CT trend monitoring | PENDING | 2026-01-09 | Ongoing | Identify opportunities |
 
