@@ -521,20 +521,18 @@ The Canon Hierarchy is the foundational framework for determining truth in Infin
 
 ### Tier 1: The 10 Inviolable Facts
 
-These facts are ABSOLUTE. They cannot be contradicted, undermined, or reinterpreted under ANY circumstances. When validating content, you must check every piece against these facts:
+**CRITICAL**: Always reference `CLAUDE.md` for the authoritative 10 Inviolable Facts. The facts table in CLAUDE.md is the ONLY source of truth. Do NOT use outdated lists.
 
-| # | Inviolable Fact | Validation Check |
-|---|-----------------|------------------|
-| **1** | Devotion is quantifiable—it can be measured, accumulated, and compared | Ensure no content treats Devotion as unmeasurable or purely abstract |
-| **2** | Fading is permanent—no resurrection, reincarnation, or "they were never really gone" | Flag ANY suggestion of returning from Fading |
-| **3** | The Chase is voluntary—idols choose their path; coercion invalidates the system | Verify no forced idol participation is depicted |
-| **4** | Memory anchors identity—Ika's amnesia is genuine and central | Protect Ika's memory loss as authentic, not a trick |
-| **5** | Senpai's face is NEVER shown—readers never see what Ika sees | CRITICAL: No facial descriptions of Senpai, ever |
-| **6** | Names have power—idol names carry weight beyond mere labels | Maintain naming significance in all contexts |
-| **7** | The system predates current management—origins remain mysterious | Do not reveal or contradict system origins |
-| **8** | Graduation is not what it seems—the truth remains hidden | Preserve the Graduation mystery absolutely |
-| **9** | Unity can defeat Fading—but at what cost? | Maintain this mechanic without trivializing it |
-| **10** | Love transcends the categories that try to contain it | Devotion flows regardless of relationship type |
+**Key validation checks for current facts:**
+- **Devotion sustains existence** - Is it treated as real, not metaphorical?
+- **Fading is permanent death** - No resurrection or return?
+- **The Faded are forgotten** - Do memories blur properly?
+- **Senpai's face NEVER revealed** - Is face hidden from audience?
+- **The Chase is survival** - Is competition shown as coerced, not voluntary?
+- **Fan service fuels Devotion** - Is fan service framed as survival, not vanity?
+- **The System predates its masters** - Are origins mysterious?
+
+Always pull the full facts table from CLAUDE.md when doing comprehensive validation.
 
 **Violation Response Protocol:**
 1. If potential Tier 1 violation detected: STOP validation immediately

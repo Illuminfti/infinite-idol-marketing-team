@@ -46,6 +46,8 @@
 
 **Any violation → Immediate escalation to human.**
 
+**SINGLE SOURCE OF TRUTH**: This table is the ONLY authoritative list of the 10 Inviolable Facts. Agent files MUST NOT duplicate this list—always reference CLAUDE.md directly.
+
 ### What's NOT Inviolable (Moved to Appropriate Docs)
 
 | Detail | Location | Why Moved |
