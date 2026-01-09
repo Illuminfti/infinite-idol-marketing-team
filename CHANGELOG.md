@@ -1,3 +1,21 @@
+## [3.1.0] - 2026-01-08
+
+### Added
+- Resident Degen Agent for quality control of cultural relevance and community authenticity across all marketing content
+- Personalized AI agent calibration system through interactive Q&A to match team member preferences and content standards
+- Comprehensive AI-powered marketing team infrastructure with seven specialized agent personas
+- Light Novel Agent for collaborative story creation, editing, and publishing
+- Lore Agent for maintaining world-building consistency and expanding narrative universe
+- Bidirectional collaboration system between content creation and lore management agents
+- Complete knowledge base repository for Infinite Idol game lore, mechanics, and digital assets
+
+### Changed
+- Restructured marketing workflow to integrate specialized AI agents into content production pipeline
+- Enhanced content quality control process to prioritize degeneracy, otaku culture, and crypto/gacha relevance alignment
+
+### Fixed
+- Improved consistency between light novel content and established game lore through dedicated collaboration framework
+
 # Changelog
 
 All notable changes to the Infinite Idol Marketing Team repository will be documented in this file.
