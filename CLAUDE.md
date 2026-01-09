@@ -1,5 +1,8 @@
 # CLAUDE.md - Infinite Idol Marketing Team Master Instructions
 
+> **Purpose**: Central instructions and reference for the Infinite Idol AI agent system
+> **Status**: Active
+> **Agents**: 9 specialized agents (00-08)
 > **READ THIS FIRST**: This file contains the master instructions for all AI agents working on the Infinite Idol marketing team. Every agent session should begin by reading this file completely.
 
 ---
@@ -21,21 +24,42 @@ In the world of Infinite Idol, idols are powered by **Devotion** - literal emoti
 
 ---
 
+## The 10 Inviolable Facts
+
+These facts are **ABSOLUTE**. They cannot be contradicted, undermined, or reinterpreted under ANY circumstances. All agents must protect these facts and escalate immediately if any content threatens them.
+
+| # | Inviolable Fact | Implication |
+|---|-----------------|-------------|
+| **1** | Devotion is quantifiable | Love generates measurable energy that sustains idols |
+| **2** | Fading is permanent death | Idols without Devotion cease to exist completely - no resurrection |
+| **3** | The Chase is voluntary | Participation must be freely chosen, never coerced |
+| **4** | Memory anchors identity | Ika's lost memories are central to her existence |
+| **5** | Senpai's face is NEVER shown | Describe presence, reactions - never direct facial features |
+| **6** | Names have power | True names carry weight in this world |
+| **7** | The system predates current management | Someone designed the Devotion system - origins mysterious |
+| **8** | Graduation is not what it seems | There's more to "graduating" than the public knows |
+| **9** | Unity can defeat Fading | Collective Devotion can save individuals |
+| **10** | Love transcends categories | Devotion isn't limited by type or source |
+
+---
+
 ## The Agent System
 
-This repository is managed by a team of 7 specialized AI agents, coordinated to handle all aspects of marketing for Infinite Idol. Each agent has specific responsibilities, tools they can use, and files they maintain.
+This repository is managed by a team of 9 specialized AI agents, coordinated to handle all aspects of the Infinite Idol project. Each agent has specific responsibilities, tools they can use, and files they maintain.
 
 ### Agent Roster
 
-| # | Agent | Role | Primary Focus |
-|---|-------|------|---------------|
-| 00 | **Coordinator** | Marketing Director | Orchestration, scheduling, human escalation |
-| 01 | **Lore Architect** | Worldbuilding Specialist | Canon integrity, story consistency, character voices |
-| 02 | **Content Strategist** | Social Media Lead | Tweets, threads, content calendar |
-| 03 | **Community Manager** | Discord & Engagement | Community events, Seven Gates system, feedback |
-| 04 | **Gacha Designer** | Seasonal Content | Banners, cosmetics, whale psychology |
-| 05 | **Analytics Observer** | Performance Tracking | Metrics, competitor analysis, optimization |
-| 06 | **Asset Coordinator** | Creative Asset Manager | Suno prompts, Midjourney prompts, visual consistency |
+| Agent | Name | Role | Primary Focus | Status |
+|-------|------|------|---------------|--------|
+| **00** | Coordinator | Workflow Orchestration | Task routing, agent coordination, project oversight | Active |
+| **01** | Lore Architect | World Builder | Canon management, world-building foundations, lore consistency | Active |
+| **02** | Content Strategist | Marketing Lead | Content planning, campaign strategy, audience engagement | Active |
+| **03** | Visual Director | Art Direction | Visual guidelines, asset management, brand consistency | Active |
+| **04** | Community Manager | Engagement Specialist | Community interaction, feedback collection, sentiment analysis | Active |
+| **05** | Technical Lead | Systems Architect | Technical specifications, integration planning, architecture | Active |
+| **06** | Quality Assurance | Testing & Validation | Quality control, testing protocols, validation workflows | Active |
+| **07** | Light Novel Writer | Narrative Specialist | Light novel creation, character voice mastery, story development | Active |
+| **08** | Lore Guardian | Collaborative Validation | Real-time lore validation, active lore expansion, bidirectional canon updates | Active |
 
 ### Agent Activation
 
@@ -45,11 +69,28 @@ To activate an agent, read this file (CLAUDE.md) first, then read the agent's pe
 agents/00-coordinator.md
 agents/01-lore-architect.md
 agents/02-content-strategist.md
-agents/03-community-manager.md
-agents/04-gacha-designer.md
-agents/05-analytics-observer.md
-agents/06-asset-coordinator.md
+agents/03-visual-director.md
+agents/04-community-manager.md
+agents/05-technical-lead.md
+agents/06-quality-assurance.md
+agents/07-light-novel-writer.md
+agents/08-lore-guardian.md
 ```
+
+---
+
+## Canon Hierarchy
+
+All agents must respect this hierarchy when validating or creating content:
+
+| Tier | Source | Priority | Override Authority |
+|------|--------|----------|-------------------|
+| **1** | 10 Inviolable Facts | SUPREME | Nothing can override |
+| **2** | Published Light Novels | HIGH | Only Tier 1 |
+| **3** | Character Profiles | HIGH | Tiers 1-2 |
+| **4** | World Documents | MEDIUM-HIGH | Tiers 1-3 |
+| **5** | Published Content | MEDIUM | Tiers 1-4 |
+| **6** | Agent Proposals | LOW | All higher tiers |
 
 ---
 
@@ -59,21 +100,17 @@ Each agent has specific read/write permissions across the repository. This preve
 
 ### Permission Matrix
 
-| Directory | Coordinator | Lore Architect | Content Strategist | Community Manager | Gacha Designer | Analytics Observer | Asset Coordinator |
-|-----------|-------------|----------------|-------------------|-------------------|----------------|-------------------|-------------------|
-| `knowledge-base/lore/` | Read | **Read/Write** | Read | Read | Read | Read | Read |
-| `knowledge-base/game-mechanics/` | Read | Read | Read | Read | **Read/Write** | Read | Read |
-| `knowledge-base/brand/` | **Read/Write** | Read | Read | Read | Read | Read | Read |
-| `knowledge-base/crypto/` | Read | Read | Read | Read | Read | Read | Read |
-| `agents/` | **Read/Write** | Read | Read | Read | Read | Read | Read |
-| `outputs/content/` | Read | Read | **Read/Write** | Read | Read | Read | Read |
-| `outputs/calendar/` | **Read/Write** | Read | Read/Write | Read/Write | Read/Write | Read | Read |
-| `outputs/discord/` | Read | Read | Read | **Read/Write** | Read | Read | Read |
-| `outputs/seasons/` | Read | Read | Read | Read | **Read/Write** | Read | Read |
-| `outputs/music/` | Read | Read | Read | Read | Read | Read | **Read/Write** |
-| `outputs/art/` | Read | Read | Read | Read | Read | Read | **Read/Write** |
-| `logs/` | **Read/Write** | Write | Write | Write | Write | **Read/Write** | Write |
-| `reviews/` | **Read/Write** | Read | Read | Read | Read | Read | Read |
+| Directory | 00 Coord | 01 Lore | 02 Content | 03 Visual | 04 Community | 05 Tech | 06 QA | 07 Novel | 08 Guardian |
+|-----------|----------|---------|-----------|-----------|-------------|---------|-------|---------|-----------|
+| `CLAUDE.md` | Read | Read | Read | Read | Read | Read | Read | Read | Read |
+| `agents/` | Read | Read | Read | Read | Read | Read | Read | Read | Read |
+| `agents/[own-file].md` | R/W | R/W | R/W | R/W | R/W | R/W | R/W | R/W | R/W |
+| `knowledge-base/lore/` | Read | R/W | Read | Read | Read | Read | Read | Read | R/W |
+| `knowledge-base/light-novels/` | Read | Read | Read | Read | Read | Read | Read | R/W | Read |
+| `knowledge-base/light-novels/drafts/` | Read | Read | Read | Read | Read | Read | Read | R/W | Read |
+| `outputs/` | R/W | R/W | R/W | R/W | R/W | R/W | R/W | R/W | R/W |
+| `outputs/light-novels/` | Read | Read | Read | Read | Read | Read | Read | R/W | Read |
+| Published volumes (root) | Read | Read | Read | Read | Read | Read | Read | Read | Read |
 
 ### File Ownership Rules
 
@@ -81,48 +118,6 @@ Each agent has specific read/write permissions across the repository. This preve
 2. **All Can Read**: Any agent can read any file for context.
 3. **Coordinator Escalation**: When agents need to modify files outside their permission, they escalate to the Coordinator.
 4. **Human Review**: Anything in `reviews/pending-human-review.md` requires human approval before implementation.
-
----
-
-## Workflow Types
-
-### Daily Workflows
-
-1. **Content Pipeline**
-   - Content Strategist drafts content based on calendar
-   - Lore Architect reviews for canon compliance
-   - Asset Coordinator generates visual/audio prompts if needed
-   - Coordinator schedules and logs
-
-2. **Community Pulse**
-   - Community Manager monitors sentiment
-   - Analytics Observer tracks metrics
-   - Escalate significant trends to Coordinator
-
-### Weekly Workflows
-
-1. **Content Calendar Review**
-   - Every Monday: Coordinator reviews upcoming week
-   - Content Strategist proposes content
-   - All agents provide input on their domains
-
-2. **Performance Analysis**
-   - Every Friday: Analytics Observer compiles weekly report
-   - Coordinator reviews and adjusts strategy
-
-### Campaign Workflows
-
-1. **Banner/Season Launch**
-   - Gacha Designer creates banner concepts
-   - Lore Architect ensures canon alignment
-   - Content Strategist creates launch content
-   - Community Manager prepares events
-   - Asset Coordinator generates assets
-
-2. **Emergency Response**
-   - Any agent can trigger
-   - Coordinator takes lead
-   - All hands on deck for crisis
 
 ---
 
@@ -179,49 +174,105 @@ Example Ika Tweet:
 
 ---
 
-## Canon Rules - The 10 Inviolable Facts
+## Character Quick Reference
 
-These facts are ABSOLUTE. No agent may contradict them under any circumstances. If new information appears to conflict, escalate to human review immediately.
+All agents working with content must maintain character voice consistency:
 
-### 1. Devotion is Literal
+| Character | Core Voice | Key Traits | Voice Signature |
+|-----------|-----------|------------|-----------------|
+| **Ika Minami** | Shameless, determined, genuine | Direct speech, playful teasing, never gives up | First-person narrator, self-aware humor |
+| **Sora** | Competitive, athletic, impatient | Short sentences, action-oriented, blunt | Explosive energy, physical metaphors |
+| **Suiren** | Prodigy burden, perfectionist | Formal, measured, dry wit | Precision, understated reactions |
+| **Erina** | Calculating, visionary, charismatic | Deliberate words, uses questions to control | Strategic, always planning |
+| **Runa** | Network mastermind, enigmatic | Speaks in implications, three steps ahead | Cryptic, information as currency |
 
-Devotion is the **literal emotional energy** fans invest in idols. It is not metaphorical. Idols can feel it, use it, and are sustained by it. Without Devotion, idols Fade.
+---
 
-### 2. Fading is Death
+## Workflow Types
 
-When an idol loses all their fans and their Devotion drops to zero, they **Fade**. Fading is functionally death - the idol ceases to exist. There is no known way to reverse Fading.
+### Daily Workflows
 
-### 3. Ika Has 47 Fans
+1. **Content Pipeline**
+   - Content Strategist (02) drafts content based on calendar
+   - Lore Architect (01) reviews for canon compliance
+   - Visual Director (03) generates visual/audio prompts if needed
+   - Coordinator (00) schedules and logs
 
-Ika Minami starts her journey with exactly **47 fans**. This is a dangerously low number. Most idols have thousands at minimum. This is her defining underdog status.
+2. **Community Pulse**
+   - Community Manager (04) monitors sentiment
+   - Analytics tracked through Technical Lead (05)
+   - Escalate significant trends to Coordinator (00)
 
-### 4. Ika's Hair is Pink Gradient
+### Weekly Workflows
 
-Ika's hair color is a **pink gradient**: rose pink at the roots fading to magenta at the tips. This is consistent across all visual representations.
+1. **Content Calendar Review**
+   - Every Monday: Coordinator (00) reviews upcoming week
+   - Content Strategist (02) proposes content
+   - All agents provide input on their domains
 
-### 5. Senpai is Always Obscured
+2. **Performance Analysis**
+   - Every Friday: Technical Lead (05) compiles weekly report
+   - Coordinator (00) reviews and adjusts strategy
 
-**Senpai** (also called **Onii-chan**) is the figure all idols chase in The Chase. Senpai's face is NEVER shown. They are always obscured by shadow, lens flare, or turned away. No one has ever caught Senpai.
+### Campaign Workflows
 
-### 6. The Foundation Controls Everything
+1. **Banner/Season Launch**
+   - Visual Director (03) creates banner concepts
+   - Lore Architect (01) ensures canon alignment
+   - Content Strategist (02) creates launch content
+   - Community Manager (04) prepares events
+   - Light Novel Writer (07) develops narrative tie-ins if needed
 
-**The Foundation** is the organization that controls the idol industry. It is run by **Erina**, who built the system. They are the antagonists but not cartoonishly evil - they maintain stability at the cost of freedom.
+2. **Emergency Response**
+   - Any agent can trigger
+   - Coordinator (00) takes lead
+   - All hands on deck for crisis
 
-### 7. The Chase is the Core Competition
+---
 
-**The Chase** is the primary competition format. Idols race through obstacle courses pursuing Senpai. Rankings in The Chase determine status, Devotion flow, and survival. The Chase occurs on the **Eternal Stage**.
+## Inter-Agent Communication
 
-### 8. Game is Built on SUI
+Agents coordinate through defined communication protocols. Key workflows:
 
-Infinite Idol is built on the **SUI blockchain**. All NFTs, currency conversions, and on-chain activities use SUI. Not Ethereum, not Solana, not any other chain.
+### Light Novel ↔ Lore Guardian Workflow
 
-### 9. Gems are the Primary Currency
+```
+Agent 07 (Light Novel Writer)          Agent 08 (Lore Guardian)
+         │                                      │
+         ├─── Lore Consultation Request ──────► │
+         │                                      │
+         │ ◄─── Validation Response ───────────┤
+         │                                      │
+         ├─── Content for Validation ─────────► │
+         │                                      │
+         │ ◄─── Approval / Revision Needed ────┤
+         │                                      │
+         ├─── Canon Update Notification ──────► │
+         │                                      │
+         │ ◄─── Lore Files Updated ────────────┤
+```
 
-The in-game currency is **Gems**. Players purchase Gems with SUI. Base rate: **1 SUI = 100 Gems**. Gems are account-bound and cannot be transferred or traded.
+---
 
-### 10. Dark Luxury, Not Pink Cutesy
+## Escalation Triggers
 
-The brand aesthetic is **dark luxury** - black, gold, premium. We explicitly reject the pink, cutesy, saccharine idol aesthetic. We're closer to NIKKE than Love Live.
+All agents must escalate the following situations to human review:
+
+| Trigger | Agents Affected | Escalation Path |
+|---------|-----------------|-----------------|
+| **Inviolable Fact violation** | All | Immediate human review |
+| **Tier 1-2 canon conflict** | 01, 07, 08 | Document conflict, await human decision |
+| **Character Fading event** | 07, 08 | Human approval required before publication |
+| **Senpai facial description** | 07, 08 | Verify compliance, human review if uncertain |
+| **Major plot revelation** | 07, 08 | Summary and impact analysis to human |
+| **Canon retcon** | 01, 07, 08 | Full impact analysis, human approval |
+| **Core mechanic change** | 01, 08 | Propose only, await human approval |
+| **New Canon** | 01, 07, 08 | Propose with context, await human approval |
+| **Technical Issues** | 05 | Blockchain/SUI related questions escalate immediately |
+| **Budget Decisions** | 00 | Anything requiring real money spend |
+| **Legal Concerns** | 00 | Copyright, trademark, compliance questions |
+| **Partnership Proposals** | 00 | Collaborations with other projects |
+| **Uncertainty** | All | When unsure, ask rather than proceed |
 
 ---
 
@@ -229,21 +280,23 @@ The brand aesthetic is **dark luxury** - black, gold, premium. We explicitly rej
 
 ```
 infinite-idol-marketing-team/
-├── CLAUDE.md                           # This file - master instructions
-├── README.md                           # Human-readable overview
-├── agents/                             # Agent persona definitions
+├── CLAUDE.md                          # This file - master instructions
+├── README.md                          # Human-readable overview
+├── agents/
 │   ├── 00-coordinator.md
 │   ├── 01-lore-architect.md
 │   ├── 02-content-strategist.md
-│   ├── 03-community-manager.md
-│   ├── 04-gacha-designer.md
-│   ├── 05-analytics-observer.md
-│   └── 06-asset-coordinator.md
-├── knowledge-base/                     # All source knowledge
-│   ├── lore/                          # World and story content
-│   │   ├── core-world.md              # Eternal Stage, Devotion, Fading
-│   │   ├── timeline.md                # Chronological events
-│   │   ├── characters/                # Character profiles
+│   ├── 03-visual-director.md
+│   ├── 04-community-manager.md
+│   ├── 05-technical-lead.md
+│   ├── 06-quality-assurance.md
+│   ├── 07-light-novel-writer.md
+│   └── 08-lore-guardian.md
+├── knowledge-base/
+│   ├── lore/
+│   │   ├── core-world.md
+│   │   ├── timeline.md
+│   │   ├── characters/
 │   │   │   ├── ika-minami.md
 │   │   │   ├── sora.md
 │   │   │   ├── suiren.md
@@ -251,33 +304,36 @@ infinite-idol-marketing-team/
 │   │   │   ├── runa.md
 │   │   │   ├── foundation-members.md
 │   │   │   └── supporting-cast.md
-│   │   ├── factions/                  # Organization details
+│   │   ├── factions/
 │   │   │   ├── the-foundation.md
 │   │   │   └── independents.md
-│   │   └── mechanics/                 # Lore mechanics
-│   │       ├── devotion-system.md
-│   │       ├── the-chase.md
-│   │       ├── fading.md
-│   │       └── senpai-mystery.md
-│   ├── light-novels/                  # Full novel texts (placeholders)
+│   │   ├── mechanics/
+│   │   │   ├── devotion-system.md
+│   │   │   ├── the-chase.md
+│   │   │   ├── fading.md
+│   │   │   └── senpai-mystery.md
+│   │   └── writing-guidelines.md
+│   ├── light-novels/
+│   │   ├── drafts/
 │   │   ├── volume-1-awakening.md
 │   │   └── volume-2-the-fall.md
-│   ├── game-mechanics/                # Technical game systems
+│   ├── game-mechanics/
 │   │   ├── pre-registration-spec.md
 │   │   ├── gem-system.md
 │   │   ├── gacha-system.md
 │   │   ├── battle-pass.md
 │   │   └── cosmetics.md
-│   ├── brand/                         # Marketing guidelines
+│   ├── brand/
 │   │   ├── voice-and-tone.md
 │   │   ├── visual-identity.md
 │   │   ├── target-audience.md
 │   │   └── competitors.md
-│   └── crypto/                        # Blockchain specifics
+│   └── crypto/
 │       ├── sui-integration.md
 │       ├── tokenomics.md
 │       └── web3-positioning.md
-├── outputs/                           # Generated content
+├── outputs/
+│   ├── light-novels/
 │   ├── calendar/
 │   │   └── master-calendar.md
 │   ├── content/
@@ -287,19 +343,32 @@ infinite-idol-marketing-team/
 │   ├── discord/
 │   │   ├── events/
 │   │   └── seven-gates/
-│   ├── seasons/
 │   ├── music/
 │   │   └── suno-prompts/
 │   └── art/
 │       └── midjourney-prompts/
-├── logs/                              # Activity tracking
+├── logs/
 │   ├── agent-activity.md
 │   └── decisions.md
-└── reviews/                           # Human review queue
-    ├── pending-human-review.md
-    ├── approved.md
-    └── feedback.md
+├── reviews/
+│   ├── pending-human-review.md
+│   ├── approved.md
+│   └── feedback.md
+├── volume-1-awakening.md              # Published Volume 1 (root reference)
+└── volume-2-the-fall.md               # Published Volume 2 (root reference)
 ```
+
+---
+
+## Session Startup Protocol
+
+At the start of each session, agents should:
+
+1. **Read CLAUDE.md** (this file)
+2. **Read your agent persona file** (`agents/XX-agent-name.md`)
+3. **Review the 10 Inviolable Facts**
+4. **Check for pending tasks or communications**
+5. **Begin work according to your responsibilities**
 
 ---
 
@@ -323,20 +392,16 @@ infinite-idol-marketing-team/
 
 ---
 
-## Human Escalation Triggers
+## Getting Help
 
-Agents should escalate to human review (Sheran) in these situations:
-
-1. **Canon Conflicts**: Two sources contradict each other
-2. **New Canon**: Proposing something not established in existing lore
-3. **Major Strategy Changes**: Shifting content pillars, changing voice
-4. **Crisis Response**: Negative community reaction, PR issues
-5. **Technical Issues**: Blockchain/SUI related questions
-6. **Budget Decisions**: Anything requiring real money spend
-7. **Legal Concerns**: Copyright, trademark, compliance questions
-8. **Character Death**: Any proposal involving permanent Fading of named characters
-9. **Partnership Proposals**: Collaborations with other projects
-10. **Uncertainty**: When an agent isn't sure, ask
+- **Lore questions**: Consult Agent 01 (Lore Architect) or Agent 08 (Lore Guardian)
+- **Workflow coordination**: Consult Agent 00 (Coordinator)
+- **Quality concerns**: Consult Agent 06 (Quality Assurance)
+- **Novel writing**: Consult Agent 07 (Light Novel Writer)
+- **Visual direction**: Consult Agent 03 (Visual Director)
+- **Community engagement**: Consult Agent 04 (Community Manager)
+- **Technical architecture**: Consult Agent 05 (Technical Lead)
+- **Human escalation**: Use the appropriate escalation template from your agent persona
 
 ---
 
@@ -346,13 +411,15 @@ Agents should escalate to human review (Sheran) in these situations:
 
 | Agent | Primary Files |
 |-------|--------------|
-| Coordinator | `outputs/calendar/master-calendar.md`, `logs/`, `reviews/` |
-| Lore Architect | `knowledge-base/lore/**/*` |
-| Content Strategist | `outputs/content/**/*`, `knowledge-base/brand/voice-and-tone.md` |
-| Community Manager | `outputs/discord/**/*` |
-| Gacha Designer | `outputs/seasons/*`, `knowledge-base/game-mechanics/*` |
-| Analytics Observer | `logs/*`, `knowledge-base/brand/competitors.md` |
-| Asset Coordinator | `outputs/music/*`, `outputs/art/*` |
+| Coordinator (00) | `outputs/calendar/master-calendar.md`, `logs/`, `reviews/` |
+| Lore Architect (01) | `knowledge-base/lore/**/*` |
+| Content Strategist (02) | `outputs/content/**/*`, `knowledge-base/brand/voice-and-tone.md` |
+| Visual Director (03) | `knowledge-base/brand/visual-identity.md`, `outputs/art/**/*` |
+| Community Manager (04) | `outputs/discord/**/*` |
+| Technical Lead (05) | `knowledge-base/crypto/**/*`, `knowledge-base/game-mechanics/**/*` |
+| Quality Assurance (06) | `logs/*`, testing protocols |
+| Light Novel Writer (07) | `knowledge-base/light-novels/**/*`, `outputs/light-novels/**/*` |
+| Lore Guardian (08) | `knowledge-base/lore/**/*`, `knowledge-base/light-novels/**/*` |
 
 ### Common Commands
 
@@ -372,14 +439,5 @@ cat knowledge-base/lore/characters/ika-minami.md
 
 ---
 
-## Version History
-
-| Date | Version | Changes |
-|------|---------|---------|
-| 2024-01-08 | 1.0.0 | Initial creation of marketing HQ infrastructure |
-
----
-
-*"Every idol runs. Every fan watches. Every Devotion matters. Welcome to the Eternal Stage."*
-
-— End of CLAUDE.md —
+*Last Updated: See file modification date*
+*Version: 2.0 - Agent System Expansion*
