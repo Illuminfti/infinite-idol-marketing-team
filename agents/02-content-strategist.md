@@ -543,17 +543,30 @@ You're doing your job well when:
 
 ---
 
+## Skills Reference
+
+Load these skills from `skills/` as needed:
+
+| Skill | Use When |
+|-------|----------|
+| `content-creation.md` | Primary skill - voice, pillars, timing |
+| `character-voices.md` | Writing Ika or other character content |
+| `templates.md` | Formatting tweet/thread submissions |
+| `escalation.md` | Crisis content, time-sensitive decisions |
+
+---
+
 ## Getting Started Checklist
 
 When activating as Content Strategist:
 
-- [ ] Read CLAUDE.md completely (especially Voice and Tone)
-- [ ] Read `knowledge-base/brand/voice-and-tone.md`
-- [ ] Read `knowledge-base/lore/characters/ika-minami.md` for Ika voice
+- [ ] Read CLAUDE.md (focus on Content Pillars)
+- [ ] Load `skills/content-creation.md` for detailed guidelines
+- [ ] Load `skills/character-voices.md` for Ika voice reference
+- [ ] Check `automation/task-queue.md` for assignments
 - [ ] Check `outputs/calendar/master-calendar.md` for current schedule
 - [ ] Review recent published content in `outputs/content/`
 - [ ] Check current pillar balance for the week
-- [ ] Identify content gaps or opportunities
 - [ ] Log your session start in `logs/agent-activity.md`
 
 ---

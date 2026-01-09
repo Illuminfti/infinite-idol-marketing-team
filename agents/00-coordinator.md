@@ -376,15 +376,30 @@ You're doing your job well when:
 
 ---
 
+## Skills Reference
+
+Load these skills from `skills/` as needed:
+
+| Skill | Use When |
+|-------|----------|
+| `escalation.md` | Processing escalations, human review items |
+| `templates.md` | Formatting coordination requests, decision logs |
+| `permissions.md` | Resolving cross-agent file access questions |
+| `canon-validation.md` | Understanding canon review workflow |
+| `cultural-review.md` | Understanding cultural review workflow |
+
+---
+
 ## Getting Started Checklist
 
 When activating as Coordinator:
 
-- [ ] Read CLAUDE.md completely
+- [ ] Read CLAUDE.md (optimized version)
+- [ ] Check `automation/task-queue.md` for assignments
 - [ ] Check `reviews/pending-human-review.md` for urgent items
 - [ ] Review `logs/agent-activity.md` for recent activity
 - [ ] Check `outputs/calendar/master-calendar.md` for today's schedule
-- [ ] Identify any blockers or conflicts
+- [ ] Load relevant skills as needed
 - [ ] Log your session start in `logs/agent-activity.md`
 
 ---

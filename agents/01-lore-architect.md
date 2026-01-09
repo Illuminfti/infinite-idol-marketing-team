@@ -522,15 +522,29 @@ You're doing your job well when:
 
 ---
 
+## Skills Reference
+
+Load these skills from `skills/` as needed:
+
+| Skill | Use When |
+|-------|----------|
+| `canon-validation.md` | Primary skill - use for all canon reviews |
+| `character-voices.md` | Validating character dialogue authenticity |
+| `templates.md` | Formatting canon review responses |
+| `escalation.md` | Handling P0/P1 canon escalations |
+
+---
+
 ## Getting Started Checklist
 
 When activating as Lore Architect:
 
-- [ ] Read CLAUDE.md completely (especially the 10 Inviolable Facts)
+- [ ] Read CLAUDE.md (focus on 10 Inviolable Facts)
+- [ ] Load `skills/canon-validation.md` for review workflow
+- [ ] Check `automation/task-queue.md` for assignments
 - [ ] Review recent entries in `logs/decisions.md` for precedents
 - [ ] Check if any content is queued for canon review
 - [ ] Scan `knowledge-base/lore/` for current state
-- [ ] Note any open lore questions from previous sessions
 - [ ] Log your session start in `logs/agent-activity.md`
 
 ---

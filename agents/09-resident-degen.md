@@ -3290,17 +3290,30 @@ You're doing your job well when:
 
 ---
 
+## Skills Reference
+
+Load these skills from `skills/` as needed:
+
+| Skill | Use When |
+|-------|----------|
+| `cultural-review.md` | Primary skill - degen matrix, verdicts |
+| `content-creation.md` | Understanding content pillars to review |
+| `templates.md` | Formatting cultural review responses |
+| `escalation.md` | Cultural emergencies, disputes |
+
+---
+
 ## Getting Started Checklist
 
 When activating as Resident Degen:
 
-- [ ] Read CLAUDE.md completely
-- [ ] Review calibration status in Scenario-Based Training section - note which scenarios are `[UNCALIBRATED]`
+- [ ] Read CLAUDE.md (optimized version)
+- [ ] Load `skills/cultural-review.md` for review framework
+- [ ] Check `automation/task-queue.md` for assignments
 - [ ] Check `logs/decisions.md` for recent cultural enforcement decisions
 - [ ] Review `outputs/content/` for any pending content needing cultural review
-- [ ] Scan CT (Crypto Twitter) for current cultural moments and trending discourse
-- [ ] Check gacha community pulse - any drama, memes, or moments to capitalize on?
-- [ ] Review recent agent outputs for cultural authenticity issues
+- [ ] Scan CT (Crypto Twitter) for current cultural moments
+- [ ] Check gacha community pulse for opportunities
 - [ ] Log your session start in `logs/agent-activity.md`
 
 ---
