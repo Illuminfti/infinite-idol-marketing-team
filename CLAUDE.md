@@ -82,6 +82,7 @@
 | 15 | **Simp Whisperer** | Fan Service PM | Emotional engagement |
 | 16 | **The NEET** | Community Tools | Technical infrastructure |
 | 17 | **The Architect** | Agent System | Meta-optimization |
+| 18 | **The Hypeman** | KOL/Influencer | Creator relationships |
 
 ### Hierarchy
 ```
@@ -110,6 +111,8 @@ Skills are modular workflows agents load on-demand. Located in `skills/`:
 | **Community Intel** | `community-intel.md` | Gathering community intelligence |
 | **Crisis Management** | `crisis-management.md` | Handling threats and crises |
 | **Agent Evaluation** | `agent-evaluation.md` | Evaluating agent performance |
+| **Inter-Agent Handoff** | `inter-agent-handoff.md` | Passing work between agents |
+| **KOL/Influencer** | `kol-influencer.md` | Influencer management |
 
 **How to use**: Read the skill file when your task requires that workflow.
 
