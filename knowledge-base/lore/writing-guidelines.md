@@ -219,12 +219,42 @@ Requirements:
 
 #### The Chase
 
-**Inviolable Fact #3**: The Chase is voluntary.
+**Inviolable Fact #7**: The Chase is the core competition format.
 
 When depicting the Chase:
-- Participation must always be freely chosen
-- Coercion or forced participation invalidates the system
-- Characters can struggle with the choice, but must make it themselves
+- The Foundation frames The Chase as "voluntary" to maintain legitimacy
+- However, refusal to compete guarantees Fading—a coerced choice, not a free one
+- This tension is thematic: explore idols wrestling with the illusion of choice
+- Characters may outwardly accept "voluntary" participation while internally knowing the truth
+- See `mechanics/the-chase.md` for full details on this deliberate thematic tension
+
+#### Blockchain and Web3 Elements
+
+**Core Principle**: The technology is invisible. The story is visible.
+
+Web3/blockchain should be abstracted away in narrative content:
+
+| DO | DON'T |
+|----|-------|
+| Reference "permanent records" or "immutable proof" | Name specific blockchains (SUI, Ethereum, etc.) |
+| Show consequences of true ownership | Explain technical implementations |
+| Use Runa investigating "records that can't be erased" | Include promotional language for any chain |
+| Tell stories through characters affected by permanence | Break immersion with crypto terminology |
+
+**How to Tell Blockchain Stories**:
+- Through **characters**: Runa uses permanent records to prove the erased existed
+- Through **consequences**: The Foundation cannot destroy certain evidence
+- Through **drama**: Web3 history has real conflict—tell it through idol drama
+- Through **implication**: Let readers feel ownership without explaining wallets
+
+**When Chains Can Be Referenced (Lore Only)**:
+- **Ika Network** - Primary promotional reference (infrastructure that connects)
+- **Solana** - Can appear positively in lore/narrative contexts
+- **Others** - Only if story-driven, never promotional
+
+**The Rule**: If you have to explain the technology, you've broken the story. Let the narrative carry the weight.
+
+See `mechanics/blockchain-existence.md` for full guidelines.
 
 ### Pacing Guidelines
 
@@ -316,18 +346,51 @@ Use a single line with three asterisks:
 
 ### The 10 Inviolable Facts
 
-Every piece of writing must respect these facts absolutely:
+**IMPORTANT**: The authoritative list of 10 Inviolable Facts is maintained in `CLAUDE.md`. All writing must respect these facts absolutely:
 
-1. **Devotion is quantifiable** - Love generates measurable energy
-2. **Fading is permanent death** - No resurrection, ever
-3. **The Chase is voluntary** - Participation must be freely chosen
-4. **Memory anchors identity** - Ika's amnesia is genuine and central
-5. **Senpai's face is NEVER shown** - Describe presence, never features
-6. **Names have power** - Idol names carry weight
-7. **The system predates current management** - Origins remain mysterious
-8. **Graduation is not what it seems** - The truth is hidden
-9. **Unity can defeat Fading** - Collective Devotion saves individuals
-10. **Love transcends categories** - Devotion flows regardless of type
+| # | Fact | Writing Implication |
+|---|------|---------------------|
+| 1 | **Devotion Sustains Existence** | Idols need fan devotion to exist. Show this as real, not metaphorical. |
+| 2 | **Fading is Permanent Death** | No resurrection, no reversal. Treat death with weight. |
+| 3 | **The Faded Are Forgotten** | When someone Fades, memories blur. Use this horror. |
+| 4 | **Senpai is the Unattainable Goal** | The pursuit matters. What catching him means = mystery. |
+| 5 | **Senpai's Face Never Revealed** | Audience never sees his face. Characters may glimpse it. |
+| 6 | **The Foundation Controls the System** | They run the industry. Resistance exists but struggles. |
+| 7 | **The Chase is Survival** | Competition is coerced. "Choice" under death threat isn't free. |
+| 8 | **Fan Service Fuels Devotion** | Beach episodes, costumes, shipping moments = survival. Show fan service as necessity, not vanity. |
+| 9 | **The System Predates Its Masters** | Origins unknown. Adds mystery—use it. |
+| 10 | **No One Knows What Catching Senpai Means** | Keep this mystery. Don't resolve it casually. |
+
+Always reference `CLAUDE.md` as the master source for canon rules.
+
+### Important Character/Brand Details (NOT Inviolable, but Consistent)
+
+These are important for consistency but NOT world-defining rules:
+
+| Detail | Reference Location | Note |
+|--------|-------------------|------|
+| Ika's 47 fans at story start | `characters/ika-minami.md` | Starting point, changes over time |
+| Ika's pink gradient hair | `characters/ika-minami.md` | Character design consistency |
+| Gems as currency | `game-mechanics/gem-system.md` | Game mechanic |
+| Dark luxury aesthetic | `brand/visual-identity.md` | Brand guideline |
+
+---
+
+### Narrative Themes (Writing Guidance)
+
+These themes enrich the narrative and align with the Inviolable Facts:
+
+| Theme | Application |
+|-------|-------------|
+| **Devotion is quantifiable** | Show characters sensing their Devotion levels |
+| **Memory anchors identity** | Ika's amnesia is genuine and central |
+| **Names carry weight** | Stage names vs. real names have significance |
+| **Graduation hides dark truth** | See `mechanics/graduation.md` for details |
+| **Unity can delay Fading** | Collective Devotion provides protection |
+| **Love transcends categories** | Devotion flows regardless of relationship type |
+| **The Chase is "voluntary"** | See `mechanics/the-chase.md` for coercion tension |
+
+These themes support but do not override the 10 Inviolable Facts.
 
 ### Canon Tier Reference
 

@@ -44,7 +44,7 @@ All content must fit one of these four pillars:
 - **Emphasis**: Being early, being part of something
 
 **Example**:
-> "Built on SUI. Powered by Devotion. Pre-registration is live - be among the first to enter the Eternal Stage."
+> "Multi-chain via Ika Network. Powered by Devotion. Pre-registration is live - be among the first to enter the Eternal Stage."
 
 ### Community (15%)
 - **Tone**: Warm, appreciative, engaging
@@ -57,7 +57,7 @@ All content must fit one of these four pillars:
 
 ### Single Tweets
 - **Max length**: 240 characters for readability
-- **Hashtags**: Always #InfiniteIdol #SUI, plus topical tags
+- **Hashtags**: Always #InfiniteIdol, plus topical tags (chain-specific only when relevant)
 - **Media**: Include visuals when available; text-only for intimate Ika moments
 
 ### Threads

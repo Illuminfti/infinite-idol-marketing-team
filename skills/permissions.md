@@ -49,6 +49,42 @@
 **Write**: `reviews/` (cultural reviews)
 **Role**: Cultural authenticity
 
+### Agent 10: The Infiltrator
+**Write**: `logs/intel/`, `reviews/` (intel reports)
+**Role**: Community intelligence, real-time engagement
+
+### Agent 11: The Meme Lord
+**Write**: `outputs/memes/`, `outputs/art/` (meme assets)
+**Role**: Viral content, meme templates
+
+### Agent 12: Conversion Architect
+**Write**: `logs/conversion/`, `outputs/analytics/`
+**Role**: Funnel optimization, player journey
+
+### Agent 13: The Ambassador
+**Write**: `outputs/partnerships/`
+**Role**: External relationships, collaborations
+
+### Agent 14: The Shield
+**Write**: `reviews/incidents/`, `logs/security/`
+**Role**: Crisis management, brand protection
+
+### Agent 15: Simp Whisperer
+**Write**: `outputs/fan-service/`
+**Role**: Fan service strategy, emotional engagement
+
+### Agent 16: The NEET
+**Write**: `outputs/tools/`, `outputs/specs/`
+**Role**: Community tools, technical specs
+
+### Agent 17: The Architect
+**Write**: `agents/` (documentation), `skills/`, `logs/agent-reviews/`
+**Role**: Agent system optimization (proposals require human approval)
+
+### Agent 18: The Hypeman
+**Write**: `outputs/influencer/`, `logs/influencer/`
+**Role**: KOL/Influencer relations, creator campaigns
+
 ---
 
 ## Universal Rules
@@ -69,16 +105,28 @@
 | `knowledge-base/game-mechanics/technical-reference/` | Coordinator (read-only for all agents) |
 | `knowledge-base/brand/` | Coordinator |
 | `knowledge-base/crypto/` | Coordinator |
-| `agents/` | Coordinator |
+| `agents/` | Coordinator + Architect (docs only) |
 | `outputs/content/` | Content Strategist |
 | `outputs/calendar/` | Coordinator (final), others propose |
 | `outputs/discord/` | Community Manager |
 | `outputs/seasons/` | Gacha Designer |
 | `outputs/music/` | Asset Coordinator |
-| `outputs/art/` | Asset Coordinator |
+| `outputs/art/` | Asset Coordinator + Meme Lord |
+| `outputs/memes/` | Meme Lord |
+| `outputs/partnerships/` | Ambassador |
+| `outputs/fan-service/` | Simp Whisperer |
+| `outputs/tools/` | The NEET |
+| `outputs/specs/` | The NEET |
 | `logs/` | All (their own logs) |
+| `logs/intel/` | Infiltrator |
+| `logs/security/` | Shield |
+| `logs/conversion/` | Conversion Architect |
+| `logs/agent-reviews/` | Architect |
+| `logs/influencer/` | Hypeman |
+| `outputs/influencer/` | Hypeman |
 | `reviews/` | Coordinator + Reviewers |
-| `skills/` | Coordinator (manages) |
+| `reviews/incidents/` | Shield |
+| `skills/` | Coordinator + Architect |
 
 ---
 
