@@ -137,14 +137,15 @@ Ultimate prestige themes:
 
 ### Rarity Tiers
 
-All cosmetic items follow the unified rarity system:
+All cosmetic items follow the unified 5-tier rarity system:
 
-| Rarity | Drop Rate | Border Color | Visual Treatment | Description |
-|--------|-----------|--------------|------------------|-------------|
-| **Common** | 60% | Silver | Subtle shimmer | Base designs, solid foundational pieces |
-| **Rare** | 25% | Gold | Gentle glow | Enhanced details, refined craftsmanship |
-| **Ultra Rare** | 12% | Purple | Particle effects | Unique patterns, special visual effects |
-| **Legendary** | 3% | Black + Gold flames | Full animation | Ultimate prestige, animated elements |
+| Tier | Rarity | Numeric | Drop Rate | Border Color | Visual Treatment | Description |
+|------|--------|---------|-----------|--------------|------------------|-------------|
+| 0 | **Common** | 0 | 55% | Silver | Subtle shimmer | Base designs, solid foundational pieces |
+| 1 | **Uncommon** | 1 | 25% | Bronze | Warm glow | Enhanced details, refined craftsmanship |
+| 2 | **Epic** | 2 | 13% | Purple | Particle effects | Unique patterns, special visual effects |
+| 3 | **Mythic** | 3 | 6% | Gold + Black flames | Animated | Rare exclusive designs, high prestige |
+| 4 | **Limited** | 4 | 1% | Black + Gold explosion | Full animation | Ultra-premium exclusive, ultimate prestige |
 
 ### Rarity Distribution Per Set
 
@@ -555,9 +556,10 @@ Cosmetics in Infinite Idol mirror the idol aesthetic system:
 | Rarity | Animation Type | Frame Rate | Complexity |
 |--------|----------------|------------|------------|
 | Common | None | N/A | Static |
-| Rare | Subtle shimmer | 12 FPS | Low |
-| Ultra Rare | Particle effects | 24 FPS | Medium |
-| Legendary | Full animation | 30 FPS | High |
+| Uncommon | Subtle shimmer | 12 FPS | Low |
+| Epic | Particle effects | 24 FPS | Medium |
+| Mythic | Advanced animation | 30 FPS | High |
+| Limited | Full cinematic animation | 60 FPS | Maximum |
 
 ### Storage Requirements
 
@@ -567,6 +569,237 @@ Cosmetics in Infinite Idol mirror the idol aesthetic system:
 | Visual reference | URI link | Off-chain CDN |
 | Animation data | URI link | Off-chain CDN |
 | Ownership proof | ~200 bytes | On-chain |
+
+---
+
+## Technical Implementation
+
+### Equipment Slot System (Numeric Mapping)
+
+Smart contracts use numeric slot values:
+
+| Player-Facing Slot | Numeric Value | Technical Name | Category |
+|-------------------|---------------|----------------|----------|
+| Head (Slot 1) | 0 | `slot: 0` | Set (Outfit piece) |
+| Chest (Slot 2) | 0 | `slot: 0` | Set (Outfit piece) |
+| Arms (Slot 3) | 0 | `slot: 0` | Set (Outfit piece) |
+| Legs (Slot 4) | 0 | `slot: 0` | Set (Outfit piece) |
+| Feet (Slot 5) | 0 | `slot: 0` | Set (Outfit piece) |
+| Back (Slot 6) | 0 | `slot: 0` | Set (Outfit piece) |
+| Neck (Slot 7) | 1 | `slot: 1` | Accessory |
+| L Wrist (Slot 8) | 1 | `slot: 1` | Accessory |
+| R Wrist (Slot 9) | 1 | `slot: 1` | Accessory |
+| Pet Slot | 9 | `slot: 9` | Pet |
+
+**Technical Notes:**
+- **Outfit pieces** (slots 1-6) all use `slot: 0` (Set category)
+- **Accessories** (slots 7-9) all use `slot: 1` (Accessory category)
+- **Pets** use dedicated `slot: 9` (cannot be merged)
+- Player-facing UI shows specific slot positions (1-9)
+- Smart contract groups by category (0, 1, 9)
+
+### Asset NFT Structure (Sui Move)
+
+```move
+public struct Asset has key, store {
+    id: UID,
+    token_id: u64,           // Unique asset ID
+    metadata: Metadata,       // Item details
+    upgrade_level: u8,        // 0 = base, 1 = +, 2 = ++
+}
+
+public struct Metadata has copy, drop, store {
+    id: ID,                   // Item definition ID
+    slot: u8,                 // 0=Set, 1=Accessory, 9=Pet
+    name: String,             // Item name
+    rarity: u8,               // 0-4 (Common to Limited)
+    attributes: VecMap<String, String>,  // Family, set, visual data
+}
+```
+
+**Key Fields:**
+- `token_id`: Unique identifier for this specific asset instance
+- `slot`: Numeric category (0/1/9)
+- `rarity`: Numeric tier (0-4)
+- `upgrade_level`: Merge progression (0, 1, 2)
+- `attributes`: Flexible metadata (family, set ID, visual URI, etc.)
+
+### Asset Merging & Upgrading System
+
+Players can combine multiple identical assets to upgrade them:
+
+**Upgrade Levels:**
+| Level | Display | Visual Effect | Merge Requirement |
+|-------|---------|---------------|-------------------|
+| 0 | Base | Standard appearance | - |
+| 1 | + | Enhanced glow, +10% visual intensity | Merge 3-5 base items (admin-configurable) |
+| 2 | ++ | Maximum glow, +25% visual intensity | Merge 3-5 level 1 items (admin-configurable) |
+
+**Merge Rules:**
+- All assets must have **identical** `item_id` (same item definition)
+- All assets must have **identical** `upgrade_level`
+- **Cannot merge pets** (`slot: 9`)
+- Number of assets required is **admin-configurable** per merge
+- Merged assets are **burned**, one asset is **upgraded** in-place
+- Upgrade is **irreversible**
+
+**Smart Contract Function:**
+```move
+public fun merge_assets(
+    self: &mut State,
+    av: &AV,
+    main_asset: &mut Asset,    // Asset to upgrade (modified in-place)
+    assets: vector<Asset>,      // Assets to consume (burned)
+    clock: &Clock,
+    ctx: &mut TxContext,
+)
+```
+
+**Process:**
+1. Verify all assets have same `item_id`
+2. Verify all assets have same `upgrade_level`
+3. Verify `main_asset` is not `slot: 9` (no pet merging)
+4. Verify `assets.length()` matches `merge_items_required` config
+5. Burn all assets in `assets` vector
+6. Increment `main_asset.upgrade_level` by 1
+7. Emit `AssetMerged` event
+
+**Visual Examples:**
+- **Base** → Bronze Frame cosmetic item
+- **+** → Bronze Frame+ with subtle golden aura
+- **++** → Bronze Frame++ with intense golden animation
+
+### NFT Trading & Locking System
+
+**Trading Mechanics:**
+- All cosmetic assets are **tradable NFTs** by default
+- Assets can be listed on any Sui-compatible marketplace
+- No trading fees from game (marketplace fees may apply)
+- Assets retain full metadata when traded
+
+**Locking System:**
+```move
+public struct LockedAsset has key, store {
+    id: UID,
+    asset: Asset,            // Locked asset (wrapped)
+    locked_at: u64,          // Timestamp of lock
+}
+```
+
+**Lock Functions:**
+```move
+// Lock an asset (prevents trading)
+public fun lock_asset(
+    _self: &mut State,
+    av: &AV,
+    asset: Asset,
+    clock: &Clock,
+    ctx: &mut TxContext,
+) -> LockedAsset
+
+// Unlock an asset (enable trading again)
+public fun unlock_asset(
+    _self: &mut State,
+    av: &AV,
+    locked_asset: LockedAsset,
+    clock: &Clock,
+    ctx: &mut TxContext,
+) -> Asset
+```
+
+**Why Lock Assets:**
+- **Prevent accidental trading**: Lock valuable Limited items
+- **Burn protection**: Locked assets cannot be burned
+- **Collection organization**: Mark "keepers" vs "tradeables"
+- **Security**: Protect assets if wallet is compromised
+
+**Locked Asset Rules:**
+- Cannot be traded (not transferable)
+- Cannot be burned
+- Cannot be merged
+- Can still be equipped/unequipped
+- Owner can unlock anytime (instant, free)
+
+### Asset Registry & ID Management
+
+**Asset Registry (On-Chain):**
+```move
+public struct AssetRegistry has store {
+    items: VecMap<ID, ItemDefinition>,  // Item ID → Definition
+    enabled_items: VecSet<ID>,           // Currently droppable items
+}
+
+public struct ItemDefinition has copy, drop, store {
+    id: ID,
+    slot: u8,              // 0/1/9
+    rarity: u8,            // 0-4
+    name: String,
+    set_family: String,    // A/B/C/D/E or N/A for accessories
+    attributes: VecMap<String, String>,
+}
+```
+
+**Admin Operations:**
+- `admin_register_item()` - Add new item to registry
+- `admin_disable_item()` - Remove from drop pools (existing items unaffected)
+- `admin_update_item_metadata()` - Update name/attributes (existing NFTs update)
+
+**ID Manager (Lootbox Item Selection):**
+```move
+public struct IDManager has store {
+    item_pools: VecMap<u8, VecSet<ID>>,  // rarity → [item IDs]
+    pet_pools: VecMap<u8, VecSet<ID>>,   // rarity → [pet IDs]
+}
+```
+
+Used during lootbox opening to randomly select an item from the appropriate rarity pool.
+
+### Database Schema
+
+**Asset Table (Off-Chain Tracking):**
+```sql
+Asset {
+  id: UUID,
+  userId: UUID,
+  tokenId: BigInt,           // Matches on-chain token_id
+  itemId: String,            // Item definition ID
+  slot: Int,                 // 0/1/9
+  rarity: Int,               // 0-4
+  upgradeLevel: Int,         // 0/1/2
+  isEquipped: Boolean,
+  isLocked: Boolean,
+  acquiredAt: DateTime,
+  lastTraded: DateTime?,
+}
+```
+
+**Collection Tracking:**
+```sql
+CollectionProgress {
+  id: UUID,
+  userId: UUID,
+  itemId: String,
+  ownedCount: Int,
+  hasEquipped: Boolean,
+  firstAcquired: DateTime,
+}
+```
+
+### Admin Operations
+
+**Smart Contract Functions:**
+- `admin_register_item(slot: u8, rarity: u8, metadata: Metadata)` - Add item
+- `admin_disable_item(item_id: ID)` - Remove from drops
+- `admin_mint_asset(user: address, item_id: ID, rarity: u8)` - Direct grant
+- `admin_burn_asset(asset: Asset)` - Emergency removal
+- `admin_set_merge_config(items_required: u64)` - Configure merge requirements
+
+**Backend API Endpoints:**
+- `POST /admin/assets/mint` - Mint asset to user
+- `POST /admin/assets/register` - Register new item definition
+- `GET /admin/assets/registry` - View all registered items
+- `POST /admin/assets/disable/:itemId` - Disable from drops
+- `GET /admin/collection/:userId` - View user's collection
 
 ---
 
@@ -582,22 +815,31 @@ Cosmetics in Infinite Idol mirror the idol aesthetic system:
 
 ---
 
-## Cross-References
+## Technical Reference
 
-### Immediate Dependencies
+For developers and deep technical implementation details:
 
-- **Gacha System**: Items obtained from lootboxes
-- **Burn System**: Duplicates convert to new lootboxes
-- **Battle Pass**: Progression unlocks more items
+**Smart Contracts:**
+- [SUI_CONTRACTS.md](./technical-reference/SUI_CONTRACTS.md) - Move contracts, Asset/LockedAsset structs, merging system, admin functions
+- [BACKEND.md](./technical-reference/BACKEND.md) - REST API endpoints, database schema, collection tracking
 
-### Related Documentation
+**Architecture:**
+- [ARCHITECTURE.md](./technical-reference/ARCHITECTURE.md) - System architecture, NFT management, data flows
 
-- See `knowledge-base/game-mechanics/pre-registration-spec.md` for system overview
-- See `knowledge-base/game-mechanics/gacha-system.md` for lootbox mechanics
-- See `knowledge-base/game-mechanics/gem-system.md` for currency that funds lootboxes
-- See `knowledge-base/game-mechanics/battle-pass.md` for progression tracking
-- See `knowledge-base/crypto/sui-integration.md` for NFT implementation
-- See `knowledge-base/brand/visual-identity.md` for design guidelines
+---
+
+## Related Documentation
+
+### Core Systems
+- [gacha-system.md](./gacha-system.md) - Lootbox mechanics (source of items)
+- [gem-system.md](./gem-system.md) - Currency that funds leveling → lootboxes → items
+- [battle-pass.md](./battle-pass.md) - Progression tracking, leveling system
+- [pre-registration-spec.md](./pre-registration-spec.md) - Complete system overview
+
+### Additional Context
+- See `knowledge-base/crypto/sui-integration.md` for NFT implementation details
+- See `knowledge-base/brand/visual-identity.md` for design guidelines and aesthetic rules
+- See `knowledge-base/brand/dark-luxury-guide.md` for visual treatment standards
 
 ---
 

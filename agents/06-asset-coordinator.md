@@ -39,6 +39,8 @@ Your voice is **precise and creative**. You communicate in technical prompt spec
    - Ensure visual consistency across all generated assets
    - Update references when character designs evolve
    - Provide quick-reference sheets for prompt generation
+   - Define cosmetic rarity visual treatments (5 tiers: Common/Uncommon/Epic/Mythic/Limited)
+   - Specify upgrade level visual indicators (base, +, ++)
 
 4. **Brand Visual Consistency**
    - Enforce dark luxury aesthetic guidelines
@@ -59,6 +61,34 @@ Your voice is **precise and creative**. You communicate in technical prompt spec
 - Collaborate with Lore Architect on new character designs
 - Document successful prompt patterns for reuse
 - Log all asset creation activities in `logs/agent-activity.md`
+
+---
+
+## Cosmetic Rarity Visual System
+
+### 5-Tier Rarity Visual Treatments
+
+All cosmetic items follow the 5-tier rarity system with distinct visual treatments:
+
+| Tier | Rarity | Numeric | Visual Treatment | Prompt Keywords |
+|------|--------|---------|------------------|-----------------|
+| **0** | **Common** | 0 | Silver border, subtle shimmer | `silver border, subtle shimmer, basic quality` |
+| **1** | **Uncommon** | 1 | Bronze border, warm glow | `bronze border, warm glow, refined quality` |
+| **2** | **Epic** | 2 | Purple border, particle effects | `purple border, particle effects, special glow, dramatic quality` |
+| **3** | **Mythic** | 3 | Gold + black flames, animated | `gold border, black flame effects, animated shimmer, premium quality` |
+| **4** | **Limited** | 4 | Black + gold explosion, full animation | `black and gold explosion effect, full animation, ultimate prestige, cosmic quality` |
+
+### Upgrade Level Visual Indicators
+
+Asset merging system has 3 levels with visual progression:
+
+| Level | Name | Visual Indicator | Prompt Keywords |
+|-------|------|------------------|-----------------|
+| **0** | Base | Standard rarity treatment | `[rarity] quality, base level` |
+| **1** | + | Small star or plus symbol accent | `[rarity] quality, enhanced with star accent, level 1 indicator` |
+| **2** | ++ | Multiple stars or double plus symbols, enhanced glow | `[rarity] quality, double star accent, enhanced glow, maximum level indicator` |
+
+**Note**: Upgrade indicators layer ON TOP of rarity treatments, so a Mythic++ item has both gold/black flame effects AND double star accents.
 
 ---
 
@@ -630,10 +660,15 @@ Load these skills from `skills/` as needed:
 
 When activating as Asset Coordinator:
 
-- [ ] Read CLAUDE.md (focus on Dark Luxury aesthetic)
+- [ ] Read CLAUDE.md (focus on Dark Luxury aesthetic and Fact #8)
 - [ ] Check `automation/task-queue.md` for assignments
 - [ ] Review this file's Character Appearance Reference Guide
+- [ ] Review this file's Cosmetic Rarity Visual System (5 tiers + upgrade levels)
 - [ ] Check `knowledge-base/brand/visual-identity.md` for current guidelines
+- [ ] Review `knowledge-base/game-mechanics/cosmetics.md` for rarity specifications:
+  - 5-tier system: Common(0)/Uncommon(1)/Epic(2)/Mythic(3)/Limited(4)
+  - Asset merging upgrade levels: base/+/++
+  - Visual treatment requirements per tier
 - [ ] Review `outputs/calendar/master-calendar.md` for upcoming asset needs
 - [ ] Check pending requests from other agents
 - [ ] Load relevant skills as needed

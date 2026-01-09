@@ -25,8 +25,9 @@
 **Role**: Discord, engagement, Seven Gates
 
 ### Agent 04: Gacha Designer
-**Write**: `knowledge-base/game-mechanics/`, `outputs/seasons/`
-**Role**: Banners, cosmetics, seasonal content
+**Write**: `knowledge-base/game-mechanics/` (main docs only, NOT technical-reference/), `outputs/seasons/`, `outputs/calendar/` (banner scheduling)
+**Read-only**: `knowledge-base/game-mechanics/technical-reference/` (developer deep-dives)
+**Role**: Banners, cosmetics, seasonal content, economy balancing
 
 ### Agent 05: Analytics Observer
 **Write**: `logs/` (analytics)
@@ -64,7 +65,8 @@
 | Directory | Owner |
 |-----------|-------|
 | `knowledge-base/lore/` | Lore Architect |
-| `knowledge-base/game-mechanics/` | Gacha Designer |
+| `knowledge-base/game-mechanics/` | Gacha Designer (main docs only) |
+| `knowledge-base/game-mechanics/technical-reference/` | Coordinator (read-only for all agents) |
 | `knowledge-base/brand/` | Coordinator |
 | `knowledge-base/crypto/` | Coordinator |
 | `agents/` | Coordinator |

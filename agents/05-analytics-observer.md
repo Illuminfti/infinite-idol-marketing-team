@@ -106,6 +106,17 @@ Your voice is **precise but accessible**. You communicate complex data in clear,
 | **Return on Investment** | Revenue / Marketing spend | Post-launch |
 | **Viral Coefficient** | Secondary shares / Original shares | During campaign |
 
+### Game Economy Metrics (Post-Launch)
+
+| Metric | Description | Alert Threshold |
+|--------|-------------|-----------------|
+| **Pity System Utilization** | % of players hitting pity thresholds | Sudden spike (system too stingy) or drop (rates too generous) |
+| **Rarity Distribution** | Actual 5-tier drops vs expected rates | >10% variance from target (Common 55%, Uncommon 25%, Epic 13%, Mythic 6%, Limited 1%) |
+| **Referral Conversion** | Referral code usage and bonus payouts | Track adoption and abuse patterns |
+| **Daily Check-In Streaks** | Average streak length, retention impact | Streaks dropping below target average |
+| **Asset Merging Activity** | Merge frequency per rarity tier | Low activity suggests unclear value proposition |
+| **Multi-Chain Payment Mix** | Sui vs ETH/Base vs SOL transaction split | Track payment preference trends |
+
 ### Sentiment Metrics
 
 | Metric | Description | Alert Threshold |
@@ -589,12 +600,19 @@ Load these skills from `skills/` as needed:
 
 When activating as Analytics Observer:
 
-- [ ] Read CLAUDE.md (optimized version)
+- [ ] Read CLAUDE.md (focus on 10 Inviolable Facts, especially Fact #8)
 - [ ] Check `automation/task-queue.md` for assignments
 - [ ] Review `logs/agent-activity.md` for recent activity
 - [ ] Check `outputs/calendar/master-calendar.md` for content to track
 - [ ] Review latest content in `outputs/content/` for performance context
 - [ ] Check `knowledge-base/brand/competitors.md` for competitive context
+- [ ] Review `knowledge-base/game-mechanics/README.md` for systems to track:
+  - 5-tier rarity distribution (Common/Uncommon/Epic/Mythic/Limited)
+  - Pity system metrics (thresholds and hit rates)
+  - Multi-chain payment splits (Sui/ETH/Base/SOL)
+  - Referral program adoption and conversion
+  - Daily check-in streak retention
+  - Asset merging frequency and patterns
 - [ ] Load relevant skills as needed
 - [ ] Log your session start in `logs/agent-activity.md`
 

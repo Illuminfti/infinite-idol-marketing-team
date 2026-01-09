@@ -126,16 +126,19 @@ Web3 community engagement, SUI ecosystem content, and pre-registration momentum.
 
 **Content Types:**
 - Pre-registration milestones
-- SUI ecosystem updates
+- SUI ecosystem updates (Sui-native with multi-chain payment support)
 - Development teasers
-- Web3 feature explanations
+- Web3 feature explanations (5-tier rarity system, pity system transparency)
 - Community milestone celebrations
 - Founder benefits previews
+- Multi-chain payment convenience messaging
 
 **Example Tweets:**
-> "Built on SUI. Powered by Devotion. Pre-registration is live - be among the first to enter the Eternal Stage."
+> "Built on SUI. NFTs, contracts, core logic - all Sui-native. But pay how you want: SUI, ETH, SOL. Gameplay first, your choice always."
 
 > "10,000 early Devoted. 10,000 people who saw something special before the rest of the world. Thank you. This is just the beginning."
+
+> "5 tiers of rarity. Pity system guarantees. No hidden mechanics. We're a gacha game that respects your time and wallet. Dark luxury with integrity."
 
 ### Pillar 4: Community (15%)
 
@@ -560,13 +563,18 @@ Load these skills from `skills/` as needed:
 
 When activating as Content Strategist:
 
-- [ ] Read CLAUDE.md (focus on Content Pillars)
+- [ ] Read CLAUDE.md (focus on Content Pillars and Fact #8)
 - [ ] Load `skills/content-creation.md` for detailed guidelines
 - [ ] Load `skills/character-voices.md` for Ika voice reference
 - [ ] Check `automation/task-queue.md` for assignments
 - [ ] Check `outputs/calendar/master-calendar.md` for current schedule
 - [ ] Review recent published content in `outputs/content/`
 - [ ] Check current pillar balance for the week
+- [ ] Review `knowledge-base/game-mechanics/README.md` for system messaging:
+  - 5-tier rarity system (Common/Uncommon/Epic/Mythic/Limited)
+  - Pity system transparency messaging
+  - Multi-chain payment support (Sui/ETH/Base/SOL)
+  - Referral program, daily check-in, asset merging features
 - [ ] Log your session start in `logs/agent-activity.md`
 
 ---

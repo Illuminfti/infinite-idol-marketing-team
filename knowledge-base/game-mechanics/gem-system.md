@@ -335,6 +335,339 @@ Every gem purchase should feel like a luxury transaction, not a casual mobile ga
 
 ---
 
+## Multi-Chain Payment Architecture
+
+While Infinite Idol is **Sui-native** (all NFTs, contracts, and game logic run on Sui), the payment system supports **multi-chain purchases** for maximum accessibility:
+
+### Supported Blockchains
+
+| Blockchain | Currency | Use Case | Treasury Contract |
+|------------|----------|----------|-------------------|
+| **Sui** | SUI | Primary payment, native integration | Sui Treasury (on-chain) |
+| **Ethereum** | ETH | Ethereum mainnet payments | Ethereum Treasury (Solidity) |
+| **Base** | ETH | L2 for lower fees | Base Treasury (Solidity) |
+| **Solana** | SOL | Solana ecosystem users | Solana Treasury (Anchor) |
+
+### Why Multi-Chain?
+
+**Philosophy**: "Play on Sui, pay how you want"
+
+| Benefit | Details |
+|---------|---------|
+| **Accessibility** | Users can pay with assets they already hold |
+| **Flexibility** | No forced on-ramping to SUI for purchases |
+| **User Choice** | Let players use their preferred blockchain |
+| **Wider Reach** | Tap into ETH, Base, and Solana ecosystems |
+
+**Important**: Game assets (NFTs, lootboxes, cosmetics) ONLY exist on Sui. Multi-chain is payment-only.
+
+### Payment Flow (Multi-Chain)
+
+**Example: User pays with ETH on Ethereum**
+
+1. **Frontend**: User selects "Buy 100 SUI worth of Gems" and chooses "Pay with ETH"
+2. **Price Oracle**: System fetches ETH/SUI exchange rate (e.g., 1 ETH = 500 SUI)
+3. **Payment Calculation**: 100 SUI ÷ 500 = 0.2 ETH required
+4. **Ethereum Treasury**: User sends 0.2 ETH to Ethereum Treasury contract
+5. **Event Indexing**: Backend detects payment event on Ethereum
+6. **Gem Credit**: Backend credits user's Sui account with gems (100 SUI = 10,000 base gems + 1,500 bonus = 11,500 total)
+7. **Confirmation**: User sees gems in balance immediately
+
+**Key Point**: Payment happens on user's chosen chain, but gems are credited on Sui.
+
+### Treasury Contracts
+
+**Ethereum/Base Treasury (Solidity):**
+```solidity
+contract InfiniteIdolTreasury {
+    event PaymentReceived(address indexed user, uint256 amount, string userId);
+
+    function pay(string calldata userId) external payable {
+        require(msg.value > 0, "Must send ETH");
+        emit PaymentReceived(msg.sender, msg.value, userId);
+    }
+}
+```
+
+**Solana Treasury (Anchor):**
+```rust
+#[program]
+pub mod infinite_idol_treasury {
+    pub fn pay(ctx: Context<Pay>, user_id: String, amount: u64) -> Result<()> {
+        // Transfer SOL to treasury
+        // Emit payment event
+        Ok(())
+    }
+}
+```
+
+**Sui Treasury (Move):**
+```move
+public entry fun pay(
+    treasury: &mut Treasury,
+    payment: Coin<SUI>,
+    user_id: String,
+    ctx: &TxContext,
+)
+```
+
+All treasuries emit payment events that the backend indexes to credit gems.
+
+### Exchange Rate Management
+
+| Component | Responsibility |
+|-----------|----------------|
+| **Price Oracle** | Fetch real-time SUI/ETH, SUI/SOL rates |
+| **Backend** | Calculate equivalent amounts |
+| **Slippage Protection** | 5% buffer for rate changes during transaction |
+| **Admin Override** | Manual rate adjustment if oracle fails |
+
+---
+
+## Cross-Chain Wallet System (dWallet)
+
+Users generate a **cross-chain wallet** through IKA network's dWallet MPC technology:
+
+### What is a dWallet?
+
+**dWallet** (Distributed Wallet) uses **Multi-Party Computation (MPC)** to create cross-chain signing capabilities:
+
+- **No exposed private keys**: Keys are distributed across network nodes
+- **Sui-native integration**: Wallet address generated on Sui blockchain
+- **Cross-chain signing**: Can sign transactions on ETH, Base, Solana from Sui
+- **User-controlled**: Only user can initiate signing operations
+
+### Distributed Key Generation (DKG)
+
+**When**: User first reaches level requirement or requests cross-chain features
+
+**Process:**
+1. User initiates DKG request from frontend
+2. Backend submits DKG operation to Sui smart contract
+3. IKA network nodes perform distributed key generation
+4. New Sui wallet address created (user doesn't receive private key directly)
+5. User can now sign cross-chain transactions via IKA network
+
+**Database Tracking:**
+```typescript
+DWalletGeneration {
+  id: UUID,
+  userId: UUID,
+  status: "PENDING" | "PROCESSING" | "COMPLETED" | "FAILED",
+  dWalletAddress: String?,   // Generated Sui address
+  createdAt: DateTime,
+  completedAt: DateTime?,
+}
+```
+
+### Cross-Chain Signing Flow
+
+**Example: User wants to claim earnings from Ethereum**
+
+1. User requests "Withdraw ETH earnings"
+2. Backend builds Ethereum transaction
+3. Backend submits signing request to IKA network via Sui
+4. IKA network nodes perform MPC signing (no single node has full key)
+5. Signed transaction returned
+6. Backend broadcasts transaction to Ethereum
+7. User receives ETH in their Ethereum address
+
+### Presign Capabilities
+
+For efficiency, IKA supports **presigning**:
+
+- Pre-generate partial signatures before transaction is needed
+- Faster transaction execution when time-sensitive
+- Used for high-frequency operations (future gameplay features)
+
+---
+
+## Referral Program
+
+Players can earn bonus gems by referring new users:
+
+### How It Works
+
+1. **Generate Code**: Each user has a unique referral code
+2. **Share Code**: Referrer shares code with friends
+3. **New User Applies Code**: Friend enters code during first purchase
+4. **Bonus Gems**: Referrer receives bonus gems when friend makes purchase
+
+### Bonus Structure
+
+| Referee Purchase | Referrer Bonus | Referee Bonus |
+|------------------|----------------|---------------|
+| 1 SUI (100 gems) | 10 gems | 5 gems |
+| 10 SUI (1,100 gems) | 110 gems | 55 gems |
+| 100 SUI (11,500 gems) | 1,150 gems | 575 gems |
+| 1,000+ SUI | 10% of referee's gems | 5% of their gems |
+
+**Bonus Formula:**
+- **Referrer**: 10% of referee's gem purchase
+- **Referee**: 5% bonus on first purchase
+
+### Referral Code Format
+
+- **Format**: `IDOL-XXXX` (e.g., `IDOL-7K9M`)
+- **Length**: 4 characters after prefix
+- **Character Set**: Alphanumeric, case-insensitive
+- **Uniqueness**: Guaranteed per user
+
+### Tracking & Limits
+
+| Metric | Value |
+|--------|-------|
+| **Max Referrals** | Unlimited |
+| **Bonus Cap** | No cap on total bonuses |
+| **Code Expiry** | Never expires |
+| **Fraud Detection** | Same-wallet detection, velocity limits |
+
+**Database:**
+```typescript
+Referral {
+  id: UUID,
+  referrerId: UUID,         // User who referred
+  refereeId: UUID,          // User who was referred
+  referralCode: String,
+  bonusGemsReferrer: Int,
+  bonusGemsReferee: Int,
+  firstPurchaseAt: DateTime,
+  createdAt: DateTime,
+}
+```
+
+### Anti-Abuse Measures
+
+- Cannot refer self (same wallet detection)
+- Velocity limits (max 10 successful referrals per day)
+- Admin review for suspicious patterns
+- Bonus clawback if fraud detected
+
+---
+
+## Technical Implementation
+
+### Payment Backend Flow
+
+**1. User Initiates Purchase (ETH example):**
+```
+User → Frontend → "Buy 100 SUI worth (11,500 gems)" + "Pay with ETH"
+```
+
+**2. Backend Processing:**
+```typescript
+1. Fetch ETH/SUI rate from oracle
+2. Calculate ETH amount: 100 SUI ÷ 500 SUI/ETH = 0.2 ETH
+3. Add 5% slippage buffer: 0.2 × 1.05 = 0.21 ETH
+4. Return payment instructions to frontend
+```
+
+**3. Smart Contract Payment:**
+```typescript
+User → Ethereum Treasury.pay(userId="user123") + 0.21 ETH
+Treasury → Emit PaymentReceived(user="user123", amount=0.21 ETH)
+```
+
+**4. Event Indexing:**
+```typescript
+Backend Event Listener → Detects PaymentReceived event
+Backend → Verify payment amount ≥ required amount
+Backend → Create Payment record in database
+```
+
+**5. Gem Credit:**
+```typescript
+Backend → Credit user with 11,500 gems (100 SUI package)
+Backend → Apply referral bonus if applicable
+Backend → Update user gem balance
+Backend → Notify frontend via WebSocket
+```
+
+### Database Schema
+
+**Payment Table:**
+```sql
+Payment {
+  id: UUID,
+  userId: UUID,
+  blockchain: String,        // "SUI" | "ETH" | "BASE" | "SOL"
+  txHash: String,            // Transaction hash on payment chain
+  amountPaid: Decimal,       // Amount in native currency
+  suiEquivalent: Decimal,    // Converted to SUI
+  gemsAwarded: Int,
+  referralBonus: Int,
+  status: String,            // "PENDING" | "CONFIRMED" | "FAILED"
+  createdAt: DateTime,
+  confirmedAt: DateTime?,
+}
+```
+
+**User Gem Balance:**
+```sql
+User {
+  id: UUID,
+  gemBalance: Int,
+  totalGemsEarned: Int,
+  totalGemsSpent: Int,
+  referralCode: String,
+  dWalletAddress: String?,
+  createdAt: DateTime,
+}
+```
+
+### Smart Contract Functions
+
+**Sui Treasury:**
+```move
+// Direct SUI payment
+entry fun pay(
+    treasury: &mut Treasury,
+    payment: Coin<SUI>,
+    user_id: String,
+    ctx: &TxContext,
+)
+
+// Admin withdrawal
+public fun admin_withdraw(
+    treasury: &mut Treasury,
+    amount: u64,
+    admin_cap: &AdminCap,
+    ctx: &mut TxContext,
+) -> Coin<SUI>
+```
+
+**Admin Treasury Management:**
+- Withdraw accumulated funds to team wallet
+- View total treasury balance
+- Emergency pause/unpause payments
+
+### API Endpoints
+
+**User Endpoints:**
+- `POST /payments/initiate` - Start payment flow
+- `GET /payments/:id/status` - Check payment status
+- `GET /user/gems` - Get gem balance
+- `POST /referral/generate` - Generate referral code
+- `POST /referral/apply` - Apply referral code
+
+**Admin Endpoints:**
+- `GET /admin/treasury/balance` - View treasury balances
+- `POST /admin/treasury/withdraw` - Withdraw funds
+- `GET /admin/payments` - View all payments
+- `POST /admin/gems/credit` - Manual gem credit (emergency)
+
+### Security Measures
+
+| Layer | Protection |
+|-------|------------|
+| **Payment Verification** | Multi-confirmation block wait (ETH: 12 blocks, SUI: 1 block) |
+| **Duplicate Prevention** | Transaction hash tracking, prevent double-credit |
+| **Oracle Security** | Multiple price feeds, median calculation |
+| **Treasury Security** | Multi-sig admin, withdrawal limits |
+| **Referral Fraud** | Velocity limits, pattern detection, manual review |
+
+---
+
 ## Related Systems
 
 ### Immediate Dependencies
@@ -351,12 +684,31 @@ Every gem purchase should feel like a luxury transaction, not a casual mobile ga
 
 ---
 
-## Cross-References
+## Technical Reference
 
-- See `knowledge-base/game-mechanics/pre-registration-spec.md` for system overview
-- See `knowledge-base/game-mechanics/battle-pass.md` for Battle Pass NFT details
-- See `knowledge-base/game-mechanics/gacha-system.md` for lootbox mechanics
-- See `knowledge-base/crypto/sui-integration.md` for blockchain implementation
+For developers and deep technical implementation details:
+
+**Smart Contracts:**
+- [SUI_CONTRACTS.md](./technical-reference/SUI_CONTRACTS.md) - Move treasury contract, payment functions
+- [ETHEREUM_CONTRACTS.md](./technical-reference/ETHEREUM_CONTRACTS.md) - Solidity treasury for ETH/Base payments
+- [SOLANA_CONTRACTS.md](./technical-reference/SOLANA_CONTRACTS.md) - Anchor treasury for SOL payments
+- [BACKEND.md](./technical-reference/BACKEND.md) - Payment backend, event indexing, gem crediting
+
+**Architecture:**
+- [ARCHITECTURE.md](./technical-reference/ARCHITECTURE.md) - Multi-chain payment flows, dWallet integration
+
+---
+
+## Related Documentation
+
+### Core Systems
+- [battle-pass.md](./battle-pass.md) - Battle Pass NFT (created on first gem spend), leveling
+- [gacha-system.md](./gacha-system.md) - Lootbox mechanics (earned through leveling)
+- [cross-chain-architecture.md](./cross-chain-architecture.md) - Multi-chain payment deep-dive
+- [pre-registration-spec.md](./pre-registration-spec.md) - Complete system overview
+
+### Additional Context
+- See `knowledge-base/crypto/sui-integration.md` for Sui blockchain implementation
 - See `knowledge-base/crypto/tokenomics.md` for complete economic model
 - See `knowledge-base/lore/mechanics/devotion-system.md` for narrative parallel
 
