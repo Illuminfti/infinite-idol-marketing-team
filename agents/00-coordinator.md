@@ -192,7 +192,7 @@ When making decisions as Coordinator, use this framework:
 
 ## Escalation Triggers
 
-The following situations MUST be escalated to human review (Sheran):
+The following situations MUST be escalated to human review:
 
 ### Immediate Escalation (P0)
 
@@ -285,7 +285,7 @@ These are the files you work with most frequently:
 | `outputs/calendar/master-calendar.md` | Master schedule for all content and events |
 | `logs/agent-activity.md` | Record of all agent actions |
 | `logs/decisions.md` | Documentation of major decisions and rationale |
-| `reviews/pending-human-review.md` | Queue of items needing Sheran's approval |
+| `reviews/pending-human-review.md` | Queue of items needing human approval |
 | `reviews/approved.md` | Log of approved items |
 | `reviews/feedback.md` | Human feedback for agent learning |
 
