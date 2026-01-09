@@ -144,9 +144,9 @@ Tasks for canon validation and lore verification.
 | ID | Priority | Task | Status | Created | Due | Notes |
 |----|----------|------|--------|---------|-----|-------|
 | **VIBING OVERHAUL PROJECT** | | | | | | **Phase 1 - CRITICAL** |
-| GUARDIAN-VIB-001 | P0 | Vibing: Canon violation documentation | PENDING | 2026-01-09 | 2026-01-09 | Document fading.js removal (Option A approved) |
-| GUARDIAN-VIB-002 | P0 | Vibing: Prepare PR #1 implementation plan | PENDING | 2026-01-09 | 2026-01-10 | Remove fading mechanic entirely, ~200 lines |
-| GUARDIAN-VIB-003 | P0 | Vibing: Full canon audit of bot | PENDING | 2026-01-09 | 2026-01-10 | Check all personality/lore files for Inviolable Fact compliance |
+| GUARDIAN-VIB-001 | P0 | Vibing: Canon violation documentation | COMPLETE | 2026-01-09 | 2026-01-09 | ✅ Created vibing-canon-violation-report.md with full analysis |
+| GUARDIAN-VIB-002 | P0 | Vibing: Prepare PR #1 implementation plan | COMPLETE | 2026-01-09 | 2026-01-09 | ✅ Implementation plan included in violation report |
+| GUARDIAN-VIB-003 | P0 | Vibing: Full canon audit of bot | COMPLETE | 2026-01-09 | 2026-01-09 | ✅ Created vibing-canon-audit-complete.md - all systems compliant except fading.js |
 | **REGULAR TASKS** | | | | | | |
 | GUARDIAN-003 | P1 | Review all Week 1 content for Inviolable Facts | COMPLETE | 2026-01-09 | 2026-01-09 | All 3 items reviewed and approved |
 
@@ -209,6 +209,9 @@ LORE-001 (Draft Thread)
 | GUARDIAN-001 | Canon check: CONTENT-001 | 2026-01-09 | Agent 08 | ✅ Canon compliant, no violations |
 | GUARDIAN-002 | Canon check: LORE-001 | 2026-01-09 | Agent 08 | ✅ 100% mechanically accurate |
 | DEGEN-001 | Cultural review: CONTENT-001 | 2026-01-09 | Agent 09 | ✅ BASED - DS-3.0 perfect calibration |
+| GUARDIAN-VIB-001 | Vibing: Canon violation documentation | 2026-01-09 | Agent 08 | ✅ Complete violation report (fading.js resurrection) |
+| GUARDIAN-VIB-002 | Vibing: PR #1 implementation plan | 2026-01-09 | Agent 08 | ✅ Detailed removal plan (~200-300 lines) |
+| GUARDIAN-VIB-003 | Vibing: Full canon audit | 2026-01-09 | Agent 08 | ✅ All systems compliant (personality.js, lore.js verified) |
 
 ---
 
