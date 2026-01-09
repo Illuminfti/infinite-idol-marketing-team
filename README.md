@@ -18,6 +18,47 @@ Infinite Idol is a dark luxury gacha game where idols are sustained by **Devotio
 
 ---
 
+## Agent Command Center Dashboard
+
+The repository includes a premium **Agent Command Center** — a web-based dashboard for monitoring and coordinating all AI agents in real-time.
+
+### Features
+
+- **Dashboard Overview** — Real-time stats, agent status, content pipeline visualization
+- **Agent Grid** — All 10 agents with status indicators and quick chat access
+- **Live Activity Feed** — Streaming updates of agent actions
+- **Content Pipeline** — Kanban board tracking content from draft to publication
+- **Reviews Queue** — Human approval workflow for escalated items
+- **Canon & Lore Reference** — Quick access to the 10 Inviolable Facts and world documents
+- **Activity Logs** — Complete history with agent filtering and export
+
+### Running the Dashboard
+
+```bash
+# Navigate to the dashboard directory
+cd dashboard
+
+# Serve locally (using Python)
+python -m http.server 8000
+
+# Or using Node.js
+npx serve .
+
+# Then open http://localhost:8000 in your browser
+```
+
+### Design Philosophy
+
+The dashboard follows **Apple Human Interface Guidelines** with a **Dark Luxury** aesthetic:
+
+- **Glassmorphism** — Translucent surfaces with subtle blur effects
+- **Spatial Depth** — Layered UI with meaningful shadows and elevation
+- **Spring Animations** — Smooth, physics-based micro-interactions
+- **SF Pro Typography** — Clean hierarchy with optimal readability
+- **Gold Accent System** — Dark luxury brand colors throughout
+
+---
+
 ## What is This Repository?
 
 This is the **Marketing HQ** — an AI agent-driven content production system. Ten specialized AI agents work together to handle all marketing operations:
@@ -117,22 +158,27 @@ For complex tasks requiring multiple agents:
 
 ### For Human Operators
 
-1. **Check pending reviews:**
+1. **Launch the Command Center:**
+   ```bash
+   cd dashboard && python -m http.server 8000
+   ```
+
+2. **Check pending reviews:**
    ```bash
    cat reviews/pending-human-review.md
    ```
 
-2. **See what agents have been doing:**
+3. **See what agents have been doing:**
    ```bash
    cat logs/agent-activity.md
    ```
 
-3. **Review the content calendar:**
+4. **Review the content calendar:**
    ```bash
    cat outputs/calendar/master-calendar.md
    ```
 
-4. **Provide feedback:**
+5. **Provide feedback:**
    Edit `reviews/feedback.md` with notes for agent improvement.
 
 ### For AI Agents
@@ -159,7 +205,12 @@ For complex tasks requiring multiple agents:
 infinite-idol-marketing-team/
 ├── CLAUDE.md                  # Master instructions (agents read this first)
 ├── README.md                  # You are here
+├── CHANGELOG.md               # Version history and updates
 ├── agents/                    # 10 AI agent persona definitions
+├── dashboard/                 # Agent Command Center GUI
+│   ├── index.html            # Dashboard entry point
+│   ├── styles.css            # Apple-inspired design system
+│   └── app.js                # Application logic
 ├── knowledge-base/
 │   ├── lore/                 # World, characters, factions, mechanics
 │   ├── light-novels/         # Novel drafts and published volumes
@@ -239,12 +290,15 @@ Agents escalate to human review when encountering:
 - **Character Details**: See `knowledge-base/lore/characters/`
 - **Game Mechanics**: See `knowledge-base/game-mechanics/`
 - **Brand Guidelines**: See `knowledge-base/brand/`
+- **Dashboard Issues**: Check `dashboard/` files or raise an issue
 
 ---
 
 ## Version
 
-**v2.1.0** — Cultural Enforcement Update (10 agents)
+**v3.0.0** — Agent Command Center UI Overhaul
+
+See [CHANGELOG.md](CHANGELOG.md) for full version history.
 
 ---
 
