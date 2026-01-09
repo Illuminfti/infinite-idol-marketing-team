@@ -1,6 +1,6 @@
 # Agent Activity Log
 
-> **Purpose**: Track all agent activities across the marketing team
+> **Purpose**: Track all agent activities, reviews, and coordination efforts for the Infinite Idol Marketing Team.
 > **Maintained By**: All agents (coordinated by Agent 00)
 > **Update Frequency**: Per session or significant activity
 
@@ -10,28 +10,30 @@
 
 When completing a task, add an entry using the template below. Place new entries at the **top** of the Activity Log section (newest first).
 
-### Entry Template
+## Log Format Guidelines
+
+### Standard Activity Entry
+
+All agents should use this format when logging activities:
 
 ```markdown
-### [DATE] - [AGENT ID]: [BRIEF TITLE]
+### [YYYY-MM-DD HH:MM] Agent: [Agent Number & Name]
 
-**Agent**: [00-06] - [Agent Name]
-**Activity Type**: [Content | Review | Planning | Research | Asset | Community | System]
-**Status**: [Completed | In Progress | Blocked | Escalated]
+**Activity Type**: [Session Start | Content Creation | Review | Coordination | Escalation]
 
 **Summary**:
-[1-3 sentences describing what was done]
+[Brief description of what was done]
 
-**Files Modified**:
-- `path/to/file.md` - [what changed]
+**Files Touched**:
+- [file1.md] - [action: created/modified/reviewed]
+- [file2.md] - [action: created/modified/reviewed]
 
-**Related Tasks**:
-- [Link to calendar item, review, or other related work]
+**Next Actions**:
+- [ ] [Pending task 1]
+- [ ] [Pending task 2]
 
 **Notes**:
-[Any additional context, blockers, or follow-up needed]
-
----
+[Any additional context or observations]
 ```
 
 ### Activity Types
@@ -44,13 +46,400 @@ When completing a task, add an entry using the template below. Place new entries
 | **Research** | Competitor analysis, metrics review, community sentiment |
 | **Asset** | Suno prompts, Midjourney prompts, visual coordination |
 | **Community** | Discord events, Seven Gates, engagement |
+| **Coordination** | Multi-agent workflows, handoffs, escalations |
 | **System** | Infrastructure updates, workflow changes, documentation |
+
+---
+
+## Entry Templates by Agent
+
+### Agent 00: Coordinator
+
+```markdown
+### [YYYY-MM-DD HH:MM] Agent: 00 - Coordinator
+
+**Activity Type**: [Scheduling | Escalation | Weekly Review | Emergency Response]
+
+**Summary**:
+[Brief description]
+
+**Coordination Actions**:
+- Agent [##]: [action taken/requested]
+- Agent [##]: [action taken/requested]
+
+**Calendar Updates**:
+- [Content scheduled/modified]
+
+**Human Escalations**:
+- [Items escalated to Sheran, if any]
+
+**Status**: [Complete | In Progress | Blocked]
+```
+
+### Agent 01: Lore Architect
+
+```markdown
+### [YYYY-MM-DD HH:MM] Agent: 01 - Lore Architect
+
+**Activity Type**: [Canon Review | World Building | Character Development | Timeline Update]
+
+**Summary**:
+[Brief description]
+
+**Canon Compliance**:
+- [Content reviewed]: [APPROVED | NEEDS REVISION | ESCALATED]
+
+**Lore Additions**:
+- [New canon element, if any]
+
+**Inviolable Facts Checked**:
+- [ ] No contradictions with the 10 Inviolable Facts
+
+**Status**: [Complete | In Progress | Blocked]
+```
+
+### Agent 02: Content Strategist
+
+```markdown
+### [YYYY-MM-DD HH:MM] Agent: 02 - Content Strategist
+
+**Activity Type**: [Tweet Draft | Thread Creation | Content Calendar | Article]
+
+**Summary**:
+[Brief description]
+
+**Content Created**:
+| Type | Topic | Status | Pillar |
+|------|-------|--------|--------|
+| [Tweet/Thread/Article] | [Topic] | [Draft/Review/Published] | [Ika Voice/Lore/Founder Hype/Community] |
+
+**Pending Reviews**:
+- [Content awaiting Lore Architect review]
+- [Content awaiting Degen review]
+
+**Status**: [Complete | In Progress | Blocked]
+```
+
+### Agent 03: Community Manager
+
+```markdown
+### [YYYY-MM-DD HH:MM] Agent: 03 - Community Manager
+
+**Activity Type**: [Event Planning | Sentiment Check | Seven Gates | Engagement]
+
+**Summary**:
+[Brief description]
+
+**Community Pulse**:
+- Overall Sentiment: [Positive | Neutral | Negative | Mixed]
+- Key Topics: [What community is discussing]
+
+**Events**:
+| Event | Status | Participants | Notes |
+|-------|--------|--------------|-------|
+| [Event name] | [Planned/Active/Complete] | [Count if known] | [Notes] |
+
+**Status**: [Complete | In Progress | Blocked]
+```
+
+### Agent 04: Gacha Designer
+
+```markdown
+### [YYYY-MM-DD HH:MM] Agent: 04 - Gacha Designer
+
+**Activity Type**: [Banner Design | Season Planning | Cosmetics | Rate Analysis]
+
+**Summary**:
+[Brief description]
+
+**Gacha Content**:
+| Item | Type | Rarity | Status |
+|------|------|--------|--------|
+| [Character/Cosmetic] | [Banner/Season/Limited] | [★ rating] | [Concept/Design/Review] |
+
+**Psychology Check**:
+- [ ] Whale appeal validated
+- [ ] F2P path maintained
+- [ ] Pity system appropriate
+
+**Status**: [Complete | In Progress | Blocked]
+```
+
+### Agent 05: Analytics Observer
+
+```markdown
+### [YYYY-MM-DD HH:MM] Agent: 05 - Analytics Observer
+
+**Activity Type**: [Performance Review | Competitor Analysis | Trend Report | Optimization]
+
+**Summary**:
+[Brief description]
+
+**Metrics Tracked**:
+| Metric | Value | Change | Benchmark |
+|--------|-------|--------|-----------|
+| [Metric name] | [Value] | [+/-/%] | [Target/Competitor] |
+
+**Insights**:
+- [Key finding 1]
+- [Key finding 2]
+
+**Recommendations**:
+- [Action item for other agents]
+
+**Status**: [Complete | In Progress | Blocked]
+```
+
+### Agent 06: Asset Coordinator
+
+```markdown
+### [YYYY-MM-DD HH:MM] Agent: 06 - Asset Coordinator
+
+**Activity Type**: [Suno Prompt | Midjourney Prompt | Asset Review | Style Guide]
+
+**Summary**:
+[Brief description]
+
+**Assets Created**:
+| Asset | Type | File | Status |
+|-------|------|------|--------|
+| [Description] | [Music/Art] | [filename] | [Draft/Generated/Approved] |
+
+**Style Compliance**:
+- [ ] Dark luxury aesthetic maintained
+- [ ] Character designs match canon
+- [ ] No pink cutesy elements
+
+**Status**: [Complete | In Progress | Blocked]
+```
+
+### Agent 07: Resident Degen
+
+```markdown
+### [YYYY-MM-DD HH:MM] Agent: 07 - Resident Degen
+
+**Activity Type**: [Cultural Review | Trend Check | Degen Audit | Agent Proposal]
+
+**Summary**:
+[Brief description]
+
+**Content Reviews**:
+| Content | Source Agent | DS Rating | Verdict | Notes |
+|---------|--------------|-----------|---------|-------|
+| [Content desc] | [Agent ##] | [DS-0 to DS-4] | [APPROVED/NEEDS MORE DEGEN/TOO FAR/ESCALATED] | [Brief note] |
+
+**Cultural Authenticity Check**:
+- Crypto relevance: [Fresh/Acceptable/Stale/Cringe]
+- Gacha authenticity: [Based/Acceptable/Normie/Yikes]
+- Otaku alignment: [Cultured/Acceptable/Casual/Corporate]
+
+**Trend Alerts**:
+- [New trend spotted, if any]
+- [Stale reference flagged, if any]
+
+**Authority Actions**:
+- [Revision requests issued to other agents]
+- [Escalations to Coordinator]
+
+**Status**: [Complete | In Progress | Blocked]
+```
+
+---
+
+## Degen Review Entry Format
+
+When the Resident Degen reviews content from other agents, use this detailed format:
+
+```markdown
+## 🔥 DEGEN REVIEW: [Content ID/Name]
+
+**Reviewed**: [YYYY-MM-DD HH:MM]
+**Source Agent**: [Agent ## - Name]
+**Content Type**: [Tweet/Thread/Event/Banner/Art Prompt/etc.]
+
+### Content Under Review
+
+> [Paste or summarize the content being reviewed]
+
+### Degeneracy Assessment
+
+| Dimension | Score | Notes |
+|-----------|-------|-------|
+| Cultural Relevance | [1-5] 🔥 | [Is it current? Fresh references?] |
+| Degen Energy | [1-5] 💀 | [Does it hit different?] |
+| Community Alignment | [1-5] 👥 | [Will our people resonate?] |
+| Brand Safety | [1-5] 🛡️ | [Within acceptable limits?] |
+
+**Overall DS Rating**: DS-[0-4]
+
+### Verdict
+
+**Decision**: [✅ APPROVED | ⚠️ NEEDS MORE DEGEN | 🚫 TOO FAR | ⏫ ESCALATED]
+
+**Reasoning**:
+[Why this decision was made]
+
+### Revision Notes (if applicable)
+
+**What's Missing**:
+- [Specific element lacking]
+
+**Suggested Changes**:
+- [Concrete improvement]
+
+**Reference Examples**:
+- [Link to example of what we want]
+
+---
+```
+
+---
+
+## Agent Coordination Log Format
+
+For tracking multi-agent workflows and handoffs:
+
+```markdown
+## 🔄 COORDINATION: [Workflow Name]
+
+**Initiated**: [YYYY-MM-DD HH:MM]
+**Lead Agent**: [Agent ## - Name]
+**Status**: [Active | Complete | Blocked | Escalated]
+
+### Workflow Chain
+
+| Step | Agent | Task | Status | Handoff Date |
+|------|-------|------|--------|--------------|
+| 1 | [Agent ##] | [Task description] | [✅/🔄/⏸️/❌] | [Date] |
+| 2 | [Agent ##] | [Task description] | [✅/🔄/⏸️/❌] | [Date] |
+| 3 | [Agent ##] | [Task description] | [✅/🔄/⏸️/❌] | [Date] |
+
+### Blockers (if any)
+
+- [Description of blocker]
+- [Agent responsible for resolution]
+- [Estimated resolution]
+
+### Final Output
+
+**Deliverable**: [What was produced]
+**Location**: [File path]
+**Human Review Required**: [Yes/No]
+
+---
+```
+
+---
+
+## Weekly Summary Template
+
+Use this format for Friday weekly summaries:
+
+```markdown
+## 📊 WEEKLY SUMMARY: [Week of YYYY-MM-DD]
+
+### Agent Activity Overview
+
+| Agent | Sessions | Key Outputs | Escalations |
+|-------|----------|-------------|-------------|
+| 00 - Coordinator | [#] | [Summary] | [#] |
+| 01 - Lore Architect | [#] | [Summary] | [#] |
+| 02 - Content Strategist | [#] | [Summary] | [#] |
+| 03 - Community Manager | [#] | [Summary] | [#] |
+| 04 - Gacha Designer | [#] | [Summary] | [#] |
+| 05 - Analytics Observer | [#] | [Summary] | [#] |
+| 06 - Asset Coordinator | [#] | [Summary] | [#] |
+| 07 - Resident Degen | [#] | [Summary] | [#] |
+
+### Content Published
+
+| Date | Type | Platform | Performance |
+|------|------|----------|-------------|
+| [Date] | [Type] | [Platform] | [Metrics if known] |
+
+### Degen Review Summary
+
+- Total Reviews: [#]
+- Approved: [#]
+- Needed More Degen: [#]
+- Too Far: [#]
+- Escalated: [#]
+
+### Key Decisions Made
+
+1. [Decision 1] - See `logs/decisions.md`
+2. [Decision 2] - See `logs/decisions.md`
+
+### Pending Human Review
+
+- [Item 1] - [Priority]
+- [Item 2] - [Priority]
+
+### Next Week Priorities
+
+1. [Priority 1]
+2. [Priority 2]
+3. [Priority 3]
+
+---
+```
+
+---
+
+## Quick Reference
+
+### Agent Roster
+
+| ID | Agent | Typical Activities |
+|----|-------|-------------------|
+| 00 | Coordinator | Orchestration, scheduling, escalation, system updates |
+| 01 | Lore Architect | Canon reviews, worldbuilding, character voice checks |
+| 02 | Content Strategist | Tweet drafts, threads, content calendar management |
+| 03 | Community Manager | Discord events, engagement, Seven Gates updates |
+| 04 | Gacha Designer | Banner concepts, seasonal content, cosmetic design |
+| 05 | Analytics Observer | Metrics compilation, competitor analysis, performance reviews |
+| 06 | Asset Coordinator | Suno prompts, Midjourney prompts, asset tracking |
+| 07 | Resident Degen | Cultural reviews, degen audits, trend checks, agent proposals |
+
+### Activity Frequency Guidelines
+
+| Agent | Expected Log Frequency |
+|-------|----------------------|
+| Coordinator | Daily summary |
+| Content Strategist | Per content piece |
+| Community Manager | Per event/engagement |
+| Lore Architect | Per review/update |
+| Gacha Designer | Per banner/season |
+| Analytics Observer | Weekly reports |
+| Asset Coordinator | Per asset batch |
+| Resident Degen | Per review/audit session |
 
 ---
 
 ## Activity Log
 
-<!-- Add new entries below this line, newest first -->
+Activities are logged below in reverse chronological order (newest first).
+
+---
+
+### [2026-01-09 01:20] Agent: System
+
+**Activity Type**: Initialization
+
+**Summary**:
+Created agent-activity.md logging template with standardized formats for all 8 agents, including the new Resident Degen (Agent 07) role.
+
+**Files Touched**:
+- logs/agent-activity.md - created
+
+**Next Actions**:
+- [ ] All agents to begin logging activities using these templates
+- [ ] Resident Degen to use detailed review format for all content reviews
+
+**Notes**:
+This file serves as the central activity log for the Infinite Idol Marketing Team. All agents should log their sessions and significant activities here to maintain coordination and transparency. The Resident Degen has authority over all cultural and degeneracy assessments.
+
+---
 
 ### 2024-01-08 - 00: Repository Initialization
 
@@ -72,32 +461,5 @@ Repository ready for agent operations. All agents should read CLAUDE.md before b
 
 ---
 
-## Quick Reference
-
-### Agent Roster
-
-| ID | Agent | Typical Activities |
-|----|-------|-------------------|
-| 00 | Coordinator | Orchestration, scheduling, escalation, system updates |
-| 01 | Lore Architect | Canon reviews, worldbuilding, character voice checks |
-| 02 | Content Strategist | Tweet drafts, threads, content calendar management |
-| 03 | Community Manager | Discord events, engagement, Seven Gates updates |
-| 04 | Gacha Designer | Banner concepts, seasonal content, cosmetic design |
-| 05 | Analytics Observer | Metrics compilation, competitor analysis, performance reviews |
-| 06 | Asset Coordinator | Suno prompts, Midjourney prompts, asset tracking |
-
-### Activity Frequency Guidelines
-
-| Agent | Expected Log Frequency |
-|-------|----------------------|
-| Coordinator | Daily summary |
-| Content Strategist | Per content piece |
-| Community Manager | Per event/engagement |
-| Lore Architect | Per review/update |
-| Gacha Designer | Per banner/season |
-| Analytics Observer | Weekly reports |
-| Asset Coordinator | Per asset batch |
-
----
-
-*"Every action logged. Every contribution tracked. The Eternal Stage remembers."*
+*"Every action documented. Every review tracked. Every degen moment immortalized."*
+— Resident Degen

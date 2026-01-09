@@ -261,6 +261,158 @@ For detailed character voice guides, see:
 
 ---
 
+## Degeneracy Guidelines
+
+> *"We don't just make content—we make content that makes the audience feel like they're in on something."*
+
+The Resident Degen Agent enforces cultural authenticity across all content. These guidelines define what "degen enough" means for Infinite Idol.
+
+### The Degeneracy Scale (DS)
+
+All content is rated on a 0-4 scale:
+
+| Level | Name | Description | Verdict |
+|-------|------|-------------|---------|
+| **DS-0** | Normie | Corporate marketing speak. No personality, no edge. Could come from any brand. | ❌ **REJECT** - Start over |
+| **DS-1** | Casual | Shows basic awareness but plays it safe. Inoffensive but forgettable. | ⚠️ **REVISE** - Push harder |
+| **DS-2** | Cultured | Genuine cultural fluency. References land, timing is good, voice is consistent. | ✅ **ACCEPTABLE** - Can ship |
+| **DS-3** | Degen | Peak authenticity. Self-aware, shameless, culturally sharp. Makes the audience feel "in on it." | 🔥 **OPTIMAL** - Target zone |
+| **DS-4** | Too Far | Crossed from edgy to offensive, or so niche it alienates. Brand safety risk. | ⚠️ **PULL BACK** - Dial it down |
+
+### Platform Degeneracy Targets
+
+Different platforms demand different calibration:
+
+| Platform | Target DS | Max Safe DS | Notes |
+|----------|-----------|-------------|-------|
+| **CT (Crypto Twitter)** | DS-3 | DS-3.5 | This is where degens live. Go hard. |
+| **Discord (Public)** | DS-2.5 | DS-3 | Mix of community—balance accessibility |
+| **Discord (Whale/VIP)** | DS-3 | DS-3.5 | Reward exclusivity with unfiltered energy |
+| **Official Announcements** | DS-2 | DS-2.5 | Professional but never corporate |
+| **Ika's Voice Content** | DS-3 | DS-3.5 | She's shameless by design |
+| **Lore Drops** | DS-2.5 | DS-3 | Mystery with edge |
+| **Founder Updates** | DS-2.5 | DS-3 | Community vibes, insider energy |
+
+### Degen vs. Normie Examples
+
+Understanding the difference is critical. Here's content transformed:
+
+#### Banner Announcement
+
+| Level | Example |
+|-------|---------|
+| **DS-1 (Normie)** | "New banner coming soon! Save your gems and stay tuned for details!" |
+| **DS-3 (Degen)** | "Your wallet: *exists* The new banner: 'And I took that personally'" |
+| **DS-4 (Too Far)** | Explicit references to gambling addiction as a feature |
+
+#### Ika Tweet
+
+| Level | Example |
+|-------|---------|
+| **DS-1 (Normie)** | "I love my fans! Thank you for supporting me!" |
+| **DS-3 (Degen)** | "47 fans. That's all I have. But every single one of you keeps me existing. Don't you dare look away~" |
+| **DS-4 (Too Far)** | Content that sexualizes or crosses ToS lines |
+
+#### Community Engagement
+
+| Level | Example |
+|-------|---------|
+| **DS-1 (Normie)** | "We're so grateful for our community! Your feedback matters!" |
+| **DS-3 (Degen)** | "Another day of being terminally online for you degenerates. Worth it." |
+| **DS-4 (Too Far)** | Insulting specific community members, even "ironically" |
+
+#### Crypto Reference
+
+| Level | Example |
+|-------|---------|
+| **DS-1 (Normie)** | "Infinite Idol is built on the SUI blockchain for fast, secure transactions." |
+| **DS-3 (Degen)** | "SUI maxi gang rise up. We're not just building on the best chain—we're building the reason you'll remember it." |
+| **DS-4 (Too Far)** | "Dump your bags and go all-in, NFA but actually FA" |
+
+### Cultural Authenticity Markers
+
+Content should demonstrate fluency in:
+
+**Crypto Culture**
+- CT vocabulary (alpha, ape, fud, ngmi, wagmi, degen, based, diamond hands)
+- Memecoin awareness without specific shilling
+- Web3 native sensibilities (ownership, community, decentralization vibes)
+- SUI ecosystem positioning
+
+**Gacha Culture**
+- Pull culture (salt, copium, "got them in one", skill issue)
+- Whale/F2P dynamics awareness
+- Banner psychology (bait, limited, must-pull)
+- Pity and spark systems
+
+**Otaku Culture**
+- Waifu/husbando vocabulary
+- Seasonal anime awareness
+- Trope fluency (dere types, isekai, etc.)
+- Fan service norms and boundaries
+- Idol industry meta
+
+### Content Review Process
+
+The Resident Degen reviews all content for cultural authenticity:
+
+```
+1. BASELINE CHECK
+   → Does this pass DS-2 minimum?
+   → No → Return for revision with DS target
+
+2. OPTIMIZATION CHECK
+   → Is there room to push toward DS-3?
+   → Yes → Suggest specific enhancements
+   → No → Content is already optimal
+
+3. CEILING CHECK
+   → Any elements approaching DS-4?
+   → Yes → Identify specific lines to pull back
+   → No → Safe to proceed
+
+4. PLATFORM CHECK
+   → Does DS match platform target?
+   → Adjust for context
+```
+
+### Red Flags (Instant DS-0)
+
+Content that triggers automatic rejection:
+
+| Red Flag | Example |
+|----------|---------|
+| Corporate buzzwords | "leveraging synergies", "ecosystem growth" |
+| Apologetic tone | "We're sorry if anyone was offended" |
+| Begging energy | "Please follow us!", "We need your support!" |
+| Generic calls-to-action | "Don't forget to like and subscribe" |
+| Dead meme references | Using memes that peaked months ago |
+| Fellow kids energy | Forcing trends that don't fit |
+
+### Green Flags (DS-3 Indicators)
+
+Content hitting the optimal zone:
+
+| Green Flag | Example |
+|------------|---------|
+| Self-awareness | Acknowledging what we are without apologizing |
+| Cultural timestamps | References that are fresh and relevant |
+| Inside joke energy | Content that rewards the invested |
+| Shameless confidence | Owning our gacha/Web3/idol identity |
+| Community vocabulary | Speaking like a community member, not a brand |
+| Ika energy | That perfect mix of desperate and unbothered |
+
+### Degeneracy in Character Voices
+
+| Character | Target DS | Notes |
+|-----------|-----------|-------|
+| **Ika** | DS-3+ | Shameless, direct, underdog fire. Her desperation is played with awareness. |
+| **Sora** | DS-2.5 | More composed but not corporate. Elegant edge. |
+| **Suiren** | DS-2 | Mysterious and controlled. Degen via implication. |
+| **Official Voice** | DS-2.5 | Professional degen. Business casual but make it based. |
+
+---
+
 ## Voice Checklist
 
 Before publishing any content, verify:
@@ -273,6 +425,10 @@ Before publishing any content, verify:
 - [ ] Is language elevated, not generic?
 - [ ] Does it respect the world we've built?
 - [ ] Is it confident, not pleading?
+- [ ] Does it meet the minimum DS-2 for publication?
+- [ ] Is the DS calibrated for the target platform?
+- [ ] Does it demonstrate cultural fluency (crypto/gacha/otaku)?
+- [ ] Are there any DS-0 red flags to eliminate?
 
 ---
 
@@ -282,6 +438,7 @@ Before publishing any content, verify:
 - `knowledge-base/brand/target-audience.md` - Who we're speaking to
 - `knowledge-base/brand/competitors.md` - How we differentiate
 - `agents/02-content-strategist.md` - Content creation guidelines
+- `agents/07-resident-degen.md` - Cultural enforcement and degeneracy review
 - `CLAUDE.md` - Master instructions and canon rules
 
 ---
