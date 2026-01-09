@@ -64,7 +64,7 @@ Tasks for social media content and marketing materials.
 
 | ID | Priority | Task | Status | Created | Due | Notes |
 |----|----------|------|--------|---------|-----|-------|
-| CONTENT-002 | P1 | Create Ika personality tweet batch (3-5 tweets) | REVIEW | 2026-01-09 | 2026-01-14 | Batch-001 created (5 tweets), awaiting canon and cultural review |
+| CONTENT-002 | P1 | Create Ika personality tweet batch (3-5 tweets) | REVIEW | 2026-01-09 | 2026-01-14 | Batch-001 created (5 tweets), ✅ canon approved, awaiting cultural review |
 | CONTENT-003 | P1 | Format Devotion thread with Agent 01 | REVIEW | 2026-01-09 | 2026-01-15 | LORE-001 complete, thread ready for final format |
 
 ---
@@ -132,7 +132,7 @@ Tasks for canon validation and lore verification.
 
 | ID | Priority | Task | Status | Created | Due | Notes |
 |----|----------|------|--------|---------|-----|-------|
-| GUARDIAN-003 | P1 | Review all Week 1 content for Inviolable Facts | IN_PROGRESS | 2026-01-09 | Ongoing | 2 of 3 items reviewed |
+| GUARDIAN-003 | P1 | Review all Week 1 content for Inviolable Facts | COMPLETE | 2026-01-09 | 2026-01-09 | All 3 items reviewed and approved |
 
 ---
 
@@ -142,7 +142,7 @@ Tasks for cultural review and trend monitoring.
 
 | ID | Priority | Task | Status | Created | Due | Notes |
 |----|----------|------|--------|---------|-----|-------|
-| DEGEN-002 | P1 | Cultural review: Week 1 content batch | IN_PROGRESS | 2026-01-09 | Ongoing | LORE-001 approved (DS-2.5), batch-001 pending |
+| DEGEN-002 | P1 | Cultural review: Week 1 content batch | IN_PROGRESS | 2026-01-09 | Ongoing | LORE-001 approved (DS-2.5), batch-001 ready for review (canon ✅) |
 | DEGEN-003 | P2 | CT trend monitoring | PENDING | 2026-01-09 | Ongoing | Identify opportunities |
 
 ---
