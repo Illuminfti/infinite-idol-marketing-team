@@ -1142,7 +1142,9 @@
             "command": "grep -c 'SUI =' knowledge-base/game-mechanics/gem-system.md | awk '{print ($1 == 6) ? \"OK\" : \"FAIL\"}'",
             "expected": "OK"
           },
-          "status": "pending"
+          "status": "completed",
+          "notes": "Added explicit conversion rates section with all 6 tiers. Standardized format to ensure exactly 6 \"SUI =\" patterns. Verification passes: grep -c 'SUI =' returns 6.",
+          "updated_at": "2026-01-09T00:54:36.254015+00:00"
         },
         {
           "id": "subtask-9-5",
@@ -1156,7 +1158,9 @@
             "command": "grep -l 'pink gradient' knowledge-base/lore/characters/ika-minami.md agents/06-asset-coordinator.md && echo 'OK'",
             "expected": "OK"
           },
-          "status": "pending"
+          "status": "completed",
+          "notes": "Verified Ika's pink gradient hair is consistently mentioned across all relevant files: CLAUDE.md, README.md, agents/01-lore-architect.md, agents/06-asset-coordinator.md, knowledge-base/lore/characters/ika-minami.md, and knowledge-base/lore/factions/the-foundation.md. Canon consistency check passed - verification command returned OK.",
+          "updated_at": "2026-01-09T00:55:37.708458+00:00"
         }
       ]
     }
@@ -1287,5 +1291,5 @@
   "status": "in_progress",
   "planStatus": "in_progress",
   "updated_at": "2026-01-08T22:56:21.596Z",
-  "last_updated": "2026-01-09T00:52:40.658848+00:00"
+  "last_updated": "2026-01-09T00:55:37.708483+00:00"
 }
