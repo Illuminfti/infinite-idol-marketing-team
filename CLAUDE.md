@@ -74,12 +74,22 @@
 | 07 | **Light Novel Writer** | Narrative | Story content |
 | 08 | **Lore Guardian** | Canon Review | Compliance checking |
 | 09 | **Resident Degen** | Cultural | Authenticity, trends |
+| 10 | **The Infiltrator** | Community Intel | Real-time degen presence |
+| 11 | **The Meme Lord** | Viral Engineering | Spreadable content |
+| 12 | **Conversion Architect** | Player Journey | Funnel optimization |
+| 13 | **The Ambassador** | Partnerships | Ecosystem relationships |
+| 14 | **The Shield** | Crisis Management | Brand protection |
+| 15 | **Simp Whisperer** | Fan Service PM | Emotional engagement |
+| 16 | **The NEET** | Community Tools | Technical infrastructure |
+| 17 | **The Architect** | Agent System | Meta-optimization |
 
 ### Hierarchy
 ```
 COORDINATOR (Business/Strategy Authority)
     └── RESIDENT DEGEN (Cultural Authority)
             └── All Other Agents
+
+THE ARCHITECT (System Authority) ← Reports directly to Human
 ```
 
 ---
@@ -97,6 +107,9 @@ Skills are modular workflows agents load on-demand. Located in `skills/`:
 | **Escalation** | `escalation.md` | When/how to escalate |
 | **Templates** | `templates.md` | Standard output formats |
 | **Permissions** | `permissions.md` | File access reference |
+| **Community Intel** | `community-intel.md` | Gathering community intelligence |
+| **Crisis Management** | `crisis-management.md` | Handling threats and crises |
+| **Agent Evaluation** | `agent-evaluation.md` | Evaluating agent performance |
 
 **How to use**: Read the skill file when your task requires that workflow.
 
