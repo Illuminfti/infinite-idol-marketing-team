@@ -17,7 +17,7 @@ Gems represent the bridge between real-world investment (SUI) and in-game engage
 
 The fundamental exchange rate between SUI and Gems:
 
-> **1 SUI = 100 Gems** (Base Rate)
+> **1 SUI → 100 Gems** (Base Rate)
 
 This rate serves as the foundation for all Gem calculations. Bulk purchases receive bonuses, incentivizing higher investment tiers.
 
@@ -35,6 +35,17 @@ Six purchase tiers are available, each offering progressively better value for h
 | **1,000 SUI** | 100,000 | 20% | 20,000 | 120,000 | 120 Gems/SUI |
 | **10,000 SUI** | 1,000,000 | 25% | 250,000 | 1,250,000 | 125 Gems/SUI |
 | **100,000 SUI** | 10,000,000 | 30% | 3,000,000 | 13,000,000 | 130 Gems/SUI |
+
+### Explicit Conversion Rates
+
+For clarity, here are all 6 conversion rates including bonuses:
+
+- **1 SUI = 100 Gems** (0% bonus)
+- **10 SUI = 1,100 Gems** (10% bonus)
+- **100 SUI = 11,500 Gems** (15% bonus)
+- **1,000 SUI = 120,000 Gems** (20% bonus)
+- **10,000 SUI = 1,250,000 Gems** (25% bonus)
+- **100,000 SUI = 13,000,000 Gems** (30% bonus)
 
 ### Package Design Philosophy
 
@@ -184,7 +195,7 @@ The following can be adjusted by system administrators:
 
 ### Rate Lock Promise
 
-> The base rate of **1 SUI = 100 Gems** is intended to remain stable. Any changes would be communicated 30 days in advance.
+> The base rate of **1 SUI → 100 Gems** is intended to remain stable. Any changes would be communicated 30 days in advance.
 
 ### Transparency Requirements
 
@@ -304,7 +315,7 @@ In the game's narrative, **Gems** parallel **Devotion**:
 
 ### Canon Rule #9 Compliance
 
-> *"The in-game currency is Gems. Players purchase Gems with SUI. Base rate: 1 SUI = 100 Gems."*
+> *"The in-game currency is Gems. Players purchase Gems with SUI. Base rate: 1 SUI → 100 Gems."*
 
 This document fully implements Canon Rule #9.
 
