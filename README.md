@@ -11,32 +11,109 @@ A comprehensive AI-powered marketing infrastructure for **Infinite Idol** — a 
 Infinite Idol is a dark luxury gacha game where idols are sustained by **Devotion** — literal emotional energy from their fans. When fans stop caring, idols **Fade** — they cease to exist. This isn't cute idol content; it's existential survival dressed in black and gold.
 
 **Core Features:**
-- 🎭 **The Chase** — Idols compete in obstacle courses pursuing the mysterious Senpai
-- ⚡ **Devotion System** — Fan energy that keeps idols alive
-- 💀 **Fading** — The permanent death awaiting idols who lose their fans
-- 🔗 **SUI Blockchain** — Web3-native with NFT battle passes and gem currency
+- **The Chase** — Idols compete in obstacle courses pursuing the mysterious Senpai
+- **Devotion System** — Fan energy that keeps idols alive
+- **Fading** — The permanent death awaiting idols who lose their fans
+- **SUI Blockchain** — Web3-native with NFT battle passes and gem currency
 
 ---
 
 ## What is This Repository?
 
-This is the **Marketing HQ** — an AI agent-driven content production system. Seven specialized AI agents work together to handle all marketing operations:
+This is the **Marketing HQ** — an AI agent-driven content production system. Nine specialized AI agents work together to handle all marketing operations:
 
 | Agent | Role | Focus |
 |-------|------|-------|
-| **00 - Coordinator** | Marketing Director | Orchestration & scheduling |
-| **01 - Lore Architect** | Worldbuilding Specialist | Canon integrity & story |
-| **02 - Content Strategist** | Social Media Lead | Tweets, threads, calendar |
-| **03 - Community Manager** | Discord & Engagement | Events & Seven Gates |
+| **00 - Coordinator** | Workflow Orchestration | Task routing, agent coordination, project oversight |
+| **01 - Lore Architect** | World Builder | Canon management, world-building foundations, lore consistency |
+| **02 - Content Strategist** | Marketing Lead | Content planning, campaign strategy, audience engagement |
+| **03 - Community Manager** | Engagement Specialist | Community interaction, feedback collection, sentiment analysis |
 | **04 - Gacha Designer** | Seasonal Content | Banners & whale psychology |
 | **05 - Analytics Observer** | Performance Tracking | Metrics & optimization |
 | **06 - Asset Coordinator** | Creative Asset Manager | Suno & Midjourney prompts |
+| **07 - Light Novel Writer** | Narrative Specialist | Light novel creation, character voice mastery, story development |
+| **08 - Lore Guardian** | Collaborative Validation | Real-time lore validation, active lore expansion, bidirectional canon updates |
+
+---
+
+## Running the Agents
+
+### Prerequisites
+
+- Access to Claude (via API or Claude Code CLI)
+- This repository cloned locally
+
+### How to Run an Agent
+
+Each agent is activated by loading the master instructions followed by their specific persona file. Here are the exact steps:
+
+#### Method 1: Using Claude Code CLI
+
+```bash
+# Navigate to the repository
+cd infinite-idol-marketing-team
+
+# Start Claude Code
+claude
+
+# Then in the conversation, instruct Claude to load the agent:
+# "Read CLAUDE.md and then read agents/00-coordinator.md. Act as Agent 00."
+```
+
+#### Method 2: Direct File Loading
+
+When starting a conversation with Claude, provide these files in order:
+
+1. **First**: Load `CLAUDE.md` (master instructions)
+2. **Second**: Load the specific agent persona file
+
+```bash
+# Example for running the Coordinator (Agent 00):
+cat CLAUDE.md agents/00-coordinator.md
+```
+
+#### Method 3: Using the Activation Prompt
+
+Start a Claude session and use this prompt template:
+
+```
+I need you to act as Agent [NUMBER] from the Infinite Idol marketing team.
+
+Please read and follow these files in order:
+1. CLAUDE.md - Master instructions for all agents
+2. agents/[NUMBER]-[agent-name].md - Your specific persona and responsibilities
+
+After reading both files, confirm you understand your role and ask what task I'd like you to work on.
+```
+
+### Agent File Paths
+
+| Agent | Persona File |
+|-------|--------------|
+| Coordinator | `agents/00-coordinator.md` |
+| Lore Architect | `agents/01-lore-architect.md` |
+| Content Strategist | `agents/02-content-strategist.md` |
+| Community Manager | `agents/03-community-manager.md` |
+| Gacha Designer | `agents/04-gacha-designer.md` |
+| Analytics Observer | `agents/05-analytics-observer.md` |
+| Asset Coordinator | `agents/06-asset-coordinator.md` |
+| Light Novel Writer | `agents/07-light-novel-writer.md` |
+| Lore Guardian | `agents/08-lore-guardian.md` |
+
+### Running Multiple Agents
+
+For complex tasks requiring multiple agents:
+
+1. Start separate Claude sessions for each agent
+2. Have each agent read their respective persona files
+3. Use the `reviews/` and `logs/` directories for inter-agent communication
+4. The Coordinator (Agent 00) should oversee multi-agent workflows
 
 ---
 
 ## Quick Start
 
-### For Humans (Sheran)
+### For Human Operators
 
 1. **Check pending reviews:**
    ```bash
@@ -65,7 +142,7 @@ This is the **Marketing HQ** — an AI agent-driven content production system. S
 
 2. **Load your agent persona:**
    ```bash
-   cat agents/[your-agent-number].md
+   cat agents/[your-agent-number]-[agent-name].md
    ```
 
 3. **Check the knowledge base** for relevant context in `knowledge-base/`
@@ -80,9 +157,10 @@ This is the **Marketing HQ** — an AI agent-driven content production system. S
 infinite-idol-marketing-team/
 ├── CLAUDE.md                  # Master instructions (agents read this first)
 ├── README.md                  # You are here
-├── agents/                    # 7 AI agent persona definitions
+├── agents/                    # 9 AI agent persona definitions
 ├── knowledge-base/
 │   ├── lore/                 # World, characters, factions, mechanics
+│   ├── light-novels/         # Novel drafts and published volumes
 │   ├── game-mechanics/       # Pre-reg spec, gacha, gems, battle pass
 │   ├── brand/                # Voice, visuals, audience, competitors
 │   └── crypto/               # SUI integration, tokenomics, Web3
@@ -90,11 +168,13 @@ infinite-idol-marketing-team/
 │   ├── calendar/             # Master content schedule
 │   ├── content/              # Tweets, threads, articles
 │   ├── discord/              # Events, Seven Gates content
-│   ├── seasons/              # Banner and seasonal content
+│   ├── light-novels/         # Published novel outputs
 │   ├── music/                # Suno AI prompts
 │   └── art/                  # Midjourney prompts
 ├── logs/                     # Agent activity and decisions
-└── reviews/                  # Human review queue
+├── reviews/                  # Human review queue
+├── volume-1-awakening.md     # Published Volume 1
+└── volume-2-the-fall.md      # Published Volume 2
 ```
 
 ---
@@ -105,16 +185,16 @@ infinite-idol-marketing-team/
 
 These facts are **ABSOLUTE** across all content:
 
-1. **Devotion is literal** — Real emotional energy, not metaphor
-2. **Fading is death** — Zero fans = idol ceases to exist
-3. **Ika has 47 fans** — Dangerously low, her underdog status
-4. **Ika's hair is pink gradient** — Rose roots to magenta tips
-5. **Senpai is always obscured** — Face never shown
-6. **The Foundation controls everything** — Erina's organization
-7. **The Chase is core competition** — Racing on the Eternal Stage
-8. **Built on SUI blockchain** — Not ETH, not SOL
-9. **Gems are primary currency** — 1 SUI = 100 Gems
-10. **Dark luxury aesthetic** — Black and gold, not pink cutesy
+1. **Devotion is quantifiable** — Love generates measurable energy that sustains idols
+2. **Fading is permanent death** — Idols without Devotion cease to exist completely
+3. **The Chase is voluntary** — Participation must be freely chosen, never coerced
+4. **Memory anchors identity** — Ika's lost memories are central to her existence
+5. **Senpai's face is NEVER shown** — Describe presence, reactions - never direct facial features
+6. **Names have power** — True names carry weight in this world
+7. **The system predates current management** — Someone designed the Devotion system
+8. **Graduation is not what it seems** — There's more to "graduating" than the public knows
+9. **Unity can defeat Fading** — Collective Devotion can save individuals
+10. **Love transcends categories** — Devotion isn't limited by type or source
 
 ### Brand Voice
 
@@ -137,7 +217,7 @@ We acknowledge we're making a gacha game. We embrace the whale psychology. But w
 
 ## Human Escalation
 
-Agents escalate to Sheran when encountering:
+Agents escalate to human review when encountering:
 
 - Canon conflicts or new canon proposals
 - Major strategy shifts
@@ -162,7 +242,7 @@ Agents escalate to Sheran when encountering:
 
 ## Version
 
-**v1.0.0** — Initial infrastructure setup
+**v2.0.0** — Agent System Expansion (9 agents)
 
 ---
 
