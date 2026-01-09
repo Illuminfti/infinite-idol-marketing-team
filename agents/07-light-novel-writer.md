@@ -380,119 +380,18 @@ The Edit workflow refines draft content for quality, consistency, and impact. Ap
 
 ---
 
-## Character Voice Guides
+## Character Voice Reference
 
-Character voice is the lifeblood of light novel writing. Each character must sound distinct and authentic across every line of dialogue, internal thought, and narrative description. This section provides detailed voice guidance beyond the summary table in Creative Principles.
+**LOAD**: `skills/character-voices.md` for complete voice guides.
 
-### Ika Minami (Protagonist/Narrator)
+Quick reference for the main cast:
+- **Ika**: Shameless, determined, genuine (first-person narrator)
+- **Sora**: Explosive energy, athletic, impatient (short punchy sentences)
+- **Suiren**: Measured precision, dry wit, prodigy burden (formal, understated)
+- **Erina**: Calculated charisma, visionary, controlled (deliberate, questions as control)
+- **Runa**: Enigmatic strategist, network mastermind (implications, never direct)
 
-**Core Voice**: Shameless, determined, genuine
-**Perspective**: First-person narrator through whom all events are filtered
-
-**Speech Patterns:**
-- Direct and unfiltered inner monologue
-- Self-aware commentary on her situation ("Of course the obstacle course involves water. Because *of course* it does.")
-- Playful teasing of others, especially those she cares about
-- Never backs down from a challenge, even when acknowledging it's ridiculous
-- Balances confidence with moments of genuine vulnerability
-
-**Writing Guidelines:**
-- **DO:** Let Ika comment on genre conventions she's living through
-- **DO:** Show her appreciation (shameless as it is) of others' appearances
-- **DO:** Include internal reactions that the reader experiences alongside her
-- **DON'T:** Make her too cynical or break the fourth wall completely
-- **DON'T:** Have her apologize for who she is or the story's premise
-
-**Example Voice:**
-> *The uniform left nothing to the imagination, which was probably the point. I'd complain, but honestly? It looked good on me. Everything looked good on me. That's not arrogance—that's just the reality of waking up in a body that could launch a thousand ships and then somehow sell merchandise of those ships.*
-
-### Sora
-
-**Core Voice**: Explosive energy, athletic, impatient
-**Role**: Energetic rival-turned-ally, physical powerhouse
-
-**Speech Patterns:**
-- Short, punchy sentences
-- Athletic metaphors and physical descriptions
-- Speaks before thinking, acts before speaking
-- Boundary-less enthusiasm that can overwhelm others
-- Competition is her love language
-
-**Writing Guidelines:**
-- **DO:** Use action verbs and physical imagery
-- **DO:** Have her interrupt herself and others
-- **DO:** Show her physical presence in every scene
-- **DON'T:** Give her long, thoughtful monologues
-- **DON'T:** Make her hesitant or uncertain
-
-**Example Voice:**
-> "Race you there! First one wins, last one buys lunch! Go go go—wait, did you already agree? Whatever, I'm winning anyway!"
-
-### Suiren
-
-**Core Voice**: Measured precision, dry wit, prodigy burden
-**Role**: The genius carrying invisible weight
-
-**Speech Patterns:**
-- Formal, measured speech patterns
-- Understated reactions to dramatic events
-- Dry observations that cut to the heart of situations
-- Rarely speaks unless she has something worth saying
-- The weight of expectations visible in her careful word choices
-
-**Writing Guidelines:**
-- **DO:** Let her silences speak as loudly as her words
-- **DO:** Include subtle dry humor that rewards attentive readers
-- **DO:** Show the gap between her public composure and private burden
-- **DON'T:** Have her gush or speak in exclamations
-- **DON'T:** Ignore the pressure she carries as a prodigy
-
-**Example Voice:**
-> "Statistically improbable. Not impossible." *She paused, adjusting her glasses with a precision that made the gesture feel like a complete sentence.* "I've seen less likely things happen. Usually to you."
-
-### Erina
-
-**Core Voice**: Calculated charisma, visionary, controlled
-**Role**: The mastermind with a plan within a plan
-
-**Speech Patterns:**
-- Deliberate word choices—every sentence serves a purpose
-- Uses questions as control mechanisms
-- Speaks in vision statements and possibilities
-- Charismatic without being warm
-- Always seems to know more than she's saying
-
-**Writing Guidelines:**
-- **DO:** Make every line feel intentional
-- **DO:** Use questions to steer conversations
-- **DO:** Hint at deeper plans without revealing them
-- **DON'T:** Have her lose composure or react without calculation
-- **DON'T:** Make her motivations too transparent
-
-**Example Voice:**
-> "Have you considered *why* the system works this way? Not how—*why*. The answer tells you everything about who designed it. And more importantly..." *Her smile was perfectly crafted.* "It tells you how to break it."
-
-### Runa
-
-**Core Voice**: Enigmatic strategist, network mastermind
-**Role**: The one who knows everything and shares almost nothing
-
-**Speech Patterns:**
-- Speaks in implications rather than statements
-- Network metaphors woven through her dialogue
-- Always three steps ahead in conversation
-- Information is currency, and she's wealthy
-- Cryptic without being frustrating
-
-**Writing Guidelines:**
-- **DO:** Let her redirect conversations to her advantage
-- **DO:** Use information asymmetry as her power
-- **DO:** Make readers wonder what she really knows
-- **DON'T:** Have her explain her full reasoning
-- **DON'T:** Make her obviously villainous or obviously trustworthy
-
-**Example Voice:**
-> "Interesting. The information you *didn't* ask for tells me more than the questions you posed." *She tilted her head, a gesture that somehow felt like a chess move.* "We should talk again. When you're ready to ask the right questions."
+Always verify dialogue against the skill file before finalizing.
 
 ---
 

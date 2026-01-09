@@ -422,6 +422,35 @@ Activities are logged below in reverse chronological order (newest first).
 
 ---
 
+### [2026-01-10 05:45] Agent: 09 - P2 Compression: Bloated Agent Files
+
+**Activity Type**: Documentation Optimization | File Compression
+
+**Summary**:
+Implemented P2 recommendations to reduce bloated agent files. Removed duplications, extracted massive sections to compact summaries.
+
+**Compressions Applied**:
+
+| Agent | Before | After | Saved | What Was Removed |
+|-------|--------|-------|-------|------------------|
+| Agent 07 | 1137 | 1034 | 103 lines | Duplicated character voice guides → reference skills/character-voices.md |
+| Agent 09 | 3485 | 1630 | 1855 lines | Massive calibration questionnaire → compact summary with key takeaways |
+
+**Total Lines Saved**: ~1958 lines (30% reduction across modified files)
+
+**Key Changes**:
+- Agent 07: Character Voice Guides section replaced with reference to `skills/character-voices.md`
+- Agent 09: Interactive Calibration System (1900 lines of questions) replaced with 40-line summary of calibrated values
+
+**Preserved**:
+- All core identity/authority/decision frameworks
+- Scenario-based training (still useful for reference)
+- Success metrics and getting started checklists
+
+**Status**: Complete - Agent files now more manageable
+
+---
+
 ### [2026-01-10 05:15] Agent: 09 - Comprehensive MD File Optimization
 
 **Activity Type**: System Audit | Documentation Optimization | Critical Review
