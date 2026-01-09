@@ -219,12 +219,14 @@ Requirements:
 
 #### The Chase
 
-**Inviolable Fact #3**: The Chase is voluntary.
+**Inviolable Fact #7**: The Chase is the core competition format.
 
 When depicting the Chase:
-- Participation must always be freely chosen
-- Coercion or forced participation invalidates the system
-- Characters can struggle with the choice, but must make it themselves
+- The Foundation frames The Chase as "voluntary" to maintain legitimacy
+- However, refusal to compete guarantees Fading—a coerced choice, not a free one
+- This tension is thematic: explore idols wrestling with the illusion of choice
+- Characters may outwardly accept "voluntary" participation while internally knowing the truth
+- See `mechanics/the-chase.md` for full details on this deliberate thematic tension
 
 ### Pacing Guidelines
 
@@ -316,18 +318,39 @@ Use a single line with three asterisks:
 
 ### The 10 Inviolable Facts
 
-Every piece of writing must respect these facts absolutely:
+**IMPORTANT**: The authoritative list of 10 Inviolable Facts is maintained in `CLAUDE.md`. All writing must respect these facts absolutely:
 
-1. **Devotion is quantifiable** - Love generates measurable energy
-2. **Fading is permanent death** - No resurrection, ever
-3. **The Chase is voluntary** - Participation must be freely chosen
-4. **Memory anchors identity** - Ika's amnesia is genuine and central
-5. **Senpai's face is NEVER shown** - Describe presence, never features
-6. **Names have power** - Idol names carry weight
-7. **The system predates current management** - Origins remain mysterious
-8. **Graduation is not what it seems** - The truth is hidden
-9. **Unity can defeat Fading** - Collective Devotion saves individuals
-10. **Love transcends categories** - Devotion flows regardless of type
+1. **Devotion is Literal** - Real emotional energy from fans, not metaphor
+2. **Fading is Death** - Permanent, no reversal, no exceptions
+3. **Ika Has 47 Fans** - Exactly 47 at story start
+4. **Ika's Hair: Pink Gradient** - Rose roots → magenta tips
+5. **Senpai Never Shown** - Always obscured, face never revealed
+6. **Foundation Controls All** - Run by Erina, controls industry
+7. **The Chase is Core** - Primary competition, determines survival
+8. **Built on SUI** - Sui-native blockchain (NFTs, contracts, game logic)
+9. **Gems = Currency** - 1 SUI = 100 Gems, account-bound
+10. **Dark Luxury Aesthetic** - Black/gold, NOT pink/cutesy
+
+Always reference `CLAUDE.md` as the master source for canon rules.
+
+---
+
+### Narrative Themes (Writing Guidance)
+
+Beyond the Inviolable Facts, these narrative themes should inform your writing:
+
+| Theme | Application |
+|-------|-------------|
+| **Devotion is quantifiable** | Show characters sensing and measuring their Devotion levels |
+| **Memory anchors identity** | Ika's amnesia is genuine and central to her mystery |
+| **Names carry weight** | Stage names vs. real names have significance |
+| **The system predates Erina** | Origins remain mysterious, older than current management |
+| **Graduation hides dark truth** | See `mechanics/graduation.md` for details |
+| **Unity can delay Fading** | Collective Devotion from fan communities provides protection |
+| **Love transcends categories** | Devotion flows regardless of relationship type |
+| **The Chase is "voluntary"** | See `mechanics/the-chase.md` for the coercion tension |
+
+These themes enrich the narrative but do not override the 10 Inviolable Facts.
 
 ### Canon Tier Reference
 

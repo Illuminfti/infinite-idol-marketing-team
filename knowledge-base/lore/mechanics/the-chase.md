@@ -42,6 +42,63 @@ Idols chase Senpai knowing they will not catch them. Yet they must chase anyway.
 
 ---
 
+## The "Voluntary" Illusion
+
+### Foundation Propaganda
+
+The Foundation officially maintains that **The Chase is voluntary**:
+
+> *"Every idol chooses to compete. We force no one. The Eternal Stage welcomes those who wish to run, and releases those who wish to stop."*
+> — Foundation public messaging
+
+This framing serves multiple purposes:
+- Legitimizes the system ("we're not oppressors")
+- Shifts responsibility to idols ("you chose this")
+- Creates false consent ("you can leave anytime")
+
+### The Dark Reality
+
+The reality contradicts the messaging:
+
+| "Voluntary" Claim | Actual Truth |
+|-------------------|--------------|
+| "You can choose not to compete" | Refusal to compete guarantees Fading |
+| "You can leave anytime" | There is no "leaving"—only Fading |
+| "We force no one" | The system itself is the force |
+| "You chose this life" | Most had no real alternative |
+
+### Coerced Choice is Not Free Choice
+
+This tension is **thematically intentional**:
+
+- A choice made under threat of death is not a free choice
+- "Compete or die" is coercion, regardless of framing
+- The Foundation's language obscures systemic violence
+- Idols must pretend to choose freely while knowing the truth
+
+### How Different Characters See It
+
+| Character | Perspective |
+|-----------|------------|
+| **Ika** | Sees through it, but plays anyway—genuine desire to catch Senpai |
+| **Suiren** | Accepts the framing, questions it privately |
+| **Runa** | Knows it's a lie, uses the knowledge strategically |
+| **Erina** | Designed this framing deliberately |
+| **New Idols** | Often believe the propaganda initially |
+
+### Writing This Tension
+
+When depicting The Chase:
+- Foundation representatives should use "voluntary" language
+- Wise characters should recognize the coercion
+- The horror is in the gap between framing and reality
+- Don't resolve this tension—it's the point
+
+> *"They keep calling it a choice. As if choosing between running and dying is the same as choosing what to eat for breakfast. I run because I want to live. That's not volunteering—that's survival."*
+> — Anonymous idol, private moment
+
+---
+
 ## The Eternal Stage
 
 ### The Arena
