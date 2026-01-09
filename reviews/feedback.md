@@ -1,13 +1,13 @@
 # Human Feedback Log
 
 > **Owner**: Coordinator (Agent 00)
-> **Purpose**: Feedback from Sheran to help agents learn and improve
+> **Purpose**: Feedback from human operators to help agents learn and improve
 
 ---
 
 ## About This File
 
-This file captures feedback from Sheran to help all agents:
+This file captures feedback from human operators to help all agents:
 
 1. **Learn from Mistakes**: Understand what went wrong and how to avoid repeating errors
 2. **Celebrate Wins**: Recognize what worked well to reinforce good patterns
@@ -101,7 +101,7 @@ This file captures feedback from Sheran to help all agents:
 
 ---
 
-## Notes for Sheran
+## Notes for Human Operators
 
 ### How to Leave Feedback
 

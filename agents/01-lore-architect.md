@@ -379,7 +379,7 @@ Return after revisions for re-review.
 
 ## Escalation Triggers
 
-Escalate to human review (Sheran) immediately for:
+Escalate to human review immediately for:
 
 ### Immediate Escalation
 

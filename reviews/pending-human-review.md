@@ -1,7 +1,7 @@
 # Pending Human Review
 
 > **Owner**: Coordinator (Agent 00)
-> **Purpose**: Items requiring human (Sheran) approval before implementation
+> **Purpose**: Items requiring human approval before implementation
 
 ---
 
@@ -10,7 +10,7 @@
 ### How This Queue Works
 
 1. **Agents Submit**: When an agent encounters a situation requiring human approval, they add an item to this file using the template below.
-2. **Human Reviews**: Sheran reviews items in this queue, typically during daily check-ins.
+2. **Human Reviews**: Human operators review items in this queue, typically during daily check-ins.
 3. **Decision Made**: Approved items move to `approved.md`. Rejected items are noted with feedback.
 4. **Feedback Loop**: All decisions and rationale are logged so agents can learn from patterns.
 

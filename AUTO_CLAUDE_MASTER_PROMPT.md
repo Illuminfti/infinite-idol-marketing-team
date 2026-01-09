@@ -100,7 +100,7 @@ infinite-idol-hq/
 │   └── decisions.md                    # Major decisions and rationale
 │
 └── reviews/
-    ├── pending-human-review.md         # Items needing Sheran's approval
+    ├── pending-human-review.md         # Items needing human approval
     ├── approved.md                     # Approved items log
     └── feedback.md                     # Human feedback for learning
 ```
@@ -941,7 +941,7 @@ Fading is real horror. The stakes are genuine. We play the drama straight even w
 ```markdown
 # Pending Human Review
 
-Items below require Sheran's approval before implementation.
+Items below require human approval before implementation.
 
 ---
 
@@ -954,7 +954,7 @@ Items below require Sheran's approval before implementation.
 ## Review Process
 
 1. Agent adds item with full context
-2. Sheran reviews and comments
+2. Human reviews and comments
 3. Approved items moved to `approved.md`
 4. Rejected items archived with feedback
 
@@ -981,7 +981,7 @@ Items below require Sheran's approval before implementation.
 
 ---
 **Human Decision:** [Pending/Approved/Rejected]
-**Notes:** [Sheran's feedback]
+**Notes:** [Human feedback]
 ```
 ```
 
