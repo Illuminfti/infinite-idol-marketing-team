@@ -15,12 +15,16 @@ Built for [Infinite Idol](https://infiniteidol.com) — a Web3 gacha game on the
 git clone https://github.com/Illuminfti/infinite-idol-marketing-team.git
 cd infinite-idol-marketing-team
 
-# Run the Agent Command Center dashboard
-cd dashboard && python3 -m http.server 8000
-# Open http://localhost:8000
+# Run the Agent Command Center TUI (Terminal UI)
+python dashboard/tui_app.py
 
-# Start an agent session (requires Claude Code CLI)
-claude
+# Or open in split pane with Claude Code
+# Terminal 1: python dashboard/tui_app.py
+# Terminal 2: claude
+
+# Legacy web dashboard (deprecated)
+# cd dashboard && python3 -m http.server 8000
+# Open http://localhost:8000
 # In the conversation: "Read CLAUDE.md and agents/00-coordinator.md. Act as Agent 00."
 ```
 
@@ -76,13 +80,13 @@ Draft (Agent 02)
 | Component | Technology |
 |-----------|------------|
 | **Agent Runtime** | Claude 3.5 Sonnet via Claude Code CLI |
-| **UI Dashboard** | Vanilla JS + CSS (no framework dependencies) |
+| **UI Dashboard** | Terminal UI (Python Textual) - Primary<br>Web Dashboard (Vanilla JS) - Legacy |
 | **Task Queue** | Markdown-based with automation hooks |
 | **Version Control** | Git (all content versioned) |
-| **Deployment** | Static files (dashboard can run anywhere) |
+| **Deployment** | Python TUI (local) or Static files (web) |
 | **Documentation** | Markdown (20,000+ lines) |
 
-**No npm, no build step, no dependencies.** Pure web standards.
+**Simple dependencies:** Python + Textual for TUI. No npm, no build step.
 
 ---
 
@@ -114,9 +118,11 @@ infinite-idol-marketing-team/
 │   ├── task-queue.md            # Centralized task tracking
 │   └── session-init.md          # Agent startup protocol
 │
-├── dashboard/                   # Agent Command Center UI
-│   ├── index.html               # SPA entry point
-│   ├── styles.css               # Apple HIG design system (~2300 lines)
+├── dashboard/                   # Agent Command Center
+│   ├── tui_app.py               # Terminal UI entry point (PRIMARY)
+│   ├── tui/                     # TUI implementation
+│   ├── index.html               # Web dashboard (LEGACY)
+│   ├── styles.css               # Web design system (~2300 lines)
 │   └── app.js                   # Application logic
 │
 ├── knowledge-base/              # World, game, brand documentation
@@ -158,11 +164,14 @@ infinite-idol-marketing-team/
    # Install from: https://docs.anthropic.com/en/docs/claude-code
    ```
 
-2. **Modern Browser** (for dashboard)
+2. **Python 3.9+** (for Terminal UI)
+   ```bash
+   pip install textual rich
+   ```
+
+3. **Modern Browser** (for legacy web dashboard, optional)
    - Chrome 76+, Firefox 103+, Safari 9+, or Edge 79+
    - Requires `backdrop-filter` support for glassmorphism
-
-3. **Python 3** (for local server, optional)
    ```bash
    python3 --version
    ```
@@ -204,26 +213,26 @@ message = client.messages.create(
 - Paste `CLAUDE.md` + `agents/XX-agent-name.md` into Claude.ai
 - Prompt: "Act as Agent [NUMBER] and check the task queue."
 
-### Dashboard Deployment
+### Dashboard Usage
 
-**Local Development**
+**Terminal UI (Recommended)**
+```bash
+# Run directly
+python dashboard/tui_app.py
+
+# Or install and use command
+cd dashboard && pip install -e .
+idol-dashboard
+```
+
+**Legacy Web Dashboard**
 ```bash
 cd dashboard
 python3 -m http.server 8000
 # Open http://localhost:8000
 ```
 
-**Production Deployment**
-```bash
-# Deploy to any static host:
-# - GitHub Pages
-# - Vercel
-# - Netlify
-# - S3 + CloudFront
-# - Any web server
-
-# Just point to the dashboard/ directory
-```
+**See [dashboard/TUI_GUIDE.md](dashboard/TUI_GUIDE.md) for complete TUI documentation.**
 
 **Docker** (optional)
 ```dockerfile
@@ -543,12 +552,13 @@ jobs:
 - **Agent friendly**: LLMs parse markdown natively
 - **Diff friendly**: Easy to see what changed
 
-### Why No Framework for Dashboard?
+### Why Terminal UI for Dashboard?
 
-- **Zero dependencies**: No npm, no build step
-- **Fast loading**: 4.5KB CSS, 3KB JS (unminified)
-- **Future-proof**: Vanilla JS never breaks
-- **Maximum compatibility**: Works everywhere
+- **Better workflow integration**: Works alongside Claude Code in terminal
+- **Keyboard-first**: Fast navigation, no mouse needed
+- **Lighter**: No browser overhead, faster startup
+- **Data-driven**: Direct access to markdown files
+- **Simple**: Python + Textual, minimal dependencies
 
 ### Why 10 Agents?
 
