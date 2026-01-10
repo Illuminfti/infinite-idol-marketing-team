@@ -1,0 +1,190 @@
+[
+  {
+    "id": "block1",
+    "type": "heading_1",
+    "heading_1": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": { "content": "Ika Minami" }
+        }
+      ]
+    }
+  },
+  {
+    "id": "block2",
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": { "content": "The shameless protagonist who refuses to disappear." }
+        }
+      ]
+    }
+  },
+  {
+    "id": "block3",
+    "type": "heading_2",
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": { "content": "Background" }
+        }
+      ]
+    }
+  },
+  {
+    "id": "block4",
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": { "content": "Ika woke up outside the Eternal Stage with no memories, only to discover she had already qualified for the tournament through a viral performance she couldn't remember." }
+        }
+      ]
+    }
+  },
+  {
+    "id": "block5",
+    "type": "heading_3",
+    "heading_3": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": { "content": "Key Facts" }
+        }
+      ]
+    }
+  },
+  {
+    "id": "block6",
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": { "content": "Hair:" },
+          "annotations": { "bold": true }
+        },
+        {
+          "type": "text",
+          "text": { "content": " Pink gradient (rose roots to magenta tips)" }
+        }
+      ]
+    }
+  },
+  {
+    "id": "block7",
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": { "content": "Original Fans:" },
+          "annotations": { "bold": true }
+        },
+        {
+          "type": "text",
+          "text": { "content": " 47 dedicated viewers" }
+        }
+      ]
+    }
+  },
+  {
+    "id": "block8",
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": { "content": "Signature Move:" },
+          "annotations": { "bold": true }
+        },
+        {
+          "type": "text",
+          "text": { "content": " The diving tackle catch" }
+        }
+      ]
+    }
+  },
+  {
+    "id": "block9",
+    "type": "heading_2",
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": { "content": "Personality" }
+        }
+      ]
+    }
+  },
+  {
+    "id": "block10",
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": { "content": "Ika is:" }
+        }
+      ]
+    }
+  },
+  {
+    "id": "block11",
+    "type": "numbered_list_item",
+    "numbered_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": { "content": "Confident without being arrogant" }
+        }
+      ]
+    }
+  },
+  {
+    "id": "block12",
+    "type": "numbered_list_item",
+    "numbered_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": { "content": "Shameless about her appeal" }
+        }
+      ]
+    }
+  },
+  {
+    "id": "block13",
+    "type": "numbered_list_item",
+    "numbered_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": { "content": "Genuinely caring beneath the bravado" }
+        }
+      ]
+    }
+  },
+  {
+    "id": "block14",
+    "type": "quote",
+    "quote": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": { "content": "\"If I'm going to use my body as a selling point, I'm going to OWN it.\"" }
+        }
+      ]
+    }
+  },
+  {
+    "id": "block15",
+    "type": "divider",
+    "divider": {}
+  }
+]

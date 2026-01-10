@@ -1,0 +1,59 @@
+{
+  "id": "abc123def456",
+  "created_time": "2024-01-01T10:00:00.000Z",
+  "last_edited_time": "2024-01-15T10:30:00.000Z",
+  "parent": {
+    "type": "database_id",
+    "database_id": "db123"
+  },
+  "properties": {
+    "Name": {
+      "id": "title",
+      "type": "title",
+      "title": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Ika Minami - Character Profile"
+          },
+          "plain_text": "Ika Minami - Character Profile"
+        }
+      ]
+    },
+    "Status": {
+      "id": "status",
+      "type": "select",
+      "select": {
+        "name": "published"
+      }
+    },
+    "Tags": {
+      "id": "tags",
+      "type": "multi_select",
+      "multi_select": [
+        { "name": "character" },
+        { "name": "protagonist" },
+        { "name": "lore" }
+      ]
+    },
+    "GitHub Path": {
+      "id": "github_path",
+      "type": "rich_text",
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "knowledge-base/characters/ika-minami.md"
+          }
+        }
+      ]
+    },
+    "Last Synced": {
+      "id": "last_synced",
+      "type": "date",
+      "date": {
+        "start": "2024-01-15T10:30:00.000Z"
+      }
+    }
+  }
+}

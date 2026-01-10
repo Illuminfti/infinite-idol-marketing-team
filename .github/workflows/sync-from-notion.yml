@@ -1,0 +1,73 @@
+name: Sync from Notion
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Every hour
+  workflow_dispatch:
+    inputs:
+      database:
+        description: 'Database to sync (all, reviewQueue, contentCalendar, tweetQueue)'
+        required: false
+        default: 'all'
+      force:
+        description: 'Force sync ignoring cache'
+        required: false
+        default: 'false'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: scripts/notion-sync/package-lock.json
+
+      - name: Install dependencies
+        working-directory: scripts/notion-sync
+        run: npm ci
+
+      - name: Sync from Notion
+        working-directory: scripts/notion-sync
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_KNOWLEDGE_BASE_DB: ${{ secrets.NOTION_KNOWLEDGE_BASE_DB }}
+          NOTION_REVIEW_QUEUE_DB: ${{ secrets.NOTION_REVIEW_QUEUE_DB }}
+          NOTION_CONTENT_CALENDAR_DB: ${{ secrets.NOTION_CONTENT_CALENDAR_DB }}
+          NOTION_TWEET_QUEUE_DB: ${{ secrets.NOTION_TWEET_QUEUE_DB }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_OWNER: ${{ github.repository_owner }}
+          GITHUB_REPO: ${{ github.event.repository.name }}
+        run: |
+          ARGS=""
+          if [ "${{ github.event.inputs.database }}" != "" ] && [ "${{ github.event.inputs.database }}" != "all" ]; then
+            ARGS="$ARGS --databases ${{ github.event.inputs.database }}"
+          fi
+          if [ "${{ github.event.inputs.force }}" == "true" ]; then
+            ARGS="$ARGS --force"
+          fi
+          npm run sync:from-notion -- $ARGS
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git add -A
+          if git diff --quiet --staged; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push changes
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "Notion Sync Bot"
+          git config user.email "notion-sync@infiniteidol.com"
+          git commit -m "Sync from Notion $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push
