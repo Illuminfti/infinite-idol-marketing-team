@@ -14,6 +14,22 @@
 | `seasons/` | Gacha Designer (04) | Banner concepts, seasonal campaigns |
 | `music/` | Asset Coordinator (06) | Suno AI music prompts |
 | `art/` | Asset Coordinator (06) | Midjourney image prompts |
+| `vibing-overhaul/` | Multi-Agent (All) | Seven Gates Discord Bot overhaul documentation |
+
+---
+
+## Vibing Overhaul (NEW)
+
+Multi-agent collaborative overhaul of the Seven Gates Discord Bot.
+
+| File | Purpose |
+|------|---------|
+| `MASTER-OVERHAUL-PLAN.md` | Strategic planning document |
+| `DEGEN-10-QUESTIONS.md` | Agent 09's fundamental questions |
+| `ACTIONABLE-IMPROVEMENTS.md` | 165+ recommendations from 15 agents |
+| `EXECUTION-LOG.md` | Implementation tracking (16 items complete) |
+
+**Status**: Iteration 1 Complete (P0/P1/P2 all implemented)
 
 ---
 
