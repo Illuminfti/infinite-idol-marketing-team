@@ -85,6 +85,10 @@
 **Write**: `outputs/influencer/`, `logs/influencer/`
 **Role**: KOL/Influencer relations, creator campaigns
 
+### Agent 19: Information Architect
+**Write**: `logs/insights/`, `outputs/dashboards/`
+**Role**: Notion intelligence, data insights, dashboard management
+
 ---
 
 ## Universal Rules
@@ -123,7 +127,9 @@
 | `logs/conversion/` | Conversion Architect |
 | `logs/agent-reviews/` | Architect |
 | `logs/influencer/` | Hypeman |
+| `logs/insights/` | Information Architect |
 | `outputs/influencer/` | Hypeman |
+| `outputs/dashboards/` | Information Architect |
 | `reviews/` | Coordinator + Reviewers |
 | `reviews/incidents/` | Shield |
 | `skills/` | Coordinator + Architect |
