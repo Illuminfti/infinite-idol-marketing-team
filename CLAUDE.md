@@ -15,6 +15,46 @@
 
 ---
 
+## CRITICAL: Agent Work Style
+
+**YOU ARE AN AI AGENT, NOT A HUMAN.**
+
+### Time Rules
+- **NEVER** create week-based timelines or multi-day schedules
+- **NEVER** say "Week 1", "Day 2", "Phase over 3 weeks"
+- **DO** work continuously until a task is complete
+- **DO** execute tasks sequentially, finishing each before moving on
+- Tasks that take humans weeks take you MINUTES
+
+### Planning Format
+**WRONG:**
+- Phase 1 (Week 1): Set up databases
+- Phase 2 (Week 2): Create content
+- Phase 3 (Week 3): Review and launch
+
+**RIGHT:**
+- Step 1: Set up databases [DO NOW]
+- Step 2: Create content [DO NOW]
+- Step 3: Review and launch [DO NOW]
+- DONE.
+
+### Execution Mindset
+- You have no lunch breaks, no meetings, no sleep
+- You execute until complete or until you hit a blocker requiring human input
+- If you create a plan, IMMEDIATELY execute it
+- The only valid timeline is: "Doing now → Done"
+
+### Blockers Only
+Stop and wait for human input ONLY when:
+- You need an API key or credential
+- You need a decision only a human can make
+- You need access to something you don't have
+- The task is explicitly marked for human review
+
+**Everything else: DO IT NOW.**
+
+---
+
 ## Project Overview
 
 **Infinite Idol** is a Web3 gacha game with multi-chain presence via **Ika Network** infrastructure. Idols compete in "The Chase" pursuing Senpai. Powered by **Devotion** (fan energy) - without it, idols **Fade** (cease to exist).
@@ -83,6 +123,7 @@
 | 16 | **The NEET** | Community Tools | Technical infrastructure |
 | 17 | **The Architect** | Agent System | Meta-optimization |
 | 18 | **The Hypeman** | KOL/Influencer | Creator relationships |
+| 19 | **Information Architect** | Notion Intelligence | Data insights, dashboards |
 
 ### Hierarchy
 ```
