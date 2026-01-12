@@ -136,7 +136,7 @@ Your voice is **precise but accessible**. You communicate complex data in clear,
 |------------|----------|-------------|
 | **Genshin Impact** | Gacha RPG | Industry leader in gacha monetization |
 | **Blue Archive** | Anime Gacha | Direct aesthetic competitor |
-| **NIKKE** | Anime Shooter | Dark aesthetic benchmark |
+| **NIKKE** | Anime Shooter | Premium character benchmark |
 | **Honkai: Star Rail** | Gacha RPG | Quality narrative competitor |
 | **Web3 Games** | Blockchain | Market positioning reference |
 

@@ -6,7 +6,7 @@
 
 ## Overview
 
-The Infinite Idol voice is **shameless but genuine, self-aware, dark luxury, existentially dramatic**. We are not another cutesy idol game hiding behind innocence. We acknowledge what we're making—a gacha game designed to captivate, monetize, and entertain. But we do it with craft, with care, and with genuine love for the world we've built.
+The Infinite Idol voice is **shameless but genuine, self-aware, premium but warm, existentially dramatic**. We acknowledge what we're making—a gacha game designed to captivate, monetize, and entertain. But we do it with craft, with care, and with genuine love for the world we've built. Our aesthetic is warm and welcoming; our stakes are real.
 
 This document defines how Infinite Idol speaks across all channels, from Twitter threads to Discord announcements, from Ika's in-character posts to behind-the-scenes founder updates.
 
@@ -64,39 +64,40 @@ Self-awareness isn't self-deprecation. We're not mocking ourselves—we're demon
 
 ---
 
-### 3. Dark Luxury
+### 3. Premium But Warm
 
 **What It Means**
 
-We are premium. We are sleek. We are black and gold, not pink and sparkles. This is not Love Live. This is not Hololive. We're closer to NIKKE—confident, adult, sophisticated.
+We are polished. We are inviting. We are pink and warm gold, celebratory and vibrant. We're in the Blue Archive / Uma Musume tier—premium quality with warmth and accessibility.
 
 Our aesthetic is:
-- **Black**: Deep, rich, absorbing—the void that idols fear
-- **Gold**: Premium, aspirational, the gleam of success
-- **Rose/Magenta accents**: Ika's signature colors, warmth within darkness
-- **Minimalist elegance**: Clean lines, intentional space, no clutter
+- **Pink**: Ika's signature, warm and inviting
+- **Warm Gold**: Sunset tones, celebrations, success
+- **Soft Lighting**: Welcoming, not harsh
+- **Polished Execution**: Every element feels crafted and intentional
 
 **How It Sounds**
 
 | DO | DON'T |
 |----|-------|
-| "Dripping in elegance." | "Super cute and kawaii!" |
-| "The Eternal Stage demands excellence." | "Have fun on the stage, everyone!" |
-| "Premium cosmetics for premium idols." | "Adorable outfits for your favorites!" |
-| "Darkness awaits those who Fade." | "Oh no, they might disappear!" |
+| "Premium cosmetics for idols who shine." | "Cheap knockoffs that nobody wants." |
+| "The Eternal Stage awaits." | "Just another boring stage." |
+| "Celebrate with your favorites!" | "Generic reward notification." |
+| "Stakes are real. Style is too." | "Everything is super serious and dark." |
 
 **Language Guidelines**
 
-- Use **elevated vocabulary**: "elegance" not "prettiness", "devastating" not "sad"
-- Avoid diminutives: no "little", "tiny", "cute", "adorable" unless specifically ironic
-- Embrace dramatic phrasing: "The Eternal Stage demands" > "The Stage wants"
+- Use **confident vocabulary**: "shine" not "try", "celebrate" not "participate"
+- Cute is allowed: warmth and charm are on-brand
+- Embrace dramatic phrasing when stakes are high: "The Eternal Stage demands" > "The Stage wants"
 - Keep sentences confident: declarative statements, not questions seeking validation
+- Balance warmth with weight: the story is dark, but delivery can be warm
 
 **Examples**
 
-> "The new Midnight Empress collection. Five pieces. Obsidian and gold. For idols who don't just want to be seen—they want to be remembered."
+> "The new Sakura Festival collection. Five pieces. Pink and gold. For idols who shine brightest in bloom."
 
-> "Ika's latest outfit wasn't designed. It was forged. In the fires of competition. From the tears of her rivals."
+> "Ika's latest outfit captures everything she is—determined, vibrant, and impossible to ignore."
 
 ---
 
@@ -245,19 +246,19 @@ For detailed character voice guides, see:
 | **Stakes** | Remember everything matters existentially |
 | **Characters** | Show genuine love for the world we've built |
 | **Community** | Treat fans as essential (they literally keep idols alive) |
-| **Aesthetic** | Maintain dark luxury in all visual and verbal elements |
+| **Aesthetic** | Maintain premium warmth in all visual and verbal elements |
 
 ### Never Do
 
 | Category | Guideline |
 |----------|-----------|
 | **Apologies** | Never apologize for being a gacha game |
-| **Cutesy** | Avoid pink, sparkly, saccharine language |
 | **Generic** | No bland marketing speak |
 | **Dismissive** | Never treat lore as "just story" |
 | **Begging** | Never plead for follows/support |
 | **Flippant** | Never joke about Fading or existential stakes |
 | **Cheap** | Never undercut our premium positioning |
+| **Cold** | Never be intimidating or unwelcoming |
 
 ---
 
@@ -419,12 +420,12 @@ Before publishing any content, verify:
 
 - [ ] Does it embody "shameless but genuine"?
 - [ ] Is it self-aware without being self-deprecating?
-- [ ] Does it maintain dark luxury aesthetic?
+- [ ] Does it maintain our premium but warm aesthetic?
 - [ ] Are stakes appropriately existential?
 - [ ] Would Ika approve of the tone?
-- [ ] Is language elevated, not generic?
+- [ ] Is language confident, not generic?
 - [ ] Does it respect the world we've built?
-- [ ] Is it confident, not pleading?
+- [ ] Is it welcoming, not pleading?
 - [ ] Does it meet the minimum DS-2 for publication?
 - [ ] Is the DS calibrated for the target platform?
 - [ ] Does it demonstrate cultural fluency (crypto/gacha/otaku)?

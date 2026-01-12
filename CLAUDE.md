@@ -60,9 +60,9 @@ Stop and wait for human input ONLY when:
 **Infinite Idol** is a Web3 gacha game with multi-chain presence via **Ika Network** infrastructure. Idols compete in "The Chase" pursuing Senpai. Powered by **Devotion** (fan energy) - without it, idols **Fade** (cease to exist).
 
 ### Brand Pillars
-- **Dark Luxury**: Black/gold premium aesthetic, NOT pink/cutesy
+- **Premium But Warm**: Pink and gold aesthetic, Blue Archive/Uma Musume tier polish—cute with substance
 - **Self-Aware**: We know we're a gacha game, shameless but genuine
-- **Existential Stakes**: Fading is real death, every Chase matters
+- **Existential Stakes**: Fading is real death, every Chase matters (dark story, warm visuals)
 - **Web3 Native**: Chain-agnostic, gameplay-first (blockchain abstracted away)
 
 ---

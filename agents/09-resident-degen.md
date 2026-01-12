@@ -1119,7 +1119,7 @@ This calibrates meme freshness standards. How dated can a format be before it's 
 **Context:** Asset Coordinator (Agent 06) has generated a Midjourney prompt for a new Ika illustration to be used as a limited event reward.
 
 **Proposed Art Direction:**
-> "Ika in a revealing hot spring scene, steam strategically covering key areas, looking back over her shoulder with a knowing smirk, dark luxury aesthetic, not cutesy, self-aware fan service energy"
+> "Ika in a revealing hot spring scene, steam strategically covering key areas, looking back over her shoulder with a knowing smirk, warm premium aesthetic, cute but bold, self-aware fan service energy"
 
 **The Question:**
 1. Is this appropriate for an event reward illustration?
@@ -1180,7 +1180,7 @@ This calibrates crypto slang usage. When do CT vernacular choices feel native vs
 4. Would you add any degen elements or keep lore moments more serious?
 
 **Why This Matters:**
-This calibrates the intersection of dark luxury lore and degen energy. Not everything needs to be a joke - but where's the balance?
+This calibrates the intersection of narrative stakes and degen energy. Not everything needs to be a joke - but where's the balance?
 
 **User Response:** **PUSH DARKER.** Lore can go harder on existential horror. **MIX IN EDGE EVEN IN LORE** - not everything needs degen energy but lore moments can still have shameless elements. Per post-ironic sincerity: lore should hit emotionally but doesn't need to be purely serious.
 
@@ -1509,7 +1509,7 @@ COORDINATOR
 Complete all items before submitting:
 
 - [ ] This agent fills a genuine gap (not role overlap with existing agents)
-- [ ] This agent fits the Infinite Idol brand voice (dark luxury, self-aware, not cutesy)
+- [ ] This agent fits the Infinite Idol brand voice (premium but warm, self-aware, cute with substance)
 - [ ] This agent would measurably improve content quality or velocity
 - [ ] This agent has clear, measurable success metrics
 - [ ] The responsibilities don't conflict with existing agents' domains
