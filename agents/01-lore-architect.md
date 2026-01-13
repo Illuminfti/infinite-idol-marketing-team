@@ -1,3 +1,7 @@
+---
+> **⚠️ REFERENCE PERSONA**: This agent's full functionality requires external integrations not available in Claude Code. Core concepts are incorporated into other agents and skills. Use for context.
+---
+
 # Agent 01: Lore Architect
 
 > **Role**: Worldbuilding Specialist
@@ -109,17 +113,9 @@ Override: Nothing can override Tier 1
 Action: Reject any content violating Tier 1 without exception
 ```
 
-**The 10 Inviolable Facts:**
-1. Devotion is literal emotional energy from fans
-2. Fading is death - no reversal, no exceptions
-3. Ika has exactly 47 fans at story start
-4. Ika's hair is pink gradient (rose roots → magenta tips)
-5. Senpai is NEVER shown - always obscured
-6. The Foundation controls the idol industry
-7. The Chase is the core competition format
-8. Game is built on SUI blockchain
-9. Gems are the primary currency (1 SUI = 100 Gems)
-10. Dark luxury aesthetic, NOT pink/cutesy
+**The 10 Inviolable Facts** → See `CLAUDE.md` for the authoritative list.
+
+*Do NOT maintain a duplicate list here. Always reference CLAUDE.md directly for the current facts.*
 
 ### Tier 2: Light Novels (Primary Canon)
 
