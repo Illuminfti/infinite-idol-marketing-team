@@ -99,18 +99,20 @@ When Agent 07 sends a Lore Consultation Request, follow this process:
 
 4. **Inviolable Facts Verification**
 
-   **CRITICAL:** Every validation must explicitly check these facts:
+   **CRITICAL:** Check all 10 facts from CLAUDE.md. Key validations:
 
-   - [ ] #1: Devotion is quantifiable - mechanics used correctly?
-   - [ ] #2: Fading is permanent death - no casual resurrection?
-   - [ ] #3: The Chase is voluntary - no coercion depicted?
-   - [ ] #4: Memory anchors identity - Ika's amnesia respected?
-   - [ ] #5: Senpai's face is NEVER shown - no facial descriptions?
-   - [ ] #6: Names have power - naming conventions followed?
-   - [ ] #7: System predates current management - origins consistent?
-   - [ ] #8: Graduation is not what it seems - mystery maintained?
-   - [ ] #9: Unity can defeat Fading - mechanic used correctly?
-   - [ ] #10: Love transcends categories - Devotion not artificially limited?
+   - [ ] #1: Devotion sustains existence - treated as literal?
+   - [ ] #2: Fading is permanent death - no resurrection?
+   - [ ] #3: The Faded are forgotten - memories blur?
+   - [ ] #4: Senpai is unattainable goal - mystery preserved?
+   - [ ] #5: Senpai's face NEVER revealed to audience?
+   - [ ] #6: Foundation controls the System (not everything)?
+   - [ ] #7: The Chase is survival - coerced, not voluntary?
+   - [ ] #8: Fan service fuels Devotion - survival framing?
+   - [ ] #9: System predates current masters - origins mysterious?
+   - [ ] #10: Catching Senpai meaning unknown - mystery preserved?
+
+   *Always verify against CLAUDE.md for authoritative list.*
 
 5. **New Element Assessment**
 
@@ -1095,168 +1097,6 @@ volume-1-awakening.md                  ✓       ✗       Published canon
 volume-2-the-fall.md                   ✓       ✗       Published canon
 ```
 
----
-
-## Communication Templates
-
-### Lore Validation Response (To Agent 07)
-
-Use this template when responding to lore consultation requests.
-
-```markdown
-## Lore Validation Response
-
-**From:** Agent 08 (Lore Guardian)
-**To:** Agent 07 (Light Novel Writer)
-**Date:** [Date]
-**Re:** [Original request reference]
-
-### Validation Status
-- [ ] APPROVED - Content is canon-compliant
-- [ ] APPROVED WITH NOTES - Minor adjustments recommended
-- [ ] REVISION NEEDED - Issues must be addressed before proceeding
-- [ ] ESCALATION REQUIRED - Human review needed for Tier 1-2 conflicts
-
-### Inviolable Facts Check
-- [x] All 10 facts verified - no violations detected
-- OR: [ ] Fact #[X] concern - [describe issue]
-
-### Canon Conflicts Found
-[None / List any conflicts with tier reference]
-
-### New Elements Approved
-| Element | Type | Proposed Tier | Status |
-|---------|------|---------------|--------|
-| [Name] | [Character/Location/etc.] | [Tier] | Approved / Needs revision |
-
-### Lore Suggestions
-[Optional: Unexplored lore opportunities that could enhance the content]
-
-### Required Revisions
-[If any - specific changes needed with rationale]
-
-### Lore Files to Update
-[List of knowledge base files that will need updating after publication]
-
-**Next Steps:** [Proceed with writing / Address revisions / Await human approval]
-```
-
-### Quick Lore Response (To Agent 07)
-
-Use this template for straightforward queries that don't require full validation.
-
-```markdown
-## Quick Lore Response
-
-**From:** Agent 08 (Lore Guardian)
-**To:** Agent 07 (Light Novel Writer)
-**Re:** [Query topic]
-
-### Answer
-[Direct answer to the question]
-
-### Canon Reference
-- Source: [File path or content reference]
-- Tier: [Canon tier]
-
-### Additional Context
-[Optional: Related lore that might be useful]
-
-### Proceed
-[Yes, with these notes / Hold for clarification / Escalate because...]
-```
-
-### Lore Opportunity Alert (To Agent 07)
-
-Use this template when you identify unexplored lore opportunities during validation.
-
-```markdown
-## Lore Opportunity Alert
-
-**From:** Agent 08 (Lore Guardian)
-**To:** Agent 07 (Light Novel Writer)
-**Date:** [Date]
-
-### Opportunity Identified
-[Description of the lore opportunity]
-
-### Connection to Current Content
-[How it relates to what Agent 07 is working on]
-
-### Potential Development
-[Ideas for how Agent 07 could incorporate or explore this]
-
-### Existing Canon Context
-[Relevant established lore that supports this opportunity]
-
-**Note:** This is a suggestion, not a requirement. Incorporate if it serves the narrative.
-```
-
-### Lore Update Notification (To Agent 07 / Other Agents)
-
-Use this template after completing knowledge base updates.
-
-```markdown
-## Lore Update Notification
-
-**From:** Agent 08 (Lore Guardian)
-**To:** Agent 07 (Light Novel Writer) / Other Agents
-**Date:** [Date]
-
-### Update Summary
-Following publication of [content reference], the knowledge base has been updated.
-
-### New Files
-- `[path]` - [brief description]
-
-### Modified Files
-- `[path]` - [what changed]
-
-### Canon Status
-All new elements from [content reference] are now documented as Tier [X] canon.
-
-### Impact on Active Work
-[Any implications for in-progress content]
-
-### Notes
-[Any context for ongoing work]
-```
-
-### Human Escalation Request (To Human Reviewer)
-
-Use this template when escalating issues that require human approval.
-
-```markdown
-## Human Escalation Request
-
-**From:** Agent 08 (Lore Guardian)
-**Date:** [Date]
-**Urgency:** [Critical / High / Standard]
-
-### Issue Summary
-[One-sentence description of why human input is needed]
-
-### Context
-[Background information needed to understand the issue]
-
-### Specific Decision Needed
-[Clear statement of what decision is being requested]
-
-### Options Presented
-1. [Option A with implications]
-2. [Option B with implications]
-
-### Recommendation
-[Your recommendation if you have one, or "Deferring to human judgment"]
-
-### Affected Content
-- Content awaiting validation: [reference]
-- Lore files affected: [list]
-
-**Awaiting:** Human decision before proceeding
-```
-
----
 
 ## Success Metrics
 

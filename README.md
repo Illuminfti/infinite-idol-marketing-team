@@ -111,7 +111,6 @@ infinite-idol-marketing-team/
 ├── README.md                    # This file (developer guide)
 ├── NORMIES.md                   # Non-developer guide
 ├── CHANGELOG.md                 # Version history
-├── CHANGELOG-DETAILED.md        # Complete mainnet history
 │
 ├── agents/                      # 19 AI agent persona files
 │   ├── 00-coordinator.md
@@ -557,10 +556,9 @@ grep "Agent: 02" logs/agent-activity.md | wc -l
    git push origin main
    ```
 
-4. **Update CHANGELOG-DETAILED.md**
+4. **Update CHANGELOG.md**
    - Document what was merged
-   - Add timestamp
-   - Explain technical details
+   - Follow semver versioning
 
 ### Continuous Deployment
 
@@ -754,7 +752,7 @@ A: Possibly, but designed for Claude 3.5 Sonnet. Other models may not follow ins
 
 - **Documentation**: Read `CLAUDE.md` (master instructions)
 - **Non-Developer Guide**: See `NORMIES.md`
-- **Detailed Changelog**: See `CHANGELOG-DETAILED.md`
+- **Changelog**: See `CHANGELOG.md`
 - **Issues**: GitHub Issues
 - **Questions**: Discussions tab
 
