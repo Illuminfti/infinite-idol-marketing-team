@@ -7,7 +7,7 @@ Complete overhaul of agent coordination system from manual to autonomous operati
 ### Added
 
 #### Production Protocols
-- **Crisis Management Protocol** (`protocols/crisis-management.md`) - 3-tier crisis response system with detection, classification, and resolution workflows
+- **Crisis Management Protocol** (`skills/crisis-management.md`) - 3-tier crisis response system with detection, classification, and resolution workflows
   - Level 1 (Minor): Isolated negative feedback handling
   - Level 2 (Major): Significant backlash response procedures
   - Level 3 (Critical): Brand threat management with human escalation
@@ -15,7 +15,7 @@ Complete overhaul of agent coordination system from manual to autonomous operati
   - Communication templates and recovery metrics
   - Quarterly crisis simulation framework
 
-- **Tiered Review Framework** (`protocols/tiered-review-framework.md`) - 3-tier content review system optimizing velocity while maintaining quality
+- **Tiered Review Framework** (`skills/tiered-review-framework.md`) - 3-tier content review system optimizing velocity while maintaining quality
   - Tier 1 (Novel): Full 3-layer review for new canon/characters (2-4 hours)
   - Tier 2 (Established): Streamlined review for template content (30-60 min)
   - Tier 3 (Repeatable): Spot-check only for templated content (10-15 min)
@@ -118,7 +118,7 @@ Complete overhaul of agent coordination system from manual to autonomous operati
 ### Migration Notes
 
 #### For Human Operators
-1. Review new protocols in `/protocols/` directory before next campaign
+1. Review new skills in `/skills/` directory before next campaign
 2. Familiarize with tiered review system (content classification)
 3. Note crisis management escalation procedures
 4. Review lessons learned quarterly for system calibration

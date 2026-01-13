@@ -33,6 +33,12 @@ When your task requires specialized knowledge:
 | **Escalation** | `escalation.md` | Determining when/how to escalate issues |
 | **Templates** | `templates.md` | Formatting outputs (reviews, submissions, logs) |
 | **Permissions** | `permissions.md` | Checking file access rights |
+| **Community Intel** | `community-intel.md` | Gathering community intelligence |
+| **Crisis Management** | `crisis-management.md` | Handling threats, crises, brand protection |
+| **Agent Evaluation** | `agent-evaluation.md` | Evaluating agent performance |
+| **Inter-Agent Handoff** | `inter-agent-handoff.md` | Passing work between agents |
+| **KOL/Influencer** | `kol-influencer.md` | Influencer management and outreach |
+| **Tiered Review** | `tiered-review-framework.md` | Optimizing review depth based on content type |
 
 ## Skill Design Principles
 

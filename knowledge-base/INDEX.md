@@ -281,7 +281,7 @@ This index maps **content types** to **required reading** so agents know exactly
 **MUST READ**:
 - `/CLAUDE.md` - Agent coordination, escalation triggers
 - `/outputs/calendar/master-calendar.md` - Scheduling context
-- `/protocols/tiered-review-framework.md` - Review tier validation
+- `/skills/tiered-review-framework.md` - Review tier validation
 
 **SHOULD READ**:
 - Canon and cultural review outputs from Agent 08/09
@@ -300,7 +300,7 @@ This index maps **content types** to **required reading** so agents know exactly
 - `/automation/task-queue.md` - Task assignments
 
 **Per Task**:
-- Relevant protocol from `/protocols/`
+- Relevant protocol from `/skills/`
 - Review outputs from other agents
 
 ---
@@ -335,7 +335,7 @@ This index maps **content types** to **required reading** so agents know exactly
 - `/skills/content-creation.md` - Discord guidelines
 
 **Per Task**:
-- `/protocols/crisis-management.md` - If handling community issue
+- `/skills/crisis-management.md` - If handling community issue
 
 ---
 
@@ -425,8 +425,8 @@ This index maps **content types** to **required reading** so agents know exactly
 **Canon Hierarchy** → `/skills/canon-validation.md`
 **Content Calendar** → `/outputs/calendar/master-calendar.md`
 **Task Queue** → `/automation/task-queue.md`
-**Review Tiers** → `/protocols/tiered-review-framework.md`
-**Crisis Protocols** → `/protocols/crisis-management.md`
+**Review Tiers** → `/skills/tiered-review-framework.md`
+**Crisis Protocols** → `/skills/crisis-management.md`
 **Example Content** → `/outputs/content/[type]/`
 **Example Prompts** → `/outputs/art/` or `/outputs/music/`
 
