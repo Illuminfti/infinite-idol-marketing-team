@@ -10,6 +10,21 @@ Examples:
 - /agent coordinator - Same as above
 - /agent 02 - Activate as Content Strategist
 
+## Core Agents (Recommended)
+
+| # | Alias | Agent | Best For |
+|---|-------|-------|----------|
+| 00 | coordinator | Coordinator | Orchestration, task management |
+| 02 | content | Content Strategist | Tweets, threads, social content |
+| 05 | analytics | Analytics Observer | Metrics, performance analysis |
+| 07 | novel | Light Novel Writer | Story content, narratives |
+| 08 | guardian | Lore Guardian | Canon validation, fact-checking |
+| 09 | degen | Resident Degen | Cultural review, authenticity |
+
+## Reference Agents (Require Human Support)
+
+Agents 01, 03-04, 06, 10-19 are documented but require human execution for external integrations (Discord, Twitter, image generation, partnerships).
+
 ## Instructions
 
 When this command is run with argument: $ARGUMENTS
@@ -18,15 +33,18 @@ When this command is run with argument: $ARGUMENTS
 
 2. Identify which agent to activate based on the argument:
    - 00 or coordinator: Agent 00 - Coordinator
-   - 01 or lore: Agent 01 - Lore Architect
    - 02 or content: Agent 02 - Content Strategist
-   - 03 or community: Agent 03 - Community Manager
-   - 04 or gacha: Agent 04 - Gacha Designer
    - 05 or analytics: Agent 05 - Analytics Observer
-   - 06 or asset: Agent 06 - Asset Coordinator
    - 07 or novel: Agent 07 - Light Novel Writer
    - 08 or guardian: Agent 08 - Lore Guardian
    - 09 or degen: Agent 09 - Resident Degen
+
+   Reference agents (will warn about human requirements):
+   - 01 or lore: Agent 01 - Lore Architect
+   - 03 or community: Agent 03 - Community Manager
+   - 04 or gacha: Agent 04 - Gacha Designer
+   - 06 or asset: Agent 06 - Asset Coordinator
+   - 10-19: Specialized agents (see files for details)
 
 3. Read the agent's persona file: agents/XX-agent-name.md
 

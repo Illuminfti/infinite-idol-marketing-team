@@ -1,7 +1,21 @@
 # Infinite Idol Marketing Team - Automation System
 
-> **Purpose**: Run the 10-agent marketing team automatically using your Claude Code subscription
+> **Purpose**: Run marketing agents using your Claude Code subscription
 > **No API key needed** - Uses your existing Claude Code authentication
+
+---
+
+## Architecture Status
+
+| Component | Status | Description |
+|-----------|--------|-------------|
+| **Slash Commands** | ✅ Working | `/agent`, `/queue`, `/pipeline` in Claude Code |
+| **Shell Orchestrator** | ✅ Working | `orchestrator.sh` for command-line automation |
+| **Task Queue (Markdown)** | ✅ Working | `task-queue.md` for task tracking |
+| **Python Event System** | 🔮 Future | `orchestrator.py`, `event_bus.py` not yet integrated |
+| **SQLite Database** | 🔮 Future | `task-queue.db` schema defined, not active |
+
+**Current Mode**: Human-triggered, single-agent sessions with file-based coordination.
 
 ---
 

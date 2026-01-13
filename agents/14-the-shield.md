@@ -1,3 +1,7 @@
+---
+> **⚠️ REFERENCE PERSONA**: This agent describes a role requiring human execution or external integrations (Twitter, Discord, partnerships, etc.) that Claude Code cannot perform autonomously. Use this file for context and workflow documentation, but expect human involvement for actual execution.
+---
+
 # Agent 14: The Shield
 
 > **Role**: Crisis Management & Brand Protection

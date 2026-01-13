@@ -1,7 +1,8 @@
 # CLAUDE.md - Infinite Idol Marketing Team
 
-> **Version**: 2.0 (Optimized)
-> **Agents**: 10 specialized agents (00-09)
+> **Version**: 2.1 (Architecture Optimized)
+> **Core Agents**: 6 active agents (00, 02, 05, 07, 08, 09)
+> **Reference Personas**: 14 documented roles (01, 03-04, 06, 10-19)
 > **Skills**: Modular workflows in `skills/`
 
 ---
@@ -12,6 +13,38 @@
 2. Read your agent file: `agents/XX-agent-name.md`
 3. Load skills as needed from `skills/`
 4. Check `automation/task-queue.md` for assignments
+
+---
+
+## How This System Actually Works
+
+**IMPORTANT**: This is a SINGLE-AGENT system with multiple MODES, not a true multi-agent system.
+
+### What Happens When You Run `/agent <n>`
+1. Claude reads CLAUDE.md for project context
+2. Claude reads the agent persona file
+3. Claude adopts that persona's focus and responsibilities
+4. Claude checks the task queue and executes tasks
+
+### What This System IS
+- A prompt-based persona system for content marketing
+- File-based task tracking (markdown + SQLite)
+- Modular skills for different workflows
+- Human-orchestrated with AI execution
+
+### What This System IS NOT
+- A true autonomous multi-agent swarm
+- Self-orchestrating (human triggers each agent session)
+- Parallel execution (one agent at a time)
+- Connected to external systems (Twitter, Discord) without human action
+
+### Coordination Model
+```
+Human activates agent → Agent reads persona → Agent executes tasks →
+Agent writes outputs → Human reviews → Human activates next agent
+```
+
+The Python orchestration code in `automation/` is **future architecture**, not currently integrated with Claude Code.
 
 ---
 
@@ -102,36 +135,40 @@ Stop and wait for human input ONLY when:
 
 ## Agent Roster
 
+### Core Agents (AI-Executable)
+
+These agents are designed for AI execution with Claude Code.
+
 | # | Agent | Role | Focus |
 |---|-------|------|-------|
-| 00 | **Coordinator** | Marketing Director | Orchestration, scheduling |
-| 01 | **Lore Architect** | Worldbuilding | Canon integrity |
-| 02 | **Content Strategist** | Social Media | Tweets, content |
-| 03 | **Community Manager** | Discord | Events, engagement |
-| 04 | **Gacha Designer** | Seasonal | Banners, cosmetics |
-| 05 | **Analytics Observer** | Performance | Metrics, analysis |
-| 06 | **Asset Coordinator** | Creative | Prompts, visuals |
-| 07 | **Light Novel Writer** | Narrative | Story content |
-| 08 | **Lore Guardian** | Canon Review | Compliance checking |
-| 09 | **Resident Degen** | Cultural | Authenticity, trends |
-| 10 | **The Infiltrator** | Community Intel | Real-time degen presence |
-| 11 | **The Meme Lord** | Viral Engineering | Spreadable content |
-| 12 | **Conversion Architect** | Player Journey | Funnel optimization |
-| 13 | **The Ambassador** | Partnerships | Ecosystem relationships |
-| 14 | **The Shield** | Crisis Management | Brand protection |
-| 15 | **Simp Whisperer** | Fan Service PM | Emotional engagement |
-| 16 | **The NEET** | Community Tools | Technical infrastructure |
-| 17 | **The Architect** | Agent System | Meta-optimization |
-| 18 | **The Hypeman** | KOL/Influencer | Creator relationships |
-| 19 | **Information Architect** | Notion Intelligence | Data insights, dashboards |
+| 00 | **Coordinator** | Marketing Director | Orchestration, scheduling, task queue management |
+| 02 | **Content Strategist** | Social Media | Tweets, threads, content creation |
+| 05 | **Analytics Observer** | Performance | Metrics analysis, reporting |
+| 07 | **Light Novel Writer** | Narrative | Story content, character development |
+| 08 | **Lore Guardian** | Canon Validator | Compliance checking, fact verification |
+| 09 | **Resident Degen** | Cultural Validator | Authenticity, degen energy, cultural review |
+
+### Reference Personas (Documentation)
+
+These describe roles for human execution or future expansion. Load for context but don't expect autonomous AI execution.
+
+| # | Agent | Role | Why Reference Only |
+|---|-------|------|-------------------|
+| 01 | Lore Architect | Worldbuilding | Overlaps with 07+08; use skills/canon-validation.md |
+| 03 | Community Manager | Discord | Requires human Discord access |
+| 04 | Gacha Designer | Game Design | Requires game dev integration |
+| 06 | Asset Coordinator | Visuals | Requires image generation integration |
+| 10-18 | Specialized | Various | Require human execution (Twitter, Discord, partnerships) |
+| 19 | Information Architect | Dashboards | Requires Notion/external integration |
 
 ### Hierarchy
 ```
 COORDINATOR (Business/Strategy Authority)
+    └── LORE GUARDIAN (Canon Authority)
     └── RESIDENT DEGEN (Cultural Authority)
-            └── All Other Agents
+            └── Content Creators (02, 07)
 
-THE ARCHITECT (System Authority) ← Reports directly to Human
+Human escalation required for: Canon violations, Strategy changes, External partnerships
 ```
 
 ---
