@@ -378,7 +378,7 @@ These are important for consistency but NOT world-defining rules:
 
 ### Narrative Themes (Writing Guidance)
 
-These themes enrich the narrative and align with the Inviolable Facts:
+These themes enrich storytelling. They are NOT Inviolable Facts - see CLAUDE.md for the authoritative 10 Facts.
 
 | Theme | Application |
 |-------|-------------|

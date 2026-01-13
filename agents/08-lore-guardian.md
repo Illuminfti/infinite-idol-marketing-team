@@ -783,11 +783,12 @@ When updating files in `knowledge-base/lore/mechanics/`:
 > [Quote or reference from published content]
 
 ### Inviolable Fact Check
-- [ ] Does NOT contradict Fact #1 (Devotion quantifiable)
-- [ ] Does NOT contradict Fact #2 (Fading permanent)
-- [ ] Does NOT contradict Fact #3 (Chase voluntary)
-- [ ] Does NOT contradict Fact #9 (Unity defeats Fading)
-- [ ] Does NOT contradict Fact #10 (Love transcends categories)
+*Reference CLAUDE.md for authoritative list. Key checks:*
+- [ ] Devotion treated as literal existence requirement (#1)
+- [ ] Fading is permanent, no resurrection (#2)
+- [ ] The Faded are forgotten over time (#3)
+- [ ] Senpai's face never shown to audience (#5)
+- [ ] The Chase is coerced survival, not voluntary (#7)
 
 ### Usage Implications
 [How this update affects future content usage of the mechanic]
