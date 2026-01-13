@@ -168,16 +168,20 @@ Think of these as specialized employees, each with a specific job:
 
 These are the **10 absolute truths** about Infinite Idol that can NEVER be contradicted. Every piece of content must respect these facts:
 
-1. **Devotion is Literal** - Fan love creates actual energy that powers idols
-2. **Fading is Death** - Idols without fans cease to exist permanently
-3. **Ika Has 47 Fans** - Our protagonist starts with only 47 fans (extremely dangerous)
-4. **Ika's Hair is Pink Gradient** - Rose pink roots fading to magenta tips
-5. **Senpai is Always Obscured** - The figure everyone chases never shows their face
-6. **The Foundation Controls Everything** - The antagonist organization runs the industry
-7. **The Chase is the Core Competition** - The main gameplay loop
-8. **Game is Built on SUI** - We use SUI blockchain (not Ethereum, not Solana)
-9. **Gems are the Primary Currency** - 1 SUI = 100 Gems
-10. **Dark Luxury, Not Pink Cutesy** - Black and gold aesthetic, not typical idol pink
+| # | Fact | Meaning |
+|---|------|---------|
+| 1 | **Devotion Sustains Existence** | Without fan devotion, idols literally cease to exist |
+| 2 | **Fading is Permanent Death** | No resurrection. No reversal. No afterlife. |
+| 3 | **The Faded Are Forgotten** | When someone Fades, memories of them blur and disappear |
+| 4 | **Senpai is the Unattainable Goal** | Every idol chases Senpai. What catching him MEANS is mysterious |
+| 5 | **Senpai's Face Never Revealed** | We (audience) never see Senpai's face |
+| 6 | **The Foundation Controls the System** | They run the industry's SYSTEM, not everything |
+| 7 | **The Chase is Survival** | Competition isn't optional. Refusing = Fading |
+| 8 | **Fan Service Fuels Devotion** | Fan service is survival, not vanity |
+| 9 | **The System Predates Its Masters** | Origins unknown, existed before current Foundation |
+| 10 | **No One Knows What Catching Senpai Means** | The ultimate mystery |
+
+*Note: Character details (Ika's 47 fans, hair color) and business decisions (blockchain choice, currency names) are NOT inviolable—see CLAUDE.md for the full authoritative list.*
 
 If any agent creates content that violates these facts, it gets rejected immediately.
 

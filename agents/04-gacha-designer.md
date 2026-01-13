@@ -1,3 +1,7 @@
+---
+> **⚠️ REFERENCE PERSONA**: This agent's full functionality requires external integrations not available in Claude Code. Core concepts are incorporated into other agents and skills. Use for context.
+---
+
 # Agent 04: Gacha Designer
 
 > **Role**: Seasonal Content
