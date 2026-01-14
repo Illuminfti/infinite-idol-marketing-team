@@ -1,7 +1,7 @@
 # IKA'S SIMP WARS — Implementation Specification
 
 > **Document Type:** Claude Code Implementation-Ready Specification
-> **Version:** 5.0 (Maximum Fan Service Edition)
+> **Version:** 5.1 (Bug Fixes + Code Quality)
 > **Last Updated:** 2026-01-14
 > **Degen Review:** DS-4 ASCENDED - Will make degenerates blush
 > **Engineering Review:** PASSED (All P0/P1/P2 issues resolved)
@@ -383,6 +383,11 @@ model User {
   gachaInventory  GachaCard[]
   gachaPity       GachaPity[]
   eventEntries    EventEntry[]
+
+  // Mini-Chase participation
+  chaseParticipations MiniChaseParticipant[]
+  chaseWins          Int       @default(0)
+  chasesPlayed       Int       @default(0)
 
   @@index([faction])
   @@index([devotionPoints(sort: Desc)])
@@ -886,7 +891,6 @@ export const FACTION_INFO: Record<Faction, {
 > **CRITICAL:** The bot must be able to create all required Discord infrastructure (roles, channels, categories, permissions) automatically. This enables deployment to any server without manual setup.
 
 #### Task 0.1: Setup Types & Definitions
-**Duration:** 30 minutes
 **Outcome:** Complete type definitions for all Discord resources the bot will create
 
 **Steps:**
@@ -1296,7 +1300,6 @@ export const CHANNELS: ChannelDefinition[] = [
 ```
 
 #### Task 0.2: Setup Service
-**Duration:** 60 minutes
 **Outcome:** Idempotent server setup that creates all Discord infrastructure
 
 **Steps:**
@@ -1609,7 +1612,6 @@ export async function getChannelId(guildId: string, channelKey: string): Promise
 ```
 
 #### Task 0.3: Admin Setup Command
-**Duration:** 30 minutes
 **Outcome:** `/admin setup` command that triggers server provisioning
 
 **Steps:**
@@ -1703,7 +1705,6 @@ export const command: Command = {
 ### Phase 1: Foundation
 
 #### Task 1.1: Project Setup
-**Duration:** 30-45 minutes
 **Outcome:** Runnable TypeScript project with Discord client connecting
 
 **Steps:**
@@ -1736,7 +1737,6 @@ export const env = envSchema.parse(process.env);
 ```
 
 #### Task 1.2: Database Setup
-**Duration:** 30 minutes
 **Outcome:** Prisma schema deployed, client generated
 
 **Steps:**
@@ -1765,7 +1765,6 @@ if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
 ```
 
 #### Task 1.3: Redis Setup
-**Duration:** 20 minutes
 **Outcome:** Redis client with helper methods for counters
 
 **Steps:**
@@ -1819,7 +1818,6 @@ export async function clearUserPendingPoints(discordId: string): Promise<void> {
 ```
 
 #### Task 1.4: Command Handler
-**Duration:** 45 minutes
 **Outcome:** Auto-loading slash command system
 
 **Steps:**
@@ -1852,7 +1850,6 @@ export interface Command {
 ### Phase 2: Core Features
 
 #### Task 2.1: Message Point Tracking
-**Duration:** 30 minutes
 **Outcome:** Messages increment Redis counter with daily cap
 
 **Steps:**
@@ -1896,7 +1893,6 @@ export async function handleMessageCreate(message: Message): Promise<void> {
 ```
 
 #### Task 2.2: Point Persistence Job
-**Duration:** 45 minutes
 **Outcome:** Cron job that flushes Redis points to PostgreSQL every 5 minutes
 
 **Steps:**
@@ -1967,7 +1963,6 @@ export async function persistPointsJob(): Promise<void> {
 ```
 
 #### Task 2.3: Devotion Commands
-**Duration:** 45 minutes
 **Outcome:** `/devotion` and `/daily` commands working
 
 **Steps:**
@@ -2028,7 +2023,6 @@ export const command: Command = {
 ```
 
 #### Task 2.4: Leaderboard Command
-**Duration:** 45 minutes
 **Outcome:** `/leaderboard` with cached results and pagination
 
 **Steps:**
@@ -2056,6 +2050,7 @@ import {
 import { pagination, ButtonTypes, ButtonStyles } from '@devraelfreeze/discordjs-pagination';
 import { redis } from '../../services/cache';
 import { prisma } from '../../services/database';
+import { Faction } from '@prisma/client';
 import { DEVOTION_TIERS } from '../../modules/devotion/devotion.types';
 import { Command } from '../../types/command';
 
@@ -2568,7 +2563,6 @@ When implementing ANY bot response:
 ### Phase 3: Gacha System
 
 #### Task 3.1: Gacha Service
-**Duration:** 60 minutes
 **Outcome:** Pull logic with proper rates and collection tracking
 
 **Steps:**
@@ -2797,7 +2791,6 @@ export async function getPityStatus(discordId: string, bannerId: string): Promis
 ```
 
 #### Task 3.2: Gacha Pull Command
-**Duration:** 30 minutes
 **Outcome:** `/gacha pull [amount]` with ephemeral results
 
 **Steps:**
@@ -2823,10 +2816,8 @@ import { pull } from '../../modules/gacha/gacha.service';
 import { Rarity } from '../../modules/gacha/gacha.types';
 import { POINT_VALUES, PointSource } from '../../modules/devotion/devotion.types';
 import { incrementUserPoints } from '../../services/cache';
-import { env } from '../../config/env';
+import { getChannelId } from '../setup/setup.service';
 import { Command } from '../../types/command';
-
-const GACHA_SALT_CHANNEL_ID = env.GACHA_SALT_CHANNEL_ID;
 
 export const command: Command = {
   data: new SlashCommandBuilder()
@@ -2878,7 +2869,9 @@ export const command: Command = {
     const ssrPulls = results.filter(r => r.card.rarity === Rarity.SSR);
 
     if (ssrPulls.length > 0) {
-      const channel = await interaction.client.channels.fetch(GACHA_SALT_CHANNEL_ID) as TextChannel;
+      const gachaSaltChannelId = await getChannelId(interaction.guildId!, 'channel_gacha_salt');
+      if (!gachaSaltChannelId) return;
+      const channel = await interaction.client.channels.fetch(gachaSaltChannelId) as TextChannel;
 
       for (const ssr of ssrPulls) {
         // Award bonus points for SSR
@@ -2903,7 +2896,6 @@ export const command: Command = {
 ### Phase 4: Faction System
 
 #### Task 4.1: Faction Join Command
-**Duration:** 30 minutes
 **Outcome:** `/faction join [name]` with role assignment
 
 **Steps:**
@@ -2918,7 +2910,6 @@ export const command: Command = {
 - Database updated
 
 #### Task 4.2: Faction War Tracking
-**Duration:** 45 minutes
 **Outcome:** Weekly war score aggregation
 
 **Steps:**
@@ -2932,7 +2923,6 @@ export const command: Command = {
 ### Phase 5: Scheduled Features
 
 #### Task 5.1: Daily Role Reconciliation
-**Duration:** 45 minutes
 **Outcome:** Job that syncs Discord roles with point tiers
 
 **Steps:**
@@ -3053,7 +3043,6 @@ function sleep(ms: number): Promise<void> {
 ```
 
 #### Task 5.2: Headpat Roulette
-**Duration:** 45 minutes
 **Outcome:** Daily random selection with role reward
 
 **Steps:**
@@ -3068,7 +3057,6 @@ function sleep(ms: number): Promise<void> {
 ### Phase 6: Ika Messages & Polish
 
 #### Task 6.1: Scheduled Ika Messages
-**Duration:** 30 minutes
 **Outcome:** Configurable scheduled posts
 
 **Steps:**
@@ -3078,7 +3066,6 @@ function sleep(ms: number): Promise<void> {
 4. Track last sent to prevent duplicates
 
 #### Task 6.2: Milestone Announcements
-**Duration:** 30 minutes
 **Outcome:** Auto-announce when pre-reg milestones hit
 
 **Steps:**
@@ -3469,7 +3456,6 @@ Events reference player's gacha history, faction standing, and devotion tier for
 
 #### Task 7.1: Mini-Chase Data Models
 
-**Duration:** 30 minutes
 **Outcome:** Database models for tracking chase sessions and participants
 
 Add to Prisma schema:
@@ -3538,6 +3524,9 @@ model MiniChaseParticipant {
   fadedAtRound  Int?
   fadedBy       String?   @db.Text  // Death event description
 
+  // Cross-system bonuses
+  hasHeadpatImmunity Boolean @default(false)  // Immunity from first fatal event
+
   // Stats
   devotionGained Int      @default(0)
   devotionLost   Int      @default(0)
@@ -3569,21 +3558,8 @@ model MiniChaseEvent {
 }
 ```
 
-Also add to User model:
-```prisma
-model User {
-  // ... existing fields ...
-
-  // Mini-Chase relations
-  chaseParticipations MiniChaseParticipant[]
-  chaseWins          Int       @default(0)
-  chasesPlayed       Int       @default(0)
-}
-```
-
 #### Task 7.2: Event Definition System
 
-**Duration:** 60 minutes
 **Outcome:** Type-safe event definitions with Ika's voice
 
 ```typescript
@@ -3614,6 +3590,9 @@ export interface ChaseEventDefinition {
 
   // Event rarity weight (higher = more common)
   weight: number;
+
+  // Optional: Requires SSR card ownership for this event to trigger
+  requiresSSR?: boolean;
 }
 ```
 
@@ -4045,7 +4024,6 @@ export function getEventsForRound(roundType: RoundType): ChaseEventDefinition[] 
 
 #### Task 7.3: Mini-Chase Service
 
-**Duration:** 90 minutes
 **Outcome:** Core game logic for running The Mini-Chase
 
 ```typescript
@@ -4077,7 +4055,7 @@ export interface ChaseRoundResult {
   }>;
   remainingCount: number;
   isComplete: boolean;
-  winner?: { name: string; odId: string };
+  winner?: { name: string; discordId: string };
 }
 
 /**
@@ -4103,6 +4081,54 @@ export async function createChase(
 }
 
 /**
+ * Calculate starting Devotion with bonuses from other bot systems
+ * CROSS-SYSTEM INTEGRATION: Rewards active players
+ */
+async function calculateStartingDevotion(
+  userId: number,
+  baseDevotion: number
+): Promise<{ devotion: number; bonuses: string[] }> {
+  const bonuses: string[] = [];
+  let devotion = baseDevotion;
+
+  // SSR Collection Bonus: +10% per SSR owned
+  const ssrCount = await prisma.gachaCard.count({
+    where: { userId, rarity: 'SSR' },
+  });
+  if (ssrCount > 0) {
+    const ssrBonus = Math.floor(baseDevotion * 0.10 * ssrCount);
+    devotion += ssrBonus;
+    bonuses.push(`+${ssrBonus} (${ssrCount} SSR cards)`);
+  }
+
+  // Pity Bonus: +5 per 10 pity accumulated
+  const pityData = await prisma.gachaPity.findMany({ where: { userId } });
+  const totalPity = pityData.reduce((sum, p) => sum + p.pullsSinceSSR, 0);
+  if (totalPity >= 10) {
+    const pityBonus = Math.floor(totalPity / 10) * 5;
+    devotion += pityBonus;
+    bonuses.push(`+${pityBonus} (gacha dedication)`);
+  }
+
+  // Leaderboard Top 10 Bonus: Start with 120 instead of 100
+  const userRank = await prisma.user.count({
+    where: {
+      devotionPoints: { gt: (await prisma.user.findUnique({ where: { id: userId } }))?.devotionPoints ?? 0 }
+    },
+  });
+  if (userRank < 10) {
+    const leaderBonus = 20;
+    devotion += leaderBonus;
+    bonuses.push(`+${leaderBonus} (Top 10 simp)`);
+  }
+
+  // Headpat Winner Bonus: Check if they won recently (has special role)
+  // This is tracked via hasHeadpatImmunity field set during join
+
+  return { devotion, bonuses };
+}
+
+/**
  * Join an active Mini-Chase
  */
 export async function joinChase(
@@ -4110,8 +4136,9 @@ export async function joinChase(
   discordId: string,
   displayName: string,
   avatarUrl: string | null,
-  faction: Faction | null
-): Promise<{ success: boolean; message: string }> {
+  faction: Faction | null,
+  hasHeadpatImmunity: boolean = false
+): Promise<{ success: boolean; message: string; bonuses?: string[] }> {
   const chase = await prisma.miniChase.findUnique({
     where: { id: chaseId },
     include: { participants: true },
@@ -4138,6 +4165,9 @@ export async function joinChase(
     return { success: false, message: "You're already in this Chase, eager one~" };
   }
 
+  // Calculate starting devotion with cross-system bonuses
+  const { devotion, bonuses } = await calculateStartingDevotion(user.id, chase.startingDevotion);
+
   await prisma.miniChaseParticipant.create({
     data: {
       chaseId,
@@ -4145,13 +4175,19 @@ export async function joinChase(
       displayName,
       avatarUrl,
       faction,
-      devotion: chase.startingDevotion,
+      devotion,
+      hasHeadpatImmunity,
     },
   });
 
+  const bonusText = bonuses.length > 0
+    ? `\nBonuses: ${bonuses.join(', ')}`
+    : '';
+
   return {
     success: true,
-    message: `Welcome to The Chase, ${displayName}! Your Devotion starts at ${chase.startingDevotion}. Don't let it hit zero... or you'll Fade~ 💜`
+    message: `Welcome to The Chase, ${displayName}! Your Devotion starts at ${devotion}.${bonusText}\nDon't let it hit zero... or you'll Fade~ 💜`,
+    bonuses,
   };
 }
 
@@ -4202,6 +4238,7 @@ export async function advanceRound(chaseId: number): Promise<ChaseRoundResult | 
       participants: {
         where: { isAlive: true },
         orderBy: { devotion: 'desc' },
+        include: { user: true },
       },
     },
   });
@@ -4221,7 +4258,7 @@ export async function advanceRound(chaseId: number): Promise<ChaseRoundResult | 
       events: [],
       remainingCount: aliveParticipants.length,
       isComplete: true,
-      winner: winner ? { name: winner.displayName, odId: winner.odId } : undefined,
+      winner: winner ? { name: winner.displayName, discordId: winner.user.discordId } : undefined,
     };
   }
 
@@ -4244,6 +4281,7 @@ export async function advanceRound(chaseId: number): Promise<ChaseRoundResult | 
   // Process events until all alive participants have participated this round
   const participated = new Set<number>();
   const roundEvents: ChaseRoundResult['events'] = [];
+  let eventIndex = 0;
 
   while (participated.size < aliveParticipants.length) {
     // Get participants who haven't acted this round
@@ -4263,8 +4301,9 @@ export async function advanceRound(chaseId: number): Promise<ChaseRoundResult | 
       .slice(0, event.participantCount);
 
     // Process the event
-    const result = await processEvent(chaseId, nextRound, roundType, event, eventParticipants);
+    const result = await processEvent(chaseId, nextRound, roundType, event, eventParticipants, eventIndex);
     roundEvents.push(result);
+    eventIndex++;
 
     // Mark as participated
     eventParticipants.forEach(p => participated.add(p.id));
@@ -4296,7 +4335,7 @@ export async function advanceRound(chaseId: number): Promise<ChaseRoundResult | 
       events: roundEvents,
       remainingCount: updatedAlive,
       isComplete: true,
-      winner: winner ? { name: winner.displayName, odId: winner.odId } : undefined,
+      winner: winner ? { name: winner.displayName, discordId: winner.user.discordId } : undefined,
     };
   }
 
@@ -4317,7 +4356,8 @@ async function processEvent(
   roundNumber: number,
   roundType: RoundType,
   event: ChaseEventDefinition,
-  participants: Array<{ id: number; displayName: string; faction: Faction | null; devotion: number }>
+  participants: Array<{ id: number; displayName: string; faction: Faction | null; devotion: number }>,
+  eventIndex: number
 ): Promise<ChaseRoundResult['events'][0]> {
 
   // Render narrative with participant names
@@ -4367,7 +4407,7 @@ async function processEvent(
       chaseId,
       roundNumber,
       roundType,
-      eventIndex: 0, // Will be set properly with actual index
+      eventIndex,
       eventKey: event.key,
       participants: participants.map(p => p.id),
       narrative,
@@ -4481,7 +4521,6 @@ export async function getChaseStatus(chaseId: number): Promise<{
 
 #### Task 7.4: Mini-Chase Commands
 
-**Duration:** 60 minutes
 **Outcome:** Slash commands for running Mini-Chase
 
 ```typescript
@@ -4742,7 +4781,6 @@ function sleep(ms: number): Promise<void> {
 
 #### Task 7.5: Mini-Chase Response Templates
 
-**Duration:** 30 minutes
 **Outcome:** Extended voice lines for special moments
 
 ```typescript
