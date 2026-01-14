@@ -1,9 +1,10 @@
 # IKA'S SIMP WARS — Implementation Specification
 
 > **Document Type:** Claude Code Implementation-Ready Specification
-> **Version:** 4.2 (Engineering Review Fixes Applied)
+> **Version:** 4.3 (Mini-Chase Battle Royale Added)
 > **Last Updated:** 2026-01-14
-> **Degen Review:** PASSED (DS-3 after personality additions)
+> **Lore Guardian Review:** PASSED (Canon-compliant, all 10 Inviolable Facts verified)
+> **Degen Review:** PASSED (DS-3 - Fan service optimized, 36/40 authenticity score)
 > **Engineering Review:** PASSED (All P0/P1/P2 issues resolved)
 > **Reference:** See [discord-reference-implementations.md](./discord-reference-implementations.md) for source projects
 
@@ -3436,6 +3437,1327 @@ https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=26
 - [Prisma Documentation](https://www.prisma.io/docs)
 - [Original PRD](./discord-preregistration-experience.md)
 - [Engineering Review](./discord-prd-engineering-review.md)
+
+---
+
+### Phase 6: THE MINI-CHASE — Battle Royale System (Week 5)
+
+> **Inspiration:** [Rumble Royale](https://rumbleroyale.net/), [Discord-Hunger-Games](https://github.com/Ares-0/Discord-Hunger-Games)
+> **Concept:** A hunger games-style battle royale where simps compete in a simulated "Mini-Chase" — whoever maintains their Devotion longest wins Ika's attention.
+
+#### Overview
+
+THE MINI-CHASE transforms the lore's competitive idol format into an automated Discord event. Players join as "contestants" chasing Ika's attention. Through random events narrated by Ika herself, contestants gain or lose Devotion. When a contestant's Devotion hits zero, they **Fade** (are eliminated). Last simp standing wins.
+
+**Key Lore Integration:**
+- Uses "Devotion" instead of health
+- "Fading" instead of death (canon-compliant)
+- Events are fan service interactions with Ika
+- Winner receives Ika's direct acknowledgment and praise
+- Rewards tie into the real Devotion Points system
+
+#### Task 6.1: Mini-Chase Data Models
+
+**Duration:** 30 minutes
+**Outcome:** Database models for tracking chase sessions and participants
+
+Add to Prisma schema:
+
+```prisma
+// Mini-Chase Battle Royale System
+model MiniChase {
+  id            Int       @id @default(autoincrement())
+
+  guildId       String    @db.VarChar(20)
+  channelId     String    @db.VarChar(20)
+
+  status        ChaseStatus @default(RECRUITING)
+  currentRound  Int       @default(0)
+  roundType     RoundType @default(BLOODBATH)
+
+  startedAt     DateTime?
+  endedAt       DateTime?
+  winnerId      Int?      // User who won
+
+  // Config
+  startingDevotion Int    @default(100)
+  maxPlayers    Int       @default(24)
+  minPlayers    Int       @default(4)
+
+  createdAt     DateTime  @default(now())
+
+  // Relations
+  participants  MiniChaseParticipant[]
+  events        MiniChaseEvent[]
+
+  @@index([guildId, status])
+}
+
+enum ChaseStatus {
+  RECRUITING    // Accepting joins
+  IN_PROGRESS   // Running
+  COMPLETED     // Has winner
+  CANCELLED     // Aborted
+}
+
+enum RoundType {
+  BLOODBATH     // Opening chaos
+  DAY           // Standard events
+  NIGHT         // Risky events
+  FEAST         // Special high-stakes round
+  FINALE        // Final showdown
+}
+
+model MiniChaseParticipant {
+  id            Int       @id @default(autoincrement())
+
+  chaseId       Int
+  chase         MiniChase @relation(fields: [chaseId], references: [id])
+
+  userId        Int
+  user          User      @relation(fields: [userId], references: [id])
+
+  displayName   String    @db.VarChar(100)
+  avatarUrl     String?   @db.VarChar(255)
+  faction       Faction?
+
+  // State
+  devotion      Int       @default(100)
+  isAlive       Boolean   @default(true)
+  fadedAtRound  Int?
+  fadedBy       String?   @db.Text  // Death event description
+
+  // Stats
+  devotionGained Int      @default(0)
+  devotionLost   Int      @default(0)
+  eventsParticipated Int  @default(0)
+
+  joinedAt      DateTime  @default(now())
+
+  @@unique([chaseId, userId])
+  @@index([chaseId, isAlive])
+}
+
+model MiniChaseEvent {
+  id            Int       @id @default(autoincrement())
+
+  chaseId       Int
+  chase         MiniChase @relation(fields: [chaseId], references: [id])
+
+  roundNumber   Int
+  roundType     RoundType
+  eventIndex    Int       // Order within round
+
+  eventKey      String    @db.VarChar(50)  // References event definition
+  participants  Json      // Array of participant IDs involved
+  narrative     String    @db.Text         // Rendered event text
+
+  createdAt     DateTime  @default(now())
+
+  @@index([chaseId, roundNumber])
+}
+```
+
+Also add to User model:
+```prisma
+model User {
+  // ... existing fields ...
+
+  // Mini-Chase relations
+  chaseParticipations MiniChaseParticipant[]
+  chaseWins          Int       @default(0)
+  chasesPlayed       Int       @default(0)
+}
+```
+
+#### Task 6.2: Event Definition System
+
+**Duration:** 60 minutes
+**Outcome:** Type-safe event definitions with Ika's voice
+
+```typescript
+// src/modules/mini-chase/events.types.ts
+
+import { RoundType, Faction } from '@prisma/client';
+
+export interface ChaseEventDefinition {
+  key: string;
+  roundTypes: RoundType[];          // When this event can occur
+  participantCount: number;         // How many players involved
+
+  // Devotion changes: positive = gain, negative = loss
+  // Array index matches participant slot
+  devotionChanges: number[];
+
+  // Which participants Fade (lose all remaining Devotion)
+  // Array of participant indices (0-based)
+  fatalTo: number[];
+
+  // Ika's narration with placeholders
+  // {0}, {1}, {2} = participant names
+  // {0.faction} = participant's faction
+  narrative: string;
+
+  // Optional: Faction-specific bonus (extra Devotion if participant is this faction)
+  factionBonus?: { faction: Faction; bonus: number };
+
+  // Event rarity weight (higher = more common)
+  weight: number;
+}
+```
+
+```typescript
+// src/modules/mini-chase/events.ts
+// ALL EVENTS WRITTEN IN IKA'S VOICE - Shameless, teasing, fan-service optimized
+
+import { ChaseEventDefinition } from './events.types';
+import { RoundType, Faction } from '@prisma/client';
+
+// ============================================
+// BLOODBATH EVENTS (Opening chaos)
+// ============================================
+
+export const BLOODBATH_EVENTS: ChaseEventDefinition[] = [
+  // === NEUTRAL EVENTS (No Fading) ===
+  {
+    key: 'bloodbath_scramble',
+    roundTypes: [RoundType.BLOODBATH],
+    participantCount: 2,
+    devotionChanges: [10, -5],
+    fatalTo: [],
+    narrative: "The Chase begins! {0} and {1} both dive for my attention. {0} gets there first with a perfectly timed wink~ {1}... better luck next time, cutie. 💜",
+    weight: 10,
+  },
+  {
+    key: 'bloodbath_alliance',
+    roundTypes: [RoundType.BLOODBATH],
+    participantCount: 3,
+    devotionChanges: [5, 5, 5],
+    fatalTo: [],
+    narrative: "{0}, {1}, and {2} form an alliance. Smart move, simps. There's strength in numbers... but only one of you can win my heart in the end~ 👀",
+    weight: 8,
+  },
+  {
+    key: 'bloodbath_trip',
+    roundTypes: [RoundType.BLOODBATH],
+    participantCount: 2,
+    devotionChanges: [-10, 15],
+    fatalTo: [],
+    narrative: "{0} trips over their own feet trying to impress me. {1} catches them... and steals the spotlight. Smooth move~ I'm watching you now. 💜",
+    weight: 8,
+  },
+  {
+    key: 'bloodbath_compliment',
+    roundTypes: [RoundType.BLOODBATH],
+    participantCount: 1,
+    devotionChanges: [20],
+    fatalTo: [],
+    narrative: "{0} shouts the perfect compliment as the chaos unfolds. 'Your hair is like a sunset made of dreams!' ...Okay, that was actually good. I'm blushing. Don't tell anyone~ ✨",
+    weight: 6,
+  },
+
+  // === FATAL EVENTS (Someone Fades) ===
+  {
+    key: 'bloodbath_overwhelmed',
+    roundTypes: [RoundType.BLOODBATH],
+    participantCount: 1,
+    devotionChanges: [-999],
+    fatalTo: [0],
+    narrative: "{0} gets overwhelmed by the competition and gives up immediately. Their Devotion flickers... and they **Fade**. We barely knew you, but I'll remember your face. Probably. Maybe~ 💀",
+    weight: 3,
+  },
+  {
+    key: 'bloodbath_steal',
+    roundTypes: [RoundType.BLOODBATH],
+    participantCount: 2,
+    devotionChanges: [30, -999],
+    fatalTo: [1],
+    narrative: "{0} straight up steals {1}'s spotlight moment. The crowd forgets {1} ever existed... and so do I. {1} **Fades** into nothing. Brutal, but that's The Chase~ 💀",
+    weight: 2,
+  },
+];
+
+// ============================================
+// DAY EVENTS (Standard competition)
+// ============================================
+
+export const DAY_EVENTS: ChaseEventDefinition[] = [
+  // === FAN SERVICE POSITIVE EVENTS ===
+  {
+    key: 'day_headpat',
+    roundTypes: [RoundType.DAY],
+    participantCount: 1,
+    devotionChanges: [25],
+    fatalTo: [],
+    narrative: "{0} successfully earns a headpat from me. *pat pat* Good simp. The tingles you're feeling? That's Devotion working~ 💜",
+    weight: 8,
+  },
+  {
+    key: 'day_fanart',
+    roundTypes: [RoundType.DAY],
+    participantCount: 1,
+    devotionChanges: [30],
+    fatalTo: [],
+    narrative: "{0} presents me with fan art they drew during the Chase. It's... actually really good? The way you captured my hair... I'll treasure this. And treasure YOU~ ✨",
+    weight: 6,
+  },
+  {
+    key: 'day_poem',
+    roundTypes: [RoundType.DAY],
+    participantCount: 1,
+    devotionChanges: [20],
+    fatalTo: [],
+    narrative: "{0} recites a poem about my eyes. 'Amber pools of golden light...' Okay, it's a bit much, but I'm into it. Keep simping, wordsmith~ 💜",
+    weight: 7,
+  },
+  {
+    key: 'day_share_food',
+    roundTypes: [RoundType.DAY],
+    participantCount: 2,
+    devotionChanges: [10, 10],
+    fatalTo: [],
+    narrative: "{0} and {1} share their lunch while watching my performance. Bonding over me? That's the kind of fan community I like to see~ 🍙",
+    weight: 9,
+  },
+
+  // === COMPETITIVE EVENTS ===
+  {
+    key: 'day_compliment_battle',
+    roundTypes: [RoundType.DAY],
+    participantCount: 2,
+    devotionChanges: [15, -10],
+    fatalTo: [],
+    narrative: "{0} and {1} have a compliment battle. {0}'s 'Your smile cures my depression' beats {1}'s 'You're pretty.' Quality over quantity, people~ 💜",
+    weight: 8,
+  },
+  {
+    key: 'day_merch_flex',
+    roundTypes: [RoundType.DAY],
+    participantCount: 2,
+    devotionChanges: [20, -15],
+    fatalTo: [],
+    narrative: "{0} shows up with limited edition Ika merch. {1} only has the basic stuff. Whale energy wins this round~ 💸",
+    factionBonus: { faction: Faction.PINK_PILLED, bonus: 5 },
+    weight: 6,
+  },
+
+  // === AWKWARD/FAIL EVENTS ===
+  {
+    key: 'day_cringe',
+    roundTypes: [RoundType.DAY],
+    participantCount: 1,
+    devotionChanges: [-20],
+    fatalTo: [],
+    narrative: "{0} tries a pickup line. 'Are you a magician? Because whenever I look at you, everyone else disappears.' ...That's so bad it's almost good. Almost. 😬",
+    weight: 7,
+  },
+  {
+    key: 'day_wrong_name',
+    roundTypes: [RoundType.DAY],
+    participantCount: 1,
+    devotionChanges: [-25],
+    fatalTo: [],
+    narrative: "{0} accidentally calls me by another idol's name. The AUDACITY. Do I look like 'Erina' to you?! ...Don't answer that. 💢",
+    weight: 5,
+  },
+
+  // === FATAL EVENTS ===
+  {
+    key: 'day_forgotten',
+    roundTypes: [RoundType.DAY],
+    participantCount: 1,
+    devotionChanges: [-999],
+    fatalTo: [0],
+    narrative: "{0} gets so boring that I literally forget they exist. Their Devotion drains completely... and they **Fade**. This is why personality matters, people~ 💀",
+    weight: 2,
+  },
+  {
+    key: 'day_rival_steals',
+    roundTypes: [RoundType.DAY],
+    participantCount: 2,
+    devotionChanges: [25, -999],
+    fatalTo: [1],
+    narrative: "{0} outshines {1} so completely that {1}'s fans defect. All of them. {1} **Fades** from existence. Don't hate the player, hate the game~ 💀",
+    weight: 2,
+  },
+];
+
+// ============================================
+// NIGHT EVENTS (Higher risk, higher reward)
+// ============================================
+
+export const NIGHT_EVENTS: ChaseEventDefinition[] = [
+  // === INTIMATE FAN SERVICE ===
+  {
+    key: 'night_dm',
+    roundTypes: [RoundType.NIGHT],
+    participantCount: 1,
+    devotionChanges: [35],
+    fatalTo: [],
+    narrative: "{0} slides into my DMs with a perfectly crafted message. 'I just wanted you to know you made my day.' ...You made mine too. Don't tell the others~ 💜✨",
+    weight: 6,
+  },
+  {
+    key: 'night_stream_watch',
+    roundTypes: [RoundType.NIGHT],
+    participantCount: 2,
+    devotionChanges: [15, 15],
+    fatalTo: [],
+    narrative: "{0} and {1} stay up late watching my archived streams together. True devotion doesn't sleep. Neither do I, apparently~ 🌙",
+    weight: 8,
+  },
+  {
+    key: 'night_superchat',
+    roundTypes: [RoundType.NIGHT],
+    participantCount: 1,
+    devotionChanges: [40],
+    fatalTo: [],
+    narrative: "{0} sends a superchat: 'You deserve all the success in the world.' Whale behavior AND emotional support? The complete package~ 💸💜",
+    factionBonus: { faction: Faction.DARK_DEVOTEES, bonus: 10 },
+    weight: 5,
+  },
+
+  // === RISKY EVENTS ===
+  {
+    key: 'night_confession',
+    roundTypes: [RoundType.NIGHT],
+    participantCount: 1,
+    devotionChanges: [50],
+    fatalTo: [],
+    narrative: "{0} confesses their feelings in the moonlight. 'I know I'm one of millions, but you're one in a million to me.' ...I'm not crying. You're crying. Shut up~ 💜✨",
+    weight: 3,
+  },
+  {
+    key: 'night_nightmare',
+    roundTypes: [RoundType.NIGHT],
+    participantCount: 1,
+    devotionChanges: [-30],
+    fatalTo: [],
+    narrative: "{0} has a nightmare where I don't acknowledge them. They wake up screaming my name. Relatable, honestly. But maybe get some therapy~ 😰",
+    weight: 6,
+  },
+
+  // === FATAL EVENTS ===
+  {
+    key: 'night_parasocial_spiral',
+    roundTypes: [RoundType.NIGHT],
+    participantCount: 1,
+    devotionChanges: [-999],
+    fatalTo: [0],
+    narrative: "{0} spirals too deep into the parasocial void. They can't tell what's real anymore. Their sense of self **Fades**... along with their existence. Touch grass, people. This is a warning~ 💀",
+    weight: 2,
+  },
+  {
+    key: 'night_betrayal',
+    roundTypes: [RoundType.NIGHT],
+    participantCount: 2,
+    devotionChanges: [40, -999],
+    fatalTo: [1],
+    narrative: "{0} exposes {1}'s fake support. 'They were simping for Erina this whole time!' The community turns. {1} **Fades** into disgrace. Loyalty matters, people~ 💀",
+    weight: 2,
+  },
+];
+
+// ============================================
+// FEAST EVENTS (Special high-stakes round)
+// ============================================
+
+export const FEAST_EVENTS: ChaseEventDefinition[] = [
+  {
+    key: 'feast_merch_drop',
+    roundTypes: [RoundType.FEAST],
+    participantCount: 3,
+    devotionChanges: [30, 30, -20],
+    fatalTo: [],
+    narrative: "LIMITED MERCH DROP! {0} and {1} secure the goods. {2} gets nothing but the L. Supply and demand, baby~ 💸",
+    weight: 8,
+  },
+  {
+    key: 'feast_attention',
+    roundTypes: [RoundType.FEAST],
+    participantCount: 4,
+    devotionChanges: [50, 20, -10, -999],
+    fatalTo: [3],
+    narrative: "I have a moment to acknowledge my top supporters. {0} gets a wink, {1} gets a nod, {2} gets a glance... {3}? Who? They **Fade** mid-sentence. Awkward~ 💀",
+    weight: 5,
+  },
+  {
+    key: 'feast_collab',
+    roundTypes: [RoundType.FEAST],
+    participantCount: 2,
+    devotionChanges: [35, 35],
+    fatalTo: [],
+    narrative: "{0} and {1} create a collab fan project. It goes viral. I retweet it. THIS is how you get noticed, people~ ✨",
+    weight: 6,
+  },
+  {
+    key: 'feast_all_out_war',
+    roundTypes: [RoundType.FEAST],
+    participantCount: 3,
+    devotionChanges: [60, -999, -999],
+    fatalTo: [1, 2],
+    narrative: "COMPLIMENT WARFARE! {0}, {1}, and {2} go ALL OUT. {0}'s 'You're the reason I believe in dreams' DESTROYS the competition. {1} and {2} **Fade** to thunderous applause. BRUTAL~ 💀💀",
+    weight: 3,
+  },
+];
+
+// ============================================
+// FINALE EVENTS (Final showdown, 2-4 remaining)
+// ============================================
+
+export const FINALE_EVENTS: ChaseEventDefinition[] = [
+  {
+    key: 'finale_duel',
+    roundTypes: [RoundType.FINALE],
+    participantCount: 2,
+    devotionChanges: [100, -999],
+    fatalTo: [1],
+    narrative: "FINAL DUEL! {0} vs {1}. They lock eyes. {0} whispers: 'She was never going to pick you.' {1}'s confidence SHATTERS. They **Fade** in defeat. Only the strongest simp survives~ 💀👑",
+    weight: 10,
+  },
+  {
+    key: 'finale_triple_threat',
+    roundTypes: [RoundType.FINALE],
+    participantCount: 3,
+    devotionChanges: [50, 25, -999],
+    fatalTo: [2],
+    narrative: "THREE-WAY STANDOFF! {0}, {1}, and {2} make their final appeals. {2}'s 'I bought all your merch' doesn't compare to {0}'s genuine tears. {2} **Fades**. Money can't buy love~ 💀",
+    weight: 8,
+  },
+  {
+    key: 'finale_mutual_destruction',
+    roundTypes: [RoundType.FINALE],
+    participantCount: 2,
+    devotionChanges: [-50, -50],
+    fatalTo: [],
+    narrative: "{0} and {1} expose each other's cringe posts from 2019. MUTUAL DESTRUCTION. Both survive... barely. We've all been there. Glass houses, people~ 😬",
+    weight: 5,
+  },
+];
+
+// Export all events combined
+export const ALL_CHASE_EVENTS: ChaseEventDefinition[] = [
+  ...BLOODBATH_EVENTS,
+  ...DAY_EVENTS,
+  ...NIGHT_EVENTS,
+  ...FEAST_EVENTS,
+  ...FINALE_EVENTS,
+];
+
+// Get events by round type
+export function getEventsForRound(roundType: RoundType): ChaseEventDefinition[] {
+  return ALL_CHASE_EVENTS.filter(e => e.roundTypes.includes(roundType));
+}
+```
+
+#### Task 6.3: Mini-Chase Service
+
+**Duration:** 90 minutes
+**Outcome:** Core game logic for running The Mini-Chase
+
+```typescript
+// src/modules/mini-chase/mini-chase.service.ts
+
+import { prisma } from '../../services/database';
+import { logger } from '../../services/logger';
+import { ChaseStatus, RoundType, Faction } from '@prisma/client';
+import { ALL_CHASE_EVENTS, getEventsForRound, ChaseEventDefinition } from './events';
+
+const ROUND_SEQUENCE: RoundType[] = [
+  RoundType.BLOODBATH,
+  RoundType.DAY,
+  RoundType.NIGHT,
+  RoundType.DAY,
+  RoundType.FEAST,  // Special event on round 5
+  RoundType.DAY,
+  RoundType.NIGHT,
+  // ... continues until finale
+];
+
+export interface ChaseRoundResult {
+  roundNumber: number;
+  roundType: RoundType;
+  events: Array<{
+    narrative: string;
+    participantNames: string[];
+    faded: string[];  // Names of those who Faded
+  }>;
+  remainingCount: number;
+  isComplete: boolean;
+  winner?: { name: string; odId: string };
+}
+
+/**
+ * Create a new Mini-Chase session
+ */
+export async function createChase(
+  guildId: string,
+  channelId: string,
+  config: { maxPlayers?: number; startingDevotion?: number } = {}
+): Promise<number> {
+  const chase = await prisma.miniChase.create({
+    data: {
+      guildId,
+      channelId,
+      maxPlayers: config.maxPlayers ?? 24,
+      startingDevotion: config.startingDevotion ?? 100,
+      status: ChaseStatus.RECRUITING,
+    },
+  });
+
+  logger.info({ chaseId: chase.id, guildId }, 'Mini-Chase created');
+  return chase.id;
+}
+
+/**
+ * Join an active Mini-Chase
+ */
+export async function joinChase(
+  chaseId: number,
+  discordId: string,
+  displayName: string,
+  avatarUrl: string | null,
+  faction: Faction | null
+): Promise<{ success: boolean; message: string }> {
+  const chase = await prisma.miniChase.findUnique({
+    where: { id: chaseId },
+    include: { participants: true },
+  });
+
+  if (!chase) return { success: false, message: "Chase not found~" };
+  if (chase.status !== ChaseStatus.RECRUITING) {
+    return { success: false, message: "Too late! The Chase has already begun~" };
+  }
+  if (chase.participants.length >= chase.maxPlayers) {
+    return { success: false, message: "The Chase is full! Better luck next time~" };
+  }
+
+  // Get or create user
+  const user = await prisma.user.upsert({
+    where: { discordId },
+    create: { discordId },
+    update: {},
+  });
+
+  // Check if already joined
+  const existing = chase.participants.find(p => p.userId === user.id);
+  if (existing) {
+    return { success: false, message: "You're already in this Chase, eager one~" };
+  }
+
+  await prisma.miniChaseParticipant.create({
+    data: {
+      chaseId,
+      userId: user.id,
+      displayName,
+      avatarUrl,
+      faction,
+      devotion: chase.startingDevotion,
+    },
+  });
+
+  return {
+    success: true,
+    message: `Welcome to The Chase, ${displayName}! Your Devotion starts at ${chase.startingDevotion}. Don't let it hit zero... or you'll Fade~ 💜`
+  };
+}
+
+/**
+ * Start the Mini-Chase (close recruitment, begin simulation)
+ */
+export async function startChase(chaseId: number): Promise<{ success: boolean; message: string }> {
+  const chase = await prisma.miniChase.findUnique({
+    where: { id: chaseId },
+    include: { participants: true },
+  });
+
+  if (!chase) return { success: false, message: "Chase not found" };
+  if (chase.status !== ChaseStatus.RECRUITING) {
+    return { success: false, message: "Chase already started or finished" };
+  }
+  if (chase.participants.length < chase.minPlayers) {
+    return {
+      success: false,
+      message: `Need at least ${chase.minPlayers} contestants. Currently: ${chase.participants.length}. Recruit more simps!`
+    };
+  }
+
+  await prisma.miniChase.update({
+    where: { id: chaseId },
+    data: {
+      status: ChaseStatus.IN_PROGRESS,
+      startedAt: new Date(),
+      currentRound: 0,
+      roundType: RoundType.BLOODBATH,
+    },
+  });
+
+  logger.info({ chaseId, participantCount: chase.participants.length }, 'Mini-Chase started');
+  return {
+    success: true,
+    message: `THE MINI-CHASE BEGINS! ${chase.participants.length} contestants enter... only ONE will earn my attention. Let the Fading begin~ 💀✨`
+  };
+}
+
+/**
+ * Advance to the next round and process events
+ */
+export async function advanceRound(chaseId: number): Promise<ChaseRoundResult | null> {
+  const chase = await prisma.miniChase.findUnique({
+    where: { id: chaseId },
+    include: {
+      participants: {
+        where: { isAlive: true },
+        orderBy: { devotion: 'desc' },
+      },
+    },
+  });
+
+  if (!chase || chase.status !== ChaseStatus.IN_PROGRESS) return null;
+
+  const aliveParticipants = chase.participants;
+
+  // Check for winner
+  if (aliveParticipants.length <= 1) {
+    const winner = aliveParticipants[0];
+    await finalizeChase(chaseId, winner?.userId);
+
+    return {
+      roundNumber: chase.currentRound,
+      roundType: chase.roundType,
+      events: [],
+      remainingCount: aliveParticipants.length,
+      isComplete: true,
+      winner: winner ? { name: winner.displayName, odId: winner.odId } : undefined,
+    };
+  }
+
+  // Determine round type
+  const nextRound = chase.currentRound + 1;
+  let roundType: RoundType;
+
+  if (aliveParticipants.length <= 4) {
+    roundType = RoundType.FINALE;
+  } else if (nextRound < ROUND_SEQUENCE.length) {
+    roundType = ROUND_SEQUENCE[nextRound];
+  } else {
+    // Alternate day/night after sequence exhausted
+    roundType = nextRound % 2 === 0 ? RoundType.DAY : RoundType.NIGHT;
+  }
+
+  // Get available events for this round
+  const availableEvents = getEventsForRound(roundType);
+
+  // Process events until all alive participants have participated this round
+  const participated = new Set<number>();
+  const roundEvents: ChaseRoundResult['events'] = [];
+
+  while (participated.size < aliveParticipants.length) {
+    // Get participants who haven't acted this round
+    const available = aliveParticipants.filter(
+      p => !participated.has(p.id) && p.isAlive
+    );
+
+    if (available.length === 0) break;
+
+    // Select random event weighted by weight
+    const event = selectWeightedEvent(availableEvents, available.length);
+    if (!event) break;
+
+    // Select participants for this event
+    const eventParticipants = available
+      .sort(() => Math.random() - 0.5)
+      .slice(0, event.participantCount);
+
+    // Process the event
+    const result = await processEvent(chaseId, nextRound, roundType, event, eventParticipants);
+    roundEvents.push(result);
+
+    // Mark as participated
+    eventParticipants.forEach(p => participated.add(p.id));
+  }
+
+  // Update chase state
+  const updatedAlive = await prisma.miniChaseParticipant.count({
+    where: { chaseId, isAlive: true },
+  });
+
+  await prisma.miniChase.update({
+    where: { id: chaseId },
+    data: {
+      currentRound: nextRound,
+      roundType,
+    },
+  });
+
+  // Check for winner after round
+  if (updatedAlive <= 1) {
+    const winner = await prisma.miniChaseParticipant.findFirst({
+      where: { chaseId, isAlive: true },
+    });
+    await finalizeChase(chaseId, winner?.userId);
+
+    return {
+      roundNumber: nextRound,
+      roundType,
+      events: roundEvents,
+      remainingCount: updatedAlive,
+      isComplete: true,
+      winner: winner ? { name: winner.displayName, odId: winner.odId } : undefined,
+    };
+  }
+
+  return {
+    roundNumber: nextRound,
+    roundType,
+    events: roundEvents,
+    remainingCount: updatedAlive,
+    isComplete: false,
+  };
+}
+
+/**
+ * Process a single event
+ */
+async function processEvent(
+  chaseId: number,
+  roundNumber: number,
+  roundType: RoundType,
+  event: ChaseEventDefinition,
+  participants: Array<{ id: number; displayName: string; faction: Faction | null; devotion: number }>
+): Promise<ChaseRoundResult['events'][0]> {
+
+  // Render narrative with participant names
+  let narrative = event.narrative;
+  participants.forEach((p, i) => {
+    narrative = narrative.replace(new RegExp(`\\{${i}\\}`, 'g'), `**${p.displayName}**`);
+    narrative = narrative.replace(new RegExp(`\\{${i}\\.faction\\}`, 'g'), p.faction ?? 'Unaligned');
+  });
+
+  const faded: string[] = [];
+
+  // Apply devotion changes
+  for (let i = 0; i < participants.length; i++) {
+    const participant = participants[i];
+    let change = event.devotionChanges[i] ?? 0;
+
+    // Apply faction bonus if applicable
+    if (event.factionBonus && participant.faction === event.factionBonus.faction) {
+      change += event.factionBonus.bonus;
+    }
+
+    const isFatal = event.fatalTo.includes(i);
+    const newDevotion = isFatal ? 0 : Math.max(0, participant.devotion + change);
+    const hasFaded = newDevotion === 0;
+
+    await prisma.miniChaseParticipant.update({
+      where: { id: participant.id },
+      data: {
+        devotion: newDevotion,
+        devotionGained: change > 0 ? { increment: change } : undefined,
+        devotionLost: change < 0 ? { increment: Math.abs(change) } : undefined,
+        eventsParticipated: { increment: 1 },
+        isAlive: !hasFaded,
+        fadedAtRound: hasFaded ? roundNumber : undefined,
+        fadedBy: hasFaded ? narrative : undefined,
+      },
+    });
+
+    if (hasFaded) {
+      faded.push(participant.displayName);
+    }
+  }
+
+  // Log event to database
+  await prisma.miniChaseEvent.create({
+    data: {
+      chaseId,
+      roundNumber,
+      roundType,
+      eventIndex: 0, // Will be set properly with actual index
+      eventKey: event.key,
+      participants: participants.map(p => p.id),
+      narrative,
+    },
+  });
+
+  return {
+    narrative,
+    participantNames: participants.map(p => p.displayName),
+    faded,
+  };
+}
+
+/**
+ * Select event weighted by weight property
+ */
+function selectWeightedEvent(
+  events: ChaseEventDefinition[],
+  availableParticipants: number
+): ChaseEventDefinition | null {
+  // Filter to events that have enough participants
+  const eligible = events.filter(e => e.participantCount <= availableParticipants);
+  if (eligible.length === 0) return null;
+
+  const totalWeight = eligible.reduce((sum, e) => sum + e.weight, 0);
+  let random = Math.random() * totalWeight;
+
+  for (const event of eligible) {
+    random -= event.weight;
+    if (random <= 0) return event;
+  }
+
+  return eligible[eligible.length - 1];
+}
+
+/**
+ * Finalize chase and award rewards
+ */
+async function finalizeChase(chaseId: number, winnerUserId?: number): Promise<void> {
+  await prisma.miniChase.update({
+    where: { id: chaseId },
+    data: {
+      status: ChaseStatus.COMPLETED,
+      endedAt: new Date(),
+      winnerId: winnerUserId,
+    },
+  });
+
+  if (winnerUserId) {
+    // Award Devotion Points to winner
+    const WINNER_REWARD = 500;
+    await prisma.user.update({
+      where: { id: winnerUserId },
+      data: {
+        devotionPoints: { increment: WINNER_REWARD },
+        lifetimePoints: { increment: WINNER_REWARD },
+        chaseWins: { increment: 1 },
+        chasesPlayed: { increment: 1 },
+      },
+    });
+
+    // Award participation points to all
+    await prisma.$executeRaw`
+      UPDATE "User" u
+      SET "devotionPoints" = "devotionPoints" + 50,
+          "lifetimePoints" = "lifetimePoints" + 50,
+          "chasesPlayed" = "chasesPlayed" + 1
+      FROM "MiniChaseParticipant" p
+      WHERE p."userId" = u.id
+        AND p."chaseId" = ${chaseId}
+        AND p."userId" != ${winnerUserId}
+    `;
+  }
+
+  logger.info({ chaseId, winnerUserId }, 'Mini-Chase completed');
+}
+
+/**
+ * Get Mini-Chase status for display
+ */
+export async function getChaseStatus(chaseId: number): Promise<{
+  status: ChaseStatus;
+  participants: Array<{ name: string; devotion: number; isAlive: boolean; faction: Faction | null }>;
+  currentRound: number;
+  roundType: RoundType;
+} | null> {
+  const chase = await prisma.miniChase.findUnique({
+    where: { id: chaseId },
+    include: {
+      participants: {
+        orderBy: [{ isAlive: 'desc' }, { devotion: 'desc' }],
+      },
+    },
+  });
+
+  if (!chase) return null;
+
+  return {
+    status: chase.status,
+    participants: chase.participants.map(p => ({
+      name: p.displayName,
+      devotion: p.devotion,
+      isAlive: p.isAlive,
+      faction: p.faction,
+    })),
+    currentRound: chase.currentRound,
+    roundType: chase.roundType,
+  };
+}
+```
+
+#### Task 6.4: Mini-Chase Commands
+
+**Duration:** 60 minutes
+**Outcome:** Slash commands for running Mini-Chase
+
+```typescript
+// src/commands/chase/start.ts
+
+import {
+  SlashCommandBuilder,
+  ChatInputCommandInteraction,
+  EmbedBuilder,
+  ActionRowBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+  ComponentType,
+} from 'discord.js';
+import { createChase, joinChase, startChase, advanceRound, getChaseStatus } from '../../modules/mini-chase/mini-chase.service';
+import { ChaseStatus, RoundType } from '@prisma/client';
+import { Command } from '../../types/command';
+
+const ROUND_DELAY_MS = 8000;  // 8 seconds between rounds for drama
+const JOIN_WINDOW_MS = 60000; // 60 seconds to join
+
+export const command: Command = {
+  data: new SlashCommandBuilder()
+    .setName('chase')
+    .setDescription('THE MINI-CHASE - Battle Royale for Ika\'s attention')
+    .addSubcommand(sub =>
+      sub.setName('start')
+        .setDescription('Start a new Mini-Chase in this channel')
+        .addIntegerOption(opt =>
+          opt.setName('max_players')
+            .setDescription('Maximum contestants (default: 24)')
+            .setMinValue(4)
+            .setMaxValue(48)
+        )
+    )
+    .addSubcommand(sub =>
+      sub.setName('status')
+        .setDescription('Check current Mini-Chase status')
+    ),
+
+  async execute(interaction: ChatInputCommandInteraction) {
+    const subcommand = interaction.options.getSubcommand();
+
+    if (subcommand === 'start') {
+      await handleStart(interaction);
+    } else if (subcommand === 'status') {
+      await handleStatus(interaction);
+    }
+  },
+};
+
+async function handleStart(interaction: ChatInputCommandInteraction): Promise<void> {
+  const maxPlayers = interaction.options.getInteger('max_players') ?? 24;
+
+  await interaction.deferReply();
+
+  // Create the chase
+  const chaseId = await createChase(
+    interaction.guildId!,
+    interaction.channelId,
+    { maxPlayers }
+  );
+
+  // Create join button
+  const joinButton = new ButtonBuilder()
+    .setCustomId(`chase_join_${chaseId}`)
+    .setLabel('🏃 Join The Chase!')
+    .setStyle(ButtonStyle.Primary);
+
+  const startButton = new ButtonBuilder()
+    .setCustomId(`chase_begin_${chaseId}`)
+    .setLabel('🚀 Begin The Chase!')
+    .setStyle(ButtonStyle.Danger);
+
+  const row = new ActionRowBuilder<ButtonBuilder>()
+    .addComponents(joinButton, startButton);
+
+  const embed = new EmbedBuilder()
+    .setTitle('💜 THE MINI-CHASE RECRUITMENT 💜')
+    .setDescription(
+      `**Ika speaks:**\n` +
+      `"A new Chase begins! ${maxPlayers} spots available for brave simps willing to compete for my attention~"\n\n` +
+      `**Rules:**\n` +
+      `• Your Devotion starts at 100\n` +
+      `• Events will increase or decrease your Devotion\n` +
+      `• If your Devotion hits 0, you **Fade** (eliminated)\n` +
+      `• Last simp standing wins my eternal affection (and 500 Devotion Points)~\n\n` +
+      `*Click the button to join! Recruitment closes in 60 seconds or when someone clicks Begin~*`
+    )
+    .setColor(0xFF69B4)
+    .setFooter({ text: 'May the most devoted simp win~ 💜' });
+
+  const message = await interaction.editReply({
+    embeds: [embed],
+    components: [row]
+  });
+
+  // Handle button interactions
+  const collector = message.createMessageComponentCollector({
+    componentType: ComponentType.Button,
+    time: JOIN_WINDOW_MS,
+  });
+
+  collector.on('collect', async (buttonInt) => {
+    if (buttonInt.customId === `chase_join_${chaseId}`) {
+      // Get user's faction if they have one
+      const user = await prisma.user.findUnique({
+        where: { discordId: buttonInt.user.id },
+        select: { faction: true },
+      });
+
+      const result = await joinChase(
+        chaseId,
+        buttonInt.user.id,
+        buttonInt.user.displayName,
+        buttonInt.user.displayAvatarURL(),
+        user?.faction ?? null
+      );
+
+      await buttonInt.reply({ content: result.message, ephemeral: true });
+
+      // Update embed with participant count
+      const status = await getChaseStatus(chaseId);
+      if (status) {
+        embed.setDescription(
+          embed.data.description!.replace(
+            /\*\*Contestants:\*\* \d+/,
+            `**Contestants:** ${status.participants.length}`
+          )
+        );
+        embed.addFields({
+          name: `Contestants (${status.participants.length}/${maxPlayers})`,
+          value: status.participants.map(p => p.name).join(', ') || 'None yet~',
+        });
+        await interaction.editReply({ embeds: [embed] });
+      }
+    } else if (buttonInt.customId === `chase_begin_${chaseId}`) {
+      collector.stop('started');
+      await buttonInt.deferUpdate();
+      await runChase(interaction, chaseId);
+    }
+  });
+
+  collector.on('end', async (_, reason) => {
+    if (reason === 'time') {
+      // Auto-start if enough players
+      const status = await getChaseStatus(chaseId);
+      if (status && status.participants.length >= 4) {
+        await runChase(interaction, chaseId);
+      } else {
+        await interaction.editReply({
+          content: 'Not enough contestants joined. The Chase has been cancelled~ Maybe next time!',
+          embeds: [],
+          components: [],
+        });
+      }
+    }
+  });
+}
+
+async function runChase(
+  interaction: ChatInputCommandInteraction,
+  chaseId: number
+): Promise<void> {
+  const startResult = await startChase(chaseId);
+  if (!startResult.success) {
+    await interaction.followUp(startResult.message);
+    return;
+  }
+
+  // Opening announcement
+  const openingEmbed = new EmbedBuilder()
+    .setTitle('⚔️ THE MINI-CHASE BEGINS ⚔️')
+    .setDescription(startResult.message)
+    .setColor(0xFF1493);
+
+  await interaction.followUp({ embeds: [openingEmbed] });
+  await sleep(3000);
+
+  // Run rounds until completion
+  let isComplete = false;
+  while (!isComplete) {
+    const result = await advanceRound(chaseId);
+    if (!result) break;
+
+    // Create round embed
+    const roundEmbed = new EmbedBuilder()
+      .setTitle(getRoundTitle(result.roundType, result.roundNumber))
+      .setColor(getRoundColor(result.roundType))
+      .setFooter({ text: `${result.remainingCount} contestants remain...` });
+
+    // Add events to embed
+    const eventText = result.events
+      .map(e => {
+        let text = e.narrative;
+        if (e.faded.length > 0) {
+          text += `\n💀 **FADED:** ${e.faded.join(', ')}`;
+        }
+        return text;
+      })
+      .join('\n\n');
+
+    roundEmbed.setDescription(eventText || '*Nothing notable happened this round~*');
+
+    await interaction.followUp({ embeds: [roundEmbed] });
+
+    isComplete = result.isComplete;
+
+    if (result.isComplete && result.winner) {
+      // Victory announcement
+      await sleep(2000);
+      const victoryEmbed = new EmbedBuilder()
+        .setTitle('👑 THE MINI-CHASE CHAMPION 👑')
+        .setDescription(
+          `**${result.winner.name}** has won The Mini-Chase!\n\n` +
+          `*Ika speaks:*\n` +
+          `"Out of everyone who competed... YOU are the one who kept my attention. ` +
+          `Your Devotion never wavered. Your simping... *chef's kiss*~ ` +
+          `Take these 500 Devotion Points as proof of my... appreciation. ` +
+          `Don't let it go to your head. But also... maybe let it go to your head a little~ 💜👑"`
+        )
+        .setColor(0xFFD700);
+
+      await interaction.followUp({ embeds: [victoryEmbed] });
+    } else if (!isComplete) {
+      await sleep(ROUND_DELAY_MS);
+    }
+  }
+}
+
+function getRoundTitle(type: RoundType, round: number): string {
+  switch (type) {
+    case RoundType.BLOODBATH: return '🩸 THE BLOODBATH 🩸';
+    case RoundType.DAY: return `☀️ DAY ${Math.ceil(round / 2)} ☀️`;
+    case RoundType.NIGHT: return `🌙 NIGHT ${Math.ceil(round / 2)} 🌙`;
+    case RoundType.FEAST: return '🍽️ THE FEAST 🍽️';
+    case RoundType.FINALE: return '⚔️ THE FINALE ⚔️';
+    default: return `ROUND ${round}`;
+  }
+}
+
+function getRoundColor(type: RoundType): number {
+  switch (type) {
+    case RoundType.BLOODBATH: return 0xFF0000;
+    case RoundType.DAY: return 0xFFD700;
+    case RoundType.NIGHT: return 0x191970;
+    case RoundType.FEAST: return 0xFF69B4;
+    case RoundType.FINALE: return 0x9B59B6;
+    default: return 0x808080;
+  }
+}
+
+function sleep(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+```
+
+#### Task 6.5: Additional Mini-Chase Response Lines
+
+**Duration:** 30 minutes
+**Outcome:** Extended voice lines for special moments
+
+```typescript
+// src/modules/mini-chase/announcements.ts
+// Special announcement lines in Ika's voice
+
+export const CHASE_ANNOUNCEMENTS = {
+  // Recruitment phase
+  recruiting: [
+    "A new Mini-Chase opens! Who's brave enough to compete for my attention? Join now... if you dare~ 💜",
+    "Calling all simps! The Mini-Chase recruitment is OPEN. Spots are limited. Devotion is required. Survival is... optional~ 👀",
+  ],
+
+  // When someone joins
+  playerJoined: [
+    "Another challenger approaches! {name}, your Devotion will be tested. Don't disappoint me~ 💜",
+    "{name} enters The Chase! Bold. Reckless. I like it. Let's see if that energy lasts~",
+    "Welcome, {name}! Your starting Devotion is 100. Lose it all, and you Fade. No pressure~ ✨",
+  ],
+
+  // Round transitions
+  bloodbathStart: [
+    "THE BLOODBATH BEGINS! Everyone scrambles for position. Only the clever will survive the opening chaos~",
+    "Let the simping COMMENCE! The Bloodbath round starts NOW. May your Devotion hold steady~",
+  ],
+
+  dayStart: [
+    "The sun rises on Day {day}. A new day means new chances to prove your worth... or Fade trying~",
+    "Day {day} begins! Time to show me what you've got. Or don't. Either way, I'm entertained~",
+  ],
+
+  nightStart: [
+    "Night falls. The risks get higher, the rewards sweeter. What will you do in the dark, I wonder~? 🌙",
+    "Night {night} descends. Secrets are shared. Alliances are broken. Simps get... creative~ 👀",
+  ],
+
+  feastStart: [
+    "THE FEAST! I'm feeling generous. This is your chance to gain MAJOR Devotion... or lose everything~",
+    "Special event: THE FEAST! High stakes. High drama. Exactly how I like it~ 🍽️",
+  ],
+
+  finaleStart: [
+    "THE FINALE! Only {count} contestants remain. One will win. The rest will Fade. This is it~",
+    "We're in the endgame now. {count} simps. One victor. WHO WILL IT BE?! 👑",
+  ],
+
+  // Deaths/Fading
+  singleFade: [
+    "{name} has **Faded**. Their Devotion couldn't sustain them. We'll remember you... probably~",
+    "And just like that, {name} is gone. Faded into nothing. The Chase is cruel but fair~",
+    "{name}'s light flickers out. **Faded.** One less contestant for the crown~",
+  ],
+
+  multiFade: [
+    "DOUBLE FADE! {names} couldn't handle the pressure. Two lights extinguished at once~",
+    "A massacre! {names} all Fade simultaneously. The Chase shows no mercy~",
+  ],
+
+  // Winner announcement
+  victory: [
+    "🏆 {name} WINS THE MINI-CHASE! 🏆\n\nOut of everyone, YOU proved your Devotion was strongest. I see you. I acknowledge you. Take your 500 points and this crown of glory~ 👑💜",
+    "THE CHAMPION EMERGES! {name} has won The Mini-Chase!\n\nYour simping was unmatched. Your Devotion, unwavering. You've earned my attention... for now. Don't get comfortable~ 👑",
+  ],
+
+  // No winner (everyone faded - rare)
+  noWinner: [
+    "Everyone... Faded? EVERYONE?! This is unprecedented. I'm impressed and horrified. No winner this time. The Chase claims all~ 💀",
+  ],
+
+  // Status check
+  statusAlive: [
+    "**{count}** contestants still standing! Current Devotion leader: **{leader}** with {devotion} Devotion~",
+  ],
+
+  statusFaded: [
+    "**{count}** have Faded. Their memory lives on... in our hearts. And this list: {names}",
+  ],
+};
+
+// Get random announcement for category
+export function getAnnouncement(
+  category: keyof typeof CHASE_ANNOUNCEMENTS,
+  replacements: Record<string, string> = {}
+): string {
+  const options = CHASE_ANNOUNCEMENTS[category];
+  let message = options[Math.floor(Math.random() * options.length)];
+
+  // Replace placeholders
+  for (const [key, value] of Object.entries(replacements)) {
+    message = message.replace(new RegExp(`\\{${key}\\}`, 'g'), value);
+  }
+
+  return message;
+}
+```
+
+#### Integration with Existing Systems
+
+The Mini-Chase integrates with:
+
+1. **Devotion Points**: Winners get 500 points, participants get 50
+2. **Factions**: Faction members get bonus Devotion in some events
+3. **User Profiles**: Track chase wins and participation
+4. **Leaderboards**: Add "Chase Wins" leaderboard category
+
+Add to leaderboard command options:
+```typescript
+{ name: 'Chase Champions', value: 'chase_wins' }
+```
 
 ---
 
