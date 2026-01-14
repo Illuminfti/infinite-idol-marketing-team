@@ -1,9 +1,10 @@
 # IKA'S SIMP WARS — Implementation Specification
 
 > **Document Type:** Claude Code Implementation-Ready Specification
-> **Version:** 4.1 (Production-Ready with Personality + Reference Implementations)
+> **Version:** 4.2 (Engineering Review Fixes Applied)
 > **Last Updated:** 2026-01-14
 > **Degen Review:** PASSED (DS-3 after personality additions)
+> **Engineering Review:** PASSED (All P0/P1/P2 issues resolved)
 > **Reference:** See [discord-reference-implementations.md](./discord-reference-implementations.md) for source projects
 
 ---
@@ -149,6 +150,73 @@ if (!limit.allowed) {
 }
 ```
 
+### Rate Limiter Integration Example
+
+When making Discord API calls that might hit rate limits, wrap them with error handling:
+
+```typescript
+// src/utils/discord-api.ts
+import { checkRateLimit, recordRateLimit } from '../services/rate-limiter';
+import { logger } from '../services/logger';
+import { DiscordAPIError } from 'discord.js';
+
+/**
+ * Wrapper for Discord API calls with rate limit awareness
+ * Use this for any bulk operations or operations that might hit rate limits
+ */
+export async function withRateLimitHandling<T>(
+  endpoint: string,
+  operation: () => Promise<T>,
+  options: { maxRetries?: number; skipOnLimit?: boolean } = {}
+): Promise<T | null> {
+  const { maxRetries = 1, skipOnLimit = false } = options;
+
+  // Check if we're already rate limited for this endpoint
+  const limit = await checkRateLimit(endpoint);
+  if (!limit.allowed) {
+    logger.warn({ endpoint, retryAfter: limit.retryAfter }, 'Pre-check: Rate limited');
+    if (skipOnLimit) return null;
+    throw new Error(`Rate limited on ${endpoint}, retry after ${limit.retryAfter}s`);
+  }
+
+  let lastError: Error | null = null;
+
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      return await operation();
+    } catch (error) {
+      if (error instanceof DiscordAPIError && error.status === 429) {
+        // Rate limited - record it and potentially retry
+        const retryAfter = (error as any).retryAfter ?? 60;
+        await recordRateLimit(endpoint, retryAfter);
+        logger.warn({ endpoint, retryAfter, attempt }, 'Hit rate limit');
+
+        if (attempt < maxRetries) {
+          // Wait and retry
+          await new Promise(resolve => setTimeout(resolve, retryAfter * 1000));
+          continue;
+        }
+      }
+      lastError = error as Error;
+      break;
+    }
+  }
+
+  throw lastError ?? new Error(`Operation failed on ${endpoint}`);
+}
+
+// Usage example in role sync job:
+import { withRateLimitHandling } from '../utils/discord-api';
+
+async function assignRole(member: GuildMember, roleId: string): Promise<void> {
+  await withRateLimitHandling(
+    'roles:assign',
+    () => member.roles.add(roleId),
+    { skipOnLimit: true }  // Skip this user if rate limited, will catch up tomorrow
+  );
+}
+```
+
 ---
 
 ## File Structure
@@ -200,7 +268,9 @@ infinite-idol-bot/
 │   │   ├── gacha/
 │   │   │   ├── gacha.service.ts    # Pull logic, rates, collection
 │   │   │   ├── gacha.types.ts      # Card types, rarity enums
-│   │   │   └── banners.ts          # Banner definitions
+│   │   │   ├── cards.ts            # Card definitions (pool of available cards)
+│   │   │   ├── banners.ts          # Banner definitions
+│   │   │   └── responses.ts        # Ika's gacha voice responses
 │   │   ├── devotion/
 │   │   │   ├── devotion.service.ts # Point calculation, leaderboards
 │   │   │   └── devotion.types.ts   # Point sources enum
@@ -310,6 +380,7 @@ model User {
 
   // Relations
   gachaInventory  GachaCard[]
+  gachaPity       GachaPity[]
   eventEntries    EventEntry[]
 
   @@index([faction])
@@ -379,15 +450,15 @@ model EventEntry {
   @@index([eventType, eventDate])
 }
 
+// Tracks scheduled message state (NOT content - content is in SCHEDULED_MESSAGES constant)
+// This model tracks: when last sent, whether enabled, and which channel to target
+// Message content/templates are in src/modules/ika/scheduled-messages.ts for easier editing
 model ScheduledMessage {
   id          Int      @id @default(autoincrement())
 
-  messageKey  String   @unique @db.VarChar(50)  // "morning_greeting", "late_night"
-  channelId   String   @db.VarChar(20)
-
-  content     String   @db.Text
-  cronPattern String   @db.VarChar(50)  // "0 9 * * *" = 9 AM daily
-  timezone    String   @db.VarChar(50)  // "UTC"
+  messageKey  String   @unique @db.VarChar(50)  // Maps to SCHEDULED_MESSAGES[].key
+  channelId   String   @db.VarChar(20)          // Resolved from channelKey at setup time
+  cronPattern String   @db.VarChar(50)          // "0 9 * * *" = 9 AM daily
 
   enabled     Boolean  @default(true)
   lastSentAt  DateTime?
@@ -480,10 +551,230 @@ export interface PullResult {
 
 // Pity tracking per user per banner
 export interface UserPityState {
-  odId: string;
+  discordId: string;
   bannerId: string;
   pullsSinceSSR: number;
   lastPullAt: Date;
+}
+```
+
+```typescript
+// src/modules/gacha/cards.ts
+// Card pool definition - NOTE: imageUrl values are placeholders until assets are ready
+import { GachaCardDefinition, Rarity } from './gacha.types';
+
+export const CARDS: GachaCardDefinition[] = [
+  // SSR Cards (2% base rate)
+  {
+    id: 'ika_idol_form',
+    name: 'Ika - Idol Form',
+    rarity: Rarity.SSR,
+    imageUrl: '/cards/ika_idol_form.png',  // TODO: Replace with CDN URL
+    description: 'The moment before The Chase begins. Her eyes hold determination.',
+    bannerIds: ['debut_banner', 'standard_banner'],
+  },
+  {
+    id: 'ika_swimsuit',
+    name: 'Ika - Summer Splash',
+    rarity: Rarity.SSR,
+    imageUrl: '/cards/ika_swimsuit.png',
+    description: 'Even at the beach, she\'s working on her tan... and her Devotion.',
+    bannerIds: ['summer_banner', 'standard_banner'],
+  },
+  {
+    id: 'ika_dark_mode',
+    name: 'Ika - Dark Mode',
+    rarity: Rarity.SSR,
+    imageUrl: '/cards/ika_dark_mode.png',
+    description: 'When the spotlight dims, a different Ika emerges.',
+    bannerIds: ['debut_banner', 'standard_banner'],
+  },
+
+  // Super Rare Cards (8% base rate)
+  {
+    id: 'ika_casual',
+    name: 'Ika - Off Duty',
+    rarity: Rarity.SUPER_RARE,
+    imageUrl: '/cards/ika_casual.png',
+    description: 'Rare footage of Ika without her stage presence. She\'s still watching.',
+    bannerIds: ['debut_banner', 'standard_banner'],
+  },
+  {
+    id: 'ika_workout',
+    name: 'Ika - Training Arc',
+    rarity: Rarity.SUPER_RARE,
+    imageUrl: '/cards/ika_workout.png',
+    description: 'Idol bodies don\'t maintain themselves. Neither does relevance.',
+    bannerIds: ['debut_banner', 'standard_banner'],
+  },
+  {
+    id: 'ika_cooking',
+    name: 'Ika - Chef Mode',
+    rarity: Rarity.SUPER_RARE,
+    imageUrl: '/cards/ika_cooking.png',
+    description: 'She made you lunch. It\'s mostly edible. The thought counts.',
+    bannerIds: ['standard_banner'],
+  },
+
+  // Rare Cards (20% base rate)
+  {
+    id: 'ika_wink',
+    name: 'Ika - Wink',
+    rarity: Rarity.RARE,
+    imageUrl: '/cards/ika_wink.png',
+    description: 'A standard idol wink. But when Ika does it, it hits different.',
+    bannerIds: ['debut_banner', 'standard_banner'],
+  },
+  {
+    id: 'ika_peace_sign',
+    name: 'Ika - Peace!',
+    rarity: Rarity.RARE,
+    imageUrl: '/cards/ika_peace.png',
+    description: 'The classic pose. Timeless, like your devotion should be.',
+    bannerIds: ['debut_banner', 'standard_banner'],
+  },
+  {
+    id: 'ika_thinking',
+    name: 'Ika - Deep Thoughts',
+    rarity: Rarity.RARE,
+    imageUrl: '/cards/ika_thinking.png',
+    description: 'What is she thinking about? Probably The Chase. Always The Chase.',
+    bannerIds: ['debut_banner', 'standard_banner'],
+  },
+  {
+    id: 'ika_wave',
+    name: 'Ika - Hello!',
+    rarity: Rarity.RARE,
+    imageUrl: '/cards/ika_wave.png',
+    description: 'She\'s waving at you specifically. Probably.',
+    bannerIds: ['debut_banner', 'standard_banner'],
+  },
+
+  // Common Cards (70% base rate)
+  {
+    id: 'ika_smile',
+    name: 'Ika - Smile',
+    rarity: Rarity.COMMON,
+    imageUrl: '/cards/ika_smile.png',
+    description: 'A simple smile. Even commons are precious when it\'s Ika.',
+    bannerIds: ['debut_banner', 'standard_banner'],
+  },
+  {
+    id: 'ika_blush',
+    name: 'Ika - Embarrassed',
+    rarity: Rarity.COMMON,
+    imageUrl: '/cards/ika_blush.png',
+    description: 'Caught off guard. It happens to the best of us.',
+    bannerIds: ['debut_banner', 'standard_banner'],
+  },
+  {
+    id: 'ika_determined',
+    name: 'Ika - Determined',
+    rarity: Rarity.COMMON,
+    imageUrl: '/cards/ika_determined.png',
+    description: 'The look she gives before every Chase. Pure focus.',
+    bannerIds: ['debut_banner', 'standard_banner'],
+  },
+  {
+    id: 'ika_pouty',
+    name: 'Ika - Pouty',
+    rarity: Rarity.COMMON,
+    imageUrl: '/cards/ika_pouty.png',
+    description: 'When you don\'t pull enough. She notices.',
+    bannerIds: ['debut_banner', 'standard_banner'],
+  },
+  {
+    id: 'ika_sleepy',
+    name: 'Ika - Sleepy',
+    rarity: Rarity.COMMON,
+    imageUrl: '/cards/ika_sleepy.png',
+    description: 'Even idols need rest. But she\'s still here for you.',
+    bannerIds: ['debut_banner', 'standard_banner'],
+  },
+];
+
+// Helper to get cards by rarity
+export function getCardsByRarity(rarity: Rarity): GachaCardDefinition[] {
+  return CARDS.filter(c => c.rarity === rarity);
+}
+
+// Helper to get cards for a specific banner
+export function getCardsForBanner(bannerId: string): GachaCardDefinition[] {
+  return CARDS.filter(c => c.bannerIds.includes(bannerId));
+}
+```
+
+```typescript
+// src/modules/gacha/banners.ts
+import { BannerDefinition, Rarity } from './gacha.types';
+
+export const BANNERS: BannerDefinition[] = [
+  {
+    id: 'debut_banner',
+    name: 'Debut Dreams',
+    description: 'The original banner. Where every simp\'s journey begins.',
+    startDate: new Date('2026-01-15'),
+    endDate: new Date('2026-12-31'),
+    featuredCardIds: ['ika_idol_form', 'ika_dark_mode'],
+    rates: {
+      [Rarity.COMMON]: 0.70,
+      [Rarity.RARE]: 0.20,
+      [Rarity.SUPER_RARE]: 0.08,
+      [Rarity.SSR]: 0.02,
+    },
+    pity: {
+      softPity: 75,        // Start boosting SSR rate
+      hardPity: 90,        // Guaranteed SSR
+      rateBoostPerPull: 0.05,  // +5% per pull after soft pity
+    },
+  },
+  {
+    id: 'standard_banner',
+    name: 'Standard Pool',
+    description: 'The everyday banner. Always available, always tempting.',
+    startDate: new Date('2026-01-01'),
+    endDate: new Date('2099-12-31'),  // Permanent banner
+    featuredCardIds: [],  // No rate-up, even distribution
+    rates: {
+      [Rarity.COMMON]: 0.70,
+      [Rarity.RARE]: 0.20,
+      [Rarity.SUPER_RARE]: 0.08,
+      [Rarity.SSR]: 0.02,
+    },
+    pity: {
+      softPity: 75,
+      hardPity: 90,
+      rateBoostPerPull: 0.05,
+    },
+  },
+];
+
+// Get current active banner (prioritize limited over standard)
+export function getCurrentBanner(): BannerDefinition {
+  const now = new Date();
+
+  // Find active limited banner first
+  const limitedBanner = BANNERS.find(
+    b => b.id !== 'standard_banner' &&
+         now >= b.startDate &&
+         now <= b.endDate
+  );
+
+  if (limitedBanner) return limitedBanner;
+
+  // Fall back to standard banner
+  const standardBanner = BANNERS.find(b => b.id === 'standard_banner');
+  if (!standardBanner) {
+    throw new Error('No active banner found! This should never happen.');
+  }
+
+  return standardBanner;
+}
+
+// Get all active banners (for display)
+export function getActiveBanners(): BannerDefinition[] {
+  const now = new Date();
+  return BANNERS.filter(b => now >= b.startDate && now <= b.endDate);
 }
 ```
 
@@ -1799,9 +2090,16 @@ export const command: Command = {
       leaderboardData = JSON.parse(cached);
     } else {
       // Fallback: query database directly (should rarely happen)
+      // Map category slug to Faction enum: 'pink_pilled' → 'PINK_PILLED'
+      const factionMap: Record<string, Faction> = {
+        'pink_pilled': Faction.PINK_PILLED,
+        'dark_devotees': Faction.DARK_DEVOTEES,
+        'chaos_agents': Faction.CHAOS_AGENTS,
+      };
+
       const users = await prisma.user.findMany({
         where: category === 'overall' ? {} : {
-          faction: category.toUpperCase().replace('_', '_') as any,
+          faction: factionMap[category],
         },
         orderBy: { devotionPoints: 'desc' },
         take: 100,
@@ -2349,28 +2647,33 @@ export async function pull(discordId: string, count: number = 1): Promise<PullRe
     ownedCardIds.add(card.id);
   }
 
-  // Update pity state in database
-  await prisma.gachaPity.update({
-    where: { userId_bannerId: { userId: user.id, bannerId: banner.id } },
-    data: {
-      pullsSinceSSR: currentPity,
-      totalPulls: { increment: count },
-      lastPullAt: new Date(),
-    },
-  });
-
-  // Persist new cards to database
+  // Use transaction to ensure pity state and card creation are atomic
+  // If one fails, both are rolled back to prevent inconsistent state
   const newCards = results.filter(r => r.isNew);
-  if (newCards.length > 0) {
-    await prisma.gachaCard.createMany({
-      data: newCards.map(r => ({
-        userId: user.id,
-        cardId: r.card.id,
-        rarity: r.card.rarity,
-      })),
-      skipDuplicates: true,
+
+  await prisma.$transaction(async (tx) => {
+    // Update pity state in database
+    await tx.gachaPity.update({
+      where: { userId_bannerId: { userId: user.id, bannerId: banner.id } },
+      data: {
+        pullsSinceSSR: currentPity,
+        totalPulls: { increment: count },
+        lastPullAt: new Date(),
+      },
     });
-  }
+
+    // Persist new cards to database
+    if (newCards.length > 0) {
+      await tx.gachaCard.createMany({
+        data: newCards.map(r => ({
+          userId: user.id,
+          cardId: r.card.id,
+          rarity: r.card.rarity,
+        })),
+        skipDuplicates: true,
+      });
+    }
+  });
 
   return results;
 }
@@ -3095,15 +3398,23 @@ npm run commands:deploy  # Force re-register slash commands
 
 ### Required Bot Permissions Integer
 
-When generating the bot invite URL, use permission integer: `268520528`
+When generating the bot invite URL, use permission integer: `268462096`
 
 This includes:
 - `MANAGE_ROLES` (268435456)
 - `MANAGE_CHANNELS` (16)
 - `SEND_MESSAGES` (2048)
 - `EMBED_LINKS` (16384)
-- `USE_APPLICATION_COMMANDS` (2147483648)
 - `MANAGE_MESSAGES` (8192)
+
+**OAuth2 Scopes Required:**
+- `bot` - Required for all bot functionality
+- `applications.commands` - Required for slash commands (this is a SCOPE, not a permission)
+
+**Invite URL Format:**
+```
+https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=268462096&scope=bot%20applications.commands
+```
 
 ---
 
