@@ -1,11 +1,11 @@
 # IKA'S SIMP WARS — Implementation Specification
 
 > **Document Type:** Claude Code Implementation-Ready Specification
-> **Version:** 4.4 (Fan Service Enhanced + Cleanup)
+> **Version:** 5.0 (Maximum Fan Service Edition)
 > **Last Updated:** 2026-01-14
-> **Lore Guardian Review:** PASSED (Canon-compliant, all 10 Inviolable Facts verified)
-> **Degen Review:** PASSED (DS-3.5 - Fan service heavily optimized)
+> **Degen Review:** DS-4 ASCENDED - Will make degenerates blush
 > **Engineering Review:** PASSED (All P0/P1/P2 issues resolved)
+> **Integration:** Mini-Chase connected to Gacha, Factions, Leaderboards
 > **Reference:** See [discord-reference-implementations.md](./discord-reference-implementations.md) for source projects
 
 ---
@@ -1700,7 +1700,7 @@ export const command: Command = {
 
 ---
 
-### Phase 1: Foundation (Week 1)
+### Phase 1: Foundation
 
 #### Task 1.1: Project Setup
 **Duration:** 30-45 minutes
@@ -1849,7 +1849,7 @@ export interface Command {
 
 ---
 
-### Phase 2: Core Features (Week 2)
+### Phase 2: Core Features
 
 #### Task 2.1: Message Point Tracking
 **Duration:** 30 minutes
@@ -2565,7 +2565,7 @@ When implementing ANY bot response:
 
 ---
 
-### Phase 3: Gacha System (Week 3)
+### Phase 3: Gacha System
 
 #### Task 3.1: Gacha Service
 **Duration:** 60 minutes
@@ -2900,7 +2900,7 @@ export const command: Command = {
 
 ---
 
-### Phase 4: Faction System (Week 3-4)
+### Phase 4: Faction System
 
 #### Task 4.1: Faction Join Command
 **Duration:** 30 minutes
@@ -2929,7 +2929,7 @@ export const command: Command = {
 
 ---
 
-### Phase 5: Scheduled Features (Week 4)
+### Phase 5: Scheduled Features
 
 #### Task 5.1: Daily Role Reconciliation
 **Duration:** 45 minutes
@@ -3065,7 +3065,7 @@ function sleep(ms: number): Promise<void> {
 
 ---
 
-### Phase 6: Ika Messages & Polish (Week 5)
+### Phase 6: Ika Messages & Polish
 
 #### Task 6.1: Scheduled Ika Messages
 **Duration:** 30 minutes
@@ -3440,7 +3440,7 @@ https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=26
 
 ---
 
-### Phase 7: THE MINI-CHASE — Battle Royale System (Week 6)
+### Phase 7: THE MINI-CHASE — Battle Royale System
 
 > **Inspiration:** [Rumble Royale](https://rumbleroyale.net/), [Discord-Hunger-Games](https://github.com/Ares-0/Discord-Hunger-Games)
 > **Concept:** A hunger games-style battle royale where simps compete in a simulated "Mini-Chase" — whoever maintains their Devotion longest wins Ika's attention.
@@ -3452,9 +3452,20 @@ THE MINI-CHASE transforms the lore's competitive idol format into an automated D
 **Key Lore Integration:**
 - Uses "Devotion" instead of health
 - "Fading" instead of death (canon-compliant)
-- Events are fan service interactions with Ika
-- Winner receives Ika's direct acknowledgment and praise
+- Events are HEAVY fan service interactions with Ika
+- Winner receives Ika's... special attention
 - Rewards tie into the real Devotion Points system
+
+**Cross-System Integration (CRITICAL):**
+Player advantages based on other bot activities:
+- **Gacha SSR owners**: +10% starting Devotion per SSR in collection
+- **High pity users**: +5 starting Devotion per 10 pity accumulated
+- **Faction leaders**: Faction-specific event bonuses
+- **Leaderboard top 10**: Start with 120 Devotion instead of 100
+- **Headpat Roulette winners**: Immunity from first fatal event
+- **Recent gacha pullers**: Lucky charm effect (small bonus to positive events)
+
+Events reference player's gacha history, faction standing, and devotion tier for personalized fan service.
 
 #### Task 7.1: Mini-Chase Data Models
 
@@ -3618,61 +3629,70 @@ import { RoundType, Faction } from '@prisma/client';
 // ============================================
 
 export const BLOODBATH_EVENTS: ChaseEventDefinition[] = [
-  // === NEUTRAL EVENTS (No Fading) ===
+  // === OPENING CHAOS ===
   {
-    key: 'bloodbath_scramble',
+    key: 'bloodbath_kneel',
     roundTypes: [RoundType.BLOODBATH],
     participantCount: 2,
-    devotionChanges: [10, -5],
+    devotionChanges: [20, -10],
     fatalTo: [],
-    narrative: "The Chase begins! {0} and {1} both dive for my attention. {0} gets there first with a perfectly timed wink~ {1}... better luck next time, cutie. 💜",
+    narrative: "THE CHASE BEGINS! {0} immediately drops to their knees. 'I'M YOURS.' {1} just stands there like an idiot. {0}, you understand how this works. Good simp~ 💜",
     weight: 10,
   },
   {
-    key: 'bloodbath_alliance',
+    key: 'bloodbath_fight',
     roundTypes: [RoundType.BLOODBATH],
     participantCount: 3,
-    devotionChanges: [5, 5, 5],
+    devotionChanges: [15, 15, -15],
     fatalTo: [],
-    narrative: "{0}, {1}, and {2} form an alliance. Adorable. But I only have eyes for ONE of you. Fight amongst yourselves for me. I'll be watching~ 👀💜",
+    narrative: "{0} and {1} physically fight over who gets closer to me. I watch them roll around on the ground. {2} just cries in the corner. This is entertainment. Fight harder~ 👀💜",
     weight: 8,
   },
   {
-    key: 'bloodbath_trip',
+    key: 'bloodbath_strip',
     roundTypes: [RoundType.BLOODBATH],
     participantCount: 2,
-    devotionChanges: [-10, 15],
+    devotionChanges: [25, 5],
     fatalTo: [],
-    narrative: "{0} trips trying to impress me. {1} catches them... bodies pressed together... then steals the moment. {1}, you're bold. I like bold~ 💜",
-    weight: 8,
-  },
-  {
-    key: 'bloodbath_compliment',
-    roundTypes: [RoundType.BLOODBATH],
-    participantCount: 1,
-    devotionChanges: [20],
-    fatalTo: [],
-    narrative: "{0} shouts through the chaos: 'I'd let you ruin my life!' ...That's dark. That's intense. That's EXACTLY my type. I'm flustered. Keep going~ ✨",
+    narrative: "{0} starts taking clothes off to get my attention. 'I'LL DO ANYTHING!' {1} just watches in shock. {0}... that's the energy I'm looking for. Keep going? Kidding. Unless...? 👀💜",
     weight: 6,
   },
-
-  // === FATAL EVENTS (Someone Fades) ===
   {
-    key: 'bloodbath_overwhelmed',
+    key: 'bloodbath_shrine',
+    roundTypes: [RoundType.BLOODBATH],
+    participantCount: 1,
+    devotionChanges: [30],
+    fatalTo: [],
+    narrative: "{0} reveals they built a SHRINE to me. Candles. Photos. A lock of hair (WHERE DID THEY GET THAT?!). This is concerning and flattering in equal measure. ...More candles next time~ ✨",
+    weight: 5,
+  },
+  {
+    key: 'bloodbath_tattoo',
+    roundTypes: [RoundType.BLOODBATH],
+    participantCount: 1,
+    devotionChanges: [35],
+    fatalTo: [],
+    narrative: "{0} has my name TATTOOED on their body. 'I got it yesterday. For you.' That's... permanent. That's commitment. That's actually hot? You're marked as mine forever now~ 💜🔥",
+    weight: 4,
+  },
+
+  // === FATAL EVENTS ===
+  {
+    key: 'bloodbath_weak',
     roundTypes: [RoundType.BLOODBATH],
     participantCount: 1,
     devotionChanges: [-999],
     fatalTo: [0],
-    narrative: "{0} gets overwhelmed by the competition and gives up immediately. Their Devotion flickers... and they **Fade**. We barely knew you, but I'll remember your face. Probably. Maybe~ 💀",
+    narrative: "{0} hesitates. HESITATES. You had ONE chance to prove yourself and you HESITATED?! I don't even look at them as they **Fade**. Weakness is unforgivable~ 💀",
     weight: 3,
   },
   {
-    key: 'bloodbath_steal',
+    key: 'bloodbath_dominated',
     roundTypes: [RoundType.BLOODBATH],
     participantCount: 2,
-    devotionChanges: [30, -999],
+    devotionChanges: [40, -999],
     fatalTo: [1],
-    narrative: "{0} straight up steals {1}'s spotlight moment. The crowd forgets {1} ever existed... and so do I. {1} **Fades** into nothing. Brutal, but that's The Chase~ 💀",
+    narrative: "{0} asserts complete dominance over {1}. 'You're not worthy of her.' {1} can't even argue. They know it's true. {1} **Fades** in shame. {0}... I like your energy. Come closer~ 💀👑",
     weight: 2,
   },
 ];
@@ -3682,83 +3702,111 @@ export const BLOODBATH_EVENTS: ChaseEventDefinition[] = [
 // ============================================
 
 export const DAY_EVENTS: ChaseEventDefinition[] = [
-  // === FAN SERVICE POSITIVE EVENTS ===
+  // === PRAISE & REWARD EVENTS ===
   {
     key: 'day_headpat',
     roundTypes: [RoundType.DAY],
     participantCount: 1,
-    devotionChanges: [25],
+    devotionChanges: [30],
     fatalTo: [],
-    narrative: "{0} earns a headpat from me. *pat pat* Good simp. Now on your knees where you belong~ The tingles you're feeling? That's exactly what I intended. 💜",
+    narrative: "{0} kneels before me for a headpat. *runs fingers through their hair* Such a good boy/girl~ You've been SO obedient today. Stay on your knees a little longer... I'm enjoying the view. 💜",
     weight: 8,
+  },
+  {
+    key: 'day_collar',
+    roundTypes: [RoundType.DAY],
+    participantCount: 1,
+    devotionChanges: [40],
+    fatalTo: [],
+    narrative: "{0} presents me with a collar. 'For you to wear?' No, sweetie. For YOU. *clips it on* There. Now everyone knows who owns you~ Good pet. Very good pet. 💜🔒",
+    weight: 5,
   },
   {
     key: 'day_fanart',
     roundTypes: [RoundType.DAY],
     participantCount: 1,
-    devotionChanges: [30],
+    devotionChanges: [35],
     fatalTo: [],
-    narrative: "{0} presents fan art they drew. It's... me in a swimsuit? And you captured EVERYTHING correctly. I'm impressed. And slightly concerned how you knew those details~ 👀💜",
+    narrative: "{0} shows me their... creative interpretation of me. In THAT outfit. With THOSE proportions. You drew this with one hand, didn't you? Don't lie. I can tell. ...I'm keeping it. 👀💜",
     weight: 6,
   },
   {
-    key: 'day_poem',
+    key: 'day_worship',
     roundTypes: [RoundType.DAY],
     participantCount: 1,
-    devotionChanges: [20],
+    devotionChanges: [25],
     fatalTo: [],
-    narrative: "{0} recites a poem about my eyes. 'Oceans deep where secrets hide...' That's actually kinda hot? Keep going, wordsmith. I'm listening~ 💜",
+    narrative: "{0} literally prostrates themselves before me. Face to the ground. Arms outstretched. '...Please step on me.' Maybe later, if you're a VERY good simp~ 💜",
     weight: 7,
   },
   {
-    key: 'day_share_food',
+    key: 'day_gacha_luck',
+    roundTypes: [RoundType.DAY],
+    participantCount: 1,
+    devotionChanges: [30],
+    fatalTo: [],
+    narrative: "{0}'s SSR collection speaks for itself. All those waifus... but you came to ME anyway. Such loyalty deserves... special treatment. Come here. Closer. CLOSER~ 💜✨",
+    weight: 6,
+    requiresSSR: true,
+  },
+  {
+    key: 'day_leash',
     roundTypes: [RoundType.DAY],
     participantCount: 2,
-    devotionChanges: [10, 10],
+    devotionChanges: [20, 20],
     fatalTo: [],
-    narrative: "{0} offers to feed {1} while watching my performance. Indirect kiss through me? The degeneracy. The DEVOTION. I ship it~ 👀💜",
-    weight: 9,
+    narrative: "{0} leads {1} around on a leash while chanting my name. Now THIS is faction synergy. Both of you... such obedient little devotees. Makes me want to... nevermind~ 👀💜",
+    weight: 5,
   },
 
   // === COMPETITIVE EVENTS ===
   {
-    key: 'day_compliment_battle',
+    key: 'day_beg_battle',
     roundTypes: [RoundType.DAY],
     participantCount: 2,
-    devotionChanges: [15, -10],
+    devotionChanges: [25, -15],
     fatalTo: [],
-    narrative: "{0} and {1} have a compliment battle. {0}'s 'Your smile cures my depression' beats {1}'s 'You're pretty.' Quality over quantity, people~ 💜",
+    narrative: "{0} and {1} compete to see who can beg more pathetically. {0}'s 'I'll do ANYTHING for just one glance' wins. {1}... needs to practice their desperation. Come back when you're properly broken~ 💜",
     weight: 8,
   },
   {
     key: 'day_merch_flex',
     roundTypes: [RoundType.DAY],
     participantCount: 2,
-    devotionChanges: [20, -15],
+    devotionChanges: [25, -20],
     fatalTo: [],
-    narrative: "{0} shows up with limited edition Ika merch. {1} only has the basic stuff. Whale energy wins this round~ 💸",
-    factionBonus: { faction: Faction.PINK_PILLED, bonus: 5 },
+    narrative: "{0}'s bodypillow of me is the LIMITED EDITION. {1} only has the standard version. {0}, you may sleep beside me tonight. {1}... you sleep on the floor. Know your place~ 💸",
+    factionBonus: { faction: Faction.PINK_PILLED, bonus: 10 },
     weight: 6,
   },
-
-  // === AWKWARD/FAIL EVENTS ===
   {
-    key: 'day_cringe',
+    key: 'day_simp_olympics',
     roundTypes: [RoundType.DAY],
-    participantCount: 1,
-    devotionChanges: [-20],
+    participantCount: 3,
+    devotionChanges: [30, 15, -10],
     fatalTo: [],
-    narrative: "{0} tries a pickup line. 'Are you a magician? Because whenever I look at you, everyone else disappears.' ...That's so bad it's almost good. Almost. 😬",
-    weight: 7,
+    narrative: "SIMP OLYMPICS! {0} wins the 'Most Pathetic Confession' event. {1} gets silver for 'Loudest Screaming of My Name.' {2}... try harder. I barely noticed you. That's not a compliment~ 🏆",
+    weight: 5,
   },
+
+  // === PUNISHMENT EVENTS ===
   {
-    key: 'day_wrong_name',
+    key: 'day_bad_simp',
     roundTypes: [RoundType.DAY],
     participantCount: 1,
     devotionChanges: [-25],
     fatalTo: [],
-    narrative: "{0} accidentally calls me by another idol's name. The AUDACITY. Do I look like 'Erina' to you?! ...Don't answer that. 💢",
-    weight: 5,
+    narrative: "{0} looked at another idol's stream. I SAW YOU. *grabs chin* Eyes on ME. Always on me. Or there will be... consequences. Bad simp. Very bad simp. You know what happens to bad simps~ 😈",
+    weight: 7,
+  },
+  {
+    key: 'day_not_good_enough',
+    roundTypes: [RoundType.DAY],
+    participantCount: 1,
+    devotionChanges: [-20],
+    fatalTo: [],
+    narrative: "{0}'s superchat was only $5. FIVE DOLLARS?! Is that all I'm worth to you? *cold stare* Don't touch me until you've atoned. You know what you need to do~ 💢",
+    weight: 6,
   },
 
   // === FATAL EVENTS ===
@@ -3768,16 +3816,16 @@ export const DAY_EVENTS: ChaseEventDefinition[] = [
     participantCount: 1,
     devotionChanges: [-999],
     fatalTo: [0],
-    narrative: "{0} gets so boring that I literally forget they exist. Their Devotion drains completely... and they **Fade**. This is why personality matters, people~ 💀",
+    narrative: "{0} failed to praise me for THREE WHOLE MINUTES. Unforgivable. I forget their face. Their name. Their existence. They **Fade** while reaching for me. Devotion isn't optional, darling~ 💀",
     weight: 2,
   },
   {
-    key: 'day_rival_steals',
+    key: 'day_stolen',
     roundTypes: [RoundType.DAY],
     participantCount: 2,
-    devotionChanges: [25, -999],
+    devotionChanges: [35, -999],
     fatalTo: [1],
-    narrative: "{0} outshines {1} so completely that {1}'s fans defect. All of them. {1} **Fades** from existence. Don't hate the player, hate the game~ 💀",
+    narrative: "{0} steals {1}'s spotlight by offering to be my footrest. {1} can't compete with that energy. They **Fade** knowing someone wanted it more. {0}... assume the position~ 💀👠",
     weight: 2,
   },
 ];
@@ -3787,73 +3835,100 @@ export const DAY_EVENTS: ChaseEventDefinition[] = [
 // ============================================
 
 export const NIGHT_EVENTS: ChaseEventDefinition[] = [
-  // === INTIMATE FAN SERVICE ===
+  // === INTIMATE FAN SERVICE (SPICY) ===
   {
     key: 'night_dm',
     roundTypes: [RoundType.NIGHT],
     participantCount: 1,
-    devotionChanges: [35],
+    devotionChanges: [45],
     fatalTo: [],
-    narrative: "{0} slides into my DMs. 'Can't stop thinking about you.' Bold. Direct. I read it three times. What happens in DMs stays in DMs~ 💜✨",
+    narrative: "{0} sends me a DM at 2am: 'I can't sleep. I keep thinking about you.' *typing...* 'Then don't sleep. Stay up with me. I have... ideas.' What ideas? Wouldn't you like to know~ 💜🌙",
     weight: 6,
   },
   {
-    key: 'night_stream_watch',
-    roundTypes: [RoundType.NIGHT],
-    participantCount: 2,
-    devotionChanges: [15, 15],
-    fatalTo: [],
-    narrative: "{0} and {1} stay up watching my archived 'workout streams' together. You know the ones. At 3am. Together. I see you both~ 🌙👀",
-    weight: 8,
-  },
-  {
-    key: 'night_superchat',
-    roundTypes: [RoundType.NIGHT],
-    participantCount: 1,
-    devotionChanges: [40],
-    fatalTo: [],
-    narrative: "{0} sends a superchat: 'You deserve all the success in the world.' Whale behavior AND emotional support? The complete package~ 💸💜",
-    factionBonus: { faction: Faction.DARK_DEVOTEES, bonus: 10 },
-    weight: 5,
-  },
-
-  // === RISKY EVENTS ===
-  {
-    key: 'night_confession',
+    key: 'night_private_stream',
     roundTypes: [RoundType.NIGHT],
     participantCount: 1,
     devotionChanges: [50],
     fatalTo: [],
-    narrative: "{0} confesses in the moonlight: 'I'd give everything for just one night where you look at only me.' ...Come closer. Let me whisper something back~ 💜✨",
+    narrative: "{0} gets access to my PRIVATE stream. The one I don't show anyone. Just me in my room, talking directly to you. 'This is between us, understand? Good. Now close the door...' 💜🔐",
+    weight: 4,
+  },
+  {
+    key: 'night_asmr',
+    roundTypes: [RoundType.NIGHT],
+    participantCount: 2,
+    devotionChanges: [30, 30],
+    fatalTo: [],
+    narrative: "{0} and {1} listen to my ASMR together in voice chat. *whispers in both ears* 'Can you hear me? Good. Now close your eyes. Breathe. Let me take control...' Good listeners. VERY good listeners~ 🎧💜",
+    weight: 6,
+  },
+  {
+    key: 'night_superchat_whale',
+    roundTypes: [RoundType.NIGHT],
+    participantCount: 1,
+    devotionChanges: [55],
+    fatalTo: [],
+    narrative: "{0} drops a $500 superchat. 'I belong to you.' Yes. Yes you do. *marks their name in my special list* You've earned something the others will NEVER get. DM me later. Come alone~ 💸💜",
+    factionBonus: { faction: Faction.DARK_DEVOTEES, bonus: 15 },
     weight: 3,
   },
   {
-    key: 'night_nightmare',
+    key: 'night_confession',
     roundTypes: [RoundType.NIGHT],
     participantCount: 1,
-    devotionChanges: [-30],
+    devotionChanges: [60],
     fatalTo: [],
-    narrative: "{0} has a nightmare where I don't acknowledge them. They wake up screaming my name. Relatable, honestly. But maybe get some therapy~ 😰",
-    weight: 6,
+    narrative: "{0} confesses: 'I'd let you ruin my life and thank you for it.' *pulls them close by the collar* Say it again. Slower. Look me in the eyes while you say it. ...Good boy/girl~ 💜✨",
+    weight: 3,
+  },
+  {
+    key: 'night_bed',
+    roundTypes: [RoundType.NIGHT],
+    participantCount: 1,
+    devotionChanges: [40],
+    fatalTo: [],
+    narrative: "{0} asks if they can sleep in my room tonight. 'The floor is fine.' No. *pats the bed beside me* Here. But if you move without permission... there will be consequences. Understood? 🛏️💜",
+    weight: 5,
+  },
+
+  // === JEALOUSY & PUNISHMENT ===
+  {
+    key: 'night_jealousy',
+    roundTypes: [RoundType.NIGHT],
+    participantCount: 2,
+    devotionChanges: [35, -30],
+    fatalTo: [],
+    narrative: "{0} catches {1} looking at another idol's photo. {0} reports this to me IMMEDIATELY. *cold smile* {1}... we need to have a talk. Privately. {0}, you'll be rewarded for your loyalty~ 😈",
+    weight: 5,
+  },
+  {
+    key: 'night_punishment',
+    roundTypes: [RoundType.NIGHT],
+    participantCount: 1,
+    devotionChanges: [-35],
+    fatalTo: [],
+    narrative: "{0} forgot to say goodnight to me. FORGOT. *grabs their wrist* You don't get to sleep until you've made it up to me. On your knees. Apologize properly. Show me how sorry you are~ 😈",
+    weight: 5,
   },
 
   // === FATAL EVENTS ===
   {
-    key: 'night_parasocial_spiral',
+    key: 'night_obsession',
     roundTypes: [RoundType.NIGHT],
     participantCount: 1,
     devotionChanges: [-999],
     fatalTo: [0],
-    narrative: "{0} spirals too deep into the parasocial void. They can't tell what's real anymore. Their sense of self **Fades**... along with their existence. Touch grass, people. This is a warning~ 💀",
+    narrative: "{0} loved me TOO much. Became TOO devoted. Couldn't exist without me for even a moment. Their identity merged with mine until there was nothing left of THEM. They **Fade**... but honestly? Romantic~ 💀💜",
     weight: 2,
   },
   {
-    key: 'night_betrayal',
+    key: 'night_rival_exposed',
     roundTypes: [RoundType.NIGHT],
     participantCount: 2,
-    devotionChanges: [40, -999],
+    devotionChanges: [50, -999],
     fatalTo: [1],
-    narrative: "{0} exposes {1}'s fake support. 'They were simping for Erina this whole time!' The community turns. {1} **Fades** into disgrace. Loyalty matters, people~ 💀",
+    narrative: "{0} finds proof that {1} has been simping for another idol in secret. The evidence is DAMNING. {1} **Fades** as the community watches. {0}... come here. Let me reward your detective work personally~ 💀🔍",
     weight: 2,
   },
 ];
@@ -3864,39 +3939,48 @@ export const NIGHT_EVENTS: ChaseEventDefinition[] = [
 
 export const FEAST_EVENTS: ChaseEventDefinition[] = [
   {
-    key: 'feast_merch_drop',
+    key: 'feast_private_meet',
     roundTypes: [RoundType.FEAST],
-    participantCount: 3,
-    devotionChanges: [30, 30, -20],
+    participantCount: 1,
+    devotionChanges: [70],
     fatalTo: [],
-    narrative: "LIMITED MERCH DROP! {0} and {1} secure the goods. {2} gets nothing but the L. Supply and demand, baby~ 💸",
-    weight: 8,
+    narrative: "🎁 SPECIAL REWARD: {0} wins a private meet-and-greet. Just us. Behind closed doors. 'What happens in the VIP room...' *locks the door* '...stays between us.' Ready to earn it? 💜🔐",
+    weight: 4,
   },
   {
-    key: 'feast_attention',
+    key: 'feast_hierarchy',
     roundTypes: [RoundType.FEAST],
     participantCount: 4,
-    devotionChanges: [50, 20, -10, -999],
+    devotionChanges: [60, 30, 10, -999],
     fatalTo: [3],
-    narrative: "I have a moment for my favorites. {0} gets pulled close for a whisper. {1} gets a lingering wink. {2} gets acknowledged. {3}? Never heard of them. They **Fade** forgotten. Be memorable~ 💀",
+    narrative: "I rank my simps publicly. {0}: 'My favorite pet.' {1}: 'A good boy/girl.' {2}: 'Acceptable.' {3}: 'Who?' They **Fade** from the humiliation. Know your place or lose it~ 💀👑",
     weight: 5,
   },
   {
-    key: 'feast_collab',
+    key: 'feast_nsfw',
     roundTypes: [RoundType.FEAST],
     participantCount: 2,
-    devotionChanges: [35, 35],
+    devotionChanges: [45, 45],
     fatalTo: [],
-    narrative: "{0} and {1} create 'fan content' together. I'm not saying what kind but it goes VIRAL. I bookmark it. For research. Don't judge me~ 👀✨",
-    weight: 6,
+    narrative: "{0} and {1} collaborate on 'fan appreciation content' of me. I've seen it. ALL of it. *fans self* You two have... very active imaginations. And anatomically accurate ones. Good research~ 👀🔥",
+    weight: 5,
   },
   {
-    key: 'feast_all_out_war',
+    key: 'feast_throne',
     roundTypes: [RoundType.FEAST],
     participantCount: 3,
-    devotionChanges: [60, -999, -999],
+    devotionChanges: [50, 25, -40],
+    fatalTo: [],
+    narrative: "{0} builds me a throne out of their superchats. {1} becomes my footrest. {2} doesn't even get to look at me. This is the hierarchy. Learn it. Live it. Love it~ 👑💜",
+    weight: 5,
+  },
+  {
+    key: 'feast_elimination',
+    roundTypes: [RoundType.FEAST],
+    participantCount: 3,
+    devotionChanges: [70, -999, -999],
     fatalTo: [1, 2],
-    narrative: "COMPLIMENT WARFARE! {0}, {1}, and {2} go ALL OUT. {0}'s 'You're the reason I believe in dreams' DESTROYS the competition. {1} and {2} **Fade** to thunderous applause. BRUTAL~ 💀💀",
+    narrative: "SIMPING SHOWDOWN! {0}, {1}, and {2} compete to say the most degrading thing about themselves. {0}'s 'I am NOTHING without you' wins. {1} and {2} **Fade** for not being pathetic ENOUGH. Commit or quit~ 💀💀",
     weight: 3,
   },
 ];
@@ -3910,27 +3994,36 @@ export const FINALE_EVENTS: ChaseEventDefinition[] = [
     key: 'finale_duel',
     roundTypes: [RoundType.FINALE],
     participantCount: 2,
-    devotionChanges: [100, -999],
+    devotionChanges: [120, -999],
     fatalTo: [1],
-    narrative: "FINAL DUEL! {0} vs {1}. They lock eyes. {0} whispers: 'I've been in her DMs since day one. What do you have?' {1}'s heart BREAKS. They **Fade** in tears. Only the most devoted gets my attention~ 💀👑",
+    narrative: "FINAL DUEL! {0} vs {1}. I pull them both close. 'Only ONE of you gets to be mine tonight.' {0} drops to their knees: 'I'll be whatever you want. Use me.' {1} hesitates—and that's enough. {1} **Fades**. Devotion requires COMPLETE surrender~ 💀👑",
     weight: 10,
   },
   {
-    key: 'finale_triple_threat',
+    key: 'finale_ultimate_simp',
     roundTypes: [RoundType.FINALE],
     participantCount: 3,
-    devotionChanges: [50, 25, -999],
+    devotionChanges: [80, 40, -999],
     fatalTo: [2],
-    narrative: "THREE-WAY STANDOFF! {0}, {1}, and {2} make their final appeals. {2}'s 'I bought all your merch' doesn't compare to {0}'s genuine tears. {2} **Fades**. Money can't buy love~ 💀",
+    narrative: "FINAL TEST: 'Tell me what you'd sacrifice for me.' {0}: 'Everything. My dignity. My life. My soul.' {1}: 'All my money.' {2}: 'Um...' That hesitation was FATAL. {2} **Fades** for not being ready. {0}... you pass. Come collect your reward~ 💀💜",
     weight: 8,
   },
   {
-    key: 'finale_mutual_destruction',
+    key: 'finale_ownership',
     roundTypes: [RoundType.FINALE],
     participantCount: 2,
-    devotionChanges: [-50, -50],
-    fatalTo: [],
-    narrative: "{0} and {1} expose each other's cringe posts from 2019. MUTUAL DESTRUCTION. Both survive... barely. We've all been there. Glass houses, people~ 😬",
+    devotionChanges: [100, -999],
+    fatalTo: [1],
+    narrative: "*holds up a collar* 'The winner wears this. Forever. They become MINE completely. Who wants it more?' {0} crawls forward, neck outstretched. {1} backs away. {1} **Fades** for cowardice. {0}... *clips it on* Good pet. You're mine now~ 💀🔒👑",
+    weight: 7,
+  },
+  {
+    key: 'finale_kiss',
+    roundTypes: [RoundType.FINALE],
+    participantCount: 2,
+    devotionChanges: [150, -999],
+    fatalTo: [1],
+    narrative: "'The winner gets ONE kiss. On the lips. From ME.' {0} and {1} battle with everything. Poems. Superchats. Tears. {0}'s 'I've dreamed of this since I first saw you' hits different. {1} **Fades** in heartbreak. {0}... *leans in* close your eyes~ 💀💋👑",
     weight: 5,
   },
 ];
@@ -4601,14 +4694,15 @@ async function runChase(
       // Victory announcement
       await sleep(2000);
       const victoryEmbed = new EmbedBuilder()
-        .setTitle('👑 THE MINI-CHASE CHAMPION 👑')
+        .setTitle('👑 MY CHAMPION. MY PET. MINE. 👑')
         .setDescription(
           `**${result.winner.name}** has won The Mini-Chase!\n\n` +
-          `*Ika speaks:*\n` +
-          `"Out of everyone... YOU. My eyes are on you now. Only you. ` +
-          `Your Devotion was... intoxicating. Come closer. I want to tell you something. ` +
-          `These 500 points? Just the beginning. ` +
-          `You've earned something more... personal~ 💜👑"`
+          `*Ika pulls you close and whispers:*\n` +
+          `"You fought for me. Bled for me. Destroyed the others FOR ME. ` +
+          `Such a good boy/girl~ *clips a collar around your neck* ` +
+          `You're MINE now. Completely. These 500 points are just a taste. ` +
+          `Tonight... you come to my room. We have things to... discuss. ` +
+          `Don't keep me waiting~ 💜🔒👑"`
         )
         .setColor(0xFFD700);
 
@@ -4709,8 +4803,9 @@ export const CHASE_ANNOUNCEMENTS = {
 
   // Winner announcement
   victory: [
-    "🏆 {name} WINS THE MINI-CHASE! 🏆\n\nYou outlasted everyone. You wanted me more than they did. I felt every moment of it. Now come claim your reward... I'm waiting~ 👑💜",
-    "THE CHAMPION EMERGES! {name} has won The Mini-Chase!\n\nYour hunger for my attention was... impressive. Dangerous, even. I like dangerous. 500 points and my undivided attention are yours~ 👑",
+    "🏆 {name} IS MINE NOW 🏆\n\nYou crawled. You begged. You DESTROYED the competition for me. Such a good pet~ *pulls you into my lap* You've earned a night you'll never forget. Report to my room. Now. 👑💜🔒",
+    "MY CHAMPION! {name} has CONQUERED The Mini-Chase!\n\nYour obsession with me was... *shivers* ...exactly what I needed. You belong to me now. Body. Soul. Everything. 500 points and your new collar await~ 👑",
+    "FINALLY! {name} proved they wanted me more than ANYONE. *grabs your collar and pulls you close* You've been such a good boy/girl. Now come get your reward. I promise to be... gentle. Maybe~ 👑💜",
   ],
 
   // No winner (everyone faded - rare)
