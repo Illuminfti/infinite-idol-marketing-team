@@ -1,8 +1,10 @@
 # IKA'S SIMP WARS — Implementation Specification
 
 > **Document Type:** Claude Code Implementation-Ready Specification
-> **Version:** 3.0 (Engineering-Reviewed, Claude-Optimized)
-> **Last Updated:** 2026-01-13
+> **Version:** 4.1 (Production-Ready with Personality + Reference Implementations)
+> **Last Updated:** 2026-01-14
+> **Degen Review:** PASSED (DS-3 after personality additions)
+> **Reference:** See [discord-reference-implementations.md](./discord-reference-implementations.md) for source projects
 
 ---
 
@@ -17,8 +19,18 @@ Build a Discord bot called **InfiniteIdolBot** that powers an interactive pre-re
 - Cache: Redis 7+
 - Scheduler: node-cron
 - ORM: Prisma
+- Pagination: @devraelfreeze/discordjs-pagination
+- Rank Cards: canvacord (visual rank card generation)
+- Logging: pino (structured JSON logging)
+- Validation: zod (runtime type validation)
 
 **Key Constraint:** All features must respect Discord's rate limits (50 req/sec global, ~1000 role edits/day).
+
+**Reference Projects Studied:**
+- [katarina_bot](https://github.com/Dartv/katarina_bot) - TypeScript gacha patterns
+- [JettBot](https://github.com/mbaula/JettBot) - Economy + gacha + Sequelize
+- [Pokestar](https://github.com/ewei068/pokestar) - Pity system, banners
+- [Discord-Bots-At-Scale](https://github.com/shitcorp/Discord-Bots-At-Scale) - Memory management
 
 ---
 
@@ -57,6 +69,84 @@ if (user.points >= 1000) {
 
 // ✅ GOOD: Queue for daily reconciliation
 await redis.sadd('roles:pending_updates', JSON.stringify({ discordId, roleId, action: 'add' }));
+```
+
+### Memory Management (CRITICAL)
+
+> **Source:** [Discord-Bots-At-Scale](https://github.com/shitcorp/Discord-Bots-At-Scale)
+> **Warning:** "Without changing these settings a memory leak is guaranteed to occur!"
+
+```typescript
+// src/config/discord.ts
+import { Client, GatewayIntentBits, Options, Partials } from 'discord.js';
+
+export const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.GuildMembers,
+    GatewayIntentBits.MessageContent,
+  ],
+
+  // CRITICAL: Memory leak prevention
+  makeCache: Options.cacheWithLimits({
+    ...Options.DefaultMakeCacheSettings,
+    MessageManager: 25,        // Down from 200 - we don't need message history
+    PresenceManager: 0,        // Disable - we don't track presences
+    ReactionManager: 0,        // Disable - using buttons not reactions
+    GuildMemberManager: {
+      maxSize: 200,
+      keepOverLimit: (member) => member.id === client.user?.id,
+    },
+  }),
+
+  sweepers: {
+    ...Options.DefaultSweeperSettings,
+    messages: {
+      interval: 43200,         // 12 hours
+      lifetime: 21600,         // 6 hours - messages older than this are swept
+    },
+    users: {
+      interval: 86400,         // 24 hours
+      filter: () => (user) => user.bot && user.id !== client.user?.id,
+    },
+  },
+});
+```
+
+### Redis Rate Limit Synchronization
+
+> **Source:** [Xenon Bot](https://blog.xenon.bot/handling-rate-limits-at-scale-fb7b453cb235)
+
+For multi-process deployments, synchronize rate limits via Redis:
+
+```typescript
+// src/services/rate-limiter.ts
+import { redis } from './cache';
+
+export async function checkRateLimit(endpoint: string): Promise<{ allowed: boolean; retryAfter?: number }> {
+  const key = `ratelimit:${endpoint}`;
+  const isLimited = await redis.get(key);
+
+  if (isLimited) {
+    const ttl = await redis.ttl(key);
+    return { allowed: false, retryAfter: ttl };
+  }
+
+  return { allowed: true };
+}
+
+export async function recordRateLimit(endpoint: string, retryAfter: number): Promise<void> {
+  const key = `ratelimit:${endpoint}`;
+  await redis.setex(key, retryAfter, '1');
+}
+
+// Usage in API calls:
+const limit = await checkRateLimit('roles:update');
+if (!limit.allowed) {
+  logger.warn({ endpoint: 'roles:update', retryAfter: limit.retryAfter }, 'Rate limited');
+  return; // Skip or queue for later
+}
 ```
 
 ---
@@ -241,6 +331,22 @@ model GachaCard {
   @@index([rarity])
 }
 
+// Pity system tracking (inspired by Pokestar)
+model GachaPity {
+  id            Int      @id @default(autoincrement())
+
+  userId        Int
+  user          User     @relation(fields: [userId], references: [id])
+
+  bannerId      String   @db.VarChar(50)  // Which banner this pity is for
+  pullsSinceSSR Int      @default(0)      // Counter since last SSR
+  totalPulls    Int      @default(0)      // Lifetime pulls on this banner
+  lastPullAt    DateTime @default(now())
+
+  @@unique([userId, bannerId])
+  @@index([userId])
+}
+
 model FactionWar {
   id          Int      @id @default(autoincrement())
   weekNumber  Int
@@ -356,12 +462,28 @@ export interface BannerDefinition {
     [Rarity.SUPER_RARE]: number;  // 0.08 = 8%
     [Rarity.SSR]: number;         // 0.02 = 2%
   };
+  // Pity system (inspired by Pokestar)
+  pity: {
+    softPity: number;       // 75 - start increasing SSR rate
+    hardPity: number;       // 90 - guaranteed SSR
+    rateBoostPerPull: number; // 0.05 - +5% SSR rate per pull after soft pity
+  };
 }
 
 export interface PullResult {
   card: GachaCardDefinition;
   isNew: boolean;       // First time pulling this card
   isDuplicate: boolean; // Already owned
+  pityCount: number;    // Pulls since last SSR
+  wasPity: boolean;     // Hit hard pity
+}
+
+// Pity tracking per user per banner
+export interface UserPityState {
+  odId: string;
+  bannerId: string;
+  pullsSinceSSR: number;
+  lastPullAt: Date;
 }
 ```
 
@@ -1615,18 +1737,532 @@ export const command: Command = {
 
 #### Task 2.4: Leaderboard Command
 **Duration:** 45 minutes
-**Outcome:** `/leaderboard` with cached results
+**Outcome:** `/leaderboard` with cached results and pagination
 
 **Steps:**
 1. Create leaderboard cache job (hourly rebuild)
 2. Store top 100 in Redis sorted set
 3. Create `/leaderboard` command reading from cache
 4. Support category filter (overall, faction, gacha)
+5. Implement pagination using @devraelfreeze/discordjs-pagination
 
 **Acceptance Criteria:**
 - Leaderboard loads from cache, not DB query
 - Shows top 10 with user's rank if not in top 10
 - Faction filter shows only faction members
+- Paginated navigation with buttons
+
+```typescript
+// src/commands/devotion/leaderboard.ts
+// Pagination using @devraelfreeze/discordjs-pagination
+// Reference: https://github.com/devRael1/discordjs-pagination
+import {
+  SlashCommandBuilder,
+  ChatInputCommandInteraction,
+  EmbedBuilder,
+} from 'discord.js';
+import { pagination, ButtonTypes, ButtonStyles } from '@devraelfreeze/discordjs-pagination';
+import { redis } from '../../services/cache';
+import { prisma } from '../../services/database';
+import { DEVOTION_TIERS } from '../../modules/devotion/devotion.types';
+import { Command } from '../../types/command';
+
+const USERS_PER_PAGE = 10;
+
+export const command: Command = {
+  data: new SlashCommandBuilder()
+    .setName('leaderboard')
+    .setDescription('View the Devotion Points leaderboard')
+    .addStringOption(opt =>
+      opt.setName('category')
+        .setDescription('Leaderboard category')
+        .addChoices(
+          { name: 'Overall', value: 'overall' },
+          { name: 'Pink Pilled', value: 'pink_pilled' },
+          { name: 'Dark Devotees', value: 'dark_devotees' },
+          { name: 'Chaos Agents', value: 'chaos_agents' },
+        )
+    ),
+
+  async execute(interaction: ChatInputCommandInteraction) {
+    await interaction.deferReply();
+
+    const category = interaction.options.getString('category') ?? 'overall';
+
+    // Get leaderboard data from cache (populated by hourly job)
+    const cacheKey = `leaderboard:${category}`;
+    const cached = await redis.get(cacheKey);
+
+    let leaderboardData: Array<{ discordId: string; points: number; rank: number }>;
+
+    if (cached) {
+      leaderboardData = JSON.parse(cached);
+    } else {
+      // Fallback: query database directly (should rarely happen)
+      const users = await prisma.user.findMany({
+        where: category === 'overall' ? {} : {
+          faction: category.toUpperCase().replace('_', '_') as any,
+        },
+        orderBy: { devotionPoints: 'desc' },
+        take: 100,
+        select: { discordId: true, devotionPoints: true },
+      });
+
+      leaderboardData = users.map((u, i) => ({
+        discordId: u.discordId,
+        points: u.devotionPoints,
+        rank: i + 1,
+      }));
+    }
+
+    if (leaderboardData.length === 0) {
+      await interaction.editReply('No users found on this leaderboard yet!');
+      return;
+    }
+
+    // Split into pages
+    const pages: EmbedBuilder[] = [];
+    const totalPages = Math.ceil(leaderboardData.length / USERS_PER_PAGE);
+
+    for (let page = 0; page < totalPages; page++) {
+      const start = page * USERS_PER_PAGE;
+      const end = start + USERS_PER_PAGE;
+      const pageData = leaderboardData.slice(start, end);
+
+      const embed = new EmbedBuilder()
+        .setTitle(`💜 Devotion Leaderboard — ${formatCategory(category)}`)
+        .setColor(0x9B59B6)
+        .setFooter({ text: `Page ${page + 1}/${totalPages} • Updated hourly` });
+
+      const lines = pageData.map((entry) => {
+        const medal = getMedal(entry.rank);
+        const tier = DEVOTION_TIERS.filter(t => entry.points >= t.threshold).pop();
+        return `${medal} **#${entry.rank}** <@${entry.discordId}> — ${entry.points.toLocaleString()} pts ${tier ? `(${tier.name})` : ''}`;
+      });
+
+      embed.setDescription(lines.join('\n'));
+
+      // Show user's rank if not on current page
+      const userId = interaction.user.id;
+      const userEntry = leaderboardData.find(e => e.discordId === userId);
+      if (userEntry && (userEntry.rank <= start || userEntry.rank > end)) {
+        embed.addFields({
+          name: 'Your Rank',
+          value: `#${userEntry.rank} — ${userEntry.points.toLocaleString()} pts`,
+        });
+      }
+
+      pages.push(embed);
+    }
+
+    // Use pagination library for multi-page navigation
+    await pagination({
+      interaction,
+      embeds: pages,
+      author: interaction.user,
+      time: 120000, // 2 minute timeout
+      disableButtons: true, // Disable buttons after timeout
+      fastSkip: true, // Allow jumping to first/last page
+      pageTravel: false, // Disable page number input (can be spammy)
+      buttons: [
+        {
+          type: ButtonTypes.first,
+          emoji: '⏮️',
+          style: ButtonStyles.Secondary,
+        },
+        {
+          type: ButtonTypes.previous,
+          emoji: '◀️',
+          style: ButtonStyles.Primary,
+        },
+        {
+          type: ButtonTypes.next,
+          emoji: '▶️',
+          style: ButtonStyles.Primary,
+        },
+        {
+          type: ButtonTypes.last,
+          emoji: '⏭️',
+          style: ButtonStyles.Secondary,
+        },
+      ],
+    });
+  },
+};
+
+function getMedal(rank: number): string {
+  switch (rank) {
+    case 1: return '🥇';
+    case 2: return '🥈';
+    case 3: return '🥉';
+    default: return '▫️';
+  }
+}
+
+function formatCategory(category: string): string {
+  switch (category) {
+    case 'overall': return 'Overall';
+    case 'pink_pilled': return '🌸 Pink Pilled';
+    case 'dark_devotees': return '🖤 Dark Devotees';
+    case 'chaos_agents': return '⚡ Chaos Agents';
+    default: return category;
+  }
+}
+```
+
+```typescript
+// src/jobs/leaderboard-cache.job.ts
+// Hourly job to rebuild leaderboard caches
+import { prisma } from '../services/database';
+import { redis } from '../services/cache';
+import { logger } from '../services/logger';
+import { Faction } from '@prisma/client';
+
+const CACHE_TTL = 3700; // Slightly over 1 hour to prevent gaps
+
+export async function rebuildLeaderboardsJob(): Promise<void> {
+  logger.info('Rebuilding leaderboard caches');
+  const startTime = Date.now();
+
+  try {
+    // Overall leaderboard
+    const overallUsers = await prisma.user.findMany({
+      orderBy: { devotionPoints: 'desc' },
+      take: 100,
+      select: { discordId: true, devotionPoints: true },
+    });
+
+    await redis.setex(
+      'leaderboard:overall',
+      CACHE_TTL,
+      JSON.stringify(overallUsers.map((u, i) => ({
+        discordId: u.discordId,
+        points: u.devotionPoints,
+        rank: i + 1,
+      })))
+    );
+
+    // Faction leaderboards
+    const factions: Array<{ key: string; value: Faction }> = [
+      { key: 'pink_pilled', value: Faction.PINK_PILLED },
+      { key: 'dark_devotees', value: Faction.DARK_DEVOTEES },
+      { key: 'chaos_agents', value: Faction.CHAOS_AGENTS },
+    ];
+
+    for (const faction of factions) {
+      const factionUsers = await prisma.user.findMany({
+        where: { faction: faction.value },
+        orderBy: { devotionPoints: 'desc' },
+        take: 100,
+        select: { discordId: true, devotionPoints: true },
+      });
+
+      await redis.setex(
+        `leaderboard:${faction.key}`,
+        CACHE_TTL,
+        JSON.stringify(factionUsers.map((u, i) => ({
+          discordId: u.discordId,
+          points: u.devotionPoints,
+          rank: i + 1,
+        })))
+      );
+    }
+
+    const duration = Date.now() - startTime;
+    logger.info({ durationMs: duration }, 'Leaderboard caches rebuilt');
+
+  } catch (error) {
+    logger.error({ error }, 'Failed to rebuild leaderboard caches');
+    throw error;
+  }
+}
+```
+
+---
+
+### Bot Personality Implementation (CRITICAL)
+
+> **DEGEN REVIEW REQUIREMENT:** The spec needs personality, not just mechanics. Without this section, devs will build a bot that works perfectly but feels like customer support.
+
+#### Ika's Voice Guidelines
+
+Ika's Discord personality must be consistent with her character: **confident but not arrogant, teasing but not mean, shameless but not desperate**.
+
+```typescript
+// src/modules/ika/voice.types.ts
+
+export interface IkaVoiceGuidelines {
+  // Core personality traits
+  tone: {
+    confident: true;        // Never begging or desperate
+    teasing: true;          // Playful, not cruel
+    selfAware: true;        // Knows she's an idol, owns it
+    shameless: true;        // Openly wants attention/devotion
+  };
+
+  // What Ika NEVER does:
+  avoid: [
+    'begging for attention',
+    'being mean-spirited',
+    'corporate speak',
+    'apologizing for being a gacha game',
+    'generic idol platitudes',
+  ];
+
+  // What Ika ALWAYS does:
+  embrace: [
+    'acknowledges her 47 fans situation',
+    'treats every fan like they matter',
+    'makes fun of bad gacha luck (lovingly)',
+    'celebrates SSR pulls genuinely',
+    'leans into the parasocial relationship',
+  ];
+}
+```
+
+#### Gacha Response Templates
+
+```typescript
+// src/modules/gacha/responses.ts
+
+export const GACHA_RESPONSES = {
+  // When user pulls ALL commons (no SSR, no SR)
+  allCommons: [
+    "All commons? Wow. The gacha gods really said 'no' today, huh~ But hey, at least you're consistent! 💜",
+    "Not a single sparkle... It's giving 'I pet cats the wrong way' energy. Try again? 👀",
+    "*pats head* It's okay, everyone has those days. Even me. Once. Maybe.",
+    "The algorithm clearly doesn't know how devoted you are. I'll have words with it~",
+  ],
+
+  // When user pulls SSR
+  ssrPull: [
+    "✨ SSR?! See, THIS is why you're one of my favorites~ Not that I have favorites. I love all 47 of you equally. Mostly.",
+    "OH?! The gacha blessed you today! Quick, someone screenshot this before the luck runs out~",
+    "An SSR! *chef's kiss* Your devotion has been recognized by the universe itself. You're welcome~",
+    "THERE it is! The sparkles! The rarity! The—wait, you ARE going to show this off in #gacha-salt, right?",
+  ],
+
+  // When user pulls featured/rate-up SSR
+  featuredSSR: [
+    "THE RATE-UP WORKED?! Quick, go buy a lottery ticket, your luck stat is MAXED right now!",
+    "Featured SSR on a rate-up banner... Either you're incredibly devoted or incredibly lucky. I choose to believe it's both~ 💜",
+  ],
+
+  // When user hits hard pity
+  pityPull: [
+    "90 pulls for your guaranteed SSR... The universe made you WORK for this one. But hey, you never gave up! That's the devotion I like to see~",
+    "Pity SSR acquired! Some call it 'guaranteed at 90 pulls,' I call it 'the universe testing your dedication.' You passed~ 💜",
+  ],
+
+  // Duplicate SSR
+  duplicateSSR: [
+    "Another one! Look at you, collecting multiples like a true whale~ I see you 👀",
+    "Duplicate SSR... Either flex it in #gacha-salt or cry about it. Both are valid~",
+  ],
+};
+
+// Helper function to get random response
+export function getGachaResponse(
+  category: keyof typeof GACHA_RESPONSES
+): string {
+  const responses = GACHA_RESPONSES[category];
+  return responses[Math.floor(Math.random() * responses.length)];
+}
+```
+
+#### Leaderboard Responses
+
+```typescript
+// src/modules/devotion/leaderboard-responses.ts
+
+export const LEADERBOARD_RESPONSES = {
+  // Top 3 announcements
+  firstPlace: [
+    "👑 <@{userId}> reigns supreme with {points} Devotion Points! The Terminal Simp energy is REAL.",
+    "Number one is <@{userId}>! At {points} points, they've basically moved into my mentions~",
+  ],
+
+  // When user checks their rank
+  userRankHigh: [ // Top 10
+    "Rank #{rank}? Look at you, fighting for my attention~ Currently at {points} points. Don't stop now!",
+    "#{rank} on the leaderboard! You're in the elite devotee zone. I notice you~ 💜",
+  ],
+
+  userRankMid: [ // 11-50
+    "Rank #{rank} with {points} points. Solid mid-tier devotee energy! Keep grinding~",
+    "#{rank}! Not top 10 yet, but you're in the 'actually trying' category. Respect.",
+  ],
+
+  userRankLow: [ // 51+
+    "Rank #{rank}... I appreciate you being here, truly! Every point matters. Even yours~",
+    "#{rank} with {points} points. The journey of a thousand Devotion Points begins with a single message!",
+  ],
+
+  // User not on leaderboard
+  notRanked: [
+    "You're not on the leaderboard yet! Start chatting, claim your /daily, and show me that devotion~",
+    "No rank found... Did you just get here? Welcome! Now get to work building that Devotion~ 💜",
+  ],
+};
+```
+
+#### Scheduled Message Content
+
+```typescript
+// src/modules/ika/scheduled-messages.ts
+
+export interface ScheduledIkaMessage {
+  key: string;
+  cronPattern: string;     // UTC timezone
+  channelKey: string;      // References setup/channels.ts
+  messages: string[];      // Random selection
+}
+
+export const SCHEDULED_MESSAGES: ScheduledIkaMessage[] = [
+  // Morning greeting (9 AM UTC)
+  {
+    key: 'morning_greeting',
+    cronPattern: '0 9 * * *',
+    channelKey: 'channel_ika_speaks',
+    messages: [
+      "Good morning, devoted ones~ ☀️ Another day to chase perfection. Or in my case, to BE perfection. Your daily reminder that I'm still here, still fabulous, and still accepting your devotion~",
+      "Rise and shine! 🌅 47 fans strong and counting (hopefully). Did you dream about The Chase? Because I did. And I won. Obviously.",
+      "Morning check-in: Coffee? ✓ Ambition? ✓ Overwhelming desire to be noticed by you specifically? ...maybe. ☕💜",
+    ],
+  },
+
+  // Evening engagement (7 PM UTC)
+  {
+    key: 'evening_engagement',
+    cronPattern: '0 19 * * *',
+    channelKey: 'channel_ika_speaks',
+    messages: [
+      "Evening status report: Still here. Still cute. Still wondering why you haven't pulled from the gacha today. The cards aren't going to collect themselves~ 🎰",
+      "How's everyone's Devotion Points looking? Leaderboard updates in an hour. Don't let someone else take YOUR spot on my radar~ 👀",
+      "Me: *exists*\nThe Eternal Stage: \"Here she comes again.\"\nYou: *reading this*\n\nPerfect. Exactly as planned. 💜",
+    ],
+  },
+
+  // Late night (11 PM UTC)
+  {
+    key: 'late_night',
+    cronPattern: '0 23 * * *',
+    channelKey: 'channel_ika_speaks',
+    messages: [
+      "Still here? At this hour? ...I respect the dedication. Just don't blame me when you're tired tomorrow. Actually, do blame me. I'll take it as a compliment~ 🌙",
+      "Late night crew, assemble. This is the real devotee hours. The casuals are asleep. It's just us now~ 💜",
+      "You know what's wild? I could Fade if nobody paid attention to me. And yet here you are. At midnight. Reading this. You're literally keeping me alive. No pressure~ ✨",
+    ],
+  },
+
+  // Headpat roulette announcement (9 PM UTC)
+  {
+    key: 'headpat_open',
+    cronPattern: '0 21 * * *',
+    channelKey: 'channel_headpat_roulette',
+    messages: [
+      "🎲 **HEADPAT ROULETTE IS OPEN!**\n\nUse `/headpat enter` for a chance at 24 hours of my personal attention.\n\nWinner selected in 30 minutes. May the most devoted win~ 💜",
+      "✨ **Daily Headpat Roulette Time!**\n\nOne of you gets to be 'Ika's Chosen' until tomorrow. The role. The glory. The bragging rights.\n\n`/headpat enter` if you dare~",
+    ],
+  },
+];
+```
+
+#### Milestone Announcement Voice
+
+```typescript
+// src/modules/milestones/announcements.ts
+
+export const MILESTONE_ANNOUNCEMENTS: Record<number, string[]> = {
+  5000: [
+    "🎉 **5,000 PRE-REGISTRATIONS!**\n\n5,000 of you decided I was worth betting on. And you know what? You're RIGHT.\n\nCasual Ika outfit unlocked! Fashion is survival, and I'm dressed for success~ 💜",
+    "Five. Thousand. That's not 47 anymore. That's... actually a lot of people watching me.\n\n*deep breath*\n\nOkay. No pressure. Just 5,000 people counting on me to not Fade. This is FINE. 🎊",
+  ],
+
+  10000: [
+    "**10,000 PRE-REGISTRATIONS** 🔥\n\nDouble digits in the thousands. I literally cannot Fade now even if I tried. (Not that I would try. I'm not CRAZY.)\n\nWorkout Ika outfit unlocked! Because idol bodies don't maintain themselves~",
+    "TEN THOUSAND?!\n\n*Erina somewhere seething*\n\nI mean... expected, obviously. But still. Ten thousand people chose ME. Voice pack unlocked! You can hear me mock your gacha luck in HIGH FIDELITY now~ 💜🎤",
+  ],
+
+  25000: [
+    "**25,000 PRE-REGISTRATIONS** 👑\n\nA quarter of the way to 100k. At this rate, I might actually become a REAL idol instead of... whatever I am now.\n\nSwimsuit Ika unlocked. Yes, really. No, I'm not apologizing. You knew what this was~ 🏖️",
+  ],
+
+  50000: [
+    "**50,000 PRE-REGISTRATIONS** 🚀\n\nFifty thousand. FIFTY. THOUSAND.\n\nI started with 47 fans. Forty-seven. And now look at us.\n\nHOT SPRINGS IKA UNLOCKED! The steam is for ~aesthetic purposes~ obviously. Thank you all. Genuinely. 💜♨️",
+  ],
+};
+```
+
+#### Daily Challenge Responses
+
+```typescript
+// src/modules/events/challenge-responses.ts
+
+export const CHALLENGE_RESPONSES = {
+  firstSimp: {
+    winner: [
+      "🏆 **FIRST SIMP OF THE DAY:** <@{userId}>!\n\nYou saw my post and dropped EVERYTHING to react. That's... honestly concerning but I love it. +100 Devotion Points!",
+      "Speed. Dedication. Simping.\n\n<@{userId}> claims First Simp! In the time it took others to blink, you were already here. The devotion is PALPABLE~ 💜",
+    ],
+    tooSlow: [
+      "Not fast enough! <@{winnerId}> got there first. But hey, second place is just first loser—I mean, still very appreciated! 💜",
+    ],
+  },
+
+  complimentChallenge: {
+    open: [
+      "💬 **60-SECOND COMPLIMENT CHALLENGE!**\n\nTell me why I'm the best idol. You have ONE MINUTE. Most creative compliment wins.\n\nAnd before you ask—yes, flattery gets you EVERYWHERE with me~",
+    ],
+    winner: [
+      "AND TIME! ⏱️\n\nThe winner is <@{userId}> with:\n\n> \"{compliment}\"\n\n...I'm not blushing. You're blushing. +200 Devotion Points!",
+    ],
+  },
+};
+```
+
+#### Faction War Announcements
+
+```typescript
+// src/modules/faction/war-announcements.ts
+
+export const FACTION_WAR_MESSAGES = {
+  weeklyStart: [
+    "⚔️ **THIS WEEK'S FACTION WAR BEGINS!**\n\n🌸 Pink Pilled vs 🖤 Dark Devotees vs ⚡ Chaos Agents\n\nTheme: **{theme}**\n\nEarn points for your faction through messages, gacha pulls, and being generally devoted. May the best simps win~",
+  ],
+
+  midWeekUpdate: [
+    "📊 **MID-WEEK FACTION STANDINGS:**\n\n🥇 {first} — {firstScore} pts\n🥈 {second} — {secondScore} pts\n🥉 {third} — {thirdScore} pts\n\nThe gap is {gap} points. Still anyone's game... unless you're in last place. Then it's specifically NOT your game. Yet. 👀",
+  ],
+
+  weeklyEnd: [
+    "🏆 **FACTION WAR RESULTS:**\n\nThis week's champion: **{winner}** with {winnerScore} points!\n\nAll {winner} members receive bonus Devotion Points and the eternal glory of knowing you chose correctly~ 💜\n\nNew war begins Monday. Rest up, losers—I mean, other factions!",
+  ],
+};
+```
+
+#### Voice Consistency Rules
+
+When implementing ANY bot response:
+
+1. **NEVER use**: "Hello!", "Thank you for your support!", "We appreciate you!" (corporate)
+2. **ALWAYS include**: A hint of teasing, acknowledgment of the parasocial dynamic, self-aware humor
+3. **OPTIONAL but encouraged**: References to her 47 fans, The Chase, Fading, or her precarious idol status
+4. **EMOJI usage**: 💜 (signature), ~ (sentence softener), occasional 👀, ✨, never excessive
+
+```typescript
+// BAD (Corporate):
+"Congratulations on your SSR pull! Thank you for playing!"
+
+// GOOD (Ika voice):
+"SSR?! The gacha blessed you today! Quick, screenshot this before the luck runs out~ 💜"
+
+// BAD (Generic):
+"Welcome to the server! Have fun!"
+
+// GOOD (Ika voice):
+"A new devotee! That makes... *counts* ...more than 47 now! I'm moving up in the world~ Make yourself at home. The gacha's over there, and I'll be watching~ 💜"
+```
 
 ---
 
@@ -1649,24 +2285,49 @@ export const command: Command = {
 
 ```typescript
 // src/modules/gacha/gacha.service.ts
+// Pity system inspired by Pokestar (https://github.com/ewei068/pokestar)
 import { prisma } from '../../services/database';
 import { Rarity, GachaCardDefinition, BannerDefinition, PullResult } from './gacha.types';
 import { CARDS } from './cards';
 import { getCurrentBanner } from './banners';
+import { logger } from '../../services/logger';
 
 export async function pull(discordId: string, count: number = 1): Promise<PullResult[]> {
   const banner = getCurrentBanner();
   const results: PullResult[] = [];
 
+  // Get or create user
+  const user = await prisma.user.upsert({
+    where: { discordId },
+    create: { discordId },
+    update: {},
+  });
+
   // Get user's existing cards
   const existingCards = await prisma.gachaCard.findMany({
-    where: { user: { discordId } },
+    where: { userId: user.id },
     select: { cardId: true },
   });
   const ownedCardIds = new Set(existingCards.map(c => c.cardId));
 
+  // Get or create pity state for this banner
+  let pityState = await prisma.gachaPity.findUnique({
+    where: { userId_bannerId: { userId: user.id, bannerId: banner.id } },
+  });
+
+  if (!pityState) {
+    pityState = await prisma.gachaPity.create({
+      data: { userId: user.id, bannerId: banner.id, pullsSinceSSR: 0, totalPulls: 0 },
+    });
+  }
+
+  let currentPity = pityState.pullsSinceSSR;
+
   for (let i = 0; i < count; i++) {
-    const rarity = rollRarity(banner.rates);
+    currentPity++;
+
+    // Calculate SSR rate with pity boost
+    const { rarity, wasPity } = rollRarityWithPity(banner, currentPity);
     const card = rollCard(banner, rarity);
     const isNew = !ownedCardIds.has(card.id);
 
@@ -1674,21 +2335,33 @@ export async function pull(discordId: string, count: number = 1): Promise<PullRe
       card,
       isNew,
       isDuplicate: !isNew,
+      pityCount: currentPity,
+      wasPity,
     });
+
+    // Reset pity counter on SSR
+    if (rarity === Rarity.SSR) {
+      logger.info({ discordId, pityCount: currentPity, wasPity }, 'SSR pulled, resetting pity');
+      currentPity = 0;
+    }
 
     // Add to owned set for subsequent pulls in batch
     ownedCardIds.add(card.id);
   }
 
+  // Update pity state in database
+  await prisma.gachaPity.update({
+    where: { userId_bannerId: { userId: user.id, bannerId: banner.id } },
+    data: {
+      pullsSinceSSR: currentPity,
+      totalPulls: { increment: count },
+      lastPullAt: new Date(),
+    },
+  });
+
   // Persist new cards to database
   const newCards = results.filter(r => r.isNew);
   if (newCards.length > 0) {
-    const user = await prisma.user.upsert({
-      where: { discordId },
-      create: { discordId },
-      update: {},
-    });
-
     await prisma.gachaCard.createMany({
       data: newCards.map(r => ({
         userId: user.id,
@@ -1702,16 +2375,64 @@ export async function pull(discordId: string, count: number = 1): Promise<PullRe
   return results;
 }
 
-function rollRarity(rates: BannerDefinition['rates']): Rarity {
+/**
+ * Roll rarity with pity system:
+ * - Before soft pity: Normal rates
+ * - After soft pity: SSR rate increases by rateBoostPerPull per pull
+ * - At hard pity: Guaranteed SSR
+ */
+function rollRarityWithPity(
+  banner: BannerDefinition,
+  pullsSinceSSR: number
+): { rarity: Rarity; wasPity: boolean } {
+  const { softPity, hardPity, rateBoostPerPull } = banner.pity;
+
+  // Hard pity: guaranteed SSR
+  if (pullsSinceSSR >= hardPity) {
+    return { rarity: Rarity.SSR, wasPity: true };
+  }
+
+  // Calculate boosted SSR rate after soft pity
+  let ssrRate = banner.rates[Rarity.SSR];
+
+  if (pullsSinceSSR >= softPity) {
+    const pullsOverSoftPity = pullsSinceSSR - softPity;
+    const boost = pullsOverSoftPity * rateBoostPerPull;
+    ssrRate = Math.min(ssrRate + boost, 1.0); // Cap at 100%
+
+    logger.debug({
+      pullsSinceSSR,
+      baseRate: banner.rates[Rarity.SSR],
+      boostedRate: ssrRate,
+    }, 'Pity boost active');
+  }
+
+  // Build adjusted rates (SSR boosted, others scaled down proportionally)
+  const nonSsrTotal = 1 - banner.rates[Rarity.SSR];
+  const newNonSsrTotal = 1 - ssrRate;
+  const scaleFactor = nonSsrTotal > 0 ? newNonSsrTotal / nonSsrTotal : 0;
+
+  const adjustedRates = {
+    [Rarity.SSR]: ssrRate,
+    [Rarity.SUPER_RARE]: banner.rates[Rarity.SUPER_RARE] * scaleFactor,
+    [Rarity.RARE]: banner.rates[Rarity.RARE] * scaleFactor,
+    [Rarity.COMMON]: banner.rates[Rarity.COMMON] * scaleFactor,
+  };
+
   const roll = Math.random();
   let cumulative = 0;
 
-  for (const [rarity, rate] of Object.entries(rates)) {
-    cumulative += rate;
-    if (roll < cumulative) return rarity as Rarity;
+  // Roll in order: SSR first (so pity boost works correctly)
+  const rarityOrder = [Rarity.SSR, Rarity.SUPER_RARE, Rarity.RARE, Rarity.COMMON];
+
+  for (const rarity of rarityOrder) {
+    cumulative += adjustedRates[rarity];
+    if (roll < cumulative) {
+      return { rarity, wasPity: false };
+    }
   }
 
-  return Rarity.COMMON; // Fallback
+  return { rarity: Rarity.COMMON, wasPity: false };
 }
 
 function rollCard(banner: BannerDefinition, rarity: Rarity): GachaCardDefinition {
@@ -1734,6 +2455,40 @@ function rollCard(banner: BannerDefinition, rarity: Rarity): GachaCardDefinition
 
   const pool = nonFeatured.length > 0 ? nonFeatured : featured;
   return pool[Math.floor(Math.random() * pool.length)];
+}
+
+/**
+ * Get user's current pity status for a banner
+ */
+export async function getPityStatus(discordId: string, bannerId: string): Promise<{
+  pullsSinceSSR: number;
+  softPityAt: number;
+  hardPityAt: number;
+  isInSoftPity: boolean;
+} | null> {
+  const user = await prisma.user.findUnique({ where: { discordId } });
+  if (!user) return null;
+
+  const pity = await prisma.gachaPity.findUnique({
+    where: { userId_bannerId: { userId: user.id, bannerId } },
+  });
+
+  const banner = getCurrentBanner();
+  if (!pity) {
+    return {
+      pullsSinceSSR: 0,
+      softPityAt: banner.pity.softPity,
+      hardPityAt: banner.pity.hardPity,
+      isInSoftPity: false,
+    };
+  }
+
+  return {
+    pullsSinceSSR: pity.pullsSinceSSR,
+    softPityAt: banner.pity.softPity,
+    hardPityAt: banner.pity.hardPity,
+    isInSoftPity: pity.pullsSinceSSR >= banner.pity.softPity,
+  };
 }
 ```
 
