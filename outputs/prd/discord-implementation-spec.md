@@ -89,6 +89,7 @@ infinite-idol-bot/
 │   │   │   ├── headpat.ts          # /headpat enter
 │   │   │   └── roulette.ts         # /roulette status
 │   │   └── admin/
+│   │       ├── setup.ts            # /admin setup (create roles/channels)
 │   │       ├── sync-roles.ts       # /admin sync-roles (manual trigger)
 │   │       ├── announce.ts         # /admin announce [message]
 │   │       └── milestone.ts        # /admin milestone [count]
@@ -100,6 +101,12 @@ infinite-idol-bot/
 │   │   └── guildMemberAdd.ts       # Welcome message
 │   │
 │   ├── modules/                    # Business logic (no Discord dependencies)
+│   │   ├── setup/
+│   │   │   ├── setup.service.ts    # Server infrastructure provisioning
+│   │   │   ├── setup.types.ts      # Role/channel definitions
+│   │   │   ├── roles.ts            # Role definitions with colors/perms
+│   │   │   ├── channels.ts         # Channel definitions with categories
+│   │   │   └── permissions.ts      # Permission overwrites helpers
 │   │   ├── gacha/
 │   │   │   ├── gacha.service.ts    # Pull logic, rates, collection
 │   │   │   ├── gacha.types.ts      # Card types, rarity enums
@@ -293,6 +300,26 @@ model PreRegistrationMilestone {
   rewardKey String   @db.VarChar(50)  // "casual_ika", "voice_pack_1"
   announced Boolean  @default(false)
 }
+
+// Stores Discord resources created by the bot (roles, channels, categories)
+// Enables idempotent setup - bot checks if resource exists before creating
+model DiscordResource {
+  id            Int      @id @default(autoincrement())
+
+  resourceType  String   @db.VarChar(20)   // "role", "channel", "category"
+  resourceKey   String   @db.VarChar(50)   // e.g., "role_pink_pilled", "channel_gacha_salt"
+  discordId     String   @db.VarChar(20)   // Discord snowflake ID
+
+  guildId       String   @db.VarChar(20)   // Which guild this belongs to
+
+  metadata      Json?    // Store additional info (color, permissions, parent category, etc.)
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@unique([guildId, resourceKey])
+  @@index([guildId, resourceType])
+}
 ```
 
 ### TypeScript Types
@@ -372,19 +399,21 @@ export const DAILY_MESSAGE_CAP = 100;
 export interface DevotionTier {
   name: string;
   threshold: number;
-  roleId: string;
+  roleKey: string;  // Key for lookup via getTierRoleIds()
   perks: string[];
 }
 
+// NOTE: roleKey maps to setup/roles.ts definitions
+// Actual Discord role IDs are retrieved dynamically from DiscordResource table
 export const DEVOTION_TIERS: DevotionTier[] = [
-  { name: 'Casual Enjoyer', threshold: 100, roleId: '', perks: ['Basic access'] },
-  { name: 'Interested Party', threshold: 500, roleId: '', perks: ['#fan-art access'] },
-  { name: 'Registered Simp', threshold: 1000, roleId: '', perks: ['Full game access'] },
-  { name: 'Dedicated Devotee', threshold: 2500, roleId: '', perks: ['VIP channel access'] },
-  { name: 'Obsessed', threshold: 5000, roleId: '', perks: ['Ika notice priority'] },
-  { name: 'Down Bad', threshold: 10000, roleId: '', perks: ['Direct Ika message'] },
-  { name: 'Terminal Simp', threshold: 25000, roleId: '', perks: ['Name in credits'] },
-  { name: 'Legendary Simp', threshold: 50000, roleId: '', perks: ['Custom role'] },
+  { name: 'Casual Enjoyer', threshold: 100, roleKey: 'tier_casual_enjoyer', perks: ['Basic access'] },
+  { name: 'Interested Party', threshold: 500, roleKey: 'tier_interested_party', perks: ['#fan-art access'] },
+  { name: 'Registered Simp', threshold: 1000, roleKey: 'tier_registered_simp', perks: ['Full game access'] },
+  { name: 'Dedicated Devotee', threshold: 2500, roleKey: 'tier_dedicated_devotee', perks: ['VIP channel access'] },
+  { name: 'Obsessed', threshold: 5000, roleKey: 'tier_obsessed', perks: ['Ika notice priority'] },
+  { name: 'Down Bad', threshold: 10000, roleKey: 'tier_down_bad', perks: ['Direct Ika message'] },
+  { name: 'Terminal Simp', threshold: 25000, roleKey: 'tier_terminal_simp', perks: ['Name in credits'] },
+  { name: 'Legendary Simp', threshold: 50000, roleKey: 'tier_legendary_simp', perks: ['Custom role'] },
 ];
 ```
 
@@ -397,35 +426,37 @@ export enum Faction {
   CHAOS_AGENTS = 'CHAOS_AGENTS',
 }
 
+// NOTE: roleKey and channelKey map to setup/roles.ts and setup/channels.ts
+// Actual Discord IDs are retrieved dynamically from DiscordResource table
 export const FACTION_INFO: Record<Faction, {
   name: string;
   emoji: string;
-  roleId: string;
-  channelId: string;
-  color: number;  // Discord color int
+  roleKey: string;     // Lookup via getFactionRoleIds()
+  channelKey: string;  // Lookup via getChannelId()
+  color: number;
   description: string;
 }> = {
   [Faction.PINK_PILLED]: {
     name: 'Pink Pilled',
     emoji: '🌸',
-    roleId: '',  // Set in config
-    channelId: '',
+    roleKey: 'faction_pink_pilled',
+    channelKey: 'channel_pink_pilled',
     color: 0xFF69B4,
     description: 'Pure devotion, wholesome energy. Ika can do no wrong.',
   },
   [Faction.DARK_DEVOTEES]: {
     name: 'Dark Devotees',
     emoji: '🖤',
-    roleId: '',
-    channelId: '',
+    roleKey: 'faction_dark_devotees',
+    channelKey: 'channel_dark_devotees',
     color: 0x2F3136,
     description: 'Obsessive, competitive, ruthless. If I can\'t have her attention, NO ONE CAN.',
   },
   [Faction.CHAOS_AGENTS]: {
     name: 'Chaos Agents',
     emoji: '⚡',
-    roleId: '',
-    channelId: '',
+    roleKey: 'faction_chaos_agents',
+    channelKey: 'channel_chaos_agents',
     color: 0xFFD700,
     description: 'Chaotic neutral, shitposters. We\'re just here for the content.',
   },
@@ -435,6 +466,825 @@ export const FACTION_INFO: Record<Faction, {
 ---
 
 ## Implementation Tasks
+
+### Phase 0: Server Setup (Before Launch)
+
+> **CRITICAL:** The bot must be able to create all required Discord infrastructure (roles, channels, categories, permissions) automatically. This enables deployment to any server without manual setup.
+
+#### Task 0.1: Setup Types & Definitions
+**Duration:** 30 minutes
+**Outcome:** Complete type definitions for all Discord resources the bot will create
+
+**Steps:**
+1. Create `src/modules/setup/setup.types.ts` with role and channel definitions
+2. Define all tier roles, faction roles, and special roles
+3. Define all categories and channels with permission requirements
+4. Include color values, position hints, and permission overwrites
+
+**Acceptance Criteria:**
+- All 8 devotion tier roles defined with colors
+- All 3 faction roles defined with colors
+- Special roles (Headpat Winner, Admin) defined
+- All 6 categories and ~30 channels defined
+- Permission overwrites specified for each channel
+
+```typescript
+// src/modules/setup/setup.types.ts
+import { PermissionFlagsBits, ChannelType, OverwriteType } from 'discord.js';
+
+export interface RoleDefinition {
+  key: string;           // Unique identifier, e.g., "tier_casual_enjoyer"
+  name: string;          // Display name in Discord
+  color: number;         // Discord color integer
+  hoist: boolean;        // Show separately in member list
+  mentionable: boolean;
+  permissions?: bigint[];  // Specific permissions to grant
+  position?: 'above_members' | 'below_mods' | 'top';  // Positioning hint
+}
+
+export interface PermissionOverwrite {
+  roleKey: string;       // Reference to RoleDefinition.key or "@everyone"
+  type: OverwriteType;
+  allow?: bigint[];
+  deny?: bigint[];
+}
+
+export interface ChannelDefinition {
+  key: string;           // Unique identifier, e.g., "channel_gacha_salt"
+  name: string;          // Display name
+  type: ChannelType;
+  categoryKey?: string;  // Parent category key
+  topic?: string;
+  nsfw?: boolean;
+  slowMode?: number;     // Seconds
+  permissionOverwrites?: PermissionOverwrite[];
+}
+
+export interface CategoryDefinition {
+  key: string;
+  name: string;
+  permissionOverwrites?: PermissionOverwrite[];
+}
+```
+
+```typescript
+// src/modules/setup/roles.ts
+import { PermissionFlagsBits } from 'discord.js';
+import { RoleDefinition } from './setup.types';
+
+export const TIER_ROLES: RoleDefinition[] = [
+  {
+    key: 'tier_legendary_simp',
+    name: '✨ Legendary Simp',
+    color: 0xFFD700,  // Gold
+    hoist: true,
+    mentionable: true,
+    position: 'above_members',
+  },
+  {
+    key: 'tier_terminal_simp',
+    name: '💀 Terminal Simp',
+    color: 0x9B59B6,  // Purple
+    hoist: true,
+    mentionable: true,
+  },
+  {
+    key: 'tier_down_bad',
+    name: '😈 Down Bad',
+    color: 0xE91E63,  // Pink
+    hoist: true,
+    mentionable: false,
+  },
+  {
+    key: 'tier_obsessed',
+    name: '🔥 Obsessed',
+    color: 0xFF5722,  // Deep Orange
+    hoist: false,
+    mentionable: false,
+  },
+  {
+    key: 'tier_dedicated_devotee',
+    name: '💜 Dedicated Devotee',
+    color: 0x7C4DFF,  // Deep Purple
+    hoist: false,
+    mentionable: false,
+  },
+  {
+    key: 'tier_registered_simp',
+    name: '📝 Registered Simp',
+    color: 0x3F51B5,  // Indigo
+    hoist: false,
+    mentionable: false,
+  },
+  {
+    key: 'tier_interested_party',
+    name: '👀 Interested Party',
+    color: 0x2196F3,  // Blue
+    hoist: false,
+    mentionable: false,
+  },
+  {
+    key: 'tier_casual_enjoyer',
+    name: '🌱 Casual Enjoyer',
+    color: 0x4CAF50,  // Green
+    hoist: false,
+    mentionable: false,
+  },
+];
+
+export const FACTION_ROLES: RoleDefinition[] = [
+  {
+    key: 'faction_pink_pilled',
+    name: '🌸 Pink Pilled',
+    color: 0xFF69B4,  // Hot Pink
+    hoist: true,
+    mentionable: true,
+  },
+  {
+    key: 'faction_dark_devotees',
+    name: '🖤 Dark Devotees',
+    color: 0x2F3136,  // Discord Dark
+    hoist: true,
+    mentionable: true,
+  },
+  {
+    key: 'faction_chaos_agents',
+    name: '⚡ Chaos Agents',
+    color: 0xFFD700,  // Gold
+    hoist: true,
+    mentionable: true,
+  },
+];
+
+export const SPECIAL_ROLES: RoleDefinition[] = [
+  {
+    key: 'headpat_winner',
+    name: '💜 Ika\'s Chosen',
+    color: 0xE91E63,
+    hoist: true,
+    mentionable: true,
+  },
+  {
+    key: 'pre_registered',
+    name: '✅ Pre-Registered',
+    color: 0x00E676,  // Green accent
+    hoist: false,
+    mentionable: false,
+  },
+  {
+    key: 'verified',
+    name: '✓ Verified',
+    color: 0x9E9E9E,  // Grey
+    hoist: false,
+    mentionable: false,
+  },
+];
+
+export const ALL_ROLES: RoleDefinition[] = [
+  ...TIER_ROLES,
+  ...FACTION_ROLES,
+  ...SPECIAL_ROLES,
+];
+```
+
+```typescript
+// src/modules/setup/channels.ts
+import { ChannelType, PermissionFlagsBits } from 'discord.js';
+import { CategoryDefinition, ChannelDefinition } from './setup.types';
+
+export const CATEGORIES: CategoryDefinition[] = [
+  { key: 'cat_welcome', name: '🏠 WELCOME' },
+  { key: 'cat_ika', name: '💜 IKA\'S DOMAIN' },
+  { key: 'cat_games', name: '🎮 GAMES & GACHA' },
+  { key: 'cat_factions', name: '⚔️ FACTION WARS' },
+  { key: 'cat_community', name: '🎭 COMMUNITY' },
+  { key: 'cat_vip', name: '✨ VIP LOUNGE' },
+];
+
+export const CHANNELS: ChannelDefinition[] = [
+  // WELCOME CATEGORY
+  {
+    key: 'channel_rules',
+    name: 'rules',
+    type: ChannelType.GuildText,
+    categoryKey: 'cat_welcome',
+    topic: 'Server rules and guidelines. Read before participating.',
+    permissionOverwrites: [
+      { roleKey: '@everyone', type: 0, deny: [PermissionFlagsBits.SendMessages] },
+    ],
+  },
+  {
+    key: 'channel_announcements',
+    name: 'announcements',
+    type: ChannelType.GuildText,
+    categoryKey: 'cat_welcome',
+    topic: 'Official announcements and milestone celebrations.',
+    permissionOverwrites: [
+      { roleKey: '@everyone', type: 0, deny: [PermissionFlagsBits.SendMessages] },
+    ],
+  },
+  {
+    key: 'channel_faction_select',
+    name: 'faction-select',
+    type: ChannelType.GuildText,
+    categoryKey: 'cat_welcome',
+    topic: 'Choose your faction! Use /faction join to pledge allegiance.',
+    permissionOverwrites: [
+      { roleKey: '@everyone', type: 0, deny: [PermissionFlagsBits.SendMessages] },
+    ],
+  },
+
+  // IKA'S DOMAIN
+  {
+    key: 'channel_ika_speaks',
+    name: 'ika-speaks',
+    type: ChannelType.GuildText,
+    categoryKey: 'cat_ika',
+    topic: 'Official messages from Ika herself~ 💜',
+    permissionOverwrites: [
+      { roleKey: '@everyone', type: 0, deny: [PermissionFlagsBits.SendMessages] },
+    ],
+  },
+  {
+    key: 'channel_headpat_roulette',
+    name: 'headpat-roulette',
+    type: ChannelType.GuildText,
+    categoryKey: 'cat_ika',
+    topic: 'Daily chance for Ika\'s personal attention! /headpat enter',
+  },
+  {
+    key: 'channel_cosplay_closet',
+    name: 'cosplay-closet',
+    type: ChannelType.GuildText,
+    categoryKey: 'cat_ika',
+    topic: 'Vote on Ika\'s outfits! Democracy in action.',
+  },
+
+  // GAMES & GACHA
+  {
+    key: 'channel_gacha_pulls',
+    name: 'gacha-pulls',
+    type: ChannelType.GuildText,
+    categoryKey: 'cat_games',
+    topic: 'Pull for Ika cards! /gacha pull',
+  },
+  {
+    key: 'channel_gacha_salt',
+    name: 'gacha-salt',
+    type: ChannelType.GuildText,
+    categoryKey: 'cat_games',
+    topic: '🧂 SSR pulls announced here. Cope, seethe, mald.',
+  },
+  {
+    key: 'channel_leaderboards',
+    name: 'leaderboards',
+    type: ChannelType.GuildText,
+    categoryKey: 'cat_games',
+    topic: 'Top simps ranked. Check your position with /devotion',
+    permissionOverwrites: [
+      { roleKey: '@everyone', type: 0, deny: [PermissionFlagsBits.SendMessages] },
+    ],
+  },
+  {
+    key: 'channel_daily_challenges',
+    name: 'daily-challenges',
+    type: ChannelType.GuildText,
+    categoryKey: 'cat_games',
+    topic: 'Complete daily challenges for bonus Devotion Points!',
+  },
+
+  // FACTION WARS
+  {
+    key: 'channel_war_status',
+    name: 'war-status',
+    type: ChannelType.GuildText,
+    categoryKey: 'cat_factions',
+    topic: 'Current faction war standings and weekly results.',
+    permissionOverwrites: [
+      { roleKey: '@everyone', type: 0, deny: [PermissionFlagsBits.SendMessages] },
+    ],
+  },
+  {
+    key: 'channel_pink_pilled',
+    name: 'pink-pilled-hq',
+    type: ChannelType.GuildText,
+    categoryKey: 'cat_factions',
+    topic: '🌸 Pink Pilled faction headquarters. Pure devotion only.',
+    permissionOverwrites: [
+      { roleKey: '@everyone', type: 0, deny: [PermissionFlagsBits.ViewChannel] },
+      { roleKey: 'faction_pink_pilled', type: 0, allow: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.SendMessages] },
+    ],
+  },
+  {
+    key: 'channel_dark_devotees',
+    name: 'dark-devotees-hq',
+    type: ChannelType.GuildText,
+    categoryKey: 'cat_factions',
+    topic: '🖤 Dark Devotees faction headquarters. Obsession is our strength.',
+    permissionOverwrites: [
+      { roleKey: '@everyone', type: 0, deny: [PermissionFlagsBits.ViewChannel] },
+      { roleKey: 'faction_dark_devotees', type: 0, allow: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.SendMessages] },
+    ],
+  },
+  {
+    key: 'channel_chaos_agents',
+    name: 'chaos-agents-hq',
+    type: ChannelType.GuildText,
+    categoryKey: 'cat_factions',
+    topic: '⚡ Chaos Agents faction headquarters. Content is king.',
+    permissionOverwrites: [
+      { roleKey: '@everyone', type: 0, deny: [PermissionFlagsBits.ViewChannel] },
+      { roleKey: 'faction_chaos_agents', type: 0, allow: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.SendMessages] },
+    ],
+  },
+
+  // COMMUNITY
+  {
+    key: 'channel_general',
+    name: 'general',
+    type: ChannelType.GuildText,
+    categoryKey: 'cat_community',
+    topic: 'General chat. Be nice, earn points!',
+  },
+  {
+    key: 'channel_waifu_wars',
+    name: 'waifu-wars',
+    type: ChannelType.GuildText,
+    categoryKey: 'cat_community',
+    topic: 'Debate tier lists. Fight for your favorites. No peace.',
+  },
+  {
+    key: 'channel_fan_art',
+    name: 'fan-art',
+    type: ChannelType.GuildText,
+    categoryKey: 'cat_community',
+    topic: 'Share your Ika fan art! Bonus points for creativity.',
+    slowMode: 30,
+  },
+  {
+    key: 'channel_memes',
+    name: 'memes',
+    type: ChannelType.GuildText,
+    categoryKey: 'cat_community',
+    topic: 'Only the finest Ika memes. Quality over quantity.',
+    slowMode: 10,
+  },
+  {
+    key: 'channel_screenshots',
+    name: 'screenshots',
+    type: ChannelType.GuildText,
+    categoryKey: 'cat_community',
+    topic: 'Show off your pulls, collections, and gacha luck.',
+  },
+
+  // VIP LOUNGE (Tier-gated)
+  {
+    key: 'channel_vip_lounge',
+    name: 'vip-lounge',
+    type: ChannelType.GuildText,
+    categoryKey: 'cat_vip',
+    topic: '✨ Dedicated Devotees and above only. You earned it.',
+    permissionOverwrites: [
+      { roleKey: '@everyone', type: 0, deny: [PermissionFlagsBits.ViewChannel] },
+      { roleKey: 'tier_dedicated_devotee', type: 0, allow: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.SendMessages] },
+      { roleKey: 'tier_obsessed', type: 0, allow: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.SendMessages] },
+      { roleKey: 'tier_down_bad', type: 0, allow: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.SendMessages] },
+      { roleKey: 'tier_terminal_simp', type: 0, allow: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.SendMessages] },
+      { roleKey: 'tier_legendary_simp', type: 0, allow: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.SendMessages] },
+    ],
+  },
+  {
+    key: 'channel_ika_dm',
+    name: 'ika-dm',
+    type: ChannelType.GuildText,
+    categoryKey: 'cat_vip',
+    topic: '💜 Down Bad and above get Ika\'s personal responses.',
+    permissionOverwrites: [
+      { roleKey: '@everyone', type: 0, deny: [PermissionFlagsBits.ViewChannel] },
+      { roleKey: 'tier_down_bad', type: 0, allow: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.SendMessages] },
+      { roleKey: 'tier_terminal_simp', type: 0, allow: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.SendMessages] },
+      { roleKey: 'tier_legendary_simp', type: 0, allow: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.SendMessages] },
+    ],
+  },
+  {
+    key: 'channel_credits_hall',
+    name: 'credits-hall',
+    type: ChannelType.GuildText,
+    categoryKey: 'cat_vip',
+    topic: '🏆 Terminal Simp+ have their names in the game credits.',
+    permissionOverwrites: [
+      { roleKey: '@everyone', type: 0, deny: [PermissionFlagsBits.ViewChannel] },
+      { roleKey: 'tier_terminal_simp', type: 0, allow: [PermissionFlagsBits.ViewChannel] },
+      { roleKey: 'tier_legendary_simp', type: 0, allow: [PermissionFlagsBits.ViewChannel] },
+    ],
+  },
+];
+```
+
+#### Task 0.2: Setup Service
+**Duration:** 60 minutes
+**Outcome:** Idempotent server setup that creates all Discord infrastructure
+
+**Steps:**
+1. Create `src/modules/setup/setup.service.ts`
+2. Implement role creation with proper ordering (highest tier first)
+3. Implement category creation
+4. Implement channel creation with permission overwrites
+5. Store all created IDs in DiscordResource table
+6. Make all operations idempotent (check exists before create)
+
+**Acceptance Criteria:**
+- Running setup twice produces same result (idempotent)
+- All roles created in correct order (hierarchy)
+- All channels in correct categories
+- Permission overwrites applied correctly
+- All IDs stored in database for reference
+
+```typescript
+// src/modules/setup/setup.service.ts
+import {
+  Guild,
+  Role,
+  CategoryChannel,
+  TextChannel,
+  PermissionFlagsBits,
+  ChannelType,
+  OverwriteResolvable,
+} from 'discord.js';
+import { prisma } from '../../services/database';
+import { logger } from '../../services/logger';
+import { ALL_ROLES, RoleDefinition } from './roles';
+import { CATEGORIES, CHANNELS, CategoryDefinition, ChannelDefinition } from './channels';
+
+interface SetupResult {
+  rolesCreated: number;
+  rolesExisted: number;
+  categoriesCreated: number;
+  categoriesExisted: number;
+  channelsCreated: number;
+  channelsExisted: number;
+  errors: string[];
+}
+
+export async function setupServer(guild: Guild): Promise<SetupResult> {
+  const result: SetupResult = {
+    rolesCreated: 0,
+    rolesExisted: 0,
+    categoriesCreated: 0,
+    categoriesExisted: 0,
+    channelsCreated: 0,
+    channelsExisted: 0,
+    errors: [],
+  };
+
+  const roleMap = new Map<string, string>(); // key -> discordId
+
+  // Step 1: Create roles (in reverse order so highest tier ends up on top)
+  logger.info('Creating roles...');
+  const reversedRoles = [...ALL_ROLES].reverse();
+
+  for (const roleDef of reversedRoles) {
+    try {
+      const roleId = await ensureRole(guild, roleDef);
+      roleMap.set(roleDef.key, roleId);
+
+      const wasNew = await wasNewlyCreated(guild.id, roleDef.key);
+      if (wasNew) result.rolesCreated++;
+      else result.rolesExisted++;
+    } catch (error) {
+      result.errors.push(`Role ${roleDef.key}: ${error}`);
+    }
+  }
+
+  // Step 2: Create categories
+  logger.info('Creating categories...');
+  const categoryMap = new Map<string, string>(); // key -> discordId
+
+  for (const catDef of CATEGORIES) {
+    try {
+      const catId = await ensureCategory(guild, catDef);
+      categoryMap.set(catDef.key, catId);
+
+      const wasNew = await wasNewlyCreated(guild.id, catDef.key);
+      if (wasNew) result.categoriesCreated++;
+      else result.categoriesExisted++;
+    } catch (error) {
+      result.errors.push(`Category ${catDef.key}: ${error}`);
+    }
+  }
+
+  // Step 3: Create channels
+  logger.info('Creating channels...');
+  for (const chanDef of CHANNELS) {
+    try {
+      const parentId = chanDef.categoryKey ? categoryMap.get(chanDef.categoryKey) : undefined;
+      const chanId = await ensureChannel(guild, chanDef, parentId, roleMap);
+
+      const wasNew = await wasNewlyCreated(guild.id, chanDef.key);
+      if (wasNew) result.channelsCreated++;
+      else result.channelsExisted++;
+    } catch (error) {
+      result.errors.push(`Channel ${chanDef.key}: ${error}`);
+    }
+  }
+
+  logger.info({ result }, 'Server setup complete');
+  return result;
+}
+
+async function ensureRole(guild: Guild, def: RoleDefinition): Promise<string> {
+  // Check database first
+  const existing = await prisma.discordResource.findUnique({
+    where: { guildId_resourceKey: { guildId: guild.id, resourceKey: def.key } },
+  });
+
+  if (existing) {
+    // Verify role still exists in Discord
+    const role = guild.roles.cache.get(existing.discordId);
+    if (role) return existing.discordId;
+    // Role was deleted, remove stale record
+    await prisma.discordResource.delete({ where: { id: existing.id } });
+  }
+
+  // Check if role exists by name
+  let role = guild.roles.cache.find(r => r.name === def.name);
+
+  if (!role) {
+    role = await guild.roles.create({
+      name: def.name,
+      color: def.color,
+      hoist: def.hoist,
+      mentionable: def.mentionable,
+      permissions: def.permissions ?? [],
+      reason: 'Infinite Idol Bot auto-setup',
+    });
+  }
+
+  // Store in database
+  await prisma.discordResource.upsert({
+    where: { guildId_resourceKey: { guildId: guild.id, resourceKey: def.key } },
+    create: {
+      guildId: guild.id,
+      resourceType: 'role',
+      resourceKey: def.key,
+      discordId: role.id,
+      metadata: { name: def.name, color: def.color },
+    },
+    update: {
+      discordId: role.id,
+      metadata: { name: def.name, color: def.color },
+    },
+  });
+
+  return role.id;
+}
+
+async function ensureCategory(guild: Guild, def: CategoryDefinition): Promise<string> {
+  const existing = await prisma.discordResource.findUnique({
+    where: { guildId_resourceKey: { guildId: guild.id, resourceKey: def.key } },
+  });
+
+  if (existing) {
+    const channel = guild.channels.cache.get(existing.discordId);
+    if (channel) return existing.discordId;
+    await prisma.discordResource.delete({ where: { id: existing.id } });
+  }
+
+  let category = guild.channels.cache.find(
+    c => c.name === def.name && c.type === ChannelType.GuildCategory
+  ) as CategoryChannel | undefined;
+
+  if (!category) {
+    category = await guild.channels.create({
+      name: def.name,
+      type: ChannelType.GuildCategory,
+      reason: 'Infinite Idol Bot auto-setup',
+    });
+  }
+
+  await prisma.discordResource.upsert({
+    where: { guildId_resourceKey: { guildId: guild.id, resourceKey: def.key } },
+    create: {
+      guildId: guild.id,
+      resourceType: 'category',
+      resourceKey: def.key,
+      discordId: category.id,
+      metadata: { name: def.name },
+    },
+    update: { discordId: category.id },
+  });
+
+  return category.id;
+}
+
+async function ensureChannel(
+  guild: Guild,
+  def: ChannelDefinition,
+  parentId: string | undefined,
+  roleMap: Map<string, string>
+): Promise<string> {
+  const existing = await prisma.discordResource.findUnique({
+    where: { guildId_resourceKey: { guildId: guild.id, resourceKey: def.key } },
+  });
+
+  if (existing) {
+    const channel = guild.channels.cache.get(existing.discordId);
+    if (channel) return existing.discordId;
+    await prisma.discordResource.delete({ where: { id: existing.id } });
+  }
+
+  // Build permission overwrites
+  const permissionOverwrites: OverwriteResolvable[] = [];
+
+  if (def.permissionOverwrites) {
+    for (const perm of def.permissionOverwrites) {
+      const id = perm.roleKey === '@everyone'
+        ? guild.id
+        : roleMap.get(perm.roleKey);
+
+      if (!id) {
+        logger.warn({ roleKey: perm.roleKey }, 'Role not found for permission overwrite');
+        continue;
+      }
+
+      permissionOverwrites.push({
+        id,
+        type: perm.type,
+        allow: perm.allow ?? [],
+        deny: perm.deny ?? [],
+      });
+    }
+  }
+
+  let channel = guild.channels.cache.find(
+    c => c.name === def.name && c.type === def.type && c.parentId === parentId
+  ) as TextChannel | undefined;
+
+  if (!channel) {
+    channel = await guild.channels.create({
+      name: def.name,
+      type: def.type,
+      parent: parentId,
+      topic: def.topic,
+      nsfw: def.nsfw,
+      rateLimitPerUser: def.slowMode,
+      permissionOverwrites,
+      reason: 'Infinite Idol Bot auto-setup',
+    }) as TextChannel;
+  } else {
+    // Update permissions on existing channel
+    await channel.permissionOverwrites.set(permissionOverwrites);
+  }
+
+  await prisma.discordResource.upsert({
+    where: { guildId_resourceKey: { guildId: guild.id, resourceKey: def.key } },
+    create: {
+      guildId: guild.id,
+      resourceType: 'channel',
+      resourceKey: def.key,
+      discordId: channel.id,
+      metadata: { name: def.name, category: def.categoryKey },
+    },
+    update: { discordId: channel.id },
+  });
+
+  return channel.id;
+}
+
+async function wasNewlyCreated(guildId: string, resourceKey: string): Promise<boolean> {
+  const resource = await prisma.discordResource.findUnique({
+    where: { guildId_resourceKey: { guildId, resourceKey } },
+  });
+  // Consider "new" if created in the last minute
+  if (!resource) return false;
+  return Date.now() - resource.createdAt.getTime() < 60000;
+}
+
+// Helper to get a resource ID by key
+export async function getResourceId(guildId: string, resourceKey: string): Promise<string | null> {
+  const resource = await prisma.discordResource.findUnique({
+    where: { guildId_resourceKey: { guildId, resourceKey } },
+  });
+  return resource?.discordId ?? null;
+}
+
+// Get all role IDs for a category (e.g., all tier roles)
+export async function getTierRoleIds(guildId: string): Promise<Map<string, string>> {
+  const resources = await prisma.discordResource.findMany({
+    where: {
+      guildId,
+      resourceKey: { startsWith: 'tier_' },
+    },
+  });
+  return new Map(resources.map(r => [r.resourceKey, r.discordId]));
+}
+
+export async function getFactionRoleIds(guildId: string): Promise<Map<string, string>> {
+  const resources = await prisma.discordResource.findMany({
+    where: {
+      guildId,
+      resourceKey: { startsWith: 'faction_' },
+    },
+  });
+  return new Map(resources.map(r => [r.resourceKey, r.discordId]));
+}
+
+export async function getChannelId(guildId: string, channelKey: string): Promise<string | null> {
+  return getResourceId(guildId, channelKey);
+}
+```
+
+#### Task 0.3: Admin Setup Command
+**Duration:** 30 minutes
+**Outcome:** `/admin setup` command that triggers server provisioning
+
+**Steps:**
+1. Create `/admin setup` with admin permission check
+2. Show progress during setup
+3. Report results (created vs existing counts)
+4. Handle errors gracefully
+
+**Acceptance Criteria:**
+- Only users with Administrator permission can run
+- Shows "Setting up..." message while running
+- Reports count of created resources
+- Reports any errors that occurred
+
+```typescript
+// src/commands/admin/setup.ts
+import {
+  SlashCommandBuilder,
+  ChatInputCommandInteraction,
+  EmbedBuilder,
+  PermissionFlagsBits,
+} from 'discord.js';
+import { setupServer } from '../../modules/setup/setup.service';
+import { Command } from '../../types/command';
+
+export const command: Command = {
+  data: new SlashCommandBuilder()
+    .setName('admin')
+    .setDescription('Admin commands')
+    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
+    .addSubcommand(sub =>
+      sub.setName('setup')
+        .setDescription('Create all required roles, channels, and categories')
+    ),
+
+  async execute(interaction: ChatInputCommandInteraction) {
+    if (interaction.options.getSubcommand() !== 'setup') return;
+
+    if (!interaction.guild) {
+      await interaction.reply({ content: 'This command can only be used in a server.', ephemeral: true });
+      return;
+    }
+
+    await interaction.deferReply({ ephemeral: true });
+    await interaction.editReply('🔧 Setting up server infrastructure...');
+
+    try {
+      const result = await setupServer(interaction.guild);
+
+      const embed = new EmbedBuilder()
+        .setTitle('✅ Server Setup Complete')
+        .setColor(result.errors.length > 0 ? 0xFFA500 : 0x00FF00)
+        .addFields(
+          {
+            name: '🎭 Roles',
+            value: `Created: ${result.rolesCreated}\nExisted: ${result.rolesExisted}`,
+            inline: true,
+          },
+          {
+            name: '📁 Categories',
+            value: `Created: ${result.categoriesCreated}\nExisted: ${result.categoriesExisted}`,
+            inline: true,
+          },
+          {
+            name: '💬 Channels',
+            value: `Created: ${result.channelsCreated}\nExisted: ${result.channelsExisted}`,
+            inline: true,
+          },
+        );
+
+      if (result.errors.length > 0) {
+        embed.addFields({
+          name: '⚠️ Errors',
+          value: result.errors.slice(0, 5).join('\n') +
+            (result.errors.length > 5 ? `\n... and ${result.errors.length - 5} more` : ''),
+        });
+      }
+
+      embed.setFooter({ text: 'Run /admin setup again anytime to fix missing resources' });
+
+      await interaction.editReply({ content: '', embeds: [embed] });
+    } catch (error) {
+      await interaction.editReply(`❌ Setup failed: ${error}`);
+    }
+  },
+};
+```
+
+---
 
 ### Phase 1: Foundation (Week 1)
 
@@ -1044,6 +1894,7 @@ export const command: Command = {
 import { Client, GuildMember } from 'discord.js';
 import { prisma } from '../services/database';
 import { DEVOTION_TIERS } from '../modules/devotion/devotion.types';
+import { getTierRoleIds } from '../modules/setup/setup.service';
 import { logger } from '../services/logger';
 import { env } from '../config/env';
 
@@ -1054,6 +1905,14 @@ export async function syncRolesJob(client: Client): Promise<void> {
   logger.info('Starting daily role sync');
 
   const guild = await client.guilds.fetch(env.DISCORD_GUILD_ID);
+
+  // Get tier role IDs from database (created by /admin setup)
+  const tierRoleMap = await getTierRoleIds(guild.id);
+
+  if (tierRoleMap.size === 0) {
+    logger.error('No tier roles found! Run /admin setup first.');
+    return;
+  }
 
   // Get all users with their points
   const users = await prisma.user.findMany({
@@ -1077,6 +1936,13 @@ export async function syncRolesJob(client: Client): Promise<void> {
 
       if (!correctTier) continue;
 
+      // Get actual Discord role ID from our database
+      const correctRoleId = tierRoleMap.get(correctTier.roleKey);
+      if (!correctRoleId) {
+        logger.warn({ roleKey: correctTier.roleKey }, 'Role not found in database');
+        continue;
+      }
+
       // Get Discord member
       let member: GuildMember;
       try {
@@ -1086,14 +1952,12 @@ export async function syncRolesJob(client: Client): Promise<void> {
         continue;
       }
 
-      // Get all tier role IDs
-      const allTierRoleIds = DEVOTION_TIERS
-        .map(t => t.roleId)
-        .filter(Boolean);
+      // Get all tier role IDs from our database
+      const allTierRoleIds = Array.from(tierRoleMap.values());
 
       // Remove incorrect tier roles
       const rolesToRemove = allTierRoleIds.filter(
-        roleId => roleId !== correctTier.roleId && member.roles.cache.has(roleId)
+        roleId => roleId !== correctRoleId && member.roles.cache.has(roleId)
       );
 
       for (const roleId of rolesToRemove) {
@@ -1103,8 +1967,8 @@ export async function syncRolesJob(client: Client): Promise<void> {
       }
 
       // Add correct tier role if missing
-      if (!member.roles.cache.has(correctTier.roleId)) {
-        await member.roles.add(correctTier.roleId);
+      if (!member.roles.cache.has(correctRoleId)) {
+        await member.roles.add(correctRoleId);
         updatesPerformed++;
         await sleep(DELAY_BETWEEN_UPDATES_MS);
       }
@@ -1269,6 +2133,93 @@ describe('Rate Limit Handling', () => {
 });
 ```
 
+### Setup Tests
+
+```typescript
+// tests/integration/setup.test.ts
+
+describe('Server Setup', () => {
+  describe('role creation', () => {
+    it('should create all tier roles with correct colors', async () => {
+      // Given: Empty Discord server
+      // When: setupServer() is called
+      // Then: 8 tier roles exist with specified colors
+      // And: Roles are hoisted appropriately
+    });
+
+    it('should create faction roles', async () => {
+      // Given: Empty Discord server
+      // When: setupServer() is called
+      // Then: 3 faction roles exist (Pink Pilled, Dark Devotees, Chaos Agents)
+    });
+
+    it('should be idempotent - running twice creates no duplicates', async () => {
+      // Given: Server already has bot-created roles
+      // When: setupServer() is called again
+      // Then: No new roles created (rolesCreated = 0)
+      // And: rolesExisted = total role count
+    });
+
+    it('should recover from deleted roles', async () => {
+      // Given: Bot created role was manually deleted
+      // When: setupServer() is called
+      // Then: Missing role is recreated
+      // And: DiscordResource record is updated
+    });
+  });
+
+  describe('channel creation', () => {
+    it('should create all categories', async () => {
+      // Given: Empty Discord server
+      // When: setupServer() is called
+      // Then: 6 categories exist (WELCOME, IKA'S DOMAIN, etc.)
+    });
+
+    it('should create channels in correct categories', async () => {
+      // Given: Empty Discord server
+      // When: setupServer() is called
+      // Then: #gacha-salt is under GAMES & GACHA category
+      // And: #vip-lounge is under VIP LOUNGE category
+    });
+
+    it('should apply permission overwrites', async () => {
+      // Given: Empty Discord server
+      // When: setupServer() is called
+      // Then: #announcements denies @everyone SendMessages
+      // And: #pink-pilled-hq allows faction_pink_pilled ViewChannel
+    });
+
+    it('should apply slow mode settings', async () => {
+      // Given: Empty Discord server
+      // When: setupServer() is called
+      // Then: #fan-art has 30 second slow mode
+      // And: #memes has 10 second slow mode
+    });
+  });
+
+  describe('DiscordResource database', () => {
+    it('should store all created resource IDs', async () => {
+      // Given: Empty Discord server
+      // When: setupServer() is called
+      // Then: DiscordResource table contains entries for all roles
+      // And: DiscordResource table contains entries for all channels
+    });
+
+    it('should allow lookup by resource key', async () => {
+      // Given: Server with completed setup
+      // When: getResourceId(guildId, 'tier_obsessed') is called
+      // Then: Returns valid Discord role ID
+    });
+
+    it('should return null for unknown keys', async () => {
+      // Given: Server with completed setup
+      // When: getResourceId(guildId, 'nonexistent_role') is called
+      // Then: Returns null
+    });
+  });
+});
+```
+
 ---
 
 ## Environment Variables
@@ -1281,27 +2232,6 @@ DISCORD_TOKEN=your_bot_token_here
 DISCORD_CLIENT_ID=your_client_id
 DISCORD_GUILD_ID=your_server_id
 
-# Channels
-GACHA_SALT_CHANNEL_ID=channel_for_ssr_announcements
-IKA_SPEAKS_CHANNEL_ID=channel_for_scheduled_messages
-ANNOUNCEMENTS_CHANNEL_ID=channel_for_milestones
-
-# Roles (tier roles, faction roles)
-ROLE_CASUAL_ENJOYER=role_id
-ROLE_INTERESTED_PARTY=role_id
-ROLE_REGISTERED_SIMP=role_id
-ROLE_DEDICATED_DEVOTEE=role_id
-ROLE_OBSESSED=role_id
-ROLE_DOWN_BAD=role_id
-ROLE_TERMINAL_SIMP=role_id
-ROLE_LEGENDARY_SIMP=role_id
-
-ROLE_PINK_PILLED=role_id
-ROLE_DARK_DEVOTEES=role_id
-ROLE_CHAOS_AGENTS=role_id
-
-ROLE_HEADPAT_WINNER=role_id
-
 # Database
 DATABASE_URL=postgresql://user:password@localhost:5432/infinite_idol
 
@@ -1311,6 +2241,46 @@ REDIS_URL=redis://localhost:6379
 # Environment
 NODE_ENV=development
 TZ=UTC
+
+# ============================================
+# NOTE: Role and Channel IDs are NOT in .env!
+# ============================================
+# All roles and channels are created automatically by the bot.
+# Run `/admin setup` after inviting the bot to create:
+#   - 8 Devotion Tier roles (Casual Enjoyer → Legendary Simp)
+#   - 3 Faction roles (Pink Pilled, Dark Devotees, Chaos Agents)
+#   - 3 Special roles (Headpat Winner, Pre-Registered, Verified)
+#   - 6 Categories with ~20 channels
+#
+# IDs are stored in the DiscordResource database table and
+# retrieved dynamically via getResourceId() / getChannelId().
+#
+# This allows the bot to be deployed to ANY server without
+# manual configuration - just invite and run /admin setup.
+```
+
+### Dynamic Resource Lookup
+
+Instead of hardcoded environment variables, use the setup service helpers:
+
+```typescript
+// Getting a channel ID dynamically
+import { getChannelId } from '../modules/setup/setup.service';
+
+const gachaSaltChannelId = await getChannelId(guild.id, 'channel_gacha_salt');
+const ikaSpeaksChannelId = await getChannelId(guild.id, 'channel_ika_speaks');
+
+// Getting tier role IDs
+import { getTierRoleIds } from '../modules/setup/setup.service';
+
+const tierRoles = await getTierRoleIds(guild.id);
+const obsessedRoleId = tierRoles.get('tier_obsessed');
+
+// Getting faction role IDs
+import { getFactionRoleIds } from '../modules/setup/setup.service';
+
+const factionRoles = await getFactionRoleIds(guild.id);
+const pinkPilledRoleId = factionRoles.get('faction_pink_pilled');
 ```
 
 ---
@@ -1349,16 +2319,36 @@ npm run commands:deploy  # Force re-register slash commands
 
 ## Deployment Checklist
 
-- [ ] All environment variables set
-- [ ] Database migrations applied
+- [ ] All environment variables set (only 6 required - see above)
+- [ ] Database migrations applied (`npx prisma db push`)
 - [ ] Redis accessible from bot host
-- [ ] Discord bot invited with correct permissions
-- [ ] Slash commands registered
-- [ ] Channel IDs configured
-- [ ] Role IDs configured
+- [ ] Discord bot invited with these permissions:
+  - Manage Roles
+  - Manage Channels
+  - Send Messages
+  - Embed Links
+  - Use Application Commands
+  - Manage Messages (for cleanup)
+- [ ] Run `/admin setup` to create roles/channels automatically
+- [ ] Verify all roles created with correct colors/hierarchy
+- [ ] Verify all channels created in correct categories
+- [ ] Verify permission overwrites applied correctly
+- [ ] Slash commands registered (automatic on first startup)
 - [ ] Scheduled jobs enabled
 - [ ] Error logging configured (Sentry/similar)
 - [ ] Monitoring set up (uptime checks)
+
+### Required Bot Permissions Integer
+
+When generating the bot invite URL, use permission integer: `268520528`
+
+This includes:
+- `MANAGE_ROLES` (268435456)
+- `MANAGE_CHANNELS` (16)
+- `SEND_MESSAGES` (2048)
+- `EMBED_LINKS` (16384)
+- `USE_APPLICATION_COMMANDS` (2147483648)
+- `MANAGE_MESSAGES` (8192)
 
 ---
 
