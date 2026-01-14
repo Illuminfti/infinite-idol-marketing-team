@@ -40,7 +40,7 @@ Ika's most distinctive feature is her **pink gradient hair**: rose pink at the r
 
 ### Eyes
 
-- **Color**: Warm amber with flecks of gold
+- **Color**: Bright blue (ocean blue with hints of cyan)
 - **Expression**: Default is confident, teasing, knowing
 - **Notable**: Can shift to intense determination in competition
 

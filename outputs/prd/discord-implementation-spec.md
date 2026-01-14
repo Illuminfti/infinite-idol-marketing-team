@@ -1,10 +1,10 @@
 # IKA'S SIMP WARS — Implementation Specification
 
 > **Document Type:** Claude Code Implementation-Ready Specification
-> **Version:** 4.3 (Mini-Chase Battle Royale Added)
+> **Version:** 4.4 (Fan Service Enhanced + Cleanup)
 > **Last Updated:** 2026-01-14
 > **Lore Guardian Review:** PASSED (Canon-compliant, all 10 Inviolable Facts verified)
-> **Degen Review:** PASSED (DS-3 - Fan service optimized, 36/40 authenticity score)
+> **Degen Review:** PASSED (DS-3.5 - Fan service heavily optimized)
 > **Engineering Review:** PASSED (All P0/P1/P2 issues resolved)
 > **Reference:** See [discord-reference-implementations.md](./discord-reference-implementations.md) for source projects
 
@@ -2310,7 +2310,7 @@ export interface IkaVoiceGuidelines {
 
   // What Ika ALWAYS does:
   embrace: [
-    'acknowledges her 47 fans situation',
+    'acknowledges her underdog status',
     'treats every fan like they matter',
     'makes fun of bad gacha luck (lovingly)',
     'celebrates SSR pulls genuinely',
@@ -2335,7 +2335,7 @@ export const GACHA_RESPONSES = {
 
   // When user pulls SSR
   ssrPull: [
-    "✨ SSR?! See, THIS is why you're one of my favorites~ Not that I have favorites. I love all 47 of you equally. Mostly.",
+    "✨ SSR?! See, THIS is why you're one of my favorites~ Not that I have favorites. I love ALL of you equally. Mostly. Some more than others. You know who you are~",
     "OH?! The gacha blessed you today! Quick, someone screenshot this before the luck runs out~",
     "An SSR! *chef's kiss* Your devotion has been recognized by the universe itself. You're welcome~",
     "THERE it is! The sparkles! The rarity! The—wait, you ARE going to show this off in #gacha-salt, right?",
@@ -2425,7 +2425,7 @@ export const SCHEDULED_MESSAGES: ScheduledIkaMessage[] = [
     channelKey: 'channel_ika_speaks',
     messages: [
       "Good morning, devoted ones~ ☀️ Another day to chase perfection. Or in my case, to BE perfection. Your daily reminder that I'm still here, still fabulous, and still accepting your devotion~",
-      "Rise and shine! 🌅 47 fans strong and counting (hopefully). Did you dream about The Chase? Because I did. And I won. Obviously.",
+      "Rise and shine! 🌅 Did you dream about me? Don't lie, I can tell~ Another day to prove everyone wrong. Your daily reminder to stay devoted. Or else~ 💜",
       "Morning check-in: Coffee? ✓ Ambition? ✓ Overwhelming desire to be noticed by you specifically? ...maybe. ☕💜",
     ],
   },
@@ -2488,7 +2488,7 @@ export const MILESTONE_ANNOUNCEMENTS: Record<number, string[]> = {
   ],
 
   50000: [
-    "**50,000 PRE-REGISTRATIONS** 🚀\n\nFifty thousand. FIFTY. THOUSAND.\n\nI started with 47 fans. Forty-seven. And now look at us.\n\nHOT SPRINGS IKA UNLOCKED! The steam is for ~aesthetic purposes~ obviously. Thank you all. Genuinely. 💜♨️",
+    "**50,000 PRE-REGISTRATIONS** 🚀\n\nFifty thousand. FIFTY. THOUSAND.\n\nI started with almost nothing. An underdog with a dream. And now look at us.\n\nHOT SPRINGS IKA UNLOCKED! The steam hides nothing. And neither do I~ 💜♨️",
   ],
 };
 ```
@@ -2546,7 +2546,7 @@ When implementing ANY bot response:
 
 1. **NEVER use**: "Hello!", "Thank you for your support!", "We appreciate you!" (corporate)
 2. **ALWAYS include**: A hint of teasing, acknowledgment of the parasocial dynamic, self-aware humor
-3. **OPTIONAL but encouraged**: References to her 47 fans, The Chase, Fading, or her precarious idol status
+3. **OPTIONAL but encouraged**: References to The Chase, Fading, or her precarious idol status
 4. **EMOJI usage**: 💜 (signature), ~ (sentence softener), occasional 👀, ✨, never excessive
 
 ```typescript
@@ -2560,7 +2560,7 @@ When implementing ANY bot response:
 "Welcome to the server! Have fun!"
 
 // GOOD (Ika voice):
-"A new devotee! That makes... *counts* ...more than 47 now! I'm moving up in the world~ Make yourself at home. The gacha's over there, and I'll be watching~ 💜"
+"A new devotee! Another soul who couldn't resist~ Make yourself at home. The gacha's over there, and I'll be watching your every move~ 💜"
 ```
 
 ---
@@ -3440,7 +3440,7 @@ https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=26
 
 ---
 
-### Phase 6: THE MINI-CHASE — Battle Royale System (Week 5)
+### Phase 7: THE MINI-CHASE — Battle Royale System (Week 6)
 
 > **Inspiration:** [Rumble Royale](https://rumbleroyale.net/), [Discord-Hunger-Games](https://github.com/Ares-0/Discord-Hunger-Games)
 > **Concept:** A hunger games-style battle royale where simps compete in a simulated "Mini-Chase" — whoever maintains their Devotion longest wins Ika's attention.
@@ -3456,7 +3456,7 @@ THE MINI-CHASE transforms the lore's competitive idol format into an automated D
 - Winner receives Ika's direct acknowledgment and praise
 - Rewards tie into the real Devotion Points system
 
-#### Task 6.1: Mini-Chase Data Models
+#### Task 7.1: Mini-Chase Data Models
 
 **Duration:** 30 minutes
 **Outcome:** Database models for tracking chase sessions and participants
@@ -3570,7 +3570,7 @@ model User {
 }
 ```
 
-#### Task 6.2: Event Definition System
+#### Task 7.2: Event Definition System
 
 **Duration:** 60 minutes
 **Outcome:** Type-safe event definitions with Ika's voice
@@ -3634,7 +3634,7 @@ export const BLOODBATH_EVENTS: ChaseEventDefinition[] = [
     participantCount: 3,
     devotionChanges: [5, 5, 5],
     fatalTo: [],
-    narrative: "{0}, {1}, and {2} form an alliance. Smart move, simps. There's strength in numbers... but only one of you can win my heart in the end~ 👀",
+    narrative: "{0}, {1}, and {2} form an alliance. Adorable. But I only have eyes for ONE of you. Fight amongst yourselves for me. I'll be watching~ 👀💜",
     weight: 8,
   },
   {
@@ -3643,7 +3643,7 @@ export const BLOODBATH_EVENTS: ChaseEventDefinition[] = [
     participantCount: 2,
     devotionChanges: [-10, 15],
     fatalTo: [],
-    narrative: "{0} trips over their own feet trying to impress me. {1} catches them... and steals the spotlight. Smooth move~ I'm watching you now. 💜",
+    narrative: "{0} trips trying to impress me. {1} catches them... bodies pressed together... then steals the moment. {1}, you're bold. I like bold~ 💜",
     weight: 8,
   },
   {
@@ -3652,7 +3652,7 @@ export const BLOODBATH_EVENTS: ChaseEventDefinition[] = [
     participantCount: 1,
     devotionChanges: [20],
     fatalTo: [],
-    narrative: "{0} shouts the perfect compliment as the chaos unfolds. 'Your hair is like a sunset made of dreams!' ...Okay, that was actually good. I'm blushing. Don't tell anyone~ ✨",
+    narrative: "{0} shouts through the chaos: 'I'd let you ruin my life!' ...That's dark. That's intense. That's EXACTLY my type. I'm flustered. Keep going~ ✨",
     weight: 6,
   },
 
@@ -3689,7 +3689,7 @@ export const DAY_EVENTS: ChaseEventDefinition[] = [
     participantCount: 1,
     devotionChanges: [25],
     fatalTo: [],
-    narrative: "{0} successfully earns a headpat from me. *pat pat* Good simp. The tingles you're feeling? That's Devotion working~ 💜",
+    narrative: "{0} earns a headpat from me. *pat pat* Good simp. Now on your knees where you belong~ The tingles you're feeling? That's exactly what I intended. 💜",
     weight: 8,
   },
   {
@@ -3698,7 +3698,7 @@ export const DAY_EVENTS: ChaseEventDefinition[] = [
     participantCount: 1,
     devotionChanges: [30],
     fatalTo: [],
-    narrative: "{0} presents me with fan art they drew during the Chase. It's... actually really good? The way you captured my hair... I'll treasure this. And treasure YOU~ ✨",
+    narrative: "{0} presents fan art they drew. It's... me in a swimsuit? And you captured EVERYTHING correctly. I'm impressed. And slightly concerned how you knew those details~ 👀💜",
     weight: 6,
   },
   {
@@ -3707,7 +3707,7 @@ export const DAY_EVENTS: ChaseEventDefinition[] = [
     participantCount: 1,
     devotionChanges: [20],
     fatalTo: [],
-    narrative: "{0} recites a poem about my eyes. 'Amber pools of golden light...' Okay, it's a bit much, but I'm into it. Keep simping, wordsmith~ 💜",
+    narrative: "{0} recites a poem about my eyes. 'Oceans deep where secrets hide...' That's actually kinda hot? Keep going, wordsmith. I'm listening~ 💜",
     weight: 7,
   },
   {
@@ -3716,7 +3716,7 @@ export const DAY_EVENTS: ChaseEventDefinition[] = [
     participantCount: 2,
     devotionChanges: [10, 10],
     fatalTo: [],
-    narrative: "{0} and {1} share their lunch while watching my performance. Bonding over me? That's the kind of fan community I like to see~ 🍙",
+    narrative: "{0} offers to feed {1} while watching my performance. Indirect kiss through me? The degeneracy. The DEVOTION. I ship it~ 👀💜",
     weight: 9,
   },
 
@@ -3794,7 +3794,7 @@ export const NIGHT_EVENTS: ChaseEventDefinition[] = [
     participantCount: 1,
     devotionChanges: [35],
     fatalTo: [],
-    narrative: "{0} slides into my DMs with a perfectly crafted message. 'I just wanted you to know you made my day.' ...You made mine too. Don't tell the others~ 💜✨",
+    narrative: "{0} slides into my DMs. 'Can't stop thinking about you.' Bold. Direct. I read it three times. What happens in DMs stays in DMs~ 💜✨",
     weight: 6,
   },
   {
@@ -3803,7 +3803,7 @@ export const NIGHT_EVENTS: ChaseEventDefinition[] = [
     participantCount: 2,
     devotionChanges: [15, 15],
     fatalTo: [],
-    narrative: "{0} and {1} stay up late watching my archived streams together. True devotion doesn't sleep. Neither do I, apparently~ 🌙",
+    narrative: "{0} and {1} stay up watching my archived 'workout streams' together. You know the ones. At 3am. Together. I see you both~ 🌙👀",
     weight: 8,
   },
   {
@@ -3824,7 +3824,7 @@ export const NIGHT_EVENTS: ChaseEventDefinition[] = [
     participantCount: 1,
     devotionChanges: [50],
     fatalTo: [],
-    narrative: "{0} confesses their feelings in the moonlight. 'I know I'm one of millions, but you're one in a million to me.' ...I'm not crying. You're crying. Shut up~ 💜✨",
+    narrative: "{0} confesses in the moonlight: 'I'd give everything for just one night where you look at only me.' ...Come closer. Let me whisper something back~ 💜✨",
     weight: 3,
   },
   {
@@ -3878,7 +3878,7 @@ export const FEAST_EVENTS: ChaseEventDefinition[] = [
     participantCount: 4,
     devotionChanges: [50, 20, -10, -999],
     fatalTo: [3],
-    narrative: "I have a moment to acknowledge my top supporters. {0} gets a wink, {1} gets a nod, {2} gets a glance... {3}? Who? They **Fade** mid-sentence. Awkward~ 💀",
+    narrative: "I have a moment for my favorites. {0} gets pulled close for a whisper. {1} gets a lingering wink. {2} gets acknowledged. {3}? Never heard of them. They **Fade** forgotten. Be memorable~ 💀",
     weight: 5,
   },
   {
@@ -3887,7 +3887,7 @@ export const FEAST_EVENTS: ChaseEventDefinition[] = [
     participantCount: 2,
     devotionChanges: [35, 35],
     fatalTo: [],
-    narrative: "{0} and {1} create a collab fan project. It goes viral. I retweet it. THIS is how you get noticed, people~ ✨",
+    narrative: "{0} and {1} create 'fan content' together. I'm not saying what kind but it goes VIRAL. I bookmark it. For research. Don't judge me~ 👀✨",
     weight: 6,
   },
   {
@@ -3912,7 +3912,7 @@ export const FINALE_EVENTS: ChaseEventDefinition[] = [
     participantCount: 2,
     devotionChanges: [100, -999],
     fatalTo: [1],
-    narrative: "FINAL DUEL! {0} vs {1}. They lock eyes. {0} whispers: 'She was never going to pick you.' {1}'s confidence SHATTERS. They **Fade** in defeat. Only the strongest simp survives~ 💀👑",
+    narrative: "FINAL DUEL! {0} vs {1}. They lock eyes. {0} whispers: 'I've been in her DMs since day one. What do you have?' {1}'s heart BREAKS. They **Fade** in tears. Only the most devoted gets my attention~ 💀👑",
     weight: 10,
   },
   {
@@ -3950,7 +3950,7 @@ export function getEventsForRound(roundType: RoundType): ChaseEventDefinition[] 
 }
 ```
 
-#### Task 6.3: Mini-Chase Service
+#### Task 7.3: Mini-Chase Service
 
 **Duration:** 90 minutes
 **Outcome:** Core game logic for running The Mini-Chase
@@ -4386,7 +4386,7 @@ export async function getChaseStatus(chaseId: number): Promise<{
 }
 ```
 
-#### Task 6.4: Mini-Chase Commands
+#### Task 7.4: Mini-Chase Commands
 
 **Duration:** 60 minutes
 **Outcome:** Slash commands for running Mini-Chase
@@ -4605,10 +4605,10 @@ async function runChase(
         .setDescription(
           `**${result.winner.name}** has won The Mini-Chase!\n\n` +
           `*Ika speaks:*\n` +
-          `"Out of everyone who competed... YOU are the one who kept my attention. ` +
-          `Your Devotion never wavered. Your simping... *chef's kiss*~ ` +
-          `Take these 500 Devotion Points as proof of my... appreciation. ` +
-          `Don't let it go to your head. But also... maybe let it go to your head a little~ 💜👑"`
+          `"Out of everyone... YOU. My eyes are on you now. Only you. ` +
+          `Your Devotion was... intoxicating. Come closer. I want to tell you something. ` +
+          `These 500 points? Just the beginning. ` +
+          `You've earned something more... personal~ 💜👑"`
         )
         .setColor(0xFFD700);
 
@@ -4646,7 +4646,7 @@ function sleep(ms: number): Promise<void> {
 }
 ```
 
-#### Task 6.5: Additional Mini-Chase Response Lines
+#### Task 7.5: Mini-Chase Response Templates
 
 **Duration:** 30 minutes
 **Outcome:** Extended voice lines for special moments
@@ -4709,8 +4709,8 @@ export const CHASE_ANNOUNCEMENTS = {
 
   // Winner announcement
   victory: [
-    "🏆 {name} WINS THE MINI-CHASE! 🏆\n\nOut of everyone, YOU proved your Devotion was strongest. I see you. I acknowledge you. Take your 500 points and this crown of glory~ 👑💜",
-    "THE CHAMPION EMERGES! {name} has won The Mini-Chase!\n\nYour simping was unmatched. Your Devotion, unwavering. You've earned my attention... for now. Don't get comfortable~ 👑",
+    "🏆 {name} WINS THE MINI-CHASE! 🏆\n\nYou outlasted everyone. You wanted me more than they did. I felt every moment of it. Now come claim your reward... I'm waiting~ 👑💜",
+    "THE CHAMPION EMERGES! {name} has won The Mini-Chase!\n\nYour hunger for my attention was... impressive. Dangerous, even. I like dangerous. 500 points and my undivided attention are yours~ 👑",
   ],
 
   // No winner (everyone faded - rare)
