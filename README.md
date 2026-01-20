@@ -1,104 +1,56 @@
 # Infinite Idol Marketing Team
 
-> **Developer Documentation** | For non-developer guide, see [NORMIES.md](./NORMIES.md)
+> **AI Agent System for Marketing Content Production**
 
-**An autonomous AI agent system for marketing content production.**
-
-Built for [Infinite Idol](https://infiniteidol.com) — a Web3 gacha game built on SUI blockchain (NFTs, contracts, core logic) with multi-chain payment support (ETH/Base, Solana). Idols fight for survival through fan devotion.
+An autonomous marketing team powered by Claude Code. 5 specialized AI agents create, review, and approve content for **Infinite Idol** — a dark luxury gacha game where idols fight for survival through fan devotion.
 
 ---
 
 ## Quick Start
 
 ```bash
-# Clone the repository
+# Clone and enter
 git clone https://github.com/Illuminfti/infinite-idol-marketing-team.git
 cd infinite-idol-marketing-team
 
-# Run the Agent Command Center TUI (Terminal UI)
-python dashboard/tui_app.py
+# Start Claude Code
+claude
 
-# Or open in split pane with Claude Code
-# Terminal 1: python dashboard/tui_app.py
-# Terminal 2: claude
-
-# Legacy web dashboard (deprecated)
-# cd dashboard && python3 -m http.server 8000
-# Open http://localhost:8000
-# In the conversation: "Read CLAUDE.md and agents/00-coordinator.md. Act as Agent 00."
+# Activate an agent
+/agent 00  # Coordinator
+/agent 02  # Content Strategist
+/agent 09  # Resident Degen (CT/Cultural Authority)
 ```
 
 ---
 
-## What Is This?
+## The 5 Agents
 
-**Marketing HQ** — A multi-agent AI system that produces marketing content for Infinite Idol.
+| # | Agent | Role | Authority |
+|---|-------|------|-----------|
+| **00** | Coordinator | Marketing Director | Task routing, scheduling, human escalation |
+| **02** | Content Strategist | Social Media | Tweets, threads, multi-product content |
+| **07** | Light Novel Writer | Narrative | Story content, Ika voice, lore proposals |
+| **08** | Lore Guardian | Canon Validator | Inviolable Facts protection, proposal validation |
+| **09** | Resident Degen | Cultural Authority | **Final approval authority**, CT trends, degen authenticity |
 
-### Architecture
-
-19 specialized AI agents coordinated through a task queue system:
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│  Agent 00: Coordinator                                       │
-│  ├─ Orchestrates workflows                                   │
-│  ├─ Manages scheduling & priorities                          │
-│  └─ Escalates to human review                                │
-└─────────────────────────────────────────────────────────────┘
-         │
-         ├──> Agent 09: Resident Degen (Cultural Authority)
-         │     ├─ Validates cultural authenticity
-         │     ├─ DS (Degen Score) rating system
-         │     └─ "Is this based?" final authority
-         │
-         ├──> Core Marketing Agents (01-08)
-         │     ├─ Agent 01: Lore Architect (Canon Management)
-         │     ├─ Agent 02: Content Strategist (Social Media)
-         │     ├─ Agent 03: Community Manager (Discord/Engagement)
-         │     ├─ Agent 04: Gacha Designer (Seasonal Content)
-         │     ├─ Agent 05: Analytics Observer (Metrics)
-         │     ├─ Agent 06: Asset Coordinator (Creative Assets)
-         │     ├─ Agent 07: Light Novel Writer (Narrative)
-         │     └─ Agent 08: Lore Guardian (Real-time Validation)
-         │
-         └──> Specialized Agents (10-18)
-               ├─ Agent 10: The Infiltrator (Community Intel)
-               ├─ Agent 11: The Meme Lord (Viral Engineering)
-               ├─ Agent 12: Conversion Architect (Funnel Optimization)
-               ├─ Agent 13: The Ambassador (Partnerships)
-               ├─ Agent 14: The Shield (Crisis Management)
-               ├─ Agent 15: Simp Whisperer (Fan Service PM)
-               ├─ Agent 16: The NEET (Community Tools)
-               ├─ Agent 17: The Architect (Agent System Meta)
-               └─ Agent 18: The Hypeman (KOL/Influencer)
-```
-
-### Content Review Pipeline
-
-```
-Draft (Agent 02)
-  → Canon Check (Agent 08)
-    → Cultural Review (Agent 09)
-      → Final Approval (Agent 00)
-        → Ready for Publication
-```
-
-**Zero-tolerance policy**: No canon violations. All content validated against "The 10 Inviolable Facts."
+**Agent 09** has final say on whether content ships.
 
 ---
 
-## Tech Stack
+## Content Pipeline
 
-| Component | Technology |
-|-----------|------------|
-| **Agent Runtime** | Claude 3.5 Sonnet via Claude Code CLI |
-| **UI Dashboard** | Terminal UI (Python Textual) - Primary<br>Web Dashboard (Vanilla JS) - Legacy |
-| **Task Queue** | Markdown-based with automation hooks |
-| **Version Control** | Git (all content versioned) |
-| **Deployment** | Python TUI (local) or Static files (web) |
-| **Documentation** | Markdown (20,000+ lines) |
+```
+Content Created (Agent 02/07)
+    ↓
+Canon Review (Agent 08)
+    ↓
+Cultural Review (Agent 09)
+    ↓
+Approved for Publication
+```
 
-**Simple dependencies:** Python + Textual for TUI. No npm, no build step.
+**CT Express (Tier 0)**: Time-sensitive CT content skips to Agent 09 only. 15-minute SLA.
 
 ---
 
@@ -107,654 +59,163 @@ Draft (Agent 02)
 ```
 infinite-idol-marketing-team/
 │
-├── CLAUDE.md                    # Master instructions (start here)
-├── README.md                    # This file (developer guide)
-├── NORMIES.md                   # Non-developer guide
-├── CHANGELOG.md                 # Version history
+├── CLAUDE.md                    # Master instructions (START HERE)
 │
-├── agents/                      # 19 AI agent persona files
+├── agents/                      # 5 AI agent personas
 │   ├── 00-coordinator.md
-│   ├── 01-lore-architect.md
 │   ├── 02-content-strategist.md
-│   ├── 03-community-manager.md
-│   ├── 04-gacha-designer.md
-│   ├── 05-analytics-observer.md
-│   ├── 06-asset-coordinator.md
 │   ├── 07-light-novel-writer.md
 │   ├── 08-lore-guardian.md
-│   ├── 09-resident-degen.md
-│   ├── 10-the-infiltrator.md
-│   ├── 11-the-meme-lord.md
-│   ├── 12-conversion-architect.md
-│   ├── 13-the-ambassador.md
-│   ├── 14-the-shield.md
-│   ├── 15-simp-whisperer.md
-│   ├── 16-the-neet.md
-│   ├── 17-the-architect.md
-│   └── 18-the-hypeman.md
+│   └── 09-resident-degen.md
 │
-├── automation/                  # Task queue & orchestration
-│   ├── orchestrator.sh          # Main automation script
-│   ├── task-queue.md            # Centralized task tracking
-│   └── session-init.md          # Agent startup protocol
+├── skills/                      # Modular workflows (19 skills)
+│   ├── ct-engagement.md         # CT strategy, hooks, X algorithm
+│   ├── ct-rapid-response.md     # Time-sensitive CT (Tier 0)
+│   ├── brand-adaptation.md      # Multi-product voice adaptation
+│   ├── lore-proposal.md         # Human-approved lore expansion
+│   ├── canon-validation.md      # Lore compliance
+│   ├── cultural-review.md       # Degen authenticity
+│   ├── character-voices.md      # Character dialogue
+│   └── ...more
 │
-├── skills/                      # Modular workflow skills (13 skills)
-│   ├── canon-validation.md      # Lore validation workflow
-│   ├── content-creation.md      # Social content workflow
-│   ├── cultural-review.md       # Degen authenticity check
-│   ├── character-voices.md      # Character dialogue guide
-│   ├── escalation.md            # When/how to escalate
-│   ├── templates.md             # Standard output formats
-│   ├── permissions.md           # File access reference
-│   ├── agent-evaluation.md      # Agent performance review
-│   ├── community-intel.md       # Community intelligence gathering
-│   ├── crisis-management.md     # Crisis response protocols
-│   ├── inter-agent-handoff.md   # Explicit handoff protocols
-│   ├── kol-influencer.md        # Influencer management
-│   └── README.md                # Skills system documentation
+├── knowledge-base/              # World, brand, game documentation
+│   ├── lore/                    # Characters, mechanics, world
+│   ├── brand/                   # Voice, visuals, product registry
+│   ├── light-novels/            # Volume 1, 2, 3 planning
+│   ├── crypto/                  # Web3 positioning
+│   └── game-mechanics/          # Gacha, gems, cosmetics
 │
-├── dashboard/                   # Agent Command Center
-│   ├── tui_app.py               # Terminal UI entry point (PRIMARY)
-│   ├── tui/                     # TUI implementation
-│   ├── index.html               # Web dashboard (LEGACY)
-│   ├── styles.css               # Web design system (~2300 lines)
-│   └── app.js                   # Application logic
+├── lore-proposals/              # Lore expansion system
+│   ├── pending/                 # Awaiting human approval
+│   ├── approved/                # Approved, ready to implement
+│   └── rejected/                # With rejection notes
 │
-├── knowledge-base/              # World, game, brand documentation
-│   ├── lore/                    # Characters, world, mechanics
-│   ├── light-novels/            # Novel volumes
-│   ├── game-mechanics/          # Unified marketing + technical docs
-│   │   ├── README.md            # Master index, quick reference
-│   │   ├── gacha-system.md      # 5-tier rarity, pity system
-│   │   ├── cosmetics.md         # 5-tier cosmetics, asset merging
-│   │   ├── gem-system.md        # Multi-chain payments, referrals
-│   │   ├── battle-pass.md       # DKG integration, daily check-in
-│   │   ├── pre-registration-spec.md  # Comprehensive overview
-│   │   └── technical-reference/ # Developer deep-dives (9 docs)
-│   ├── brand/                   # Voice, visuals, audience
-│   └── crypto/                  # SUI integration, tokenomics
-│
-├── outputs/                     # Generated content
-│   ├── calendar/                # Master content schedule
-│   ├── content/                 # Tweets, threads, articles
-│   ├── discord/                 # Events, Seven Gates
-│   ├── art/                     # Midjourney prompts
-│   └── music/                   # Suno prompts
+├── automation/                  # Task management
+│   └── task-queue.md            # Centralized task tracking
 │
 ├── logs/                        # Activity tracking
-│   ├── agent-activity.md        # Agent session logs
-│   └── decisions.md             # Decision records
+│   ├── agent-activity.md
+│   └── decisions.md
 │
-└── reviews/                     # Human approval queue
-    ├── pending-human-review.md  # Items awaiting approval
-    ├── approved.md              # Approved decisions
-    └── feedback.md              # Feedback for agents
-```
-
-**Total Files**: 100+
-**Total Documentation**: 20,000+ lines
-**Total Code**: 4,500+ lines (dashboard)
-
----
-
-## Running the System
-
-### Prerequisites
-
-1. **Claude Code CLI** (for agent sessions)
-   ```bash
-   # Install from: https://docs.anthropic.com/en/docs/claude-code
-   ```
-
-2. **Python 3.9+** (for Terminal UI)
-   ```bash
-   pip install textual rich
-   ```
-
-3. **Modern Browser** (for legacy web dashboard, optional)
-   - Chrome 76+, Firefox 103+, Safari 9+, or Edge 79+
-   - Requires `backdrop-filter` support for glassmorphism
-   ```bash
-   python3 --version
-   ```
-
-### Agent Activation
-
-**Method 1: Claude Code CLI**
-```bash
-cd infinite-idol-marketing-team
-claude
-
-# In the conversation:
-# "Read CLAUDE.md and agents/00-coordinator.md. Act as Agent 00."
-```
-
-**Method 2: Direct API Call**
-```python
-import anthropic
-
-client = anthropic.Anthropic(api_key="your_key")
-
-# Load instructions
-with open('CLAUDE.md') as f:
-    master_instructions = f.read()
-with open('agents/00-coordinator.md') as f:
-    agent_persona = f.read()
-
-message = client.messages.create(
-    model="claude-3-5-sonnet-20241022",
-    max_tokens=8000,
-    messages=[{
-        "role": "user",
-        "content": f"{master_instructions}\n\n{agent_persona}\n\nAct as Agent 00."
-    }]
-)
-```
-
-**Method 3: Web Interface**
-- Paste `CLAUDE.md` + `agents/XX-agent-name.md` into Claude.ai
-- Prompt: "Act as Agent [NUMBER] and check the task queue."
-
-### Dashboard Usage
-
-**Terminal UI (Recommended)**
-```bash
-# Run directly
-python dashboard/tui_app.py
-
-# Or install and use command
-cd dashboard && pip install -e .
-idol-dashboard
-```
-
-**Legacy Web Dashboard**
-```bash
-cd dashboard
-python3 -m http.server 8000
-# Open http://localhost:8000
-```
-
-**See [dashboard/TUI_GUIDE.md](dashboard/TUI_GUIDE.md) for complete TUI documentation.**
-
-**Docker** (optional)
-```dockerfile
-FROM nginx:alpine
-COPY dashboard/ /usr/share/nginx/html
-EXPOSE 80
+└── archive/                     # Archived content
+    └── reference-personas/      # 15 archived agent personas
 ```
 
 ---
 
-## Development Workflow
+## Commands
 
-### Adding New Content
-
-1. **Create Task in Queue**
-   ```bash
-   # Edit automation/task-queue.md
-   # Add task to appropriate agent's queue
-   ```
-
-2. **Run Agent Session**
-   ```bash
-   claude
-   # Load agent, execute task
-   ```
-
-3. **Agent Logs Activity**
-   - Writes to `logs/agent-activity.md`
-   - Updates task status in queue
-
-4. **Content Review** (multi-agent)
-   - Canon validation (Agent 08)
-   - Cultural review (Agent 09)
-   - Final approval (Agent 00)
-
-5. **Merge to Mainnet**
-   ```bash
-   git add outputs/
-   git commit -m "Add [content-description]"
-   git push origin main
-   ```
-
-### Running Tests
-
-**Canon Compliance Check**
-```bash
-# Read all content in outputs/
-grep -r "Senpai.*face\|Senpai.*eyes\|Senpai.*smile" outputs/
-# Should return zero results (Senpai's face is never shown)
-
-# Check for correct fan count
-grep -r "47 fans" outputs/
-# Should match all Ika references
-```
-
-**File Permission Validation**
-```bash
-# Agents should only write to their designated directories
-# Check git log for violations:
-git log --name-only --oneline | grep "Agent 02" | grep "knowledge-base/lore"
-# Should return empty (Agent 02 can't write to lore/)
-```
+| Command | Description |
+|---------|-------------|
+| `/agent <n>` | Activate as specific agent |
+| `/queue` | View task queue |
+| `/queue process` | Process queue as coordinator |
+| `/pipeline` | Run content pipeline |
 
 ---
 
-## API Reference
+## The 10 Inviolable Facts
 
-### Task Queue Format
+**Absolute rules that can NEVER be violated:**
 
-```markdown
-| ID | Priority | Task | Status | Created | Due | Notes |
-|----|----------|------|--------|---------|-----|-------|
-| AGENT-001 | P0 | Task description | PENDING | YYYY-MM-DD | YYYY-MM-DD | Notes |
+1. **Devotion Sustains Existence** — Without fans, idols cease to exist
+2. **Fading is Permanent Death** — No resurrection, no reversal
+3. **The Faded Are Forgotten** — Memories blur and disappear
+4. **Senpai is the Unattainable Goal** — Every idol chases Senpai
+5. **Senpai's Face Never Revealed** — Audience never sees Senpai's face
+6. **The Foundation Controls the System** — They run the industry
+7. **The Chase is Survival** — Competition isn't optional
+8. **Fan Service Fuels Devotion** — A strategy for survival
+9. **The System Predates Its Masters** — Origins unknown
+10. **No One Knows What Catching Senpai Means** — Ultimate mystery
+
+---
+
+## Content Restrictions
+
+**DO NOT include in any content:**
+
+| Restricted | Alternative |
+|------------|-------------|
+| "47 fans" as anchor | Use "low-ranked", "underdog", "struggling idol" |
+| Price action/token price | Focus on game, lore, community |
+| SUI blockchain promotion | Only reference Sui through character **Sheran** |
+| Specific fan counts | Devotion system matters, not numbers |
+
+---
+
+## Brand Pillars
+
+- **Dark Luxury**: Black/gold aesthetic, NOT pink/cutesy
+- **Self-Aware**: We know we're a gacha game, shameless but genuine
+- **Existential Stakes**: Fading is real death, every Chase matters
+- **Web3 Native**: Chain-agnostic, gameplay-first (blockchain invisible)
+
+---
+
+## Key Files
+
+| File | Purpose |
+|------|---------|
+| `CLAUDE.md` | Master instructions — read this first |
+| `automation/task-queue.md` | Current tasks and assignments |
+| `logs/agent-activity.md` | Agent session logs |
+| `lore-proposals/pending/` | Lore awaiting human approval |
+| `knowledge-base/brand/product-registry.md` | Multi-product brand guide |
+
+---
+
+## Tech Stack
+
+| Component | Technology |
+|-----------|------------|
+| **Agent Runtime** | Claude Code CLI (Claude Opus 4.5) |
+| **Task Queue** | Markdown-based |
+| **Version Control** | Git |
+| **Documentation** | Markdown |
+
+No npm, no build step, no external dependencies.
+
+---
+
+## Lore Expansion System
+
+Agents can **propose** new lore. Only humans can **approve** it.
+
 ```
-
-**Status Values**:
-- `PENDING` - Waiting to be picked up
-- `IN_PROGRESS` - Agent actively working
-- `BLOCKED` - Waiting on dependency
-- `REVIEW` - Needs review by another agent
-- `COMPLETE` - Done, ready to archive
-- `ESCALATED` - Sent to human review
-
-**Priority Levels**:
-- `P0` - Immediate (next run)
-- `P1` - Within 24 hours
-- `P2` - Within 48 hours
-- `P3` - This week
-
-### Agent Activity Log Format
-
-```markdown
-### [YYYY-MM-DD HH:MM] Agent: [Number] - [Name]
-
-**Activity Type**: [Content | Review | Planning | Research | Asset | Community | Coordination | System]
-
-**Summary**: [Brief description]
-
-**Files Touched**:
-- [file1.md] - [created/modified/reviewed]
-
-**Next Actions**:
-- [ ] [Pending task 1]
-
-**Status**: [Complete | In Progress | Blocked]
-```
-
-### Human Review Item Format
-
-```markdown
-### [ITEM-XXXX] Brief Title
-
-**Submitted**: YYYY-MM-DD HH:MM
-**Agent**: [Agent Name] (Agent ##)
-**Priority**: [CRITICAL/HIGH/MEDIUM/LOW]
-**Category**: [Escalation Trigger Category]
-
-#### Context
-[What led to this being submitted?]
-
-#### Question/Decision Needed
-[Clear statement of what needs approval]
-
-#### Options (if applicable)
-1. **Option A**: [Description] - [Pros/Cons]
-
-#### Agent Recommendation
-[Which option recommended and why]
+Agent identifies lore gap
+    ↓
+Agent drafts proposal (skills/lore-proposal.md)
+    ↓
+Agent 08 validates canon compatibility
+    ↓
+Filed in lore-proposals/pending/
+    ↓
+Human reviews and decides
+    ↓
+If approved → Update knowledge base
 ```
 
 ---
 
-## Configuration
+## Review Tiers
 
-### Environment Variables
-
-None required. System runs entirely from file system.
-
-### Agent Settings
-
-Edit `CLAUDE.md` to modify:
-- Agent permissions (File Permission Matrix)
-- Canon rules (The 10 Inviolable Facts)
-- Content pillars (40% Ika Voice, 25% Lore, etc.)
-- Escalation triggers
-
-### Dashboard Customization
-
-Edit `dashboard/styles.css`:
-```css
-:root {
-  --gold-500: #d4af37;     /* Primary accent color */
-  --surface-0: #000000;    /* Base background */
-  /* ... more design tokens */
-}
-```
+| Tier | Name | Review Process | SLA |
+|------|------|---------------|-----|
+| **0** | CT Express | Agent 09 only | 10-15 min |
+| **1** | Novel Content | Full review (08→09→00) | 2-4 hours |
+| **2** | Established | Canon + Cultural | 30-60 min |
+| **3** | Repeatable | Cultural spot-check | 10-15 min |
 
 ---
 
-## Monitoring & Debugging
-
-### Real-time Monitoring
-
-```bash
-# Watch agent activity log
-tail -f logs/agent-activity.md
-
-# Watch task queue updates
-watch -n 5 'grep "IN_PROGRESS" automation/task-queue.md'
-
-# Check for pending reviews
-cat reviews/pending-human-review.md
-```
-
-### Performance Metrics
-
-**Content Pipeline**
-```bash
-# Count approved content
-ls outputs/content/tweets/*.md | wc -l
-
-# Check approval rate
-grep -r "✅ APPROVED" outputs/ | wc -l
-```
-
-**Agent Activity**
-```bash
-# Count agent sessions
-grep "###" logs/agent-activity.md | wc -l
-
-# Session by agent
-grep "Agent: 02" logs/agent-activity.md | wc -l
-```
-
-### Debugging
-
-**Common Issues**:
-
-1. **Agent Not Following Instructions**
-   - Check if `CLAUDE.md` was loaded first
-   - Verify agent persona file is correct version
-   - Check for conflicting instructions in files
-
-2. **Canon Violations**
-   - Run canon check: `grep -r "Senpai.*face" outputs/`
-   - Review Agent 08's validation comments
-   - Check against The 10 Inviolable Facts
-
-3. **Dashboard Not Loading**
-   - Check browser console for errors
-   - Verify `backdrop-filter` support
-   - Try different local server
-
----
-
-## Testing
-
-### Manual Testing Checklist
-
-**Canon Compliance**:
-- [ ] No Senpai face descriptions
-- [ ] Ika has exactly 47 fans
-- [ ] Ika's hair is pink gradient (rose→magenta)
-- [ ] Devotion described as literal energy
-- [ ] Fading described as permanent death
-
-**Brand Voice**:
-- [ ] Dark luxury tone (not cutesy)
-- [ ] Shameless but genuine
-- [ ] Self-aware about being gacha game
-- [ ] Existentially dramatic
-
-**Technical**:
-- [ ] All markdown files valid
-- [ ] No broken file path references
-- [ ] Git history clean (no secrets committed)
-
-### Automated Tests (Future)
-
-```bash
-# Planned test suite
-./tests/canon-check.sh
-./tests/file-permissions.sh
-./tests/markdown-lint.sh
-```
-
----
-
-## Deployment
-
-### Mainnet Merge Process
-
-1. **Verify Content Approved**
-   ```bash
-   grep "✅ APPROVED\|READY FOR PUBLICATION" outputs/content/tweets/draft.md
-   ```
-
-2. **Update Task Queue**
-   ```bash
-   # Mark task as COMPLETE
-   # Move to archived section
-   ```
-
-3. **Commit & Push**
-   ```bash
-   git add outputs/ automation/task-queue.md
-   git commit -m "Merge approved content - [description]
-
-   Content Merged:
-   - [CONTENT-ID]: [description]
-
-   Approval Chain:
-   ✅ Canon validated (Agent 08)
-   ✅ Cultural approved (Agent 09)
-   ✅ Coordinator approved (Agent 00)
-
-   Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>"
-
-   git push origin main
-   ```
-
-4. **Update CHANGELOG.md**
-   - Document what was merged
-   - Follow semver versioning
-
-### Continuous Deployment
-
-**GitHub Actions** (example):
-```yaml
-name: Deploy Dashboard
-on:
-  push:
-    branches: [main]
-    paths: ['dashboard/**']
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dashboard
-```
-
----
-
-## Architecture Decisions
-
-### Why Markdown for Task Queue?
-
-- **Version controlled**: Every change tracked in git
-- **Human readable**: No database required
-- **Agent friendly**: LLMs parse markdown natively
-- **Diff friendly**: Easy to see what changed
-
-### Why Terminal UI for Dashboard?
-
-- **Better workflow integration**: Works alongside Claude Code in terminal
-- **Keyboard-first**: Fast navigation, no mouse needed
-- **Lighter**: No browser overhead, faster startup
-- **Data-driven**: Direct access to markdown files
-- **Simple**: Python + Textual, minimal dependencies
-
-### Why 10 Agents?
-
-Each agent has a **single, clear responsibility**:
-- Prevents scope creep
-- Enables parallel work
-- Clear accountability
-- Easy to understand
-
-Alternative considered: Fewer agents with broader roles.
-Rejected: Leads to ambiguity and permission conflicts.
-
----
-
-## Performance
-
-### Metrics (Current)
-
-| Metric | Value |
-|--------|-------|
-| **Content Generation** | ~3 pieces per session |
-| **Approval Rate** | 100% (6/6) |
-| **Canon Violations** | 0 |
-| **Agent Sessions** | 25+ |
-| **Dashboard Load Time** | < 100ms |
-| **Dashboard Bundle Size** | 7.5KB (uncompressed) |
-
-### Optimization
-
-**Agent Performance**:
-- Load only relevant knowledge base files
-- Use task priorities to focus effort
-- Batch similar tasks together
-
-**Dashboard Performance**:
-- All styles in single CSS file
-- No external resources
-- Minimal DOM operations
-- CSS animations (GPU accelerated)
-
----
-
-## Contributing
-
-### Code Style
-
-**Markdown**:
-- Use ATX headers (`#` not `===`)
-- Table formatting with aligned pipes
-- Code blocks with language identifiers
-
-**CSS**:
-- Custom properties for all values
-- BEM-like naming: `.component__element--modifier`
-- Mobile-first responsive design
-
-**JavaScript**:
-- ES6+ syntax
-- Pure functions where possible
-- Comments for complex logic only
-
-### Pull Request Process
-
-1. Fork the repository
-2. Create feature branch: `git checkout -b feature/my-feature`
-3. Make changes following code style
-4. Test locally
-5. Commit with descriptive message
-6. Push and create PR
-7. Await review from Agent 00 (Coordinator)
-
----
-
-## Security
-
-### Sensitive Data
-
-**Never commit**:
-- API keys
-- Credentials
-- Personal information
-- Unpublished lore reveals
-
-**Git hooks** (recommended):
-```bash
-# .git/hooks/pre-commit
-#!/bin/bash
-if git diff --cached | grep -E "api_key|password|secret"; then
-  echo "⚠️  Potential secret detected!"
-  exit 1
-fi
-```
-
-### Agent Access Control
-
-Agents have **read-only** access to most files:
-- Cannot modify `CLAUDE.md`
-- Cannot change other agents' personas
-- Cannot bypass review queue
-
-Only **Agent 00** (Coordinator) has write access to critical files.
-
----
-
-## Roadmap
-
-### Completed ✅
-- [x] 10-agent system
-- [x] Apple HIG dashboard
-- [x] Task queue automation
-- [x] Content review pipeline
-- [x] Canon validation system
-
-### In Progress 🚧
-- [ ] Real-time agent monitoring
-- [ ] Automated content posting
-- [ ] Performance analytics
-
-### Planned 📋
-- [ ] Agent-to-agent direct communication
-- [ ] Automated canon conflict detection
-- [ ] A/B testing framework for content
-- [ ] Integration with social media APIs
-
----
-
-## FAQ
-
-**Q: Can I run this without Claude Code?**
-A: Yes, use the Python API or claude.ai web interface. See "Agent Activation" section.
-
-**Q: How do I add a new agent?**
-A: Create new persona file in `agents/`, update `CLAUDE.md` agent roster, update dashboard.
-
-**Q: Can agents run simultaneously?**
-A: Yes, each agent session is independent. Use task queue to coordinate.
-
-**Q: What if agents disagree?**
-A: Escalates to Agent 00 (Coordinator), then human review if needed.
-
-**Q: How do I reset the dashboard?**
-A: Refresh page or clear localStorage: `localStorage.clear()`
-
-**Q: Can I use a different AI model?**
-A: Possibly, but designed for Claude 3.5 Sonnet. Other models may not follow instructions precisely.
-
----
-
-## Support
-
-- **Documentation**: Read `CLAUDE.md` (master instructions)
-- **Non-Developer Guide**: See `NORMIES.md`
-- **Changelog**: See `CHANGELOG.md`
-- **Issues**: GitHub Issues
-- **Questions**: Discussions tab
+## Getting Started
+
+1. **Read `CLAUDE.md`** — Master instructions
+2. **Activate an agent**: `/agent 00` (Coordinator)
+3. **Check task queue**: `/queue`
+4. **Execute tasks** and log activity
+5. **Commit changes** with proper attribution
 
 ---
 
@@ -762,18 +223,6 @@ A: Possibly, but designed for Claude 3.5 Sonnet. Other models may not follow ins
 
 Proprietary. All rights reserved.
 
-This repository contains the marketing infrastructure for Infinite Idol.
-
 ---
 
-## Acknowledgments
-
-- **Design Inspiration**: Apple Human Interface Guidelines
-- **Agent Coordination**: Claude 3.5 Sonnet by Anthropic
-- **Brand Aesthetics**: Infinite Idol dark luxury style guide
-
----
-
-*Built by agents, for agents, with humans in the loop.*
-
-*"Every line deliberate. Every commit purposeful. Every agent specialized. Welcome to Marketing HQ."*
+*"Every idol runs. Every fan watches. The agents never sleep."*

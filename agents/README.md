@@ -1,6 +1,6 @@
 # Agent System
 
-> **Version**: 2.0 (Consolidated)
+> **Version**: 3.0 (CT Domination + Multi-Product)
 > **Active Agents**: 5
 > **Mode**: Single-agent with persona switching
 
@@ -17,10 +17,10 @@ This system uses **5 core agents** designed for AI execution with Claude Code. E
 | # | Agent | Role | Primary Focus |
 |---|-------|------|---------------|
 | **00** | Coordinator | Marketing Director | Orchestration, scheduling, task queue management, human escalation |
-| **02** | Content Strategist | Social Media | Tweets, threads, content creation |
-| **07** | Light Novel Writer | Narrative | Story content, character development, Ika voice |
-| **08** | Lore Guardian | Canon Validator | Inviolable Facts protection, lore verification |
-| **09** | Resident Degen | Cultural Authority | Content approval gateway, degen authenticity, trend arbitration |
+| **02** | Content Strategist | Social Media | Tweets, threads, multi-product content adaptation |
+| **07** | Light Novel Writer | Narrative | Story content, character development, lore proposals |
+| **08** | Lore Guardian | Canon Validator | Inviolable Facts, lore verification, proposal validation |
+| **09** | Resident Degen | Cultural Authority | **CT Express authority**, content gateway, degen authenticity |
 
 ---
 
@@ -66,8 +66,46 @@ Content Created → Canon Review (08) → Cultural Review (09) → Coordinator A
 
 **Special Powers**:
 - Agent 09 has **content approval gateway authority**—final say on whether content ships
+- Agent 09 has **CT Express authority**—can approve Tier 0 CT content without Coordinator
 - Agent 08 has **absolute veto** on Inviolable Fact violations
+- Agent 07 is **primary lore proposer**—can draft proposals for human approval
 - Agent 00 coordinates but does not override cultural/canon decisions
+
+---
+
+## CT Express (Tier 0)
+
+For time-sensitive CT engagement (trends dying in <2 hours):
+
+```
+CT Opportunity Identified
+    ↓
+Agent 02 creates response (5-10 min)
+    ↓
+Agent 09 CT Express Review
+    ↓
+Approved for Immediate Publication
+```
+
+**Eligibility**: No new canon, established voice, pure engagement, DS-3+
+
+---
+
+## Lore Proposal System
+
+Agents can propose lore expansions. Only humans approve.
+
+```
+Agent 07 drafts proposal
+    ↓
+Agent 08 validates canon compatibility
+    ↓
+Filed in lore-proposals/pending/
+    ↓
+Human reviews and decides
+```
+
+See `skills/lore-proposal.md` for full template.
 
 ---
 

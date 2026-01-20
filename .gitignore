@@ -1,11 +1,33 @@
 # Auto Claude data directory
 .auto-claude/
+.auto-claude-status
 
 # macOS system files
 .DS_Store
+*.DS_Store
 
 # Local settings
 .claude_settings.json
 
 # Git worktrees
 .worktrees/
+
+# Temp directories
+temp-*/
+*.tmp
+
+# Database files
+*.db
+*.db-shm
+*.db-wal
+
+# Node modules (in case sync-service restored)
+node_modules/
+
+# Environment files
+.env
+.env.local
+
+# Python
+__pycache__/
+*.pyc
