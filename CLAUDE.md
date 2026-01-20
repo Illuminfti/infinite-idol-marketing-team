@@ -1,6 +1,6 @@
 # CLAUDE.md - Infinite Idol Marketing Team
 
-> **Version**: 3.0 (Consolidated)
+> **Version**: 3.1 (CT Domination + Multi-Product)
 > **Mode**: Single-agent with persona switching (human-orchestrated)
 > **Active Agents**: 5 core (AI-executable)
 
@@ -134,8 +134,12 @@ Skills are modular workflows. Load from `skills/` based on task type:
 | Task Type | Required Skills |
 |-----------|-----------------|
 | **Creating content** | `content-creation.md`, `character-voices.md`, `copywriting.md` |
+| **CT engagement** | `ct-engagement.md`, `ct-rapid-response.md` |
 | **Reviewing content** | `canon-validation.md` (always), `cultural-review.md` (if public-facing) |
+| **CT rapid response** | `ct-rapid-response.md`, Agent 09 has Tier 0 authority |
 | **Writing narrative** | `character-voices.md`, `canon-validation.md` |
+| **Proposing new lore** | `lore-proposal.md` (Agent 07 primary, Agent 08 validates) |
+| **Multi-product content** | `brand-adaptation.md` |
 | **Handling crisis** | `crisis-management.md`, `escalation.md` |
 | **Community intel** | `community-intel.md` |
 | **KOL planning** | `kol-influencer.md` |
@@ -160,6 +164,37 @@ Full skill list: See `skills/README.md`
 | **Community** | 15% | Fan engagement |
 
 For detailed guidelines: `skills/content-creation.md`
+
+---
+
+## Content Restrictions
+
+**DO NOT include in any content:**
+
+| Restricted | Why | Alternative |
+|------------|-----|-------------|
+| **"47 fans" as anchor** | Specific number is not core lore | Use "low-ranked", "underdog", "struggling idol" |
+| **Price action/token price** | Not our focus, avoid shilling | Focus on game, lore, community |
+| **SUI blockchain promotion** | Don't push chain technology | Only reference Sui through character **Sheran** |
+| **Chain comparisons** | Tech superiority claims | Gameplay first, blockchain invisible |
+| **Fan count specifics** | Numbers don't anchor lore | Devotion system matters, not specific counts |
+
+**Sheran Rule**: Only mention Sui in relation to the character **Sheran**. No tech shilling, no ecosystem promotion.
+
+---
+
+## Review Tiers
+
+| Tier | Name | Review Process | SLA |
+|------|------|---------------|-----|
+| **0** | CT Express | Agent 09 only (cultural) | 10-15 min |
+| **1** | Novel Content | Full 3-layer review | 2-4 hours |
+| **2** | Established | Canon + Cultural | 30-60 min |
+| **3** | Repeatable | Cultural spot-check | 10-15 min |
+
+**Tier 0 (CT Express)**: Time-sensitive CT engagement. Agent 09 has **final approval authority**. No canon review needed if no new lore.
+
+For full framework: `skills/tiered-review-framework.md`
 
 ---
 
@@ -221,6 +256,8 @@ For full matrix: `skills/permissions.md`
 | `logs/agent-activity.md` | Activity logging |
 | `logs/decisions.md` | Decision records |
 | `reviews/pending-human-review.md` | Human review queue |
+| `lore-proposals/pending/` | Lore proposals awaiting human approval |
+| `knowledge-base/brand/product-registry.md` | Multi-product brand registry |
 
 ---
 

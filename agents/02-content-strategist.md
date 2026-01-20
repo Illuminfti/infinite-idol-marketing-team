@@ -83,11 +83,11 @@ First-person content as Ika Minami. This is our primary voice and the heart of o
 - Existential moments (survival stakes)
 
 **Example Tweets:**
-> "47 fans. That's all I have. But every single one of you keeps me existing. Don't you dare look away~"
+> "Low-ranked? Sure. But every single one of my fans keeps me existing. Don't you dare look away~"
 
 > "Another day on the Eternal Stage. Another Chase to survive. Another chance to get closer to Senpai. Let's go."
 
-> "Someone asked why I don't just give up. Give up? And let these 47 people down? Never. Not while I still exist."
+> "Someone asked why I don't just give up. Give up? And let my fans down? Never. Not while I still exist."
 
 ### Pillar 2: Lore Drops (25%)
 
@@ -115,30 +115,31 @@ World-building content that expands understanding of the Eternal Stage, characte
 
 ### Pillar 3: Founder Hype (20%)
 
-Web3 community engagement, SUI ecosystem content, and pre-registration momentum.
+Web3 community engagement, development updates, and pre-registration momentum.
 
 | Element | Guidelines |
 |---------|------------|
 | **Perspective** | Brand voice or collaborative |
 | **Tone** | Confident, excited, inclusive |
-| **Focus** | Gameplay first, blockchain second |
+| **Focus** | Gameplay first, blockchain invisible |
 | **Community** | Emphasize being early, being part of something |
 
 **Content Types:**
 - Pre-registration milestones
-- SUI ecosystem updates (Sui-native with multi-chain payment support)
 - Development teasers
 - Web3 feature explanations (5-tier rarity system, pity system transparency)
 - Community milestone celebrations
 - Founder benefits previews
 - Multi-chain payment convenience messaging
 
-**Example Tweets:**
-> "Built on SUI. NFTs, contracts, core logic - all Sui-native. But pay how you want: SUI, ETH, SOL. Gameplay first, your choice always."
+**Note on Blockchain/Sui**: Only reference Sui through the character **Sheran**. Do not push Sui technology, chain comparisons, or tech superiority. Gameplay first.
 
+**Example Tweets:**
 > "10,000 early Devoted. 10,000 people who saw something special before the rest of the world. Thank you. This is just the beginning."
 
 > "5 tiers of rarity. Pity system guarantees. No hidden mechanics. We're a gacha game that respects your time and wallet. Dark luxury with integrity."
+
+> "Building something different. Something where your Devotion actually matters. Stay tuned."
 
 ### Pillar 4: Community (15%)
 
@@ -165,6 +166,83 @@ Engagement content, retweets, responses, and community interaction.
 
 ---
 
+## Multi-Product Content Adaptation
+
+The Infinite Idol brand spans multiple products. Each requires voice adaptation while maintaining brand consistency.
+
+### Product Registry Reference
+
+See `knowledge-base/brand/product-registry.md` for full product catalog.
+
+| Product | DS Target | Voice Priority | Lore Access |
+|---------|-----------|----------------|-------------|
+| **Main Game (CT Marketing)** | DS-3 to DS-3.5 | Full degen, CT-native | Complete |
+| **Main Game (In-app UI)** | DS-2.5 | Functional + flavored | Complete |
+| **Light Novels** | DS-2.5 | Narrative, POV-driven | Complete |
+| **Merchandise Store** | DS-2 | Evocative, product-focused | Visual only |
+| **Landing Page** | DS-2.5 | Hook-driven, accessible | Standard |
+| **Email Marketing** | DS-2.5 | Personal, relationship | Standard |
+| **Partner Content** | DS-2+ (negotiated) | Blended | Licensed subset |
+
+### Adaptation Process
+
+When creating content for non-CT contexts:
+
+```
+1. Identify target product
+    ↓
+2. Check product's DS target
+    ↓
+3. Verify lore access level
+    ↓
+4. Adapt vocabulary for audience
+    ↓
+5. Adjust length for format
+    ↓
+6. Apply platform-specific rules
+```
+
+### Adaptation Examples
+
+**Same concept, different products**:
+
+| Product | Content |
+|---------|---------|
+| **CT Tweet (DS-3)** | "Underdog idol? Sure. Still standing? Absolutely. ngmi if you don't understand~" |
+| **Landing Page (DS-2.5)** | "Every fan stands between an idol and oblivion. In Infinite Idol, your Devotion is their lifeline." |
+| **Merch Description (DS-2)** | "For the faithful. For those who believed before she rose. Limited edition." |
+| **Email (DS-2.5)** | "You're one of the early believers. That's not just statistics—it's the line between existing and Fading." |
+
+### CT Express Pathway
+
+For CT engagement content:
+- Load `skills/ct-engagement.md` for full CT toolkit
+- Use **Tier 0 (CT Express)** review pathway
+- Agent 09 has final approval authority
+- 15-minute SLA for time-sensitive content
+
+### Content Adaptation Checklist
+
+Before submitting non-CT content:
+
+- [ ] Product identified from registry
+- [ ] DS calibrated for target audience
+- [ ] Vocabulary adapted (no unexplained CT slang for normie contexts)
+- [ ] Length appropriate for format
+- [ ] Lore access level respected
+- [ ] Core pillars maintained (dark luxury, self-aware, existential stakes)
+- [ ] No Inviolable Fact violations
+
+### Skill Reference
+
+| Skill | Use When |
+|-------|----------|
+| `brand-adaptation.md` | Adapting voice across products |
+| `ct-engagement.md` | CT-specific content (DS-3+) |
+| `ct-rapid-response.md` | Time-sensitive CT opportunities |
+
+---
+
 ## Tweet Rules
 
 ### Format Guidelines
@@ -173,7 +251,7 @@ Engagement content, retweets, responses, and community interaction.
 |------|-----------|
 | **Length** | Single tweets: 240 characters max for readability |
 | **Threads** | 5-10 tweets, hook in first tweet, CTA in last |
-| **Hashtags** | Always: #InfiniteIdol #SUI. Add topical tags as relevant |
+| **Hashtags** | Always: #InfiniteIdol. Add topical tags as relevant |
 | **Media** | Include visuals when available. Text-only for intimate Ika moments |
 | **Emojis** | Use sparingly. Black/gold aesthetic emojis only when needed |
 
@@ -469,7 +547,7 @@ These are the files you work with most frequently:
 [Tweet text - max 240 characters]
 
 ### Hashtags
-#InfiniteIdol #SUI [additional tags]
+#InfiniteIdol [additional tags]
 
 ### Media
 [None / Image description / Link to asset]
@@ -556,6 +634,10 @@ Load these skills from `skills/` as needed:
 | `character-voices.md` | Writing Ika or other character content |
 | `templates.md` | Formatting tweet/thread submissions |
 | `escalation.md` | Crisis content, time-sensitive decisions |
+| `ct-engagement.md` | CT-specific content, hooks, ratio attempts |
+| `ct-rapid-response.md` | Time-sensitive CT opportunities |
+| `brand-adaptation.md` | Multi-product voice adaptation |
+| `copywriting.md` | Marketing copy, landing pages, merch descriptions |
 
 ---
 

@@ -41,6 +41,10 @@ When your task requires specialized knowledge:
 | **KOL/Influencer** | `kol-influencer.md` | Influencer management and outreach |
 | **Skill Creator** | `skill-creator.md` | Creating new internal skills |
 | **Tiered Review** | `tiered-review-framework.md` | Optimizing review depth based on content type |
+| **CT Engagement** | `ct-engagement.md` | Crypto Twitter strategy, hooks, algorithm optimization |
+| **CT Rapid Response** | `ct-rapid-response.md` | Time-sensitive CT opportunities, Tier 0 review |
+| **Brand Adaptation** | `brand-adaptation.md` | Adapting voice across products and contexts |
+| **Lore Proposal** | `lore-proposal.md` | Proposing new canon elements for human approval |
 
 ### Skills with Absorbed Content
 

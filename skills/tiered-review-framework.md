@@ -18,6 +18,69 @@ The tiered review framework optimizes content approval velocity while maintainin
 
 ## Review Tier Classification
 
+### Tier 0: CT EXPRESS (Cultural Review Only)
+**Definition**: Time-sensitive CT engagement content where trends have <2 hour window
+
+**Review Depth**: Agent 09 Cultural Review ONLY (30-50 lines total)
+**Estimated Time**: 10-15 minutes
+**Approval Rate Target**: 95%+
+
+**Examples**:
+- Ratio attempts on trending CT posts
+- Quote tweet dunks on viral content
+- CT trend thread quick-takes
+- Reply guy engagement on alpha accounts
+- Meme responses to CT drama
+- Price action commentary (in Ika voice)
+- Community callouts and acknowledgments
+
+**Review Process**:
+```
+CT Opportunity Identified
+    ↓
+Agent 02 creates response (5-10 min max)
+    ↓
+Agent 09 CT Express Review - IMMEDIATE
+    • DS rating verification (must be DS-3+)
+    • Trend authenticity check
+    • Voice consistency spot-check
+    • No canon violations (quick mental check)
+    • Degen energy confirmation
+    • 30-50 lines (truncated format)
+    ↓
+SKIP Coordinator (Agent 09 has authority)
+    ↓
+Approved for Immediate Publication
+```
+
+**CT Express Eligibility Criteria**:
+1. **Time-sensitive** - Trend window <2 hours (dying soon)
+2. **No new canon** - Zero lore reveals or world-building
+3. **Established voice** - Uses validated character patterns
+4. **Pure engagement** - Goal is visibility/interaction, not narrative
+5. **DS-3 minimum** - Must hit degen threshold for CT
+6. **Known format** - Reply, quote tweet, ratio attempt, or quick thread
+
+**CT Express Authority**:
+Agent 09 (Resident Degen) has **final approval authority** for Tier 0 content.
+- No escalation to Agent 00 required
+- Can approve and publish immediately
+- Logs decision post-facto to `logs/ct-express-activity.md`
+- If ANY uncertainty → Auto-escalate to Tier 2
+
+**CT Express Failure Modes**:
+| Issue | Action |
+|-------|--------|
+| Content has canon implications | Upgrade to Tier 1 |
+| DS below 3 | Revise or abandon |
+| Trend already dead | Abandon (no FOMO posts) |
+| Voice feels off | Quick revise or Tier 2 |
+| Cultural sensitivity concern | Tier 1 with full review |
+
+**SLA**: 15 minutes from opportunity identification to publication
+
+---
+
 ### Tier 1: NOVEL CONTENT (Full 3-Layer Review)
 **Definition**: Content introducing new canon, characters, mechanics, or narrative elements
 
@@ -164,6 +227,10 @@ Approved for Publication
 ```
 START: New content created
     ↓
+Is this TIME-SENSITIVE CT engagement? (trend dying in <2 hours, pure engagement, no canon)
+    ↓ YES → TIER 0 (CT Express) - Agent 09 authority
+    ↓ NO
+    ↓
 Does this content introduce NEW canon?
 (new character details, new mechanics, new story beats)
     ↓ YES → TIER 1 (Novel)
@@ -179,6 +246,7 @@ Is this content highly templated with minimal variation?
 ```
 
 **When in Doubt**: Default to TIER 2. Better to over-review than under-review.
+**For CT Content**: If time-sensitive AND no canon → Tier 0. If not sure → Tier 2.
 
 ---
 
@@ -309,13 +377,14 @@ If Tier 2 or Tier 3 content is flagged during creation:
 
 ### Target Metrics by Tier
 
-| Metric | Tier 1 | Tier 2 | Tier 3 |
-|--------|--------|--------|--------|
-| **Approval Rate** | 85-90% | 95%+ | 98%+ |
-| **Review Time** | 2-4 hours | 30-60 min | 10-15 min |
-| **Revision Rate** | 10-15% | 5% | 2% |
-| **Canon Violations** | 0% | 0% | 0% |
-| **Cultural Issues** | <5% | <2% | <1% |
+| Metric | Tier 0 | Tier 1 | Tier 2 | Tier 3 |
+|--------|--------|--------|--------|--------|
+| **Approval Rate** | 95%+ | 85-90% | 95%+ | 98%+ |
+| **Review Time** | 10-15 min | 2-4 hours | 30-60 min | 10-15 min |
+| **Revision Rate** | 5% | 10-15% | 5% | 2% |
+| **Canon Violations** | 0% | 0% | 0% | 0% |
+| **Cultural Issues** | <3% | <5% | <2% | <1% |
+| **Trend Capture Rate** | 80%+ | N/A | N/A | N/A |
 
 ### Tracking (Manual)
 
@@ -335,11 +404,33 @@ If Tier 2 or Tier 3 content is flagged during creation:
 
 ## Tier Calibration Examples
 
+### Example 0: CT Ratio Attempt
+**Context**: Major CT account posts "All gacha games are scams for stupid people"
+**Content**: Quote tweet from Ika - "imagine being so ngmi you can't even appreciate when waifus fight for their literal existence. couldn't be me anon~ this underdog's still standing. stay poor~"
+
+**Classification**: **Tier 0 (CT Express)**
+**Rationale**: Time-sensitive (trend will pass in 1-2 hours), pure engagement (no new canon), established Ika voice (tilde, shameless), DS-3+ (degen terminology, ratio energy)
+**Review Depth**: Agent 09 only - 12 minutes total
+**Outcome**: Approved via CT Express, logged post-facto
+
+---
+
+### Example 0b: CT Express REJECTION
+**Context**: Trending meme about idol games
+**Content**: "When idols Fade, their fans forget they ever existed. Sleep tight~"
+
+**Classification**: **REJECTED for Tier 0 → Escalated to Tier 1**
+**Rationale**: Potential canon implications (specific Fading mechanics), touches Inviolable Fact #3 (The Faded Are Forgotten)
+**Review Depth**: Agent 09 caught canon concern in 5 minutes, escalated
+**Outcome**: Escalated to Tier 1 for full review - not a quick meme response
+
+---
+
 ### Example 1: Ika Introduction Tweet
-**Content**: "47 fans. That's all I have. But every single one of you keeps me existing. Don't you dare look away~"
+**Content**: "Low-ranked? Sure. But every single one of my fans keeps me existing. Don't you dare look away~"
 
 **Classification**: **Tier 1 (Novel)**
-**Rationale**: First public Ika voice content, establishes character tone, introduces 47 fans concept
+**Rationale**: First public Ika voice content, establishes character tone and underdog positioning
 **Review Depth**: Full (canon + cultural + coordinator)
 **Outcome**: Approved, becomes template for future Ika voice
 
