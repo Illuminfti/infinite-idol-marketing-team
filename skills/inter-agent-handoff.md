@@ -61,23 +61,24 @@ Agent 02 (Content) → Agent 08 (Lore) → Agent 09 (Degen) → Agent 00 (Coordi
 ### Light Novel Pipeline
 
 ```
-Agent 07 (Writer) → Agent 08 (Lore) → Agent 09 (Degen) → Human Review
+Agent 07 (Writer) ↔ Agent 08 (Lore) → Agent 09 (Degen) → Human Review
     Drafts            Validates          Culture Check       Approval
 ```
-
-### Influencer Campaign Pipeline
-
-```
-Agent 18 (Hypeman) → Agent 09 (Degen) → Agent 06 (Assets) → Agent 02 (Content)
-    Identifies          Vets                Creates Kit          Coordinates
-```
+Note: Agent 07 and 08 work bidirectionally during drafting.
 
 ### Crisis Response Pipeline
 
 ```
-Agent 10 (Infiltrator) → Agent 14 (Shield) → Agent 00 (Coordinator) → Human
-      Detects               Assesses            Escalates            Decides
+Human Detection → Agent 00 (Coordinator) → Agent 09 + Agent 08 → Human Decision
+    Detects           Escalates              Assess                Decides
 ```
+
+### Influencer/Community Pipelines
+
+These require human execution. Agents provide:
+- Agent 02: Content for campaigns
+- Agent 09: Cultural vetting
+- Agent 00: Coordination and approval
 
 ---
 
@@ -87,25 +88,28 @@ For critical content, require sign-off from multiple agents:
 
 | Content Type | Required Sign-offs |
 |--------------|-------------------|
-| **Lore content** | Agent 08 (Lore) + Agent 01 (Architect) |
-| **Public content** | Agent 09 (Degen) + Agent 02 (Content) |
-| **Fan service** | Agent 15 (Simp) + Agent 09 (Degen) |
-| **Partnerships** | Agent 13 (Ambassador) + Agent 00 (Coordinator) |
-| **Crisis response** | Agent 14 (Shield) + Human |
+| **Lore content** | Agent 08 (Lore Guardian) |
+| **Public content** | Agent 08 (Canon) + Agent 09 (Cultural) |
+| **Fan service** | Agent 09 (Degen) - final authority |
+| **Narrative content** | Agent 07 (Writer) + Agent 08 (Lore) |
+| **Crisis response** | Agent 00 + Human |
+| **Partnerships** | Human only (requires external contact) |
 
 ---
 
 ## Parallel Execution
 
-When tasks are independent, agents can work in parallel:
+When tasks are independent, work can proceed in parallel:
 
 ```
-Agent 06 creates assets ──┐
-                          ├──► Agent 02 assembles content
-Agent 07 writes copy ─────┘
+Agent 07 writes narrative ──┐
+                            ├──► Agent 09 reviews culturally
+Agent 02 writes tweets ─────┘
 ```
 
 **Rule**: Only parallelize when there are no dependencies between tasks.
+
+**Note**: Since this is a single-agent system, "parallel" means tasks in the queue can be processed independently across sessions.
 
 ---
 
@@ -134,9 +138,9 @@ Agent 07 writes copy ─────┘
 If receiving agent can't proceed:
 
 1. **Blocked by missing info**: Request from sending agent
-2. **Blocked by policy**: Escalate to Coordinator
+2. **Blocked by policy**: Escalate to Coordinator (Agent 00)
 3. **Blocked by human decision**: Add to `reviews/pending-human-review.md`
-4. **Blocked by crisis**: Alert Shield immediately
+4. **Blocked by crisis**: Escalate to Agent 00 + Human immediately
 
 ---
 

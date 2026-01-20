@@ -6,88 +6,27 @@
 
 ---
 
-## Quick Permission Lookup
+## Active Agents (5-Agent System)
 
 ### Agent 00: Coordinator
-**Write**: `knowledge-base/brand/`, `agents/`, `outputs/calendar/`, `logs/`, `reviews/`
+**Write**: `knowledge-base/brand/`, `agents/`, `outputs/calendar/`, `logs/`, `reviews/`, `skills/`
 **Role**: Orchestration, scheduling, human escalation
-
-### Agent 01: Lore Architect
-**Write**: `knowledge-base/lore/`, `knowledge-base/light-novels/`
-**Role**: Canon integrity, world consistency
 
 ### Agent 02: Content Strategist
 **Write**: `outputs/content/`, `outputs/calendar/` (propose)
 **Role**: Tweets, threads, social content
 
-### Agent 03: Community Manager
-**Write**: `outputs/discord/`, `outputs/calendar/` (events)
-**Role**: Discord, engagement, Seven Gates
-
-### Agent 04: Gacha Designer
-**Write**: `knowledge-base/game-mechanics/` (main docs only, NOT technical-reference/), `outputs/seasons/`, `outputs/calendar/` (banner scheduling)
-**Read-only**: `knowledge-base/game-mechanics/technical-reference/` (developer deep-dives)
-**Role**: Banners, cosmetics, seasonal content, economy balancing
-
-### Agent 05: Analytics Observer
-**Write**: `logs/` (analytics)
-**Role**: Metrics, competitor analysis
-
-### Agent 06: Asset Coordinator
-**Write**: `outputs/music/`, `outputs/art/`
-**Role**: Suno prompts, Midjourney prompts
-
 ### Agent 07: Light Novel Writer
-**Write**: `knowledge-base/light-novels/`
-**Role**: Novel content, narrative
+**Write**: `knowledge-base/light-novels/`, `knowledge-base/lore/`
+**Role**: Novel content, narrative, character development
 
 ### Agent 08: Lore Guardian
-**Write**: `reviews/` (canon reviews)
-**Role**: Canon compliance checking
+**Write**: `reviews/` (canon reviews), `knowledge-base/lore/` (updates)
+**Role**: Canon compliance checking, Inviolable Facts protection
 
 ### Agent 09: Resident Degen
 **Write**: `reviews/` (cultural reviews)
-**Role**: Cultural authenticity
-
-### Agent 10: The Infiltrator
-**Write**: `logs/intel/`, `reviews/` (intel reports)
-**Role**: Community intelligence, real-time engagement
-
-### Agent 11: The Meme Lord
-**Write**: `outputs/memes/`, `outputs/art/` (meme assets)
-**Role**: Viral content, meme templates
-
-### Agent 12: Conversion Architect
-**Write**: `logs/conversion/`, `outputs/analytics/`
-**Role**: Funnel optimization, player journey
-
-### Agent 13: The Ambassador
-**Write**: `outputs/partnerships/`
-**Role**: External relationships, collaborations
-
-### Agent 14: The Shield
-**Write**: `reviews/incidents/`, `logs/security/`
-**Role**: Crisis management, brand protection
-
-### Agent 15: Simp Whisperer
-**Write**: `outputs/fan-service/`
-**Role**: Fan service strategy, emotional engagement
-
-### Agent 16: The NEET
-**Write**: `outputs/tools/`, `outputs/specs/`
-**Role**: Community tools, technical specs
-
-### Agent 17: The Architect
-**Write**: `agents/` (documentation), `skills/`, `logs/agent-reviews/`
-**Role**: Agent system optimization (proposals require human approval)
-
-### Agent 18: The Hypeman
-**Write**: `outputs/influencer/`, `logs/influencer/`
-**Role**: KOL/Influencer relations, creator campaigns
-
-### Agent 19: Information Architect
-**Write**: `logs/insights/`, `outputs/dashboards/`
-**Role**: Notion intelligence, data insights, dashboard management
+**Role**: Cultural authority, content approval gateway
 
 ---
 
@@ -100,39 +39,35 @@
 
 ---
 
-## Directory Ownership
+## Directory Ownership (Active Agents)
 
 | Directory | Owner |
 |-----------|-------|
-| `knowledge-base/lore/` | Lore Architect |
-| `knowledge-base/game-mechanics/` | Gacha Designer (main docs only) |
-| `knowledge-base/game-mechanics/technical-reference/` | Coordinator (read-only for all agents) |
+| `knowledge-base/lore/` | Agent 07 + Agent 08 |
+| `knowledge-base/light-novels/` | Agent 07 |
 | `knowledge-base/brand/` | Coordinator |
 | `knowledge-base/crypto/` | Coordinator |
-| `agents/` | Coordinator + Architect (docs only) |
-| `outputs/content/` | Content Strategist |
+| `agents/` | Coordinator |
+| `skills/` | Coordinator |
+| `outputs/content/` | Agent 02 |
 | `outputs/calendar/` | Coordinator (final), others propose |
-| `outputs/discord/` | Community Manager |
-| `outputs/seasons/` | Gacha Designer |
-| `outputs/music/` | Asset Coordinator |
-| `outputs/art/` | Asset Coordinator + Meme Lord |
-| `outputs/memes/` | Meme Lord |
-| `outputs/partnerships/` | Ambassador |
-| `outputs/fan-service/` | Simp Whisperer |
-| `outputs/tools/` | The NEET |
-| `outputs/specs/` | The NEET |
 | `logs/` | All (their own logs) |
-| `logs/intel/` | Infiltrator |
-| `logs/security/` | Shield |
-| `logs/conversion/` | Conversion Architect |
-| `logs/agent-reviews/` | Architect |
-| `logs/influencer/` | Hypeman |
-| `logs/insights/` | Information Architect |
-| `outputs/influencer/` | Hypeman |
-| `outputs/dashboards/` | Information Architect |
-| `reviews/` | Coordinator + Reviewers |
-| `reviews/incidents/` | Shield |
-| `skills/` | Coordinator + Architect |
+| `reviews/` | Coordinator + Agent 08 + Agent 09 |
+
+---
+
+## Human-Required Directories
+
+The following require human execution (archived agent domains):
+
+| Directory | Requires |
+|-----------|----------|
+| `outputs/discord/` | Human (Discord access) |
+| `outputs/music/`, `outputs/art/` | Human (Asset generation) |
+| `outputs/seasons/` | Human (Game design) |
+| `outputs/partnerships/` | Human (External contacts) |
+| `logs/intel/` | Human (Community presence) |
+| `knowledge-base/game-mechanics/` | Human (Game design) |
 
 ---
 

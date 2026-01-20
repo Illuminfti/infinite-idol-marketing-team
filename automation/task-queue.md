@@ -54,23 +54,7 @@ Tasks for orchestration, scheduling, and oversight.
 | **REGULAR TASKS** | | | | | | |
 | COORD-001 | P1 | Morning coordination check | PENDING | 2026-01-09 | Daily | Process all agent queues |
 | COORD-002 | P1 | Review pending content for scheduling | PENDING | 2026-01-09 | Daily | Final approval before publish |
-| COORD-003 | P2 | Weekly performance review | PENDING | 2026-01-09 | Fri | Compile metrics from Agent 05 |
-
----
-
-## Lore Architect Queue (Agent 01)
-
-Tasks for worldbuilding, canon, and story consistency.
-
-| ID | Priority | Task | Status | Created | Due | Notes |
-|----|----------|------|--------|---------|-----|-------|
-| **VIBING OVERHAUL PROJECT** | | | | | | **Phase 1** |
-| LORE-VIB-001 | P0 | Vibing: Lore consistency audit | COMPLETE | 2026-01-09 | 2026-01-09 | ✅ Devotion mechanics sound, resurrection story vs. system distinction maintained |
-| LORE-VIB-002 | P0 | Vibing: Seven Gates narrative review | COMPLETE | 2026-01-09 | 2026-01-09 | ✅ Narratively coherent, clear arc from loss → devotion → resurrection |
-| LORE-VIB-003 | P0 | Vibing: Ika characterization verification | COMPLETE | 2026-01-09 | 2026-01-09 | ✅ Ika's voice 100% authentic to Infinite Idol character profile |
-| **REGULAR TASKS** | | | | | | |
-| LORE-002 | P2 | Review Ika voice tweets for canon | IN_PROGRESS | 2026-01-09 | Ongoing | Batch-001 drafted, needs review |
-| LORE-003 | P2 | Prepare Senpai mystery teaser | PENDING | 2026-01-09 | 2026-01-16 | Thu content |
+| COORD-003 | P2 | Weekly performance review | PENDING | 2026-01-09 | Fri | Compile metrics (manual tracking) |
 
 ---
 
@@ -81,53 +65,7 @@ Tasks for social media content and marketing materials.
 | ID | Priority | Task | Status | Created | Due | Notes |
 |----|----------|------|--------|---------|-----|-------|
 | CONTENT-002 | P1 | Create Ika personality tweet batch (3-5 tweets) | REVIEW | 2026-01-09 | 2026-01-14 | Batch-001 created (5 tweets), ✅ canon approved, awaiting cultural review |
-| CONTENT-003 | P1 | Format Devotion thread with Agent 01 | REVIEW | 2026-01-09 | 2026-01-15 | LORE-001 complete, thread ready for final format |
-
----
-
-## Community Manager Queue (Agent 03)
-
-Tasks for Discord, engagement, and community building.
-
-| ID | Priority | Task | Status | Created | Due | Notes |
-|----|----------|------|--------|---------|-----|-------|
-| COMM-001 | P2 | Draft Discord server channel structure | PENDING | 2026-01-09 | 2026-01-17 | Pre-launch prep |
-| COMM-002 | P2 | Seven Gates system implementation plan | PENDING | 2026-01-09 | 2026-01-17 | Engagement mechanics |
-| COMM-003 | P3 | First week community engagement strategy | PENDING | 2026-01-09 | 2026-01-19 | Launch support |
-
----
-
-## Gacha Designer Queue (Agent 04)
-
-Tasks for banners, seasonal content, and monetization.
-
-| ID | Priority | Task | Status | Created | Due | Notes |
-|----|----------|------|--------|---------|-----|-------|
-| GACHA-001 | P2 | First banner concept development | PENDING | 2026-01-09 | 2026-01-17 | Internal planning |
-| GACHA-002 | P3 | Whale psychology notes for content | PENDING | 2026-01-09 | 2026-01-19 | Support marketing |
-
----
-
-## Analytics Observer Queue (Agent 05)
-
-Tasks for metrics, analysis, and optimization.
-
-| ID | Priority | Task | Status | Created | Due | Notes |
-|----|----------|------|--------|---------|-----|-------|
-| ANALYTICS-001 | P2 | Baseline metrics setup | PENDING | 2026-01-09 | 2026-01-17 | Pre-launch tracking |
-| ANALYTICS-002 | P2 | Competitor analysis update | PENDING | 2026-01-09 | 2026-01-17 | Market positioning |
-| ANALYTICS-003 | P3 | Week 1 metrics report template | PENDING | 2026-01-09 | 2026-01-19 | Reporting framework |
-
----
-
-## Asset Coordinator Queue (Agent 06)
-
-Tasks for visual and audio asset generation.
-
-| ID | Priority | Task | Status | Created | Due | Notes |
-|----|----------|------|--------|---------|-----|-------|
-| ASSET-002 | P2 | Suno theme music prompt framework | PENDING | 2026-01-09 | 2026-01-17 | Audio identity |
-| ASSET-003 | P2 | Background/atmospheric visual prompts | PENDING | 2026-01-09 | 2026-01-15 | Support content |
+| CONTENT-003 | P1 | Format Devotion thread | REVIEW | 2026-01-09 | 2026-01-15 | Thread ready for final format |
 
 ---
 
@@ -176,19 +114,20 @@ Tasks for cultural review and trend monitoring.
 ## Inter-Agent Dependencies
 
 ```
-CONTENT-001 (Draft)
-    → GUARDIAN-001 (Canon Check)
-    → DEGEN-001 (Cultural Review)
-    → COORD-002 (Final Approval)
+CONTENT (Draft)
+    → GUARDIAN (Canon Check - Agent 08)
+    → DEGEN (Cultural Review - Agent 09)
+    → COORD (Final Approval - Agent 00)
     → PUBLISH
 
-LORE-001 (Draft Thread)
-    → GUARDIAN-002 (Canon Check)
-    → CONTENT-003 (Format)
-    → DEGEN-002 (Cultural Review)
-    → COORD-002 (Final Approval)
+NARRATIVE (Draft)
+    → GUARDIAN (Canon Check - Agent 08)
+    → DEGEN (Cultural Review - Agent 09)
+    → COORD (Final Approval - Agent 00)
     → PUBLISH
 ```
+
+**Active Agents**: 00 (Coordinator), 02 (Content), 07 (Writer), 08 (Guardian), 09 (Degen)
 
 ---
 
@@ -197,8 +136,10 @@ LORE-001 (Draft Thread)
 | Time (JST) | Time (UTC) | Action | Agent |
 |------------|------------|--------|-------|
 | 9:00 AM | 0:00 AM | Morning coordination | 00 - Coordinator |
-| 6:00 PM | 9:00 AM | Content review cycle | 08 + 09 + 00 |
+| 6:00 PM | 9:00 AM | Content review cycle | 08 (Canon) + 09 (Cultural) + 00 (Approval) |
 | 9:00 PM | 12:00 PM | Evening check | 00 - Coordinator |
+
+**Note**: This is a 5-agent system (00, 02, 07, 08, 09). Analytics, community, and asset tasks require human execution.
 
 ---
 

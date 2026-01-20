@@ -1,8 +1,10 @@
 # Skill: Agent Evaluation
 
 > **Purpose**: Evaluate agent performance and system health
-> **Primary User**: The Architect (Agent 17)
+> **Primary User**: Coordinator (Agent 00), Human
 > **Use When**: Quarterly reviews, gap analysis, system optimization
+
+**Note**: This skill was originally used by the archived Agent 17 (The Architect). Now used by Coordinator for system oversight.
 
 ---
 

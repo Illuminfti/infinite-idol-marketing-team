@@ -24,7 +24,7 @@ This protocol defines how the Infinite Idol marketing team responds to content c
 - No spreading beyond original post
 
 **Response Time**: Within 4 hours
-**Handler**: Agent 03 (Community Manager) + originating content agent
+**Handler**: Human (community engagement) + originating content agent
 
 ### Level 2: MAJOR (Significant Backlash)
 **Indicators**:
@@ -35,7 +35,7 @@ This protocol defines how the Infinite Idol marketing team responds to content c
 - 20%+ drop in engagement metrics
 
 **Response Time**: Within 2 hours
-**Handler**: Agent 00 (Coordinator) + Agent 09 (Degen) + Agent 03
+**Handler**: Agent 00 (Coordinator) + Agent 09 (Degen) + Human
 
 ### Level 3: CRITICAL (Brand Threat)
 **Indicators**:
@@ -53,7 +53,7 @@ This protocol defines how the Infinite Idol marketing team responds to content c
 
 ## Detection Mechanisms
 
-### Automated Monitoring (Agent 03 + Agent 05)
+### Monitoring (Human + Agent Support)
 - **Sentiment Analysis**: Track comment/reply tone on all published content
 - **Engagement Drops**: Alert if post performs 30% below baseline
 - **Ratio Detection**: Flag posts where replies exceed likes by 2x
@@ -75,7 +75,7 @@ This protocol defines how the Infinite Idol marketing team responds to content c
 
 ### LEVEL 1: Minor Response
 
-**Step 1: Assessment (Agent 03)**
+**Step 1: Assessment (Human + Agent 00)**
 - Read all negative comments/feedback
 - Classify criticism type:
   - Canon question (needs clarification)
@@ -84,7 +84,7 @@ This protocol defines how the Infinite Idol marketing team responds to content c
   - General negativity (subjective opinion)
 - Document in `/logs/crisis-log.md`
 
-**Step 2: Response (Agent 03 + Originating Agent)**
+**Step 2: Response (Human + Agent 02)**
 - **Canon questions**: Provide clarification with references
 - **Mechanics confusion**: Offer explanation, consider FAQ addition
 - **Tone concerns**: Acknowledge feedback, maintain brand voice
@@ -110,7 +110,7 @@ Tone Concern Response:
 
 ### LEVEL 2: Major Response
 
-**Step 1: Emergency Assessment (Agent 00 + Agent 09 + Agent 03)**
+**Step 1: Emergency Assessment (Agent 00 + Agent 09 + Human)**
 - **Within 30 minutes**: Full situation analysis
 - Identify root cause:
   - Cultural misread (DS calibration off)
@@ -125,7 +125,7 @@ Tone Concern Response:
 
 **Step 2: Response Strategy (Agent 00 + Agent 09)**
 - **If cultural misread**: Agent 09 drafts correction/clarification
-- **If canon issue**: Agent 08 validates, Agent 01 approves correction
+- **If canon issue**: Agent 08 validates and approves correction
 - **If timing/context**: Agent 02 drafts contextual follow-up
 - All responses reviewed by Agent 09 for cultural tone
 
@@ -136,7 +136,7 @@ Tone Concern Response:
 - Update internal guidelines to prevent recurrence
 
 **Step 4: Damage Control**
-- Agent 03 monitors sentiment for 48 hours
+- Human monitors sentiment for 48 hours
 - Prepare positive content to rebuild momentum
 - Schedule "palate cleanser" content (high-confidence Ika voice or lore drop)
 
@@ -157,7 +157,7 @@ Thanks for keeping us honest 🖤
 **Step 1: IMMEDIATE Human Escalation**
 - **Agent 00**: Notify human operator within 15 minutes
 - **All agents**: Halt new content publication until resolved
-- **Agent 05**: Compile full metrics (engagement, spread, sentiment)
+- **Human**: Compile full metrics (engagement, spread, sentiment)
 - **Agent 09**: Assess cultural/brand damage severity
 
 **Step 2: Human-Led Response Strategy**
@@ -182,8 +182,8 @@ Thanks for keeping us honest 🖤
 
 **Step 5: Rebuilding Phase**
 - Agent 02 + Agent 09: Create confidence-rebuilding content
-- Agent 03: Enhanced community engagement
-- Agent 05: Track recovery metrics
+- Human: Enhanced community engagement
+- Human: Track recovery metrics
 - Return to normal operations when sentiment stabilizes (>80% baseline)
 
 ---
@@ -275,7 +275,7 @@ We hold ourselves to high standards, and this didn't meet them. Learning and imp
 | Community Tone (Discord) | Positive/Neutral >85% | 48 hours |
 | Share of Voice (positive vs negative) | 3:1 positive | 96 hours |
 
-**Agent 05** tracks these metrics and reports recovery status daily during crisis.
+Human tracks these metrics and reports recovery status daily during crisis.
 
 ---
 
@@ -336,12 +336,12 @@ All crisis events logged in: `/logs/crisis-log.md`
 | Agent | Role in Crisis |
 |-------|----------------|
 | **Agent 00 (Coordinator)** | Crisis commander, human escalation, strategy approval |
-| **Agent 03 (Community Manager)** | Detection, sentiment monitoring, community engagement |
-| **Agent 05 (Analytics Observer)** | Metrics tracking, impact assessment, recovery monitoring |
-| **Agent 09 (Resident Degen)** | Cultural assessment, response tone, DS recalibration |
-| **Agent 08 (Lore Guardian)** | Canon violation assessment, correction validation |
 | **Agent 02 (Content Strategist)** | Response content creation, clarification drafting |
-| **Agent 01 (Lore Architect)** | Major canon decisions, Tier 1-2 violation resolution |
+| **Agent 07 (Light Novel Writer)** | Canon-accurate narrative corrections if needed |
+| **Agent 08 (Lore Guardian)** | Canon violation assessment, Tier 1-2 resolution, correction validation |
+| **Agent 09 (Resident Degen)** | Cultural assessment, response tone, DS recalibration, community pulse |
+
+**Note**: Community monitoring, analytics tracking, and direct community engagement require human execution.
 
 ---
 

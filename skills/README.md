@@ -28,6 +28,7 @@ When your task requires specialized knowledge:
 |-------|------|----------|
 | **Canon Validation** | `canon-validation.md` | Reviewing content for lore compliance |
 | **Content Creation** | `content-creation.md` | Creating tweets, threads, social content |
+| **Copywriting** | `copywriting.md` | Writing compelling marketing copy |
 | **Cultural Review** | `cultural-review.md` | Assessing degen authenticity |
 | **Character Voices** | `character-voices.md` | Writing character dialogue or first-person content |
 | **Escalation** | `escalation.md` | Determining when/how to escalate issues |
@@ -38,7 +39,18 @@ When your task requires specialized knowledge:
 | **Agent Evaluation** | `agent-evaluation.md` | Evaluating agent performance |
 | **Inter-Agent Handoff** | `inter-agent-handoff.md` | Passing work between agents |
 | **KOL/Influencer** | `kol-influencer.md` | Influencer management and outreach |
+| **Skill Creator** | `skill-creator.md` | Creating new internal skills |
 | **Tiered Review** | `tiered-review-framework.md` | Optimizing review depth based on content type |
+
+### Skills with Absorbed Content
+
+Some skills absorbed content from archived agent personas:
+
+| Skill | Absorbed From |
+|-------|---------------|
+| `community-intel.md` | Agent 10 (The Infiltrator) |
+| `crisis-management.md` | Agent 14 (The Shield) |
+| `kol-influencer.md` | Agent 18 (The Hypeman) |
 
 ## Skill Design Principles
 

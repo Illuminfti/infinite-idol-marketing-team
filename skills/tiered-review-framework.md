@@ -36,7 +36,7 @@ The tiered review framework optimizes content approval velocity while maintainin
 
 **Review Process**:
 ```
-Creation (Agent 02/03/04)
+Creation (Agent 02/07)
     ↓
 Canon Review (Agent 08) - Full validation
     • All 10 Inviolable Facts checked
@@ -86,7 +86,7 @@ Approved for Publication
 
 **Review Process**:
 ```
-Creation (Agent 02/03/04)
+Creation (Agent 02/07)
     ↓
 SKIP Canon Review (Assumes template compliance)
     ↓
@@ -133,7 +133,7 @@ Approved for Publication
 
 **Review Process**:
 ```
-Creation (Agent 02/03/04)
+Creation (Agent 02/07)
     ↓
 SKIP Canon Review
     ↓
@@ -195,15 +195,12 @@ Is this content highly templated with minimal variation?
 - Subsequent character tweets with same voice/tone → Tier 2
 - Engagement questions → Tier 3
 
-**Agent 03 (Community Manager)**:
-- New event announcement → Tier 1
-- Weekly event reminder → Tier 3
-- Community milestone → Tier 2
+**Agent 07 (Light Novel Writer)**:
+- New narrative content → Tier 1
+- Character voice in established scenarios → Tier 2
+- Narrative snippets from published canon → Tier 3
 
-**Agent 04 (Gacha Designer)**:
-- New banner concept → Tier 1
-- Banner announcement (established format) → Tier 2
-- Cosmetic reveal (non-story) → Tier 3
+**Note**: Community events, gacha content, and analytics require human execution.
 
 ---
 
@@ -227,7 +224,7 @@ Creation → [Canon Review (2 hours) + Cultural Review (2 hours) in parallel] �
 
 ### Implementation
 
-1. **Agent 02/03/04** submits content to review queue
+1. **Agent 02/07** submits content to review queue
 2. **Task Queue System** creates TWO simultaneous tasks:
    - Task A: Canon Review (Agent 08)
    - Task B: Cultural Review (Agent 09)
@@ -320,9 +317,9 @@ If Tier 2 or Tier 3 content is flagged during creation:
 | **Canon Violations** | 0% | 0% | 0% |
 | **Cultural Issues** | <5% | <2% | <1% |
 
-### Tracked by Agent 05 (Analytics Observer)
+### Tracking (Manual)
 
-**Weekly Report**:
+**Weekly Report** (Human tracks):
 - Content volume per tier
 - Average review times per tier
 - Approval rates per tier
@@ -330,7 +327,7 @@ If Tier 2 or Tier 3 content is flagged during creation:
 - Tier classification accuracy
 
 **Monthly Review**:
-- Agent 00 reviews metrics with Agent 05
+- Agent 00 reviews metrics with Human
 - Adjust tier criteria if needed
 - Update agent guidelines
 

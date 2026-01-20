@@ -1,8 +1,8 @@
 # CLAUDE.md - Infinite Idol Marketing Team
 
-> **Version**: 2.2 (Production-Ready)
+> **Version**: 3.0 (Consolidated)
 > **Mode**: Single-agent with persona switching (human-orchestrated)
-> **Personas**: 6 core (AI-executable), 14 reference (human-required)
+> **Active Agents**: 5 core (AI-executable)
 
 ---
 
@@ -88,45 +88,25 @@ Human runs /agent <n> → You read persona → You execute tasks → You log & c
 
 **SINGLE SOURCE OF TRUTH**: This table is the ONLY authoritative list of the 10 Inviolable Facts. Agent files MUST NOT duplicate this list—always reference CLAUDE.md directly.
 
-### What's NOT Inviolable (Moved to Appropriate Docs)
-
-| Detail | Location | Why Moved |
-|--------|----------|-----------|
-| Ika's 47 fans | `characters/ika-minami.md` | Character detail, not world rule |
-| Ika's pink gradient hair | `characters/ika-minami.md` | Character design, not world rule |
-| Chain-agnostic Web3 | `crypto/web3-positioning.md` | Business positioning, not lore |
-| Gems = Currency | `game-mechanics/gem-system.md` | Game mechanic, not narrative truth |
-| Dark luxury aesthetic | `brand/visual-identity.md` | Brand guideline, not world rule |
-
 ---
 
 ## Agent Roster
 
 ### Core Agents (AI-Executable)
 
-These agents are designed for AI execution with Claude Code.
-
 | # | Agent | Role | Focus |
 |---|-------|------|-------|
-| 00 | **Coordinator** | Marketing Director | Orchestration, scheduling, task queue management |
-| 02 | **Content Strategist** | Social Media | Tweets, threads, content creation |
-| 05 | **Analytics Observer** | Performance | Metrics analysis, reporting |
-| 07 | **Light Novel Writer** | Narrative | Story content, character development |
-| 08 | **Lore Guardian** | Canon Validator | Compliance checking, fact verification |
-| 09 | **Resident Degen** | Cultural Validator | Authenticity, degen energy, cultural review |
+| **00** | Coordinator | Marketing Director | Orchestration, scheduling, task queue, human escalation |
+| **02** | Content Strategist | Social Media | Tweets, threads, content creation |
+| **07** | Light Novel Writer | Narrative | Story content, character development, Ika voice |
+| **08** | Lore Guardian | Canon Validator | Inviolable Facts protection, lore verification |
+| **09** | Resident Degen | Cultural Authority | Content approval gateway, degen authenticity, trends |
 
-### Reference Personas (Documentation)
+**Agent 09 Special Authority**: Final say on whether content ships. Brand voice authority over Content Strategist.
 
-These describe roles for human execution or future expansion. Load for context but don't expect autonomous AI execution.
+### Archived Reference Personas
 
-| # | Agent | Role | Why Reference Only |
-|---|-------|------|-------------------|
-| 01 | Lore Architect | Worldbuilding | Overlaps with 07+08; use skills/canon-validation.md |
-| 03 | Community Manager | Discord | Requires human Discord access |
-| 04 | Gacha Designer | Game Design | Requires game dev integration |
-| 06 | Asset Coordinator | Visuals | Requires image generation integration |
-| 10-18 | Specialized | Various | Require human execution (Twitter, Discord, partnerships) |
-| 19 | Information Architect | Dashboards | Requires Notion/external integration |
+15 reference personas have been archived to `archive/reference-personas/`. These describe roles requiring human execution (Discord, Twitter, partnerships) or external integrations. See that directory for context.
 
 ### Review Order (Not Runtime Hierarchy)
 
@@ -153,15 +133,20 @@ Skills are modular workflows. Load from `skills/` based on task type:
 
 | Task Type | Required Skills |
 |-----------|-----------------|
-| **Creating content** | `content-creation.md`, `character-voices.md` |
+| **Creating content** | `content-creation.md`, `character-voices.md`, `copywriting.md` |
 | **Reviewing content** | `canon-validation.md` (always), `cultural-review.md` (if public-facing) |
 | **Writing narrative** | `character-voices.md`, `canon-validation.md` |
 | **Handling crisis** | `crisis-management.md`, `escalation.md` |
+| **Community intel** | `community-intel.md` |
+| **KOL planning** | `kol-influencer.md` |
+| **Creating new skills** | `skill-creator.md` |
 | **Any uncertainty** | `escalation.md` |
 
 Full skill list: See `skills/README.md`
 
 **Loading Rule**: When in doubt, load the skill. Better to have context than miss it.
+
+**Note**: Several skills absorbed content from archived agent personas (crisis-management, kol-influencer, community-intel).
 
 ---
 

@@ -1,8 +1,10 @@
 # Skill: Community Intelligence
 
 > **Purpose**: Gather and report on community sentiment, trends, and opportunities
-> **Primary User**: The Infiltrator (Agent 10)
+> **Primary User**: Agent 09 (Resident Degen), Coordinator (Agent 00)
 > **Use When**: Monitoring communities, writing intel reports, tracking sentiment
+
+**Note**: This skill absorbed content from the archived Agent 10 (Infiltrator) persona.
 
 ---
 
@@ -62,7 +64,7 @@
 
 | Trigger | Priority | Action |
 |---------|----------|--------|
-| Scam impersonating us | P0 | Immediate alert to Shield |
+| Scam impersonating us | P0 | Immediate alert + human escalation |
 | FUD going viral | P0 | Alert with context |
 | Competitor major move | P1 | Document and report |
 | Engagement opportunity | P1 | Flag to relevant agent |

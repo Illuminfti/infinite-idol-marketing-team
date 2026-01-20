@@ -1,8 +1,10 @@
 # Skill: KOL/Influencer Management
 
 > **Purpose**: Framework for influencer identification, outreach, and campaign management
-> **Primary User**: The Hypeman (Agent 18)
+> **Primary Users**: Coordinator (Agent 00), Content Strategist (Agent 02)
 > **Research Basis**: "In 2025, influencers rule the arena" - gaming marketing is creator-driven
+
+**Note**: This skill absorbed content from the archived Agent 18 (Hypeman) persona. Use this for influencer planning; actual outreach requires human execution.
 
 ---
 
