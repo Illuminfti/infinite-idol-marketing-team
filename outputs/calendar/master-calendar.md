@@ -99,7 +99,7 @@ Deepen engagement, explain The Chase, build community, tease future content.
 |------------|-----|-------------|
 | **"47 fans" as anchor** | Not core lore, too specific | "low-ranked", "underdog", "struggling idol" |
 | **Price action/token price** | Not our focus | Game, lore, community |
-| **SUI blockchain promotion** | No tech shilling | Only via character Sheran |
+| **SUI blockchain promotion** | No tech shilling | Gameplay first, blockchain invisible |
 | **Chain comparisons** | No tech superiority | Gameplay first |
 | **Specific fan counts** | Numbers don't anchor | Devotion system framing |
 
@@ -230,7 +230,7 @@ Before launch, verify:
 - [ ] First tweet sets cryptic, engaging tone
 - [ ] No "47 fans" used as anchor anywhere
 - [ ] No price/token mentions
-- [ ] No SUI promotion (only Sheran if needed)
+- [ ] No SUI promotion (blockchain invisible)
 - [ ] Senpai's face never described
 - [ ] Fading always permanent (no resurrection hints)
 - [ ] Content follows 40/25/20/15 pillar distribution

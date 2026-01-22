@@ -132,7 +132,7 @@ Web3 community engagement, development updates, and pre-registration momentum.
 - Founder benefits previews
 - Multi-chain payment convenience messaging
 
-**Note on Blockchain/Sui**: Only reference Sui through the character **Sheran**. Do not push Sui technology, chain comparisons, or tech superiority. Gameplay first.
+**Note on Blockchain**: Do not push blockchain technology, chain comparisons, or tech superiority. Gameplay first, blockchain invisible.
 
 **Example Tweets:**
 > "10,000 early Devoted. 10,000 people who saw something special before the rest of the world. Thank you. This is just the beginning."

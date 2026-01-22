@@ -139,7 +139,7 @@ infinite-idol-marketing-team/
 |------------|-------------|
 | "47 fans" as anchor | Use "low-ranked", "underdog", "struggling idol" |
 | Price action/token price | Focus on game, lore, community |
-| SUI blockchain promotion | Only reference Sui through character **Sheran** |
+| SUI blockchain promotion | Gameplay first, blockchain invisible |
 | Specific fan counts | Devotion system matters, not numbers |
 
 ---

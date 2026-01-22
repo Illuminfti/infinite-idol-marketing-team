@@ -268,14 +268,14 @@ CT runs hotter than other platforms. Recalibrate:
 |------------|--------|-------------|
 | **"47 fans" as anchor** | Specific number is nonsensical, not core lore | Use general "low-ranked", "underdog", "struggling idol" framing |
 | **Price action/token price** | Not our focus, avoid shilling | Focus on game, lore, community |
-| **$SUI promotion** | We don't push Sui blockchain | Only reference Sui through character **Sheran** |
-| **"SUI is great/fast/etc"** | Tech shilling | Character-based references only |
+| **$SUI promotion** | We don't push Sui blockchain | Gameplay first, blockchain invisible |
+| **"SUI is great/fast/etc"** | Tech shilling | No tech shilling at all |
 | **FOMO on token/price** | Not our energy | Focus on game FOMO (events, content) |
 
-**SUI/Blockchain References**:
-- Only mention Sui in relation to the character **Sheran** (not the technology)
+**Blockchain References**:
 - No chain comparisons or tech superiority claims
 - Gameplay first, blockchain invisible
+- Focus on game mechanics, not technology
 
 **Fan Count Framing**:
 - Use "struggling idol" not specific numbers

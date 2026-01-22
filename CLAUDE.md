@@ -176,11 +176,11 @@ For detailed guidelines: `skills/content-creation.md`
 |------------|-----|-------------|
 | **"47 fans" as anchor** | Specific number is not core lore | Use "low-ranked", "underdog", "struggling idol" |
 | **Price action/token price** | Not our focus, avoid shilling | Focus on game, lore, community |
-| **SUI blockchain promotion** | Don't push chain technology | Only reference Sui through character **Sheran** |
+| **SUI blockchain promotion** | Don't push chain technology | Gameplay first, blockchain invisible |
 | **Chain comparisons** | Tech superiority claims | Gameplay first, blockchain invisible |
 | **Fan count specifics** | Numbers don't anchor lore | Devotion system matters, not specific counts |
 
-**Sheran Rule**: Only mention Sui in relation to the character **Sheran**. No tech shilling, no ecosystem promotion.
+**Blockchain Rule**: No tech shilling, no ecosystem promotion. Blockchain should be invisible to players.
 
 ---
 

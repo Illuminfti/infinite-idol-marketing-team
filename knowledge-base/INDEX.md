@@ -32,7 +32,7 @@ This index maps **task types** to **required reading** so agents know exactly wh
 **Key Facts**:
 - DS-3 minimum for CT
 - Use "underdog", "low-ranked" instead of specific fan counts
-- Only reference Sui through character **Sheran**
+- No blockchain promotion (gameplay first, blockchain invisible)
 
 ---
 
