@@ -144,6 +144,7 @@ Skills are modular workflows. Load from `skills/` based on task type:
 | **Community intel** | `community-intel.md` |
 | **KOL planning** | `kol-influencer.md` |
 | **Creating new skills** | `skill-creator.md` |
+| **Publishing to X** | `post-to-x.md` |
 | **Any uncertainty** | `escalation.md` |
 
 Full skill list: See `skills/README.md`
