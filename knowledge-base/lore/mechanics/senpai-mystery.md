@@ -241,7 +241,7 @@ This is the only documented instance of Senpai displaying visible emotion. Impli
 
 ### The Devotion Spike
 
-When Ika made Senpai blush, her Devotion readings spiked beyond any recorded level—then stabilized at a point impossible for her 47 fans to provide.
+When Ika made Senpai blush, her Devotion readings spiked beyond any recorded level—then stabilized at a point impossible for her almost no fans to provide.
 
 Theories:
 - Senpai provides Devotion (unprecedented)

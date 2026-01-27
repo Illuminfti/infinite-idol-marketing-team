@@ -115,7 +115,7 @@ Premium limited banner • 24 hours only
 **Character Introduction**
 ```
 IKA MINAMI
-"47 fans. Every single one of them matters."
+"almost no fans. Every single one of them matters."
 ```
 
 ---

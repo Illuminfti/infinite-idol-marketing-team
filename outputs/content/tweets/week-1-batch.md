@@ -47,7 +47,7 @@ Should be.
 **Why it works**: Creates immediate intrigue without naming Ika. "Death sentence" references Fading without explaining it. "Should be" implies survival against odds. Cryptic, shareable, discussion-provoking.
 
 **Canon Check**: ✅ No Inviolable Facts violated. References Fading implicitly.
-**Restrictions Check**: ✅ No "47 fans", no price action, no SUI promotion.
+**Restrictions Check**: ✅ No specific fan counts, no price action, no SUI promotion.
 
 ---
 
@@ -443,7 +443,7 @@ Don't you dare look away~
 
 ### Restrictions Compliance
 
-- [x] No "47 fans" used anywhere
+- [x] No specific fan counts used anywhere
 - [x] No price/token mentions
 - [x] No SUI blockchain promotion
 - [x] Senpai's face never described

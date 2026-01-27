@@ -488,7 +488,7 @@ For each piece of content, assess:
 | Content Type | DS-1 (Too Safe) | DS-3 (Optimal) | DS-4 (Too Far) |
 |--------------|-----------------|----------------|----------------|
 | **Gacha announcement** | "New banner coming soon! Save your gems!" | "Your wallet: *exists* The new banner: 'And I took that personally'" | Explicit references to gambling addiction as a feature |
-| **Ika tweet** | "I love my fans! Thank you for supporting me!" | "47 fans. That's all I have. But every single one of you keeps me existing. Don't you dare look away~" | Content that sexualizes minors or crosses ToS |
+| **Ika tweet** | "I love my fans! Thank you for supporting me!" | "almost no fans. That's all I have. But every single one of you keeps me existing. Don't you dare look away~" | Content that sexualizes minors or crosses ToS |
 | **Crypto reference** | "Buy SUI to get gems in-game!" | "ngmi if you're not stacking SUI for the Ika meta" | Explicit financial advice or rug pull jokes about real projects |
 | **Fan service** | Generic cute idol pose | Self-aware thirst trap with "I know what you're here for" energy | Explicit content or non-consensual implications |
 

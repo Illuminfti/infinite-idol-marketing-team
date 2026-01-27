@@ -221,7 +221,7 @@ Is there a non-controversial angle?
 [Trending topic] + [Creative tie-in to our world]
 
 Examples (if #MondayMotivation trending):
-- "monday motivation: Ika has 47 fans and hasn't faded yet. what's your excuse?"
+- "monday motivation: Ika has almost nothing and hasn't faded yet. what's your excuse?"
 
 Examples (if anime trending):
 - "[anime character] would absolutely be an idol on the Eternal Stage. here's why:"

@@ -223,7 +223,7 @@ Her power now is institutional rather than personal:
 
 ### With Ika
 
-Ika Minami is Erina's greatest concern. An unranked idol with 47 fans who shouldn't exist—who someone tried to erase—who made *Senpai blush*. Ika represents everything The Foundation cannot control.
+Ika Minami is Erina's greatest concern. An unranked idol with almost no fans who shouldn't exist—who someone tried to erase—who made *Senpai blush*. Ika represents everything The Foundation cannot control.
 
 There may be more to their connection. Erina's reaction to Ika suggests recognition, history, something unspoken.
 

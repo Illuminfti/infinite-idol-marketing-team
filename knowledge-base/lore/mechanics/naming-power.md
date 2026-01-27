@@ -88,7 +88,7 @@ Devotion flows more efficiently when:
 - Unique (no other prominent "Ika" exists)
 - Emotionally charged (survival narrative)
 
-Her 47 fans saying "Ika" with genuine love generates more quality Devotion than casual fans of other idols.
+Her almost no fans saying "Ika" with genuine love generates more quality Devotion than casual fans of other idols.
 
 ---
 

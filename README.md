@@ -137,7 +137,7 @@ infinite-idol-marketing-team/
 
 | Restricted | Alternative |
 |------------|-------------|
-| "47 fans" as anchor | Use "low-ranked", "underdog", "struggling idol" |
+| specific fan counts as anchor | Use "low-ranked", "underdog", "struggling idol" |
 | Price action/token price | Focus on game, lore, community |
 | SUI blockchain promotion | Gameplay first, blockchain invisible |
 | Specific fan counts | Devotion system matters, not numbers |

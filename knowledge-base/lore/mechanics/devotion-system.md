@@ -75,11 +75,11 @@ Not all Devotion is equal:
 - Volatile, easily redirected
 - Provides weaker, less reliable sustenance
 
-### The 47 Fan Paradox
+### The Low Fan Paradox
 
-**Ika Minami** survives on only 47 fans—a number that should guarantee Fading. The anomaly suggests:
+**Ika Minami** survives on only almost no fans—a number that should guarantee Fading. The anomaly suggests:
 - Her fans' Devotion quality is extraordinarily high
-- Each of her 47 generates more Devotion than typical fans
+- Each of hers generates more Devotion than typical fans
 - The depth of genuine connection compensates for lack of scale
 - Something else may be sustaining her (under investigation)
 
@@ -179,7 +179,7 @@ If Net Devotion < 0: Idol begins Fading process
 ### Example: Ika's Razor Edge
 
 **Ika Minami's estimated Devotion balance:**
-- Fans: 47
+- Fans: Critically low
 - Average Devotion per fan: ~200 units/day (extremely high quality)
 - Total Daily Input: ~9,400 units
 - Daily Consumption (existence + minimal performance): ~8,000 units
@@ -306,7 +306,7 @@ Periods of dangerously low Devotion flow:
 
 A mystery the Foundation cannot explain:
 
-When Ika made Senpai blush, her Devotion readings spiked beyond any recorded level—then stabilized at a point that should be impossible for 47 fans. Theories:
+When Ika made Senpai blush, her Devotion readings spiked beyond any recorded level—then stabilized at a point that should be impossible for almost no fans. Theories:
 - Senpai provides Devotion (unprecedented)
 - The moment created permanent fan connection amplification
 - Something else entirely
@@ -333,7 +333,7 @@ This anomaly is why Erina watches Ika so carefully.
 ### Precarious Devotion
 
 **Ika Minami (Unranked)**
-- 47 fans with extraordinary quality Devotion
+- almost no fans with extraordinary quality Devotion
 - Lives on the edge every day
 - Her genuine connection compensates for scale
 - Any fan loss is an existential threat
@@ -366,7 +366,7 @@ These questions haunt every idol who understands the system.
 
 ### Ika's Answer
 
-With only 47 fans, Ika represents an alternative philosophy:
+With only almost no fans, Ika represents an alternative philosophy:
 - Better to burn bright with genuine connection than dim with hollow fame
 - Quality Devotion from true fans sustains better than quantity from casual viewers
 - The system can be challenged—maybe
@@ -403,7 +403,7 @@ In all content involving Devotion:
 - See `knowledge-base/lore/mechanics/fading.md` for what happens at zero Devotion
 - See `knowledge-base/lore/mechanics/the-chase.md` for how Devotion affects competition
 - See `knowledge-base/lore/factions/the-foundation.md` for system controllers
-- See `knowledge-base/lore/characters/ika-minami.md` for the 47-fan anomaly
+- See `knowledge-base/lore/characters/ika-minami.md` for the low-fan anomaly
 - See `knowledge-base/lore/characters/suiren.md` for high-Devotion emptiness
 - See `knowledge-base/game-mechanics/gem-system.md` for how Devotion maps to game currency
 

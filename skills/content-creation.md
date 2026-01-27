@@ -28,7 +28,7 @@ All content must fit one of these four pillars:
 - **Avoid**: Generic idol phrases, excessive cuteness, passive tone
 
 **Example**:
-> "47 fans. That's all I have. But every single one of you keeps me existing. Don't you dare look away~"
+> "almost no fans. That's all I have. But every single one of you keeps me existing. Don't you dare look away~"
 
 ### Lore Drops (25%)
 - **Tone**: Mysterious, evocative, premium

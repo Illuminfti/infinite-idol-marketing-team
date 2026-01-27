@@ -704,7 +704,7 @@ Momo operates as a bridge—helping idols understand fans, helping fans connect 
 
 ### With Ika
 
-Momo was one of Ika's 47 original fans—a fact she treats as the highest honor:
+Momo was one of Ika's original fans—a fact she treats as the highest honor:
 
 > *"I believed in her when she had nothing. Now she's making history. I'm still her fan. I'm just also her peer. Both things are true."*
 

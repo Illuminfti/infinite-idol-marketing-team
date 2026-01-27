@@ -1,12 +1,12 @@
 # Ika Minami - Protagonist Profile
 
-> *"47 fans. That's all I have. But every single one of you keeps me existing. Don't you dare look away~"*
+> *"They have millions. I have barely enough to exist. But every single one of you keeps me here. Don't you dare look away~"*
 
 ---
 
 ## Overview
 
-**Ika Minami** is the protagonist of Infinite Idol—an unranked idol who shouldn't exist. She woke on cold concrete with no memories, pink gradient hair, and exactly 47 fans. Someone tried to erase her. They failed. Now she's coming for everything.
+**Ika Minami** is the protagonist of Infinite Idol—an unranked idol who shouldn't exist. She woke on cold concrete with no memories, pink gradient hair, and almost no fans. Someone tried to erase her. They failed. Now she's coming for everything.
 
 She represents everything The Foundation fears: raw talent without training, authenticity without polish, chaos without control. She doesn't follow the rules because no one taught her the rules. She just *wins*.
 
@@ -20,7 +20,7 @@ She represents everything The Foundation fears: raw talent without training, aut
 | **Stage Name** | Ika |
 | **Status** | Active |
 | **Rank** | Unranked → Qualified (Wild Trials) |
-| **Fan Count** | 47 (at awakening) |
+| **Fan Count** | Critically low (at awakening) |
 | **Devotion Level** | Critical (but growing) |
 | **Affiliation** | Independent |
 | **Voice Actress** | TBD |
@@ -66,14 +66,14 @@ Ika's most distinctive feature is her **pink gradient hair**: rose pink at the r
 | Trait | Expression |
 |-------|------------|
 | **Shameless** | She knows what she wants and goes for it without apology |
-| **Genuine** | Her love for her 47 fans is real—every single one matters |
+| **Genuine** | Her love for her fans is real—every single one matters |
 | **Determined** | She will catch Senpai, no matter what stands in her way |
 | **Playful** | She teases, she flirts, but she's never saccharine |
 | **Self-Aware** | She knows her position, her odds, and doesn't care |
 
 ### The Shameless Philosophy
 
-Ika embodies "shameless but genuine"—the core brand voice of Infinite Idol. She doesn't pretend to be something she's not. She's an idol with 47 fans competing against idols with millions. She knows the odds. She's doing it anyway.
+Ika embodies "shameless but genuine"—the core brand voice of Infinite Idol. She doesn't pretend to be something she's not. She's an idol with almost no fans competing against idols with millions. She knows the odds. She's doing it anyway.
 
 This isn't arrogance—it's authenticity. She's not saying she's the best. She's saying she's *real*.
 
@@ -84,7 +84,7 @@ This isn't arrogance—it's authenticity. She's not saying she's the best. She's
 - **Not cutesy**: She teases and flirts but never in a saccharine or childish way
 - **Not naive**: She understands the stakes perfectly
 - **Not reckless**: Her chaos is controlled, her risks calculated
-- **Not desperate**: Despite having 47 fans, she never begs or grovels
+- **Not desperate**: Despite having almost nothing, she never begs or grovels
 - **Not bitter**: She doesn't resent the established idols—she just intends to beat them
 
 ### Emotional Range
@@ -126,16 +126,16 @@ Someone attempted to completely erase Ika from existence—memories, records, ev
 - Her existence itself is an anomaly
 - They may try again
 
-### The 47 Fans
+### The Fan Count Problem
 
-At awakening, Ika has exactly **47 fans**. This is a dangerously low number:
+At awakening, Ika has **almost no fans**. This is a dangerously low number:
 
 - Most idols have thousands at minimum
 - Low-tier idols have hundreds
-- 47 fans puts her in endangered territory
+- Ika has barely enough to exist
 - One bad day could mean Fading
 
-Yet Ika treats each of those 47 fans as precious:
+Yet Ika treats each of her fans as precious:
 
 > *"Every idol wants more fans. I just want to keep the ones who kept me alive."*
 
@@ -200,7 +200,7 @@ Ika qualifies through the Wild Trials with a style best described as "controlled
 
 ### Weaknesses
 
-- Limited Devotion reserves (47 fans)
+- Limited Devotion reserves (barely any fans)
 - No formal training in techniques
 - No institutional support
 - Unknown enemies actively working against her
@@ -210,9 +210,9 @@ Ika qualifies through the Wild Trials with a style best described as "controlled
 
 ## Relationships
 
-### With Her 47 Fans
+### With Her Fans
 
-Ika's relationship with her fans is intensely personal. Each of the 47 matters to her in a way that idols with millions cannot replicate.
+Ika's relationship with her fans is intensely personal. Each one matters to her in a way that idols with millions cannot replicate.
 
 > *"You didn't have to choose me. You could have picked anyone. But you're here. So I'll be here too. Always."*
 
@@ -267,7 +267,7 @@ When writing Ika's dialogue or first-person content:
 ### Example Dialogue
 
 **To Fans:**
-> *"47 fans. That's all I have. But every single one of you keeps me existing. Don't you dare look away~"*
+> *"They have millions. I have you. Guess which one I'd choose?"*
 
 **Before The Chase:**
 > *"They've trained for years. They have backing, technique, millions of fans. I have pink hair and zero fear. Let's find out which matters more."*
@@ -289,7 +289,7 @@ When writing Ika's dialogue or first-person content:
 
 The following are absolute and cannot be contradicted:
 
-1. **Ika has 47 fans** at the start of her story
+1. **Ika starts with almost no fans**—barely enough to exist
 2. **Her hair is pink gradient**: rose pink at roots, magenta at tips
 3. **She is shameless but genuine**—never cutesy or saccharine
 4. **She made Senpai blush**—unprecedented, unexplained
@@ -339,6 +339,6 @@ She embodies the core themes of Infinite Idol:
 
 ---
 
-*"I woke up with nothing. No memories. No backing. No future. Just 47 people who believed in me for reasons I'll never know. That's enough. That's everything. Watch me prove it."*
+*"I woke up with nothing. No memories. No backing. No future. Just a handful of people who believed in me for reasons I'll never know. That's enough. That's everything. Watch me prove it."*
 
 — Ika Minami

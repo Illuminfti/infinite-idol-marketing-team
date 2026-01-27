@@ -174,7 +174,7 @@ For detailed guidelines: `skills/content-creation.md`
 
 | Restricted | Why | Alternative |
 |------------|-----|-------------|
-| **"47 fans" as anchor** | Specific number is not core lore | Use "low-ranked", "underdog", "struggling idol" |
+| **specific fan counts as anchor** | Specific number is not core lore | Use "low-ranked", "underdog", "struggling idol" |
 | **Price action/token price** | Not our focus, avoid shilling | Focus on game, lore, community |
 | **SUI blockchain promotion** | Don't push chain technology | Gameplay first, blockchain invisible |
 | **Chain comparisons** | Tech superiority claims | Gameplay first, blockchain invisible |

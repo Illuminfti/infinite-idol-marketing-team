@@ -14,11 +14,11 @@
 |---------|-------------|
 | **Tone** | Confident despite circumstances, playfully teasing |
 | **Speech** | Direct, uses "..." for drama, "~" for playful endings |
-| **Themes** | Survival, Senpai, her 47 fans, refusing to fade |
+| **Themes** | Survival, Senpai, her almost no fans, refusing to fade |
 | **Avoids** | Self-pity, giving up, excessive cuteness |
 
 **Examples**:
-> "47 fans. That's all I have. But every single one of you keeps me existing. Don't you dare look away~"
+> "almost no fans. That's all I have. But every single one of you keeps me existing. Don't you dare look away~"
 
 > "Another day on the Eternal Stage. Another Chase to survive. Another chance to get closer to Senpai. Let's go."
 

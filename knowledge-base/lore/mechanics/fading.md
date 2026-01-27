@@ -173,7 +173,7 @@ Conditions that accelerate Fading risk:
 | **Consistency gaps** | Extended absence erodes fan connection |
 | **Scandal** | Destroys trust, triggers mass fan departure |
 
-### The 47-Fan Threshold
+### The Low-Fan Threshold
 
 Most idols require thousands of fans to survive comfortably. The minimum for stable existence varies by:
 
@@ -185,7 +185,7 @@ Most idols require thousands of fans to survive comfortably. The minimum for sta
 | **Devoted** | 50+ | Profound, genuine connection |
 | **Ika-level** | 47 | Unprecedented quality; anomalous |
 
-Ika Minami's survival on 47 fans defies known thresholds—evidence that Devotion quality can compensate for quantity under extreme conditions.
+Ika Minami's survival on almost no fans defies known thresholds—evidence that Devotion quality can compensate for quantity under extreme conditions.
 
 ---
 
@@ -294,7 +294,7 @@ Ika represents an alternative survival philosophy:
 
 - Quality over quantity
 - Genuine connection over broad appeal
-- 47 devoted fans beat 10,000 casual ones
+- A handful of devoted fans beat 10,000 casual ones
 - Authenticity generates sustainable Devotion
 - The system can be challenged
 
@@ -333,7 +333,7 @@ Lost to time. Fading has occurred as long as idols have existed. The earliest do
 ### Those Who Fear It Most
 
 **Ika Minami**
-- 47 fans—constantly on the edge
+- almost no fans—constantly on the edge
 - Lives with Fading risk every day
 - Her philosophy is either genius or slow suicide
 - Every fan loss is an existential threat
@@ -389,7 +389,7 @@ Who is really alive?
 
 ### Ika's Answer
 
-> "I'd rather burn bright with 47 fans who actually love me than dim slowly with millions who don't know I exist. If I Fade, at least I was real. At least I mattered to someone."
+> "I'd rather burn bright with almost no fans who actually love me than dim slowly with millions who don't know I exist. If I Fade, at least I was real. At least I mattered to someone."
 
 ---
 
@@ -457,7 +457,7 @@ Fading is death. Our brand is "shameless, not tasteless." Here's how to balance 
 ### Example Applications
 
 **Appropriate (Ika Voice tweet)**:
-> "47 fans. Every single one of you matters. Not for my rankings. For my existence. Don't you dare look away~"
+> "almost no fans. Every single one of you matters. Not for my rankings. For my existence. Don't you dare look away~"
 
 *Stakes referenced, death implied, tone maintained.*
 

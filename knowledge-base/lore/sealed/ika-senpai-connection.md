@@ -120,7 +120,7 @@ When Ika made Senpai blush, her Devotion spiked impossibly.
 
 **Internal explanation**: The moment briefly reconnected her to whatever Devotion she had in her previous life. A residual echo of a much larger fanbase, or a direct transfer from Senpai (unprecedented).
 
-This is why she survives on 47 fans—there's something else sustaining her that isn't fully accounted for.
+This is why she survives on almost no fans—there's something else sustaining her that isn't fully accounted for.
 
 ---
 

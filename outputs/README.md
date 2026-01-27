@@ -106,7 +106,7 @@ All content in this directory must adhere to:
 - **Dark luxury aesthetic** - Black and gold, premium feel
 - **Canon compliance** - Verified against `knowledge-base/lore/`
 - **Brand voice** - Per `knowledge-base/brand/voice-and-tone.md`
-- **Ika consistency** - Pink gradient hair, 47 fans, shameless personality
+- **Ika consistency** - Pink gradient hair, underdog status, shameless personality
 
 ---
 

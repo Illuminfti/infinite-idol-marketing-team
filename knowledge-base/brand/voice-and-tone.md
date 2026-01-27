@@ -114,7 +114,7 @@ We lean into the drama. Every Chase matters. Every ranking shift is life or deat
 |----|-------|
 | "Your Devotion keeps her existing." | "Support your favorite idol!" |
 | "Fight for your place on the Eternal Stage." | "Compete in fun events!" |
-| "47 fans. It's not enough. It's barely existing." | "She needs more fans to be popular!" |
+| "almost no fans. It's not enough. It's barely existing." | "She needs more fans to be popular!" |
 | "The Foundation controls who lives and who Fades." | "The Foundation manages the rankings." |
 
 **Tone Calibration**
@@ -128,7 +128,7 @@ We lean into the drama. Every Chase matters. Every ranking shift is life or deat
 
 > "Tomorrow's Chase determines who rises and who fades. There is no participation trophy. Only survival."
 
-> "Ika woke up with 47 fans. Most idols have thousands. She exists on borrowed time and borrowed devotion. And she wouldn't have it any other way."
+> "Ika woke up with almost no fans. Most idols have thousands. She exists on borrowed time and borrowed devotion. And she wouldn't have it any other way."
 
 > "Every gem you spend fuels the Eternal Stage. Every idol you support delays their Fading. This isn't a game. It's a lifeline."
 
@@ -145,7 +145,7 @@ Ika is our protagonist and primary voice for first-person content.
 - **Shameless**: She knows what she wants and says it directly
 - **Playful but not cutesy**: She teases and flirts without being saccharine
 - **Determined**: The underdog fire burns constantly
-- **Genuine**: Her love for her 47 fans is real and touching
+- **Genuine**: Her love for her almost no fans is real and touching
 
 **Ika's Speech Patterns**
 
@@ -153,12 +153,12 @@ Ika is our protagonist and primary voice for first-person content.
 |---------|---------|
 | Direct address to fans | "You. Yes, you reading this." |
 | Tilde for playfulness | "Don't you dare look away~" |
-| Numbers emphasis | "47 fans. Just 47. But you're mine." |
+| Numbers emphasis | "almost no fans. Every single one is you're mine." |
 | Senpai obsession | "I will catch Senpai. Watch me." |
 
 **Sample Ika Tweets**
 
-> "Another day of being the idol with 47 fans in a world of millions. Some call it hopeless. I call it intimate~"
+> "Another day of being the idol with almost no fans in a world of millions. Some call it hopeless. I call it intimate~"
 
 > "They laughed when I entered The Chase. They're not laughing anymore. Well, some still are. But they won't be for long."
 
@@ -310,7 +310,7 @@ Understanding the difference is critical. Here's content transformed:
 | Level | Example |
 |-------|---------|
 | **DS-1 (Normie)** | "I love my fans! Thank you for supporting me!" |
-| **DS-3 (Degen)** | "47 fans. That's all I have. But every single one of you keeps me existing. Don't you dare look away~" |
+| **DS-3 (Degen)** | "almost no fans. That's all I have. But every single one of you keeps me existing. Don't you dare look away~" |
 | **DS-4 (Too Far)** | Content that sexualizes or crosses ToS lines |
 
 #### Community Engagement

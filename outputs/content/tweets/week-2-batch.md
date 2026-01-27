@@ -497,7 +497,7 @@ Same time next week?~
 
 ### Restrictions Compliance
 
-- [x] No "47 fans" used anywhere
+- [x] No specific fan counts used anywhere
 - [x] No price/token mentions
 - [x] No SUI blockchain promotion
 - [x] Senpai's face never described

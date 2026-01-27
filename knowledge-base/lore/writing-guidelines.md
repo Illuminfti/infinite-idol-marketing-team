@@ -369,7 +369,7 @@ These are important for consistency but NOT world-defining rules:
 
 | Detail | Reference Location | Note |
 |--------|-------------------|------|
-| Ika's 47 fans at story start | `characters/ika-minami.md` | Starting point, changes over time |
+| Ika's almost no fans at story start | `characters/ika-minami.md` | Starting point, changes over time |
 | Ika's pink gradient hair | `characters/ika-minami.md` | Character design consistency |
 | Gems as currency | `game-mechanics/gem-system.md` | Game mechanic |
 | Dark luxury aesthetic | `brand/visual-identity.md` | Brand guideline |

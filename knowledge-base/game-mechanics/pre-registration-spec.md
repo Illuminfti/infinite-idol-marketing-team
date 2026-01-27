@@ -1,6 +1,6 @@
 # Pre-Registration Specification - Complete System Overview
 
-> *"47 fans. That's all I have. But every single one of you keeps me existing. Now, let me show you what your Devotion can become..."*
+> *"almost no fans. That's all I have. But every single one of you keeps me existing. Now, let me show you what your Devotion can become..."*
 > — Ika Minami, Pre-Registration Launch Day
 
 ---
@@ -658,7 +658,7 @@ This system adheres to all 10 Canon Rules:
 
 1. **Devotion is Literal**: Player spending = Devotion to the game
 2. **Fading is Death**: Abandoned accounts lose streak/progress
-3. **Ika Has 47 Fans**: She's the mascot of this system
+3. **Ika starts with almost no fans**: She's the mascot of this system
 4. **Ika's Hair is Pink Gradient**: All IKA-Chan representations match
 5. **Senpai is Always Obscured**: N/A (pre-reg focus)
 6. **The Foundation Controls Everything**: System parallels Foundation control

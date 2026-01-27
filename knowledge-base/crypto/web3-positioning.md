@@ -338,7 +338,7 @@ The Devotion mechanic isn't just gameplay—it's philosophy:
 | Devotion keeps idols alive | Player engagement keeps game healthy |
 | Fading from lack of fans | Games die without players |
 | The Chase for Senpai | Pursuit of meaningful entertainment |
-| 47 fans is enough to survive | Small dedicated community > huge passive audience |
+| A small dedicated base is enough to survive | Small dedicated community > huge passive audience |
 
 ---
 

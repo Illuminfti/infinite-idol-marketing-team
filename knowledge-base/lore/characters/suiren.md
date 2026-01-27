@@ -179,11 +179,11 @@ Suiren has never had someone look at her and see something other than The Prodig
 
 ### With Ika
 
-Suiren finds Ika... confusing. Here is an idol with 47 fans, no training, and nothing to lose—who performs with a freedom Suiren has never experienced. Ika makes mistakes and laughs. Ika fails and tries again. Ika is *alive* in a way Suiren suspects she isn't.
+Suiren finds Ika... confusing. Here is an idol with almost no fans, no training, and nothing to lose—who performs with a freedom Suiren has never experienced. Ika makes mistakes and laughs. Ika fails and tries again. Ika is *alive* in a way Suiren suspects she isn't.
 
 There's tension between them: raw talent versus perfect technique. But there's also something else. Something Suiren won't name.
 
-> *"She has 47 fans and no technique. She should be Fading. Instead she's... thriving. I don't understand it. I'm not sure I want to."*
+> *"She has almost no fans and no technique. She should be Fading. Instead she's... thriving. I don't understand it. I'm not sure I want to."*
 
 ### With Sora
 

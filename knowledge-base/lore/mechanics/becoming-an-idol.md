@@ -77,7 +77,7 @@ This is how **Ika Minami** qualified.
 | **Advantage** | Understands fans intimately |
 | **Challenge** | Never received formal training |
 
-She was literally **one of Ika's 47 fans** before becoming an idol herself.
+She was literally **one of Ika's almost no fans** before becoming an idol herself.
 
 ---
 
@@ -145,7 +145,7 @@ Every idol needs at least one fan to exist. For fan-to-idol transitions:
 
 Like Ika demonstrates, **quality matters more than quantity**:
 
-- 47 deeply devoted fans can sustain an idol
+- A handful of deeply devoted fans can sustain an idol
 - 10,000 casual followers might not
 
 Fan-to-idol transitions often start with quality (their former fellow fans) over quantity.

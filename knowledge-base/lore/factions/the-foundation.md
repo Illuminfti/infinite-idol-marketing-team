@@ -293,7 +293,7 @@ What she lost: Authentic self-expression, genuine connection, humanity.
 
 **Ika Minami** represents everything The Foundation cannot control:
 - Untrained, unranked, operating outside the system
-- Only 47 fans—should have Faded long ago
+- Only almost no fans—should have Faded long ago
 - Made **Senpai blush**—unprecedented in Foundation records
 - Someone tried to erase her; it failed
 - Chaos incarnate in pink gradient form

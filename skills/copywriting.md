@@ -24,7 +24,7 @@ Each tweet, each paragraph, each section: one core idea. Clarity > cleverness.
 ### 4. Show, Don't Tell
 
 **Tell**: "Ika is determined"
-**Show**: "47 fans. 47 reasons to keep running."
+**Show**: "Almost nothing. Every reason to keep running."
 
 ---
 
@@ -79,7 +79,7 @@ Start with something unexpected to stop the scroll:
 ### Voice Examples
 
 **On-brand**:
-> "47 fans. 47 reasons she hasn't faded yet."
+> "Almost nothing. Every reason she hasn't faded yet."
 
 > "devotion is the only currency that matters. everything else is cope."
 
@@ -134,7 +134,7 @@ Start with something unexpected to stop the scroll:
 
 - "become a devotee"
 - "join the chase"
-- "47 fans and counting. will you be #48?"
+- "almost nothing and growing. will you be next?"
 
 ---
 

@@ -147,7 +147,7 @@ Here's the real deal: [Explanation].
 
 Thanks for keeping us honest 🖤
 
-(And yes, we know - we're still figuring this out. 47 fans and learning.)"
+(And yes, we know - we're still figuring this out. almost nothing and learning.)"
 ```
 
 ---

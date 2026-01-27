@@ -10,7 +10,7 @@
 
 Most Independents don't choose this path—they are pushed to it by circumstance, rejection, or principle. The Foundation tolerates their existence as statistical noise, proof that their system allows alternatives (however desperate). But when an Independent starts winning, when an Independent threatens to prove the system unnecessary—that's when The Foundation pays attention.
 
-And right now, The Foundation is paying very close attention to a pink-haired anomaly with 47 fans.
+And right now, The Foundation is paying very close attention to a pink-haired anomaly with almost no fans.
 
 ---
 
@@ -103,12 +103,12 @@ This proximity to oblivion creates both desperation and intensity. Independent p
 
 ### Ika Minami - The Anomaly
 
-**Status**: Active | **Fans**: 47 (at awakening) | **Threat Level**: Unprecedented
+**Status**: Active | **Fans**: Critically low (at awakening) | **Threat Level**: Unprecedented
 
 Ika is not just an Independent—she is an impossibility. She shouldn't exist:
 
 - Woke with no memories, no backing, no history
-- Only 47 fans—a number that should mean imminent Fading
+- Only almost no fans—a number that should mean imminent Fading
 - No formal training yet displays extraordinary ability
 - Made **Senpai blush**—something no idol has ever done
 - Someone tried to erase her completely; they failed
@@ -121,7 +121,7 @@ If Ika succeeds—truly succeeds—she proves The Foundation is unnecessary. She
 
 The Foundation understands this. They're watching.
 
-> *"47 fans. That's all I have. But every single one of you keeps me existing. Don't you dare look away~"*
+> *"almost no fans. That's all I have. But every single one of you keeps me existing. Don't you dare look away~"*
 > — Ika Minami
 
 See `knowledge-base/lore/characters/ika-minami.md` for full profile.

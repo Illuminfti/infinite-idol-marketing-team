@@ -42,7 +42,7 @@ These are **ABSOLUTE**. Immediate rejection if violated:
 
 | Detail | Concern Level | Source |
 |--------|---------------|--------|
-| Ika's 47 fans | Minor continuity | `characters/ika-minami.md` |
+| Ika's low fan count | Minor continuity | `characters/ika-minami.md` |
 | Character designs | Visual consistency | Character files |
 | Currency names | Game consistency | `game-mechanics/gem-system.md` |
 | Aesthetic choices | Brand consistency | `brand/visual-identity.md` |

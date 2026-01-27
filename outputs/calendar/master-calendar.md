@@ -97,7 +97,7 @@ Deepen engagement, explain The Chase, build community, tease future content.
 
 | Restricted | Why | Alternative |
 |------------|-----|-------------|
-| **"47 fans" as anchor** | Not core lore, too specific | "low-ranked", "underdog", "struggling idol" |
+| **specific fan counts as anchor** | Not core lore, too specific | "low-ranked", "underdog", "struggling idol" |
 | **Price action/token price** | Not our focus | Game, lore, community |
 | **SUI blockchain promotion** | No tech shilling | Gameplay first, blockchain invisible |
 | **Chain comparisons** | No tech superiority | Gameplay first |
@@ -228,7 +228,7 @@ Should be.
 Before launch, verify:
 
 - [ ] First tweet sets cryptic, engaging tone
-- [ ] No "47 fans" used as anchor anywhere
+- [ ] No specific fan counts used as anchor anywhere
 - [ ] No price/token mentions
 - [ ] No SUI promotion (blockchain invisible)
 - [ ] Senpai's face never described
@@ -257,7 +257,7 @@ Before launch, verify:
 | Date | Change | Reason | By |
 |------|--------|--------|-----|
 | 2026-01-20 | Complete calendar rewrite | New two-week launch plan | Agent 02 |
-| 2026-01-20 | Removed "47 fans" anchor | Content restrictions compliance | Agent 02 |
+| 2026-01-20 | Removed specific fan count anchor | Content restrictions compliance | Agent 02 |
 | 2026-01-20 | Added visual asset tracking | Production planning | Agent 02 |
 
 ---

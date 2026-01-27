@@ -22,7 +22,7 @@
 | Problem | Why It's Cringe |
 |---------|-----------------|
 | "Save Ika from Fading" frame | Emotional manipulation ≠ fun. Charity vibes, not waifu vibes. |
-| The 47 fans sentimentality | Overplayed. Became a crutch instead of flavor. |
+| The specific fan count sentimentality | Overplayed. Became a crutch instead of flavor. |
 | No actual GAME | Just a dressed-up email capture with lore sprinkles. |
 | Ika sounds desperate | "Don't let me fade" = begging. Real Ika doesn't beg. |
 | Zero fan service | It's a WAIFU GAME. Where's the sauce? |
@@ -488,17 +488,17 @@ v2 Ika: "I know you want my attention. Everyone does. But you're going to have t
 
 ### v1 (Cringe)
 
-> "47 fans. That's all I have. But every single one of you keeps me existing. Don't you dare look away~"
+> "Almost nothing. That's all I have. But every single one of you keeps me existing. Don't you dare look away~"
 
 **Problem:** Sounds desperate. "Don't you dare" is trying to be playful but the underlying message is "please don't leave me."
 
 ### v2 (Based)
 
-> "I have 47 fans. I know, right? Tragic. But here's the thing—those 47? They're MINE. Every single one chose me when everyone else said I'd Fade.
+> "I have almost nothing. I know, right? Tragic. But here's the thing—those few? They're MINE. Every single one chose me when everyone else said I'd Fade.
 >
 > You want to be number 48? You're going to have to prove you deserve to stand with them~"
 
-**Why It Works:** Same lore (47 fans), but framed as exclusivity, not desperation. Being a fan is an achievement, not charity.
+**Why It Works:** Same lore (underdog status), but framed as exclusivity, not desperation. Being a fan is an achievement, not charity.
 
 ### More Examples
 
@@ -506,7 +506,7 @@ v2 Ika: "I know you want my attention. Everyone does. But you're going to have t
 > "I felt it. The moment you pushed me past critical. Do you know what that's like? Feeling yourself stop Fading?"
 
 **v2 Milestone:**
-> "We hit 10K. That's 10,000 people who looked at the idol industry, saw me at the bottom with 47 fans, and said 'yeah, her.'
+> "We hit 10K. That's 10,000 people who looked at the idol industry, saw me at the bottom with almost nothing, and said 'yeah, her.'
 >
 > Either you're all geniuses or you're all simps. Either way, I appreciate it~"
 

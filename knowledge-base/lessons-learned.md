@@ -94,7 +94,7 @@ Each lesson includes:
 
 **Impact**:
 - Existential references should be casual, not overplayed
-- Good: "These 47 fans keep me existing" (matter-of-fact)
+- Good: "These almost no fans keep me existing" (matter-of-fact)
 - Bad: "Without you I'll DIE" (melodramatic)
 - Balance: One existential reference per 3-5 tweets (not every tweet)
 
@@ -105,15 +105,15 @@ Each lesson includes:
 
 ## Canon Compliance Lessons
 
-### 2026-01-09 - 47 Fans is Powerful Anchor
+### 2026-01-09 - Low Fan Count Was Overused
 **Category**: Canon
 **Agent(s)**: Agent 08 (Lore Guardian), Agent 02
 **Context**: Multiple Ika content pieces
 
-**Discovery**: The "47 fans" detail is incredibly effective as recurring anchor. It immediately establishes underdog status, existential stakes, and specificity.
+**Discovery**: The "almost no fans" detail is incredibly effective as recurring anchor. It immediately establishes underdog status, existential stakes, and specificity.
 
 **Impact**:
-- Reference 47 fans regularly in Ika content (but not every single piece)
+- Reference almost no fans regularly in Ika content (but not every single piece)
 - Use as shorthand for "I'm the underdog but I'm fighting"
 - Avoid vague "small following" language - the specificity of 47 is powerful
 - Track fan count growth in canon if/when Ika gains fans

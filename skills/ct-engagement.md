@@ -266,7 +266,7 @@ CT runs hotter than other platforms. Recalibrate:
 
 | Restricted | Reason | Alternative |
 |------------|--------|-------------|
-| **"47 fans" as anchor** | Specific number is nonsensical, not core lore | Use general "low-ranked", "underdog", "struggling idol" framing |
+| **specific fan counts** | Specific number is nonsensical, not core lore | Use general "low-ranked", "underdog", "struggling idol" framing |
 | **Price action/token price** | Not our focus, avoid shilling | Focus on game, lore, community |
 | **$SUI promotion** | We don't push Sui blockchain | Gameplay first, blockchain invisible |
 | **"SUI is great/fast/etc"** | Tech shilling | No tech shilling at all |

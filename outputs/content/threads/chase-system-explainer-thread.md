@@ -177,7 +177,7 @@ Will you watch her?
 
 ### Restrictions Compliance
 
-- [x] **No "47 fans"**: Uses "low-ranked", "no backing", "underdog"
+- [x] **No specific fan counts**: Uses "low-ranked", "no backing", "underdog"
 - [x] **No price action**: No token/price mentions
 - [x] **No SUI promotion**: No blockchain references
 - [x] **No specific fan counts**: Relative positioning only

@@ -27,7 +27,7 @@ This index maps **task types** to **required reading** so agents know exactly wh
 
 **SHOULD READ**:
 - `/knowledge-base/lore/characters/ika-minami.md` - If Ika voice content
-- `/CLAUDE.md` - Content restrictions (no 47 fans, no price action, no SUI promotion)
+- `/CLAUDE.md` - Content restrictions (no almost no fans, no price action, no SUI promotion)
 
 **Key Facts**:
 - DS-3 minimum for CT

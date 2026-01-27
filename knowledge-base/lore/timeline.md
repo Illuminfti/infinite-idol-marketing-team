@@ -176,7 +176,7 @@ This becomes a cautionary tale: innovation is dangerous when existence hangs in 
 A girl wakes on cold, wet concrete with:
 - No memories of her past
 - Pink gradient hair (rose roots to magenta tips)
-- Exactly **47 fans**—a dangerously low number
+- Exactly **almost no fans**—a dangerously low number
 - An instinctive understanding of who she is
 
 Someone tried to erase her. The memory wipe failed. They'll likely try again.

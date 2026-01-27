@@ -202,7 +202,7 @@ Welcome to the Eternal Stage.
 
 ### Restrictions Compliance
 
-- [x] **No "47 fans"**: Thread uses "few true fans" and "underdog" framing
+- [x] **No specific fan counts**: Thread uses "few true fans" and "underdog" framing
 - [x] **No price action**: No token/price mentions
 - [x] **No SUI promotion**: No blockchain references
 - [x] **No specific fan counts**: Quality > quantity framing only

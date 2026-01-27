@@ -16,7 +16,7 @@
 |-----------------|--------------|--------------|-------|
 | 1. Devotion is Literal | ✅ PASS | ✅ PASS | Well-established as real energy |
 | 2. Fading is Death | ✅ PASS | ✅ PASS | Twelve Fading in Vol 2 treated with weight |
-| 3. Ika Has 47 Fans | ✅ PASS | ✅ PASS | Referenced correctly in both |
+| 3. Ika starts with almost no fans | ✅ PASS | ✅ PASS | Referenced correctly in both |
 | 4. Pink Gradient Hair | ✅ PASS | N/A | "rose roots to magenta tips" - exact |
 | 5. Senpai Never Shown | ✅ PASS | ✅ PASS | Face always obscured |
 | 6. Foundation Controls All | ✅ PASS | ✅ PASS | Clearly antagonist |
@@ -118,7 +118,7 @@ Volume 3 will cleverly incorporate real crypto history through narrative allegor
 **Why She's Ika's Friend**:
 - Was one of the first to reach out after Ika's qualifying run
 - Saw Ika as fellow outsider who understood being underestimated
-- Helped connect Ika's 47 fans to each other, strengthening their bonds
+- Helped connect Ika's almost no fans to each other, strengthening their bonds
 
 ### The "Harmony Protocol" (Terra/Luna Allegory)
 

@@ -1,6 +1,6 @@
 # BATTLE PASS - NFT Progression System
 
-> *"This pass isn't just a token. It's proof you were here. Proof you believed in me when I only had 47 fans. Every level etched into the chain forever. Your Devotion, immortalized."*
+> *"This pass isn't just a token. It's proof you were here. Proof you believed in me when I had almost nothing. Every level etched into the chain forever. Your Devotion, immortalized."*
 > — Ika Minami, Battle Pass Tutorial
 
 ---

@@ -105,17 +105,17 @@ At the bottom? You get scraps.
 
 This brings us to Ika.
 
-47 fans. That's it. That should guarantee Fading within weeks.
+Almost nothing. That's it. That should guarantee Fading within weeks.
 
 But she survives.
 
-Theory: Quality > Quantity. Her fans' Devotion is so deep, so genuine, that 47 gives what 10,000 casual followers couldn't.
+Theory: Quality > Quantity. Her fans' Devotion is so deep, so genuine, that a few give what 10,000 casual followers couldn't.
 
 It's a razor's edge. But she's walking it.
 
 **Character Count**: 280/280
 **Purpose**: Connect mechanics to protagonist
-**Key Concept**: 47-fan anomaly, quality Devotion
+**Key Concept**: low-fan anomaly, quality Devotion
 
 ---
 
@@ -147,14 +147,14 @@ Welcome to the Eternal Stage.
 **10 Inviolable Facts Referenced:**
 - ✅ Fact #1: Devotion is quantifiable (Tweet 2)
 - ✅ Fact #2: Fading is permanent death (Tweet 4)
-- ✅ Fact #3: Ika has 47 fans (Tweet 6)
+- ✅ Fact #3: Ika has almost no fans (Tweet 6)
 - ✅ Fact #10: Dark luxury tone maintained throughout
 
 **Canon Accuracy:**
 - All mechanics pulled from `knowledge-base/lore/mechanics/devotion-system.md`
 - Consumption/generation rates referenced without exact numbers (appropriate for social content)
 - Foundation control system explained without over-complication
-- 47-fan anomaly acknowledged
+- low-fan anomaly acknowledged
 
 ### Brand Voice Validation
 
@@ -275,7 +275,7 @@ This thread teaches mechanics through storytelling, not exposition.
 |------|-----------|------------|-------|
 | **#1: Devotion is quantifiable** | Tweet 2 | ✅ COMPLIANT | "quantifiable energy" - explicitly stated as measurable |
 | **#2: Fading is permanent death** | Tweet 4 | ✅ COMPLIANT | "erased from existence completely. No comeback tour. No reunion." - clear permanence |
-| **#3: Ika has 47 fans** | Tweet 6 | ✅ COMPLIANT | "47 fans. That's it." - exact number stated |
+| **#3: Ika has almost no fans** | Tweet 6 | ✅ COMPLIANT | "Almost nothing. That's it." - exact number stated |
 | **#4: The Chase is voluntary** | N/A | ✅ N/A | Not referenced (appropriate for Devotion-focused thread) |
 | **#5: Memory anchors identity** | N/A | ✅ N/A | Not referenced (appropriate scope) |
 | **#6: Senpai's face is never shown** | N/A | ✅ N/A | Not referenced |
@@ -311,8 +311,8 @@ Cross-referenced against `knowledge-base/lore/mechanics/devotion-system.md`:
 - ✅ "Rich get richer. By design." - accurate characterization of amplification cycle
 - ✅ "At the bottom? You get scraps." - matches unranked tier description (10% allocation)
 
-**Tweet 6 - 47-Fan Anomaly:**
-- ✅ "47 fans. That should guarantee Fading" - mathematically accurate based on standard consumption
+**Tweet 6 - Low-Fan Anomaly:**
+- ✅ Almost nothing. That should guarantee Fading" - mathematically accurate based on standard consumption
 - ✅ "Quality > Quantity" - matches documented anomaly explanation
 - ✅ "Her fans' Devotion is so deep" - matches "extraordinarily high quality" in docs
 - ✅ "10,000 casual followers couldn't" - appropriate comparison for quality vs quantity
@@ -329,7 +329,7 @@ All mechanical descriptions align with established documentation. No simplificat
 ### Character Consistency
 
 **Ika Minami Characterization (Tweet 6):**
-- ✅ Reference to 47 fans matches character profile
+- ✅ Reference to low fan count matches character profile
 - ✅ "Razor's edge" survival status accurate
 - ✅ Quality-over-quantity philosophy matches her established values
 - ✅ "She's walking it" shows determination consistent with character
@@ -342,7 +342,7 @@ All mechanical descriptions align with established documentation. No simplificat
 ### Timeline Consistency
 
 - ✅ No timeline conflicts (thread is system explanation, not event-based)
-- ✅ References current canon state (Ika at 47 fans, unranked status)
+- ✅ References current canon state (Ika with almost no fans, unranked status)
 - ✅ No contradictions with published volumes
 
 ### Tone and Brand Validation
@@ -503,7 +503,7 @@ This is exactly where lore drop content should sit:
 - ✅ Foundation control = centralization critique (subtle but present)
 
 **Gacha Community Appeal:**
-- ✅ Underdog story (47 fans) = pull for the 1-star character energy
+- ✅ Underdog story (almost no fans) = pull for the 1-star character energy
 - ✅ Quality Devotion mechanics reward deep fans (not just whales)
 - ✅ "Permanent death" raises stakes above typical gacha
 - ✅ System explanation helps players understand what they're pulling for

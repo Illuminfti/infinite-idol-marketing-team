@@ -157,14 +157,14 @@ Ika Minami racing across floating obstacle platforms during The Chase, pink grad
 ## Prompt 6: Ika - Underdog Determination
 
 ### Use Case
-- "47 fans" narrative content
+- underdog narrative content
 - Motivational posts
 - Character introduction with stakes
 - Shows her against-the-odds energy
 
 ### Midjourney Prompt
 ```
-Ika Minami standing alone on dark stage, pink gradient hair, determined expression looking upward at distant light, small spotlight illuminating her while vast empty arena surrounds, wearing black gold costume with heart accessories, petite figure against massive space, 47 small glowing lights scattered in the darkness representing her fans, dark luxury aesthetic, dramatic chiaroscuro lighting, premium anime art, sophisticated lonely but determined atmosphere, elegant not cutesy, high contrast black gold palette --ar 2:3 --v 6 --style raw
+Ika Minami standing alone on dark stage, pink gradient hair, determined expression looking upward at distant light, small spotlight illuminating her while vast empty arena surrounds, wearing black gold costume with heart accessories, petite figure against massive space, scattered glowing lights scattered in the darkness representing her fans, dark luxury aesthetic, dramatic chiaroscuro lighting, premium anime art, sophisticated lonely but determined atmosphere, elegant not cutesy, high contrast black gold palette --ar 2:3 --v 6 --style raw
 ```
 
 **Parameters:**
@@ -175,7 +175,7 @@ Ika Minami standing alone on dark stage, pink gradient hair, determined expressi
 ### Expected Output
 - Isolation but determination visible
 - Small scale vs vast space contrast
-- 47 lights representing fans
+- scattered lights representing fans
 - Dramatic mood lighting
 - Underdog energy
 
